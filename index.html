@@ -1,0 +1,812 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="color-scheme" content="light dark">
+<meta name="description" content="권민재 — AI 헬스케어 데이터 포트폴리오. DACON 헬스케어 해커톤(흉부 X-ray 폐렴 분류, 난임 임신 성공 예측), 의료 데이터 머신러닝·딥러닝 프로젝트.">
+<title>권민재 — 포트폴리오</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🩺</text></svg>">
+</head>
+<body>
+
+<style>
+/* ─────────────────────────────────────────────
+   Tokens
+   ground : cool paper, slight blue-green bias
+   ink    : #1F3864 계열 — 이력서 docx와 동일 계열
+   accent : diagnostic teal (한 곳에만 쓴다)
+   ───────────────────────────────────────────── */
+:root {
+  --ground:      #f6f8f8;
+  --surface:     #ffffff;
+  --surface-alt: #eef2f3;
+  --ink:         #16223c;
+  --ink-2:       #43506b;
+  --ink-3:       #6f7b91;
+  --rule:        #d5dee0;
+  --rule-strong: #b6c4c7;
+  --accent:      #106b6b;
+  --accent-soft: #e2efee;
+  --flag:        #8a5a12;
+  --flag-soft:   #fbf1de;
+  --flag-rule:   #d8b271;
+
+  --f-display: "Iowan Old Style", "Palatino Linotype", Palatino, "AppleMyungjo",
+               "Nanum Myeongjo", Batang, Georgia, serif;
+  --f-body:    "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+               "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", system-ui, sans-serif;
+  --f-mono:    ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, "Courier New", monospace;
+
+  --measure: 64ch;
+  --page:    72rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --ground:      #0d1418;
+    --surface:     #131c21;
+    --surface-alt: #18242a;
+    --ink:         #e6edee;
+    --ink-2:       #b0bfc4;
+    --ink-3:       #7f9096;
+    --rule:        #253339;
+    --rule-strong: #33454c;
+    --accent:      #57c4bb;
+    --accent-soft: #123330;
+    --flag:        #d9ab61;
+    --flag-soft:   #2a2113;
+    --flag-rule:   #6d5527;
+  }
+}
+:root[data-theme="dark"] {
+  --ground:      #0d1418;
+  --surface:     #131c21;
+  --surface-alt: #18242a;
+  --ink:         #e6edee;
+  --ink-2:       #b0bfc4;
+  --ink-3:       #7f9096;
+  --rule:        #253339;
+  --rule-strong: #33454c;
+  --accent:      #57c4bb;
+  --accent-soft: #123330;
+  --flag:        #d9ab61;
+  --flag-soft:   #2a2113;
+  --flag-rule:   #6d5527;
+}
+:root[data-theme="light"] {
+  --ground:      #f6f8f8;
+  --surface:     #ffffff;
+  --surface-alt: #eef2f3;
+  --ink:         #16223c;
+  --ink-2:       #43506b;
+  --ink-3:       #6f7b91;
+  --rule:        #d5dee0;
+  --rule-strong: #b6c4c7;
+  --accent:      #106b6b;
+  --accent-soft: #e2efee;
+  --flag:        #8a5a12;
+  --flag-soft:   #fbf1de;
+  --flag-rule:   #d8b271;
+}
+
+/* ─── Base ─── */
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--ink);
+  font-family: var(--f-body);
+  font-size: 16px;
+  line-height: 1.7;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: var(--page);
+  margin-inline: auto;
+  padding: 0 1.5rem 6rem;
+}
+a { color: inherit; }
+a:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 2px;
+}
+
+/* ─── Masthead ─── */
+.masthead {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 2rem 3rem;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: 4.5rem 0 2rem;
+  border-bottom: 2px solid var(--ink);
+}
+.identity { display: flex; flex-direction: column; gap: .35rem; }
+.name {
+  font-family: var(--f-display);
+  font-size: clamp(2.75rem, 7vw, 4.25rem);
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: -0.015em;
+  margin: 0;
+  text-wrap: balance;
+}
+.name .latin {
+  display: block;
+  font-size: .32em;
+  letter-spacing: .18em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  margin-top: .9rem;
+  font-family: var(--f-mono);
+}
+.discipline {
+  font-family: var(--f-mono);
+  font-size: .75rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-top: 1.25rem;
+}
+.contact {
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-2);
+  padding-bottom: .4rem;
+}
+.contact a { text-decoration: none; border-bottom: 1px solid var(--rule-strong); }
+.contact a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+
+/* ─── Section scaffolding ─── */
+.section { padding-top: 3.5rem; }
+.section-head {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  padding-bottom: 1.25rem;
+  border-bottom: 1px solid var(--rule);
+  margin-bottom: 1.75rem;
+}
+.section-head h2 {
+  font-family: var(--f-mono);
+  font-size: .75rem;
+  font-weight: 600;
+  letter-spacing: .2em;
+  text-transform: uppercase;
+  margin: 0;
+  color: var(--ink);
+}
+.section-head .ko {
+  font-size: .8rem;
+  color: var(--ink-3);
+}
+
+/* ─── Intro ─── */
+.intro {
+  max-width: var(--measure);
+  font-size: 1.0625rem;
+  color: var(--ink-2);
+  margin: 0;
+}
+.intro strong { color: var(--ink); font-weight: 600; }
+.intro + .intro { margin-top: 1rem; }
+
+/* ─── Skills ─── */
+.skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  gap: 1px;
+  background: var(--rule);
+  border: 1px solid var(--rule);
+}
+.skill {
+  background: var(--surface);
+  padding: 1.25rem 1.25rem 1.4rem;
+  display: flex;
+  flex-direction: column;
+  gap: .65rem;
+}
+.skill-top {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: .75rem;
+}
+.skill-name { font-weight: 600; font-size: .95rem; }
+.level {
+  font-family: var(--f-mono);
+  font-size: .625rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: .2rem .45rem;
+  border: 1px solid var(--rule-strong);
+  color: var(--ink-3);
+  white-space: nowrap;
+}
+.level.is-core {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: var(--accent-soft);
+}
+.skill ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .3rem; }
+.skill li { font-size: .85rem; color: var(--ink-2); line-height: 1.55; }
+
+/* ─── Projects ─── */
+.projects { display: flex; flex-direction: column; gap: 1px; background: var(--rule); border: 1px solid var(--rule); }
+.project {
+  background: var(--surface);
+  display: grid;
+  grid-template-columns: 9.5rem 1fr;
+  gap: 0 2rem;
+  padding: 1.75rem 1.5rem;
+}
+.project-when {
+  font-family: var(--f-mono);
+  font-size: .75rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+  letter-spacing: .02em;
+  padding-top: .3rem;
+}
+.project-body { display: flex; flex-direction: column; gap: .55rem; min-width: 0; }
+.project h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.35;
+  text-wrap: balance;
+}
+.project .org {
+  font-size: .8rem;
+  color: var(--accent);
+  font-weight: 500;
+}
+.project ul { margin: .15rem 0 0; padding-left: 1.05rem; display: flex; flex-direction: column; gap: .35rem; }
+.project li { font-size: .9rem; color: var(--ink-2); }
+.stack { display: flex; flex-wrap: wrap; gap: .35rem; margin-top: .5rem; }
+.stack span {
+  font-family: var(--f-mono);
+  font-size: .68rem;
+  letter-spacing: .04em;
+  padding: .2rem .5rem;
+  background: var(--surface-alt);
+  color: var(--ink-2);
+}
+.result {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: .3rem .75rem;
+  margin-top: .5rem;
+  padding: .55rem .8rem;
+  background: var(--accent-soft);
+  border-left: 2px solid var(--accent);
+}
+.ongoing {
+  display: inline-block;
+  font-family: var(--f-mono);
+  font-size: .625rem;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  padding: .15rem .45rem;
+  margin-left: .5rem;
+  border: 1px solid var(--accent);
+  color: var(--accent);
+  vertical-align: .1em;
+}
+.result b {
+  font-family: var(--f-mono);
+  font-size: .8rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--accent);
+  letter-spacing: .02em;
+}
+.result span { font-size: .8rem; color: var(--ink-2); }
+
+/* ─── Blank slots ─── */
+.todo {
+  border: 1px dashed var(--flag-rule);
+  background: var(--flag-soft);
+  padding: .85rem 1rem;
+  margin-top: .35rem;
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+}
+.todo-label {
+  font-family: var(--f-mono);
+  font-size: .625rem;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--flag);
+  font-weight: 600;
+}
+.todo dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: .3rem .9rem; }
+.todo dt { font-size: .8rem; color: var(--ink-2); }
+.todo dd {
+  margin: 0;
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  color: var(--ink-3);
+  border-bottom: 1px dotted var(--flag-rule);
+}
+
+/* ─── Timeline ─── */
+.timeline { display: flex; flex-direction: column; }
+.entry {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 0 2rem;
+  padding: 1.15rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.entry:first-child { padding-top: 0; }
+.entry:last-child { border-bottom: 0; }
+.entry-when {
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.entry-what { display: flex; flex-direction: column; gap: .15rem; }
+.entry-what b { font-weight: 600; font-size: 1rem; }
+.entry-what span { font-size: .875rem; color: var(--ink-2); }
+
+/* ─── Certificates ─── */
+.certs { display: flex; flex-direction: column; }
+.cert {
+  display: grid;
+  grid-template-columns: 11rem 1fr;
+  gap: 0 2rem;
+  padding: 1rem 0;
+  border-bottom: 1px solid var(--rule);
+}
+.cert:first-child { padding-top: 0; }
+.cert:last-child { border-bottom: 0; }
+.cert-when {
+  font-family: var(--f-mono);
+  font-size: .78rem;
+  font-variant-numeric: tabular-nums;
+  color: var(--ink-3);
+}
+.cert-what { display: flex; flex-direction: column; gap: .1rem; }
+.cert-what b { font-weight: 600; font-size: .975rem; }
+.cert-what code {
+  font-family: var(--f-mono);
+  font-size: .72rem;
+  color: var(--ink-3);
+  letter-spacing: .02em;
+}
+
+/* ─── Footer ─── */
+.colophon {
+  margin-top: 4.5rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--rule);
+  font-family: var(--f-mono);
+  font-size: .7rem;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--ink-3);
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  justify-content: space-between;
+}
+
+/* ─── Narrow ─── */
+@media (max-width: 40rem) {
+  .masthead { padding-top: 3rem; align-items: flex-start; }
+  .project, .entry, .cert { grid-template-columns: 1fr; gap: .5rem; }
+  .project-when { padding-top: 0; }
+  .todo dl { grid-template-columns: 1fr; gap: .15rem; }
+  .todo dt { margin-top: .4rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * { animation: none !important; transition: none !important; }
+}
+
+/* ─── Print ─── */
+@media print {
+  :root {
+    --ground: #fff; --surface: #fff; --surface-alt: #f2f2f2;
+    --ink: #000; --ink-2: #333; --ink-3: #666;
+    --rule: #ccc; --rule-strong: #999; --accent: #1f3864; --accent-soft: #fff;
+    --flag: #666; --flag-soft: #fff; --flag-rule: #bbb;
+  }
+  .wrap { padding-bottom: 0; }
+  .section { padding-top: 2rem; break-inside: avoid; }
+  .project, .entry, .cert { break-inside: avoid; }
+}
+</style>
+
+<div class="wrap">
+
+  <header class="masthead">
+    <div class="identity">
+      <h1 class="name">권민재<span class="latin">Minjae Kwon</span></h1>
+      <p class="discipline">AI · Healthcare Data</p>
+    </div>
+    <div class="contact">
+      <span>010-8945-3489</span>
+      <a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a>
+      <a href="https://github.com/UnknownUserKR">github.com/UnknownUserKR</a>
+    </div>
+  </header>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>About</h2>
+      <span class="ko">소개</span>
+    </div>
+    <p class="intro">
+      약리학을 전공하며 <strong>의료 도메인과 바이오인포매틱스</strong>를 접했고, 지금은 그 데이터를
+      머신러닝과 딥러닝으로 다루고 있습니다.
+    </p>
+    <p class="intro">
+      DACON 헬스케어 해커톤 2건에서 <strong>25만 건 임상 데이터 기반 임신 성공 예측 모델(14팀 중 6위 · 팀장)</strong>과
+      <strong>흉부 X-ray 폐렴 분류 모델(리더보드 0.95192)</strong>을 개발했습니다.
+    </p>
+    <p class="intro">
+      임상시험 데이터 분석부터 예측 모델 개발까지, <strong>헬스케어 도메인을 이해하는 데이터 분석 · 머신러닝
+      엔지니어</strong>를 목표로 하고 있습니다.
+    </p>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Skills</h2>
+      <span class="ko">보유 역량</span>
+    </div>
+    <div class="skills">
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">Python</span>
+          <span class="level is-core">주력</span>
+        </div>
+        <ul>
+          <li>데이터 처리 및 분석 (NumPy, Pandas)</li>
+          <li>ML / DL 파이프라인 구현</li>
+          <li>AI 헬스케어 데이터 전처리</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">Machine Learning</span>
+          <span class="level is-core">주력</span>
+        </div>
+        <ul>
+          <li>LightGBM · XGBoost · CatBoost 앙상블</li>
+          <li>Optuna 튜닝 · SHAP 해석</li>
+          <li>scikit-learn · 피처 엔지니어링</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">Deep Learning</span>
+          <span class="level">활용</span>
+        </div>
+        <ul>
+          <li>PyTorch · 전이학습 (ResNet · DenseNet · EfficientNet)</li>
+          <li>Focal Loss · K-Fold 앙상블</li>
+          <li>Grad-CAM 기반 모델 해석</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">Database</span>
+          <span class="level">학습 중</span>
+        </div>
+        <ul>
+          <li>MySQL · PostgreSQL</li>
+          <li>ERD 설계 및 정규화</li>
+          <li>의료 데이터 구조 설계</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">FastAPI</span>
+          <span class="level">학습 중</span>
+        </div>
+        <ul>
+          <li>FastAPI 기반 REST API</li>
+          <li>비동기 처리 및 Swagger 문서화</li>
+          <li>AI 모델 서빙 API 구현</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">Computer Vision</span>
+          <span class="level">활용</span>
+        </div>
+        <ul>
+          <li>CLAHE 의료 영상 전처리</li>
+          <li>OpenCV · Image Augmentation</li>
+          <li>흉부 X-ray · 세포 이미지 분류</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">Docker</span>
+          <span class="level">학습 중</span>
+        </div>
+        <ul>
+          <li>AI 모델 서빙 컨테이너화</li>
+          <li>이미지 빌드 및 배포</li>
+          <li>FastAPI 서비스 배포 환경 구성</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">NLP</span>
+          <span class="level">학습 중</span>
+        </div>
+        <ul>
+          <li>Tokenization · Vectorization</li>
+          <li>의료 텍스트 분류</li>
+          <li>키워드 기반 정보 추출</li>
+        </ul>
+      </div>
+
+      <div class="skill">
+        <div class="skill-top">
+          <span class="skill-name">HTML · CSS</span>
+          <span class="level">학습 중</span>
+        </div>
+        <ul>
+          <li>시맨틱 마크업</li>
+          <li>반응형 레이아웃</li>
+          <li>대시보드 UI 구성</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Projects</h2>
+      <span class="ko">프로젝트</span>
+    </div>
+    <div class="projects">
+
+      <article class="project">
+        <div class="project-when">2026.07 — 현재</div>
+        <div class="project-body">
+          <h3>AI 모델 서빙 웹 서비스<span class="ongoing">진행 중</span></h3>
+          <div class="org">오즈코딩스쿨 웹 개발 트랙 · 6조 (4인 팀)</div>
+          <ul>
+            <li>FastAPI로 학습한 인공지능 모델을 서빙하는 REST API를 구현하고, Docker로 컨테이너화하여 웹 서비스를 배포하는 팀 프로젝트.</li>
+            <li>저장소: github.com/J36-Ai-Editer/Oz_codingSchool</li>
+          </ul>
+          <div class="stack">
+            <span>FastAPI</span><span>Docker</span><span>Python</span><span>REST API</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-when">2026.06 — 2026.07</div>
+        <div class="project-body">
+          <h3>흉부 X-ray 폐렴 분류 AI 해커톤</h3>
+          <div class="org">DACON · [초격차] AI 헬스케어 딥러닝 트랙 · 개인전</div>
+          <ul>
+            <li>학습 5,216장 · 테스트 624장 규모의 흉부 X-ray 이미지를 정상(NORMAL)과 폐렴(PNEUMONIA)으로 분류하는 딥러닝 모델을 개발. 폐렴을 놓치는 <strong>FN(위음성) 최소화</strong>를 기준으로 Sensitivity 중심의 평가 지표를 설계.</li>
+            <li>SimpleCNN 베이스라인에서 출발해 3개 백본(ResNet18 · DenseNet121 · EfficientNet-B0)과 3개 스케줄러를 조합한 <strong>9가지 실험</strong>을 2-stage fine-tuning과 Focal Loss 기반으로 진행. 최고 단일 모델(ResNet18 + ReduceLROnPlateau)이 검증 AUC 0.9997을 기록하며 FN을 29건에서 12건으로 감소.</li>
+            <li><strong>CLAHE 전처리</strong>, MixUp · CutMix 증강, 5-Fold 교차검증, 3개 모델 soft-voting 앙상블(DenseNet121 · EfficientNet-B0 · ConvNeXt-Tiny)과 OOF 기반 임계값 선택으로 최종 점수를 0.8974에서 0.95192로 개선.</li>
+            <li>Grad-CAM으로 모델이 실제 폐 병변 영역을 근거로 판단하는지 검증하고, FN/FP 사례 분석으로 한계를 진단.</li>
+          </ul>
+          <div class="result">
+            <b>리더보드 0.95192</b>
+            <span>참가자 85명 · 개인 참가</span>
+          </div>
+          <div class="stack">
+            <span>PyTorch</span><span>ResNet18</span><span>DenseNet121</span><span>EfficientNet</span><span>ConvNeXt</span><span>CLAHE</span><span>Focal Loss</span><span>K-Fold Ensemble</span><span>Grad-CAM</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-when">2026.05 — 2026.06</div>
+        <div class="project-body">
+          <h3>난임 환자 임신 성공 예측 AI 해커톤</h3>
+          <div class="org">DACON · [초격차] AI 헬스케어 5기 해커톤 · 치킨4조 팀장</div>
+          <ul>
+            <li>25만 건 규모(256,351 × 69)의 난임 시술 임상 데이터로 임신 성공 여부를 예측하는 모델을 개발. <strong>4인 팀의 팀장</strong>으로 프로젝트를 이끎.</li>
+            <li>LightGBM · XGBoost · CatBoost를 <strong>Rank Average Blending</strong>과 <strong>Dirichlet 기반 확률 블렌딩</strong>으로 결합하고, Nelder-Mead로 최적 가중치를 탐색. Optuna 2단계 튜닝과 10-Fold Stratified CV로 검증.</li>
+            <li>「40세 이상 × 공여 난자 사용」처럼 의학적 맥락을 담은 interaction feature를 직접 설계하고, 결측 자체를 임상 정보로 해석한 이진화 지표 9종을 생성.</li>
+            <li>SHAP으로 변수 기여도를 분석하고, 환자별 성공 확률을 제시하는 의사결정 보조 프로토타입까지 구현.</li>
+          </ul>
+          <div class="result">
+            <b>ROC-AUC 0.74218 · 14팀 중 6위</b>
+            <span>1위와 0.0003 차 · 참가자 46명</span>
+          </div>
+          <div class="stack">
+            <span>LightGBM</span><span>XGBoost</span><span>CatBoost</span><span>Optuna</span><span>SHAP</span><span>scikit-learn</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-when">2026.04</div>
+        <div class="project-body">
+          <h3>흡연 여부 데이터 분석을 통한 건강 인사이트 도출</h3>
+          <div class="org">오즈코딩스쿨 AI 헬스케어 과정 · 4조 (4인 팀)</div>
+          <ul>
+            <li>건강검진 데이터에서 흡연 여부와 건강 지표의 관계를 분석하고 시각화하여 인사이트를 도출한 팀 프로젝트.</li>
+            <li>혈압 · 혈당 · 콜레스테롤 · BMI 등 지표의 분포와 상관관계를 분석하고, 흡연자/비흡연자 간 차이를 통계적 가설 검정으로 확인.</li>
+            <li>팀 결과물과 별도로 개인 분석 노트북을 작성해 전처리, EDA, 가설 검정, 시각화의 전 과정을 직접 수행.</li>
+            <li>분석 코드 작성과 발표 자료 구성을 담당하고, 팀 발표에 참여.</li>
+          </ul>
+          <div class="stack">
+            <span>Python</span><span>pandas</span><span>NumPy</span><span>scikit-learn</span><span>Matplotlib</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-when">2024.04</div>
+        <div class="project-body">
+          <h3>고객 구매행동 예측 모델 개발</h3>
+          <div class="org">British Airways Data Science Simulation · Forage</div>
+          <ul>
+            <li>고객 속성 데이터를 기반으로 예약 완료 여부를 예측하는 분류 모델을 학습·구축.</li>
+            <li>변수 중요도를 분석하여 구매 의사결정에 실질적으로 영향을 미치는 요인을 도출.</li>
+          </ul>
+          <div class="stack">
+            <span>Python</span><span>scikit-learn</span><span>Feature Importance</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-when">2024.04</div>
+        <div class="project-body">
+          <h3>고객 리뷰 데이터 분석</h3>
+          <div class="org">British Airways Data Science Simulation · Forage</div>
+          <ul>
+            <li>Python 웹 스크래핑으로 비정형 리뷰 데이터를 수집하고 분석 가능한 형태로 정제.</li>
+            <li>반복되는 주요 주제를 추출하여 기업 관점의 인사이트로 정리.</li>
+          </ul>
+          <div class="stack">
+            <span>Python</span><span>Web Scraping</span><span>Text Analysis</span>
+          </div>
+        </div>
+      </article>
+
+      <article class="project">
+        <div class="project-when">2023.06</div>
+        <div class="project-body">
+          <h3>임상시험 데이터 분석 — Miraculon-B</h3>
+          <div class="org">STEP UP GSK Virtual Work Experience · Digdata</div>
+          <ul>
+            <li>신약 후보물질 Miraculon-B의 임상시험 데이터를 분석·시각화.</li>
+            <li>분석 결과와 제언을 발표자료로 정리하여 GSK · Digdata 심사진에 제출.</li>
+          </ul>
+          <div class="stack">
+            <span>Clinical Trial Data</span><span>Data Visualisation</span>
+          </div>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Experience</h2>
+      <span class="ko">경력 및 학력</span>
+    </div>
+    <div class="timeline">
+      <div class="entry">
+        <div class="entry-when">2026.04 — 현재</div>
+        <div class="entry-what">
+          <b>오즈코딩스쿨 AI 헬스케어 과정</b>
+          <span>머신러닝 · 딥러닝 수료, 웹 애플리케이션 구현 학습 중 (수료 예정)</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-when">2024.10 — 2026.04</div>
+        <div class="entry-what">
+          <b>병역</b>
+          <span>육군 병장 만기전역</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-when">2022.09 — 2024.07</div>
+        <div class="entry-what">
+          <b>University of Leeds</b>
+          <span>BSc Pharmacology · 약리학 학사 졸업</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-when">2021.09 — 2022.06</div>
+        <div class="entry-what">
+          <b>Leeds International Study Centre</b>
+          <span>International Year One: Biological Sciences · 생명과학 과정 수료</span>
+        </div>
+      </div>
+      <div class="entry">
+        <div class="entry-when">2019.09 — 2021.06</div>
+        <div class="entry-what">
+          <b>Brockenhurst College</b>
+          <span>A-Level: Mathematics · Physics · Chemistry</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="section-head">
+      <h2>Certificates</h2>
+      <span class="ko">자격증 및 교육 이수</span>
+    </div>
+    <div class="certs">
+      <div class="cert">
+        <div class="cert-when">2026.07</div>
+        <div class="cert-what">
+          <b>DACON 흉부 X-ray 폐렴 분류 AI 해커톤</b>
+          <code>리더보드 0.95192 · 개인전 (참가자 85명)</code>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-when">2026.06</div>
+        <div class="cert-what">
+          <b>DACON 난임 환자 임신 성공 예측 AI 해커톤</b>
+          <code>14팀 중 6위 · 치킨4조 팀장 (4인 팀)</code>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-when">2024.04</div>
+        <div class="cert-what">
+          <b>Associate Data Analyst — DataCamp</b>
+          <code>자격번호 DAA0011317226340</code>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-when">2024.04</div>
+        <div class="cert-what">
+          <b>Data Science Job Simulation</b>
+          <code>British Airways · Forage</code>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-when">2023.07</div>
+        <div class="cert-what">
+          <b>Bright Network IEUK: Technology</b>
+          <code>Bright Network</code>
+        </div>
+      </div>
+      <div class="cert">
+        <div class="cert-when">2023.06</div>
+        <div class="cert-what">
+          <b>STEP UP GSK Virtual Work Experience</b>
+          <code>GSK · Digdata</code>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="colophon">
+    <span>권민재 · Minjae Kwon</span>
+    <span>Last updated 2026.07</span>
+  </div>
+
+</div>
+</body>
+</html>
