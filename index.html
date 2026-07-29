@@ -730,12 +730,13 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       <strong>not missing sick patients</strong>, cutting false negatives from <em>29 down to 12</em>.
     </p>
     <p data-lang="ko" class="lede">
-      모델을 만드는 데서 끝내지 않으려고, 지금은 FastAPI와 Docker로 학습한 모델을
-      실제로 서빙하는 팀 프로젝트를 하고 있습니다.
+      모델을 만드는 데서 끝내지 않으려고, FastAPI와 Docker로 학습한 모델을 실제로 서빙하는
+      팀 프로젝트까지 마쳤습니다. 무거운 분석은 Redis 큐로 떼어내 API가 기다리지 않게 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      A model that never ships is only half the job, so I am currently on a team project serving
-      trained models through FastAPI and Docker.
+      A model that never ships is only half the job, so I saw a team project through to serving
+      trained models over FastAPI and Docker — with the heavy inference pushed onto a Redis queue
+      so the API never waits on it.
     </p>
   </section>
 
@@ -996,20 +997,20 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       <!-- ─────────── FastAPI 서빙 ─────────── -->
       <article class="card" data-cat="be">
         <div class="card-top">
-          <span data-lang="ko" class="card-when">2026.07 — 현재</span><span data-lang="en" class="card-when">Jul 2026 — present</span>
+          <span data-lang="ko" class="card-when">2026.07</span><span data-lang="en" class="card-when">Jul 2026</span>
           <span data-lang="ko" class="tag be">백엔드</span><span data-lang="en" class="tag be">Backend</span>
         </div>
         <h3><button data-lang="ko" class="card-open" type="button">AI 모델 서빙 웹 서비스</button><button data-lang="en" class="card-open" type="button">Serving AI models as a web service</button></h3>
         <div data-lang="ko" class="card-org">오즈코딩스쿨 웹 개발 트랙 · 6조 (4인 팀)</div><div data-lang="en" class="card-org">Oz Coding School web track · group 6 (team of four)</div>
         <div class="stack"><span>FastAPI</span><span>Docker</span><span>SQLAlchemy</span><span>Alembic</span><span>Redis</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill live"><span class="dot"></span>진행 중</span><span data-lang="en" class="pill live"><span class="dot"></span>In progress</span></div>
+        <div class="no-metric"><span data-lang="ko" class="pill">팀 프로젝트 · 완료</span><span data-lang="en" class="pill">Team project · shipped</span></div>
         <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
 
         <div class="detail"
              data-title="AI 모델 서빙 웹 서비스"
              data-title-en="Serving AI Models as a Web Service"
-             data-sub="오즈코딩스쿨 웹 개발 트랙 · 6조 (4인 팀) · 2026.07 — 현재"
-             data-sub-en="Oz Coding School web track · group 6 (team of four) · Jul 2026 — present"
+             data-sub="오즈코딩스쿨 웹 개발 트랙 · 6조 (4인 팀) · 2026.07 · 완료"
+             data-sub-en="Oz Coding School web track · group 6 (team of four) · Jul 2026 · shipped"
              data-repo="https://github.com/J36-Ai-Editer/Oz_codingSchool"
              data-repo-label="J36-Ai-Editer / Oz_codingSchool">
           <h4 data-lang="ko">하는 일</h4><h4 data-lang="en">What it does</h4>
@@ -1021,11 +1022,47 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
           <h4 data-lang="ko">맡은 부분</h4><h4 data-lang="en">My part</h4>
           <ul>
-            <li data-lang="ko">API 라우터와 리포지토리 계층 구현, 데이터베이스 스키마 및 마이그레이션 작업.</li><li data-lang="en">API routers and the repository layer, plus database schema and migrations.</li>
-            <li data-lang="ko">배포 문서(DEPLOY.md)와 Docker 구성 정리.</li><li data-lang="en">Deployment docs (DEPLOY.md) and the Docker setup.</li>
+            <li data-lang="ko">4인 팀에서 <strong>실행·배포 환경</strong>을 맡았습니다. Docker Compose로 FastAPI · MySQL · Redis · AI Worker · Adminer 다섯 서비스를 묶었습니다.</li><li data-lang="en">In a team of four I owned the <strong>runtime and deployment environment</strong>, wiring five services — FastAPI, MySQL, Redis, the AI worker and Adminer — into one Docker Compose stack.</li>
+            <li data-lang="ko"><strong>받자마자 두 줄로 뜨게</strong> 만드는 데 시간을 썼습니다. <code>.env</code>가 없으면 컨테이너 기동 시 자동 생성하고, 로컬 MySQL과 부딪히지 않게 호스트 포트를 3307로 옮기고, 시드 데이터까지 자동으로 넣었습니다.</li><li data-lang="en">Most of that effort went into <strong>making a fresh clone run in two commands</strong> — auto-generating <code>.env</code> on boot, moving the host port to 3307 so it never clashes with a local MySQL, and seeding test data automatically.</li>
+            <li data-lang="ko">이미지가 무거워서 <strong>CPU 전용 torch로 바꾸고 예측 시점에 지연 로딩</strong>하도록 고쳤습니다.</li><li data-lang="en">The image was heavy, so I switched to <strong>CPU-only torch and deferred the import to prediction time</strong>.</li>
+            <li data-lang="ko">환자 소프트 삭제와 진료기록 목록 조회 API를 구현하고, 5일차 환자 관리 API 설계 명세를 작성했습니다.</li><li data-lang="en">I also built the patient soft-delete and medical-record listing endpoints, and wrote the patient-management API spec.</li>
+            <li data-lang="ko">Windows · macOS 별 Docker 환경 설정 가이드와 배포 문서(DEPLOY.md)를 정리했습니다.</li><li data-lang="en">Plus the Docker setup guides for Windows and macOS, and the deployment doc.</li>
           </ul>
 
-          <p data-lang="ko" class="linknote">진행 중인 프로젝트라 저장소가 계속 바뀝니다. 기여 내역은 저장소에서 바로 확인하실 수 있습니다.</p><p data-lang="en" class="linknote">Still in progress, so the repository moves. Contribution history is visible there directly.</p>
+          <h4 data-lang="ko">응답이 느려지는 문제를 어떻게 풀었는가</h4><h4 data-lang="en">Fixing the slow response</h4>
+          <ul>
+            <li data-lang="ko">X-ray 분석을 HTTP 요청 안에서 그대로 돌리면 사용자가 그동안 계속 기다립니다. 동시에 여러 건이 들어오면 API 서버가 무거운 작업까지 떠안고, 분석이 실패하면 요청 자체가 죽습니다.</li><li data-lang="en">Running X-ray inference inside the HTTP request means the user waits for it. Several at once and the API server is carrying the heavy work too — and if inference fails, the request dies with it.</li>
+            <li data-lang="ko">그래서 <strong>요청을 받는 쪽과 실제로 분석하는 쪽을 갈랐습니다.</strong> FastAPI는 업로드를 받아 이벤트만 발행하고, 별도 AI Worker가 큐에서 꺼내 처리한 뒤 결과를 저장합니다.</li><li data-lang="en">So we <strong>split the receiver from the worker.</strong> FastAPI takes the upload and publishes an event; a separate AI worker pulls from the queue, runs the model and writes the result back.</li>
+            <li data-lang="ko">전달 수단으로 Redis Pub/Sub과 Streams를 비교했습니다. Pub/Sub은 at-most-once라 구독자가 죽어 있으면 <strong>메시지가 그대로 사라집니다.</strong> 반드시 처리돼야 하는 분석 작업에는 저장과 재처리가 되는 <strong>Streams</strong>가 맞다고 보고 그쪽을 골랐습니다.</li><li data-lang="en">We compared Redis Pub/Sub against Streams. Pub/Sub is at-most-once — if the subscriber is down, <strong>the message is simply gone.</strong> For analysis that must not be dropped, <strong>Streams</strong> won: it persists and can be re-read by a consumer group.</li>
+          </ul>
+
+          <h4 data-lang="ko">구성</h4><h4 data-lang="en">How it fits together</h4>
+          <ul>
+            <li data-lang="ko">User API 10종에 JWT 인증과 Argon2 해싱, 관리자 권한 분리를 붙였습니다.</li><li data-lang="en">Ten user endpoints behind JWT auth with Argon2 hashing and a separate admin role.</li>
+            <li data-lang="ko">SQLAlchemy 비동기 세션과 Alembic 마이그레이션으로 스키마를 관리하고, 테스트는 실제 MySQL을 건드리지 않도록 <strong>격리된 SQLite에서 pytest</strong>로 돌립니다.</li><li data-lang="en">Async SQLAlchemy sessions with Alembic migrations, and <strong>pytest against an isolated SQLite database</strong> so tests never touch the real MySQL.</li>
+          </ul>
+
+          <h4 data-lang="ko">구조</h4><h4 data-lang="en">Architecture</h4>
+          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
+          <div class="figs">
+            <figure class="fig">
+              <a href="assets/team/architecture.webp" target="_blank" rel="noopener">
+                <img src="assets/team/architecture.webp" width="889" height="586" loading="lazy" decoding="async"
+                     alt="클라이언트, FastAPI 서버, Redis Stream, AI Worker, 데이터베이스로 구성된 이벤트 기반 아키텍처 다이어그램">
+              </a>
+              <figcaption>
+                <b data-lang="ko">이벤트 기반 처리 흐름</b><b data-lang="en">Event-driven flow</b>
+                <span data-lang="ko">FastAPI는 업로드를 받아 진료기록과 이미지를 저장하고 Redis Stream에 작업을 넣습니다.
+                AI Worker들이 큐에서 나눠 꺼내 분석하고 결과를 DB에 씁니다. 사용자는 조회 API로 결과를 받습니다.
+                제가 9일차 아키텍처 문서에 그려 넣은 그림입니다.</span>
+                <span data-lang="en">FastAPI stores the record and image, then pushes a job onto a Redis stream.
+                AI workers pull from the queue, run inference and write results back to the database, which the
+                client then reads through a separate endpoint. I drew this for the team’s architecture doc.</span>
+              </figcaption>
+            </figure>
+          </div>
+
+          <p data-lang="ko" class="linknote">커밋 기준 팀 내 최다 기여였습니다. 기여 내역은 저장소에서 바로 확인하실 수 있습니다.</p><p data-lang="en" class="linknote">I was the highest-commit contributor on the team; the history is visible in the repository.</p>
         </div>
       </article>
 
@@ -1115,8 +1152,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
              data-sub-en="British Airways Data Science Simulation · Forage · Apr 2024">
           <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
           <ul>
-            <li data-lang="ko">고객 속성 데이터를 기반으로 <strong>예약 완료 여부를 예측하는 분류 모델</strong>을 학습 · 구축.</li><li data-lang="en">Built a classification model over customer attributes to <strong>predict whether a booking completes</strong>.</li>
-            <li data-lang="ko">변수 중요도를 분석해 구매 의사결정에 실질적으로 영향을 미치는 요인을 도출.</li><li data-lang="en">Read feature importance to find which factors actually move the purchase decision.</li>
+            <li data-lang="ko">5만 건 규모의 고객 예약 데이터를 불러와 요일 같은 범주형 변수를 수치로 매핑하고, 결측과 분포를 확인해 모델링용 데이터셋을 만들었습니다.</li><li data-lang="en">Loaded the customer booking dataset, mapped categorical fields such as day-of-week to numbers, and checked missingness and distributions to build a modelling table.</li>
+            <li data-lang="ko">구매 시점까지의 리드타임 · 탑승 인원 · 출발 시각 · 비행 시간을 피처로 <strong>RandomForest 분류 모델</strong>을 학습하고 confusion matrix와 classification report로 평가했습니다.</li><li data-lang="en">Trained a <strong>RandomForest classifier</strong> on purchase lead time, passenger count, departure hour and flight duration, evaluating with a confusion matrix and classification report.</li>
+            <li data-lang="ko">변수 중요도를 뽑아 보니 <strong>구매 리드타임이 가장 큰 비중</strong>을 차지했습니다.</li><li data-lang="en">Feature importance put <strong>purchase lead time well ahead</strong> of the rest.</li>
+            <li data-lang="ko">다만 지금 남아 있는 노트북은 예약 완료 여부가 아니라 다른 컬럼을 타깃으로 학습돼 있습니다. <strong>예약 완료 예측으로 다시 정리할 예정입니다.</strong></li><li data-lang="en">One caveat: the surviving notebook trains against a different column rather than booking completion. <strong>I plan to redo it properly against the booking-completion target.</strong></li>
           </ul>
           <div class="links">
             <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
@@ -1147,8 +1186,37 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
           <ul>
             <li data-lang="ko">Python 웹 스크래핑으로 <strong>비정형 리뷰 데이터</strong>를 수집하고 분석 가능한 형태로 정제.</li><li data-lang="en">Scraped <strong>unstructured review text</strong> with Python and cleaned it into something analysable.</li>
-            <li data-lang="ko">반복되는 주요 주제를 추출해 기업 관점의 인사이트로 정리.</li><li data-lang="en">Pulled out recurring themes and framed them as insights from the airline’s side.</li>
+            <li data-lang="ko">airlinequality.com에서 리뷰 10페이지를 BeautifulSoup으로 긁고, 「Trip Verified」 같은 머리말을 걷어내 분석용으로 정리했습니다.</li><li data-lang="en">Scraped ten pages of reviews from airlinequality.com with BeautifulSoup and stripped the boilerplate prefixes such as “Trip Verified” to get usable text.</li>
+            <li data-lang="ko">NLTK VADER로 문장별 감성 점수를 매겼습니다. <strong>부정 56.4%, 긍정 29.3%, 중립 14.3%</strong>로 부정이 절반을 넘었습니다.</li><li data-lang="en">Scored each review with NLTK VADER: <strong>56.4% negative, 29.3% positive, 14.3% neutral</strong> — negatives took more than half.</li>
+            <li data-lang="ko">워드클라우드로 어떤 단어가 반복되는지 봤습니다. <strong>seat · time · service · food · staff</strong>가 가장 크게 잡혔습니다. 불만이 항공기 자체보다 <strong>좌석과 대기 시간, 응대</strong>에 몰려 있다는 뜻입니다.</li><li data-lang="en">A word cloud showed what people actually repeat: <strong>seat, time, service, food, staff</strong>. The complaints cluster around <strong>seating, waiting and how staff respond</strong> rather than the aircraft itself.</li>
           </ul>
+
+          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
+          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
+          <div class="figs">
+            <figure class="fig">
+              <a href="assets/ba/sentiment.webp" target="_blank" rel="noopener">
+                <img src="assets/ba/sentiment.webp" width="422" height="409" loading="lazy" decoding="async"
+                     alt="리뷰 감성 분석 원그래프. 부정 56.4퍼센트, 긍정 29.3퍼센트, 중립 14.3퍼센트">
+              </a>
+              <figcaption>
+                <b data-lang="ko">감성 분포</b><b data-lang="en">Sentiment split</b>
+                <span data-lang="ko">부정이 <em>56.4%</em>로 절반을 넘습니다. 평점만 봤을 때보다 체감이 나쁘다는 신호입니다.</span>
+                <span data-lang="en">Negative sits at <em>56.4%</em> — worse than the star ratings alone suggest.</span>
+              </figcaption>
+            </figure>
+            <figure class="fig">
+              <a href="assets/ba/wordcloud.webp" target="_blank" rel="noopener">
+                <img src="assets/ba/wordcloud.webp" width="515" height="268" loading="lazy" decoding="async"
+                     alt="리뷰 워드클라우드. seat, time, service, food, staff 가 가장 크게 표시됨">
+              </a>
+              <figcaption>
+                <b data-lang="ko">가장 많이 반복된 단어</b><b data-lang="en">Most repeated words</b>
+                <span data-lang="ko"><em>seat</em>가 압도적이고 <em>time · service · food · staff</em>가 뒤를 잇습니다. 개선 우선순위가 어디인지 그대로 드러납니다.</span>
+                <span data-lang="en"><em>seat</em> dominates, followed by <em>time, service, food</em> and <em>staff</em> — the improvement backlog, more or less written out.</span>
+              </figcaption>
+            </figure>
+          </div>
           <div class="links">
             <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
               <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
@@ -1214,6 +1282,21 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 <span data-lang="ko">가로축이 수용체 아형, 색이 리간드입니다. 이소프레날린(연노랑)이 α1A와 β1에서 높고,
                 아세틸콜린(연보라)은 어디서든 바닥에 깔립니다.</span><span data-lang="en">Receptor subtype on the x-axis, ligand by colour. Isoprenaline (pale yellow) sits high at
                 α1A and β1; acetylcholine (pale purple) stays at the floor everywhere.</span>
+              </figcaption>
+            </figure>
+            <figure class="fig">
+              <a href="assets/docking/chemscore.webp" target="_blank" rel="noopener">
+                <img src="assets/docking/chemscore.webp" width="993" height="690" loading="lazy" decoding="async"
+                     alt="아드레날린 수용체 4종에 대한 리간드 7종의 Chemscore 박스플롯">
+              </a>
+              <figcaption>
+                <b data-lang="ko">채점 함수를 바꾸면 순위도 바뀐다</b><b data-lang="en">Change the scoring function, change the ranking</b>
+                <span data-lang="ko">같은 도킹 결과를 Chemscore로 다시 매기면 <em>세로토닌</em>이 α1A에서 가장 높게 올라옵니다.
+                GOLDscore에서 1위였던 이소프레날린과 순위가 뒤바뀝니다. 점수 하나만 믿으면 안 된다는 뜻이라
+                두 지표를 나란히 봤습니다. 아세틸콜린이 바닥인 것만은 양쪽에서 같습니다.</span>
+                <span data-lang="en">Re-scoring the same docking runs with Chemscore pushes <em>serotonin</em> to the top at α1A,
+                swapping places with isoprenaline, which led on GOLDscore. That is the argument for reading both
+                rather than trusting one number. Acetylcholine stays at the bottom either way.</span>
               </figcaption>
             </figure>
             <figure class="fig">
