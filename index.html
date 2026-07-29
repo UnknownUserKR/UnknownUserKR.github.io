@@ -298,6 +298,7 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 .gauge-val.alt { color: var(--signal); }
 .gauge-unit { font-size: .55em; color: var(--ink-3); margin-left: .2rem; letter-spacing: 0; }
 .gauge-cap { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.4; }
+.gauge-cap em { font-style: normal; font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--signal); }
 
 /* ═══ Section ═══ */
 .section { padding-top: 4rem; }
@@ -693,8 +694,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     </div>
     <div class="gauge">
       <div class="gauge-val alt num">0.74218</div>
-      <div data-lang="ko" class="gauge-cap">난임 임신 성공 예측<br>4인 팀 팀장 · ROC-AUC</div>
-<div data-lang="en" class="gauge-cap">Pregnancy success prediction<br>Led a team of four · ROC-AUC</div>
+      <div data-lang="ko" class="gauge-cap">난임 임신 성공 예측 ROC-AUC<br>1위와 <em>0.0003</em> 차 · 4인 팀 팀장</div>
+<div data-lang="en" class="gauge-cap">Pregnancy prediction ROC-AUC<br><em>0.0003</em> behind first · led a team of four</div>
     </div>
     <div class="gauge">
       <div class="gauge-val num">256,351<span class="gauge-unit">× 69</span></div>
@@ -926,7 +927,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
         <div class="meter">
           <div class="meter-row">
             <span class="meter-val alt num">0.74218</span>
-            <span class="meter-key">ROC-AUC</span>
+            <span data-lang="ko" class="meter-key">1위와 0.0003 차</span><span data-lang="en" class="meter-key">0.0003 behind 1st</span>
           </div>
           <div class="bar"><i class="alt" data-fill="74"></i></div>
         </div>
