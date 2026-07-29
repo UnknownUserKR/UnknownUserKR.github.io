@@ -1547,7 +1547,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   chips.forEach(function (chip) {
     chip.addEventListener("click", function () {
       var want = chip.dataset.filter;
-      chips.forEach(function (c) { c.setAttribute("aria-pressed", String(c === chip)); });
+      chips.forEach(function (c) {
+        c.setAttribute("aria-pressed", String(c.dataset.filter === want));
+      });
       cards.forEach(function (card) {
         card.hidden = !(want === "all" || card.dataset.cat === want);
       });
@@ -1564,6 +1566,12 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
   var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
 
+  /* KO/EN 쌍으로 복제된 요소 중 현재 언어 것을 고른다 */
+  function pick(card, sel) {
+    return card.querySelector(sel + '[data-lang="' + (isEn() ? "en" : "ko") + '"]') ||
+           card.querySelector(sel);
+  }
+
   function openCard(card) {
     var detail = card.querySelector(".detail");
     if (!detail) return;
@@ -1571,9 +1579,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
     var en = isEn();
     modalTitle.textContent = (en && detail.dataset.titleEn) || detail.dataset.title ||
-                             card.querySelector("h3").textContent;
+                             pick(card, ".card-open").textContent;
     modalSub.textContent   = (en && detail.dataset.subEn) || detail.dataset.sub ||
-                             card.querySelector(".card-org").textContent;
+                             pick(card, ".card-org").textContent;
 
     modalBody.innerHTML = "";
 
@@ -1609,9 +1617,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   }
 
   cards.forEach(function (card) {
-    var opener = card.querySelector(".card-open");
-    if (!opener) return;
-    opener.addEventListener("click", function () { openCard(card); });
+    var openers = card.querySelectorAll(".card-open");   /* KO · EN 두 개 모두 */
+    Array.prototype.forEach.call(openers, function (opener) {
+      opener.addEventListener("click", function () { openCard(card); });
+    });
   });
 
   function closeModal() {
