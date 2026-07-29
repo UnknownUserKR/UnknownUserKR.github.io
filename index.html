@@ -716,14 +716,14 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     </div>
     <p data-lang="ko" class="lede">
       약리학을 공부하면서 데이터를 먼저 만났습니다. 수업에서 <strong>바이오인포매틱스</strong>를 접하며
-      생물학 문제를 계산으로 푸는 방식에 눈을 떴고, 학부 졸업 프로젝트에서는 수용체 네 종류에
-      리간드를 도킹시킨 결과를 파이썬으로 분석했습니다. 그때 몸에 붙은 순서 — <strong>도메인을 먼저 알고
+      생물학 문제를 계산으로 푸는 방식에 눈을 떴고, 학부 졸업 프로젝트에서는 어떤 약물이 어느 수용체에
+      붙는지 컴퓨터로 시험하고, 그 결과를 파이썬으로 분석했습니다. 그때 몸에 붙은 순서 — <strong>도메인을 먼저 알고
       숫자는 그다음에 본다</strong> — 를 지금도 그대로 쓰고 있습니다.
     </p>
 <p data-lang="en" class="lede">
       I met data through pharmacology, not the other way round. <strong>Bioinformatics</strong> came up in the
       coursework and showed me biological questions could be answered computationally; my final-year project
-      then had me docking ligands into four receptor subtypes and working through the results in Python.
+      then had me simulating which receptor a compound binds to and working through the results in Python.
       The habit it left me with — <strong>understand the domain first, read the numbers second</strong> — is still how I work.
     </p>
     <p data-lang="ko" class="lede">
@@ -1266,29 +1266,30 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
           <h4 data-lang="ko">어떻게 했는가</h4><h4 data-lang="en">How I went about it</h4>
           <ul>
-            <li data-lang="ko">수용체 네 종류의 <strong>실제 입체 구조</strong>를 공개 데이터베이스(PDB)에서 받아왔습니다. 실험으로 밝혀진 진짜 모양입니다.</li><li data-lang="en">I downloaded the <strong>real three-dimensional structures</strong> of all four receptors from the public PDB — shapes worked out experimentally, not guesses.</li>
-            <li data-lang="ko">여기에 <strong>물질 7가지를 하나씩 컴퓨터로 끼워 넣어</strong> 얼마나 잘 맞물리는지 점수를 냈습니다. 도파민, 아드레날린, 노르아드레날린처럼 실제로 이 수용체에 작용하는 물질들이었습니다.</li><li data-lang="en">Then I <strong>fitted seven compounds into each of them by simulation</strong> and scored how well they locked in — dopamine, adrenaline, noradrenaline and others that genuinely act on these receptors.</li>
-            <li data-lang="ko">시뮬레이션이 뱉어낸 결과 파일을 <strong>파이썬으로 모아 정리하고 그래프로 그렸습니다.</strong> 수용체별·물질별 점수 분포를 한 화면에 겹쳐 비교했습니다.</li><li data-lang="en">The simulation spat out raw result files, which I <strong>collected, cleaned and plotted in Python</strong> so every receptor and compound could be compared side by side on one chart.</li>
+            <li data-lang="ko">먼저 <strong>수용체 12개의 실제 입체 구조</strong>를 공개 데이터베이스(GPCRdb · IUPHAR)에서 모았습니다. 아드레날린 계열 네 종류에 더해, 아세틸콜린 · 도파민 · 세로토닌 · 히스타민 계열까지 <strong>다섯 계열</strong>을 담았습니다. 실험으로 밝혀진 구조만 골랐고 해상도는 <em>2.0 ~ 3.3 Å</em>였습니다.</li><li data-lang="en">I gathered <strong>twelve real receptor structures</strong> from public databases (GPCRdb and IUPHAR) — the four adrenaline receptors plus acetylcholine, dopamine, serotonin and histamine families, <strong>five families in all</strong>. Only experimentally solved structures, at resolutions of <em>2.0–3.3 Å</em>.</li>
+            <li data-lang="ko">붙여볼 물질은 DrugBank와 ChEMBL에서 받았습니다. 도파민 · 아드레날린 · 노르아드레날린처럼 원래 그 수용체에 작용하는 것들과, <strong>α에만 듣는 페닐에프린</strong>, <strong>β에만 듣는 이소프레날린</strong>을 함께 넣었습니다.</li><li data-lang="en">The compounds came from DrugBank and ChEMBL: the natural ones such as dopamine, adrenaline and noradrenaline, alongside <strong>phenylephrine, which acts only on α</strong>, and <strong>isoprenaline, which acts only on β</strong>.</li>
+            <li data-lang="ko">이걸 아드레날린 수용체 네 종류에 <strong>하나씩 컴퓨터로 끼워 넣어</strong> 얼마나 잘 맞물리는지 점수를 냈습니다. 나온 결과 파일을 <strong>파이썬으로 모아 정리하고 그래프로 그려</strong> 수용체별 · 물질별 분포를 한 화면에서 비교했습니다.</li><li data-lang="en">Each was then <strong>fitted into the four adrenaline receptors by simulation</strong> and scored on how well it locked in. I <strong>collected, cleaned and plotted the output in Python</strong> so every receptor and compound sat on one chart.</li>
           </ul>
 
           <h4 data-lang="ko">무엇이 보였는가</h4><h4 data-lang="en">What showed up</h4>
           <ul>
-            <li data-lang="ko"><strong>이소프레날린</strong>은 β1 수용체에서 점수가 가장 높았습니다. 실제로 심장의 β 수용체에 작용하는 약이라, <strong>알려진 성질과 계산 결과가 맞아떨어졌습니다.</strong></li><li data-lang="en"><strong>Isoprenaline</strong> scored highest on the β1 receptor — and it is in fact a drug that acts on β receptors in the heart, so <strong>the computed answer matched what is already known.</strong></li>
-            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 어디에서도 가장 낮았습니다. 애초에 이 계열에 작용하지 않는 물질이라 <strong>「틀리면 낮게 나와야 하는」 기준점</strong> 역할을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> came last everywhere. It does not act on this family at all, so it served as <strong>the reference for what a wrong answer should look like.</strong></li>
-            <li data-lang="ko">같은 물질이라도 <strong>어느 수용체에 넣느냐에 따라 점수가 확연히 갈렸습니다.</strong> 처음 물었던 「선택성을 미리 가늠할 수 있는가」에 대한 답이 숫자로 나온 셈입니다.</li><li data-lang="en">The same compound <strong>scored very differently depending on which receptor it went into</strong> — the original question, answered in numbers.</li>
+            <li data-lang="ko"><strong>이소프레날린</strong>은 β1에서 점수가 가장 높았습니다. 실제로 심장의 β 수용체에 듣는 약이라 <strong>알려진 성질과 계산이 맞아떨어졌습니다.</strong></li><li data-lang="en"><strong>Isoprenaline</strong> scored highest on β1 — it is in fact a drug that acts on β receptors in the heart, so <strong>the computed answer matched what is already known.</strong></li>
+            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 어디에서도 가장 낮았습니다. 애초에 이 계열에 듣지 않는 물질이라 <strong>「틀리면 낮게 나와야 하는」 기준점</strong> 역할을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> came last everywhere. It does not act on this family at all, so it served as <strong>the reference for what a wrong answer should look like.</strong></li>
+            <li data-lang="ko">다만 <strong>α 전용 약과 β 전용 약이 점수만으로는 깔끔하게 갈리지 않았습니다.</strong> 원래 물었던 「계산만으로 선택성을 가려낼 수 있는가」에 대한 답은 <strong>「아직은 아니다」</strong>에 가까웠습니다.</li><li data-lang="en">But <strong>the α-only and β-only drugs did not separate cleanly on score alone.</strong> On the original question — can simulation pick out selectivity by itself — the honest answer came back closer to <strong>“not yet”.</strong></li>
           </ul>
 
           <h4 data-lang="ko">그 결과를 믿어도 되는가</h4><h4 data-lang="en">Could I trust it?</h4>
           <ul>
             <li data-lang="ko">점수가 나왔다고 바로 쓸 수는 없습니다. <strong>이 시뮬레이션이 애초에 정답을 맞힐 수 있는 도구인지</strong>부터 확인해야 했습니다.</li><li data-lang="en">A number is not worth much until you know <strong>the tool producing it can get a known answer right.</strong></li>
-            <li data-lang="ko">그래서 <strong>정답을 이미 아는 경우로 먼저 시험했습니다.</strong> 수용체 구조에 원래 끼워져 있던 물질을 떼어낸 뒤, 같은 자리에 다시 넣어보고 원래 위치와 얼마나 어긋나는지 쟀습니다.</li><li data-lang="en">So I <strong>tested it on a case where the answer was already known</strong>: pull the compound out of the receptor it came with, put it back by simulation, and measure how far it lands from where it actually sat.</li>
-            <li data-lang="ko">어긋난 거리가 <strong><em>0.31 옹스트롬</em></strong>이었습니다. 이 분야에서는 <em>2 옹스트롬</em> 안쪽이면 제대로 복원한 것으로 보는데, 그보다 훨씬 정확했습니다. <strong>도구가 믿을 만하다는 근거</strong>를 먼저 확보한 셈입니다.</li><li data-lang="en">It missed by <strong><em>0.31 ångström</em></strong>. The field treats anything under <em>2 ångström</em> as a successful reproduction, so this cleared the bar comfortably — <strong>the tool had earned its credibility</strong> before I read anything into the scores.</li>
-            <li data-lang="ko">여기에 더해, 다른 계열 수용체에 붙는 물질들을 일부러 끼워 넣는 <strong>교차 시험 80건</strong>을 돌렸습니다. <strong>제 짝을 만났을 때만 값이 바닥으로 떨어지고</strong> 남의 자리에서는 크게 흔들렸습니다. 겉모습이 닮아도 실제로 맞물리는 방식은 다르다는 뜻입니다.</li><li data-lang="en">On top of that I ran <strong>80 cross-tests</strong>, deliberately fitting compounds from unrelated receptor families into these four. <strong>The numbers only bottomed out when a compound met its own receptor</strong>; everywhere else they scattered. Similar on the outside, different in how they actually lock together.</li>
+            <li data-lang="ko">그래서 <strong>정답을 이미 아는 경우로 시험했습니다.</strong> 구조에 원래 끼워져 있던 물질을 떼어낸 뒤 같은 자리에 다시 넣어보고, 원래 위치에서 얼마나 어긋나는지 쟀습니다. α1A에서 <strong><em>약 0.45 Å</em></strong>. 이 분야에서 <em>2 Å</em> 안쪽이면 제대로 복원한 것으로 보는데 그보다 훨씬 정확했습니다.</li><li data-lang="en">So I <strong>tested it where the answer was already known</strong>: pull the compound out of the structure it came with, put it back by simulation, and measure the drift. On α1A it came to <strong><em>about 0.45 Å</em></strong>. The field treats anything under <em>2 Å</em> as a successful reproduction, so this cleared the bar comfortably.</li>
+            <li data-lang="ko">이어서 <strong>남의 물질을 일부러 끼워 넣는 교차 시험</strong>을 돌렸습니다. 제 짝이 아닌 조합은 평균이 <em>5.5 Å</em>대로 올라갔습니다. <strong>제 자리를 만났을 때만 값이 바닥으로 떨어진다</strong>는 게 뚜렷했습니다.</li><li data-lang="en">Then <strong>cross-tests, deliberately fitting the wrong compounds in</strong>. Mismatched pairs averaged around <em>5.5 Å</em>. <strong>Only a compound meeting its own receptor dropped to the floor</strong> — the contrast was clear.</li>
+            <li data-lang="ko">즉 <strong>「자세를 재현하는 일」은 잘했지만 「어느 쪽에 더 잘 듣는지 가려내는 일」은 그만큼 못했습니다.</strong> 두 능력이 별개라는 걸 숫자로 확인한 게 이 프로젝트의 결론이었습니다.</li><li data-lang="en">In other words, <strong>it was good at reproducing a pose and much weaker at telling which receptor a drug prefers.</strong> Showing those are two different abilities, in numbers, was what the project actually concluded.</li>
           </ul>
 
           <h4 data-lang="ko">지금 하는 일과의 연결</h4><h4 data-lang="en">How it connects to now</h4>
           <ul>
             <li data-lang="ko">데이터를 다루기 시작한 건 부트캠프가 아니라 <strong>이 졸업 프로젝트였습니다.</strong> 결과 파일을 파이썬으로 정리하고, 분포를 그려 비교하고, 기준점을 세워 검증하는 흐름이 그때 이미 있었습니다.</li><li data-lang="en">I did not start working with data at a bootcamp — it was <strong>this project.</strong> Parse the output in Python, plot the distributions, set up a control and check against it: the routine was already there.</li>
+            <li data-lang="ko">Dr. Dan Donnelly 지도 아래 진행했습니다.</li><li data-lang="en">Supervised by Dr. Dan Donnelly.</li>
             <li data-lang="ko">특히 <strong>결과를 믿기 전에 기준점부터 세우는 습관</strong>이 여기서 왔습니다. 시뮬레이션을 정답 아는 경우로 먼저 검증한 것과, X-ray 프로젝트에서 모델이 정말 폐를 보고 판단했는지 확인한 것은 같은 질문입니다.</li><li data-lang="en">Above all, <strong>the habit of establishing a baseline before believing a result</strong> comes from here. Validating the simulation against a known answer and checking whether the X-ray model was really looking at lungs are the same question, asked twice.</li>
           </ul>
 
@@ -1298,40 +1299,41 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <figure class="fig">
               <a href="assets/docking/goldscore.webp" target="_blank" rel="noopener">
                 <img src="assets/docking/goldscore.webp" width="993" height="690" loading="lazy" decoding="async"
-                     alt="아드레날린 수용체 4종에 대한 리간드 7종의 GOLDscore 박스플롯">
+                     alt="수용체 네 종류에 물질 일곱 가지를 넣었을 때의 결합 점수 분포 그래프">
               </a>
               <figcaption>
-                <b data-lang="ko">수용체별 결합 적합도</b><b data-lang="en">Binding fitness by receptor</b>
+                <b data-lang="ko">수용체별 결합 적합도</b><b data-lang="en">How well each compound fits</b>
 <span data-lang="ko">가로축이 수용체 네 종류, 색이 물질입니다. 위로 갈수록 잘 맞물린다는 뜻입니다.
-                이소프레날린(연노랑)이 위쪽에 있고, 아세틸콜린(연보라)은 어디서든 바닥에 깔립니다.</span><span data-lang="en">Receptor subtype on the x-axis, ligand by colour. Isoprenaline (pale yellow) sits high at
-                α1A and β1; acetylcholine (pale purple) stays at the floor everywhere.</span>
+                이소프레날린(연노랑)이 위쪽에 있고, 아세틸콜린(연보라)은 어디서든 바닥에 깔립니다.</span><span data-lang="en">The four receptors run along the bottom, each compound has its own colour, and higher means
+                a better fit. Isoprenaline (pale yellow) sits near the top; acetylcholine (pale purple) stays
+                at the floor everywhere.</span>
               </figcaption>
             </figure>
             <figure class="fig">
               <a href="assets/docking/chemscore.webp" target="_blank" rel="noopener">
                 <img src="assets/docking/chemscore.webp" width="993" height="690" loading="lazy" decoding="async"
-                     alt="아드레날린 수용체 4종에 대한 리간드 7종의 Chemscore 박스플롯">
+                     alt="같은 결과를 다른 채점 방식으로 다시 매긴 결합 점수 분포 그래프">
               </a>
               <figcaption>
-                <b data-lang="ko">점수 매기는 방식을 바꾸면 순위도 바뀐다</b><b data-lang="en">Change the scoring function, change the ranking</b>
+                <b data-lang="ko">점수 매기는 방식을 바꾸면 순위도 바뀐다</b><b data-lang="en">Change how you score it, and the order changes</b>
                 <span data-lang="ko">같은 결과를 다른 채점 방식으로 다시 매기면 <em>세로토닌</em>이 1위로 올라옵니다.
                 앞 그래프에서 1위였던 이소프레날린과 순서가 뒤바뀝니다. 그래서 점수 하나만 보지 않고
                 두 방식을 나란히 놓고 봤습니다. 아세틸콜린이 바닥인 것만은 양쪽에서 같습니다.</span>
-                <span data-lang="en">Re-scoring the same docking runs with Chemscore pushes <em>serotonin</em> to the top at α1A,
-                swapping places with isoprenaline, which led on GOLDscore. That is the argument for reading both
-                rather than trusting one number. Acetylcholine stays at the bottom either way.</span>
+                <span data-lang="en">Scoring the same results a different way pushes <em>serotonin</em> to the top, swapping places
+                with isoprenaline, which led on the previous chart. That is why I read both rather than trusting
+                a single number. Acetylcholine stays at the bottom either way.</span>
               </figcaption>
             </figure>
             <figure class="fig">
               <a href="assets/docking/rmsd.webp" target="_blank" rel="noopener">
                 <img src="assets/docking/rmsd.webp" width="989" height="690" loading="lazy" decoding="async"
-                     alt="2차 도킹 시뮬레이션의 RMSD 박스플롯. 값이 낮을수록 결합 자세가 일관됨">
+                     alt="물질을 다시 넣었을 때 원래 위치에서 얼마나 어긋나는지 보여주는 분포 그래프. 낮을수록 정확함">
               </a>
               <figcaption>
-                <b data-lang="ko">원래 자세를 얼마나 되찾는가</b><b data-lang="en">Second-run RMSD</b>
+                <b data-lang="ko">원래 자세를 얼마나 되찾는가</b><b data-lang="en">How closely it finds the original spot</b>
 <span data-lang="ko">낮을수록 원래 있던 자리를 정확히 되찾았다는 뜻입니다. 제 짝을 만난 경우는 바닥에 붙고,
-                남의 자리에 넣으면 위로 흩어집니다.</span><span data-lang="en">Lower means the same pose was found repeatedly. α1A clusters low, while α2A and β2 spread
-                widely depending on the pairing.</span>
+                남의 자리에 넣으면 위로 흩어집니다.</span><span data-lang="en">Lower means it landed back where the compound actually sits. Matched pairs drop to the floor;
+                put a compound somewhere it does not belong and the values scatter upward.</span>
               </figcaption>
             </figure>
           </div>
