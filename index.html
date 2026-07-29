@@ -512,6 +512,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 .fig { display: flex; flex-direction: column; gap: .55rem; margin: 0; }
 .fig a {
   display: block;
+  width: fit-content;          /* 원본보다 크게 늘리지 않는다 */
+  max-width: 100%;
+  margin-inline: auto;
   background: #fff;
   border: 1px solid var(--rule);
   border-radius: var(--r);
@@ -520,7 +523,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   transition: border-color .18s, box-shadow .18s;
 }
 .fig a:hover { border-color: var(--trace-dim); box-shadow: 0 0 22px -10px var(--trace); }
-.fig img { display: block; width: 100%; height: auto; }
+.fig img { display: block; max-width: 100%; height: auto; }
 .fig figcaption {
   display: flex; flex-direction: column; gap: .2rem;
   font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55;
@@ -712,31 +715,41 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 <span data-lang="en" class="ko">Introduction</span>
     </div>
     <p data-lang="ko" class="lede">
-      약리학을 전공하며 <strong>의료 도메인</strong>을 먼저 배웠고, 지금은 같은 데이터를
-      머신러닝과 딥러닝으로 다루고 있습니다.
+      약리학을 공부하면서 데이터를 먼저 만났습니다. 학부 졸업 프로젝트에서 수용체 네 종류에
+      리간드를 도킹시킨 결과를 파이썬으로 분석했는데, 그때 몸에 붙은 순서 — <strong>도메인을 먼저 알고
+      숫자는 그다음에 본다</strong> — 를 지금도 그대로 쓰고 있습니다.
     </p>
 <p data-lang="en" class="lede">
-      I read pharmacology first, so the clinical side came before the code. Now I work on
-      the same kind of data with machine learning and deep learning.
+      I met data through pharmacology, not the other way round. My final-year project had me docking
+      ligands into four receptor subtypes and working through the results in Python, and the habit it
+      left me with — <strong>understand the domain first, read the numbers second</strong> — is still how I work.
     </p>
     <p data-lang="ko" class="lede">
-      DACON 헬스케어 해커톤 두 건에서 <strong>25만 건 규모 임상 데이터로 임신 성공을 예측하는 모델</strong>과
-      <strong>흉부 X-ray 폐렴 분류 모델</strong>을 만들었습니다. 후자에서는 <strong>폐렴 환자를 정상으로 잘못 본 경우</strong>를 줄이는 데
-      초점을 맞춰, 놓친 환자를 <em>29명에서 12명까지</em> 낮췄습니다.
+      이후 DACON 헬스케어 해커톤 두 건에서 <strong>25만 건 규모 임상 데이터로 임신 성공을 예측하는 모델</strong>과
+      <strong>흉부 X-ray 폐렴 분류 모델</strong>을 만들었습니다. X-ray 쪽에서는 정확도보다 폐렴을 놓치지 않는 것을
+      기준으로 삼아, 놓친 환자를 <em>29명에서 12명까지</em> 줄였습니다.
     </p>
 <p data-lang="en" class="lede">
-      Across two DACON healthcare hackathons I built <strong>a pregnancy-success model on 256,351 clinical
-      records</strong> and <strong>a chest X-ray pneumonia classifier</strong>. On the second one I optimised for
-      <strong>not missing sick patients</strong>, cutting false negatives from <em>29 down to 12</em>.
+      Since then, two DACON healthcare hackathons: <strong>a pregnancy-success model over 256,351 clinical
+      records</strong> and <strong>a chest X-ray pneumonia classifier</strong>. On the X-ray work I optimised for not
+      missing sick patients rather than for accuracy, and brought false negatives down
+      <em>from 29 to 12</em>.
     </p>
     <p data-lang="ko" class="lede">
-      모델을 만드는 데서 끝내지 않으려고, FastAPI와 Docker로 학습한 모델을 실제로 서빙하는
-      팀 프로젝트까지 마쳤습니다. 무거운 분석은 Redis 큐로 떼어내 API가 기다리지 않게 했습니다.
+      모델을 만드는 데서 끝내지 않으려고 FastAPI와 Docker로 서빙하는 팀 프로젝트까지 마쳤습니다.
+      무거운 분석은 Redis 큐로 떼어내, API가 그 앞에서 기다리지 않게 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      A model that never ships is only half the job, so I saw a team project through to serving
-      trained models over FastAPI and Docker — with the heavy inference pushed onto a Redis queue
-      so the API never waits on it.
+      A model that never ships is half a model, so I saw a team project through to serving one over
+      FastAPI and Docker — with the heavy inference moved onto a Redis queue so the API never blocks on it.
+    </p>
+    <p data-lang="ko" class="lede">
+      숫자를 맞히는 것보다 <strong>그 숫자가 환자에게 무슨 뜻인지 설명할 수 있는 쪽</strong>에 관심이 있습니다.
+      의료 도메인을 읽을 줄 아는 데이터 분석 · 머신러닝 엔지니어를 목표로 하고 있습니다.
+    </p>
+<p data-lang="en" class="lede">
+      I care less about hitting a number than about <strong>being able to say what that number means for a
+      patient</strong>. I am aiming for data analysis and ML engineering roles where the clinical domain matters.
     </p>
   </section>
 
@@ -1243,6 +1256,19 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
              data-title-en="Adrenergic Receptor Ligand Docking Analysis"
              data-sub="University of Leeds · BSc Pharmacology 졸업 프로젝트 · 2024"
              data-sub-en="University of Leeds · BSc Pharmacology final-year project · 2024">
+          <h4 data-lang="ko">배경</h4><h4 data-lang="en">Background</h4>
+          <ul>
+            <li data-lang="ko">아드레날린 수용체는 아형이 여럿이고 생김새가 비슷합니다. 그래서 약이 노린 아형에만 붙지 않고 <strong>옆 아형까지 건드리는 일</strong>이 흔합니다. 부작용이 거기서 나옵니다.</li><li data-lang="en">Adrenergic receptor subtypes look alike, so a drug aimed at one often <strong>touches its neighbours too</strong>. That is where side effects come from.</li>
+            <li data-lang="ko">그렇다면 <strong>계산으로 미리 아형 선택성을 가늠할 수 있는지</strong>가 물음이었습니다. 실험 전에 후보를 걸러낼 수 있으면 시간과 비용이 크게 줄어듭니다.</li><li data-lang="en">The question was whether <strong>subtype selectivity can be anticipated computationally</strong> — screening candidates before anyone touches a bench saves a great deal of time.</li>
+          </ul>
+
+          <h4 data-lang="ko">실험 설계</h4><h4 data-lang="en">Experimental design</h4>
+          <ul>
+            <li data-lang="ko">아드레날린 수용체 네 아형의 <strong>실제 결정 구조</strong>를 PDB에서 가져왔습니다. α1A <code>8THK</code>, α2A <code>7EJ8</code>, β1 <code>7BU6</code>, β2 <code>6PS2</code>.</li><li data-lang="en">I pulled <strong>experimentally determined structures</strong> for all four subtypes from the PDB — α1A <code>8THK</code>, α2A <code>7EJ8</code>, β1 <code>7BU6</code>, β2 <code>6PS2</code>.</li>
+            <li data-lang="ko">실험을 두 갈래로 나눴습니다. <strong>E3</strong>는 리간드 7종을 네 수용체에 각각 도킹해 결합 적합도를 비교하는 쪽, <strong>E4</strong>는 도킹이 믿을 만한지 검증하는 쪽이었습니다.</li><li data-lang="en">The work split in two: <strong>E3</strong> docked seven ligands into all four receptors to compare binding fitness, while <strong>E4</strong> asked whether the docking could be trusted at all.</li>
+            <li data-lang="ko">GOLD로 도킹을 돌리고 나온 CSV를 <strong>pandas로 병합·정제</strong>했습니다. Entry 열에서 대상 리간드만 걸러내고, wide 형태를 long으로 녹인 뒤 seaborn 박스플롯으로 겹쳐 봤습니다.</li><li data-lang="en">Docking ran in GOLD; I <strong>merged and cleaned the resulting CSVs in pandas</strong> — filtering the Entry column down to the ligands of interest, melting wide to long, then overlaying the distributions as seaborn box plots.</li>
+          </ul>
+
           <h4 data-lang="ko">무엇을 했는가</h4><h4 data-lang="en">What I did</h4>
           <ul>
             <li data-lang="ko">아드레날린 수용체 네 종류(<strong>α1A · α2A · β1 · β2</strong>)에 리간드 <strong>7종</strong>을 도킹시켜, 어떤 물질이 어느 수용체에 잘 붙는지 비교했습니다.</li><li data-lang="en">Docked <strong>seven ligands</strong> against four adrenergic receptor subtypes (<strong>α1A · α2A · β1 · β2</strong>) to compare which compounds bind where.</li>
@@ -1259,14 +1285,18 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
           <h4 data-lang="ko">재현성 확인</h4><h4 data-lang="en">Checking reproducibility</h4>
           <ul>
-            <li data-lang="ko">점수가 높다고 끝이 아니라, 도킹이 <strong>매번 같은 자세를 찾아내는지</strong>를 따로 봤습니다.</li><li data-lang="en">A high score is not the end of it, so I checked whether the docking <strong>found the same pose each time</strong>.</li>
-            <li data-lang="ko">2차 도킹을 돌려 <strong>RMSD</strong>를 계산했고, 값이 작을수록 결합 자세가 일관된다는 뜻입니다. 수용체·리간드 조합마다 편차 폭이 크게 달랐습니다.</li><li data-lang="en">A second docking run gave <strong>RMSD</strong> values — lower means a more consistent binding pose. The spread varied a lot by receptor–ligand pairing.</li>
+            <li data-lang="ko">점수가 높다고 끝이 아닙니다. <strong>도킹 프로그램이 실제 결합 자세를 재현할 수 있는지</strong>부터 확인해야 그 점수를 믿을 수 있습니다.</li><li data-lang="en">A high score means nothing until you know <strong>the software can reproduce a real binding pose</strong> in the first place.</li>
+            <li data-lang="ko">그래서 <strong>되돌림 도킹</strong>을 했습니다. 결정 구조에 원래 들어 있던 리간드를 빼내 같은 자리에 다시 도킹시키고, 원래 자세와 얼마나 어긋나는지 RMSD로 쟀습니다.</li><li data-lang="en">So I ran a <strong>redocking control</strong>: take the ligand out of its own crystal structure, dock it back into the same site, and measure how far the predicted pose drifts from the known one.</li>
+            <li data-lang="ko">α1A 리간드를 α1A 구조에 되돌렸을 때 RMSD가 <strong><em>0.31 Å</em></strong>이었습니다. 통상 <em>2 Å</em> 아래면 재현에 성공한 것으로 보는데, 그보다 훨씬 낮게 나왔습니다. <strong>도킹 설정이 제대로 잡혔다는 근거</strong>가 됩니다.</li><li data-lang="en">Docking the α1A ligand back into α1A gave an RMSD of <strong><em>0.31 Å</em></strong>. The usual bar for a successful reproduction is under <em>2 Å</em>, so this cleared it comfortably — <strong>evidence the docking setup was sound</strong>.</li>
+            <li data-lang="ko">이어서 <strong>교차 도킹</strong>으로 넘어갔습니다. D4 · D3 · 5-HT2A · M2 · H3처럼 아드레날린이 아닌 다른 아민 수용체의 리간드를 네 아드레날린 수용체에 넣어 <em>80건</em>의 RMSD를 모았습니다.</li><li data-lang="en">From there I moved to <strong>cross-docking</strong> — feeding ligands from other aminergic receptors (D4, D3, 5-HT2A, M2, H3) into the four adrenergic sites, collecting <em>80</em> RMSD measurements.</li>
+            <li data-lang="ko">자기 짝을 만났을 때만 값이 바닥으로 떨어지고, 남의 수용체에 들어가면 편차가 크게 벌어졌습니다. <strong>구조가 비슷해 보여도 결합 자세는 아형마다 다르다</strong>는 이야기입니다.</li><li data-lang="en">Values collapsed only when a ligand met its own receptor; anywhere else the spread widened. <strong>The subtypes may look alike, but the binding pose does not carry over.</strong></li>
           </ul>
 
           <h4 data-lang="ko">지금 하는 일과의 연결</h4><h4 data-lang="en">How it connects to now</h4>
           <ul>
             <li data-lang="ko">데이터를 다루기 시작한 건 부트캠프가 아니라 <strong>학부 졸업 프로젝트였습니다.</strong> 그때도 결과 파일을 파이썬으로 정리하고, 분포를 그려 비교하고, 대조군으로 결과를 검증했습니다.</li><li data-lang="en">I did not start handling data at a bootcamp — it was <strong>this final-year project.</strong> Same routine then as now: parse the output in Python, plot the distributions, sanity-check against a control.</li>
             <li data-lang="ko">지금 의료 데이터를 다루는 방식이 그때와 크게 다르지 않습니다. 도메인을 알고 숫자를 보는 순서가 같습니다.</li><li data-lang="en">The way I approach clinical data has not really changed. Understand the domain first, then read the numbers.</li>
+            <li data-lang="ko">특히 <strong>모델을 믿기 전에 대조군부터 세우는 습관</strong>이 여기서 왔습니다. 되돌림 도킹으로 프로그램을 검증한 것과, X-ray 프로젝트에서 Grad-CAM으로 모델이 폐를 보고 판단했는지 확인한 것은 같은 종류의 질문입니다.</li><li data-lang="en">The habit of <strong>establishing a control before trusting a model</strong> started here. Validating the docking with a redocking run and checking with Grad-CAM whether the X-ray model was actually looking at lungs are the same question asked twice.</li>
           </ul>
 
           <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
