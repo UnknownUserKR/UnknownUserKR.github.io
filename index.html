@@ -774,8 +774,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 <button data-lang="en" class="chip" type="button" data-filter="be" aria-pressed="false">Backend<span class="n">1</span></button>
       <button data-lang="ko" class="chip" type="button" data-filter="ea" aria-pressed="false">데이터 분석<span class="n">2</span></button>
 <button data-lang="en" class="chip" type="button" data-filter="ea" aria-pressed="false">Data analysis<span class="n">2</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="cc" aria-pressed="false">계산화학<span class="n">1</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="cc" aria-pressed="false">Comp. chemistry<span class="n">1</span></button>
+      <button data-lang="ko" class="chip" type="button" data-filter="cc" aria-pressed="false">시뮬레이션<span class="n">1</span></button>
+<button data-lang="en" class="chip" type="button" data-filter="cc" aria-pressed="false">Simulation<span class="n">1</span></button>
     </div>
 
     <div class="grid" id="grid">
@@ -1245,60 +1245,51 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       <article class="card" data-cat="cc">
         <div class="card-top">
           <span data-lang="ko" class="card-when">2024</span><span data-lang="en" class="card-when">2024</span>
-          <span data-lang="ko" class="tag cc">계산화학</span><span data-lang="en" class="tag cc">Comp. chemistry</span>
+          <span data-lang="ko" class="tag cc">시뮬레이션</span><span data-lang="en" class="tag cc">Simulation</span>
         </div>
-        <h3><button data-lang="ko" class="card-open" type="button">아드레날린 수용체 리간드 도킹 분석</button><button data-lang="en" class="card-open" type="button">Adrenergic receptor ligand docking analysis</button></h3>
+        <h3><button data-lang="ko" class="card-open" type="button">약물이 어느 수용체에 붙는지 예측</button><button data-lang="en" class="card-open" type="button">Predicting which receptor a drug binds to</button></h3>
         <div data-lang="ko" class="card-org">University of Leeds · BSc Pharmacology 졸업 프로젝트</div><div data-lang="en" class="card-org">University of Leeds · BSc Pharmacology final-year project</div>
-        <div class="stack"><span>Python</span><span>pandas</span><span>seaborn</span><span>GOLD</span><span>RMSD</span></div>
+        <div class="stack"><span>Python</span><span>pandas</span><span>seaborn</span><span data-lang="ko">분자 도킹</span><span data-lang="en">Molecular docking</span><span data-lang="ko">시각화</span><span data-lang="en">Visualisation</span></div>
         <div class="no-metric"><span data-lang="ko" class="pill">학부 졸업 프로젝트</span><span data-lang="en" class="pill">Final-year project</span></div>
         <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
 
         <div class="detail"
-             data-title="아드레날린 수용체 리간드 도킹 시뮬레이션 분석"
-             data-title-en="Adrenergic Receptor Ligand Docking Analysis"
+             data-title="약물이 어느 수용체에 붙는지 — 결합 시뮬레이션 분석"
+             data-title-en="Predicting Which Receptor a Drug Binds To"
              data-sub="University of Leeds · BSc Pharmacology 졸업 프로젝트 · 2024"
              data-sub-en="University of Leeds · BSc Pharmacology final-year project · 2024">
-          <h4 data-lang="ko">배경</h4><h4 data-lang="en">Background</h4>
+          <h4 data-lang="ko">왜 이걸 했는가</h4><h4 data-lang="en">Why it mattered</h4>
           <ul>
-            <li data-lang="ko">아드레날린 수용체는 아형이 여럿이고 생김새가 비슷합니다. 그래서 약이 노린 아형에만 붙지 않고 <strong>옆 아형까지 건드리는 일</strong>이 흔합니다. 부작용이 거기서 나옵니다.</li><li data-lang="en">Adrenergic receptor subtypes look alike, so a drug aimed at one often <strong>touches its neighbours too</strong>. That is where side effects come from.</li>
-            <li data-lang="ko">그렇다면 <strong>계산으로 미리 아형 선택성을 가늠할 수 있는지</strong>가 물음이었습니다. 실험 전에 후보를 걸러낼 수 있으면 시간과 비용이 크게 줄어듭니다.</li><li data-lang="en">The question was whether <strong>subtype selectivity can be anticipated computationally</strong> — screening candidates before anyone touches a bench saves a great deal of time.</li>
+            <li data-lang="ko">우리 몸에는 아드레날린을 받아들이는 <strong>수용체가 네 종류</strong> 있습니다. 생김새가 서로 닮아서, 약이 목표한 하나에만 붙지 않고 <strong>옆의 것까지 건드리는 일</strong>이 흔합니다. 부작용이 대개 여기서 생깁니다.</li><li data-lang="en">The body has <strong>four kinds of receptor</strong> that respond to adrenaline, and they look enough alike that a drug aimed at one often <strong>latches onto its neighbours too</strong>. That is where a lot of side effects come from.</li>
+            <li data-lang="ko">그래서 물었습니다. <strong>실험실에 가기 전에, 컴퓨터만으로 「이 물질이 어느 수용체에 붙을지」 미리 가늠할 수 있을까?</strong> 된다면 후보를 미리 걸러내 시간과 비용을 아낄 수 있습니다.</li><li data-lang="en">So the question was simple: <strong>before anyone runs a bench experiment, can a computer tell you which receptor a compound will stick to?</strong> If it can, you screen candidates early and save both time and money.</li>
           </ul>
 
-          <h4 data-lang="ko">실험 설계</h4><h4 data-lang="en">Experimental design</h4>
+          <h4 data-lang="ko">어떻게 했는가</h4><h4 data-lang="en">How I went about it</h4>
           <ul>
-            <li data-lang="ko">아드레날린 수용체 네 아형의 <strong>실제 결정 구조</strong>를 PDB에서 가져왔습니다. α1A <code>8THK</code>, α2A <code>7EJ8</code>, β1 <code>7BU6</code>, β2 <code>6PS2</code>.</li><li data-lang="en">I pulled <strong>experimentally determined structures</strong> for all four subtypes from the PDB — α1A <code>8THK</code>, α2A <code>7EJ8</code>, β1 <code>7BU6</code>, β2 <code>6PS2</code>.</li>
-            <li data-lang="ko">실험을 두 갈래로 나눴습니다. <strong>E3</strong>는 리간드 7종을 네 수용체에 각각 도킹해 결합 적합도를 비교하는 쪽, <strong>E4</strong>는 도킹이 믿을 만한지 검증하는 쪽이었습니다.</li><li data-lang="en">The work split in two: <strong>E3</strong> docked seven ligands into all four receptors to compare binding fitness, while <strong>E4</strong> asked whether the docking could be trusted at all.</li>
-            <li data-lang="ko">GOLD로 도킹을 돌리고 나온 CSV를 <strong>pandas로 병합·정제</strong>했습니다. Entry 열에서 대상 리간드만 걸러내고, wide 형태를 long으로 녹인 뒤 seaborn 박스플롯으로 겹쳐 봤습니다.</li><li data-lang="en">Docking ran in GOLD; I <strong>merged and cleaned the resulting CSVs in pandas</strong> — filtering the Entry column down to the ligands of interest, melting wide to long, then overlaying the distributions as seaborn box plots.</li>
+            <li data-lang="ko">수용체 네 종류의 <strong>실제 입체 구조</strong>를 공개 데이터베이스(PDB)에서 받아왔습니다. 실험으로 밝혀진 진짜 모양입니다.</li><li data-lang="en">I downloaded the <strong>real three-dimensional structures</strong> of all four receptors from the public PDB — shapes worked out experimentally, not guesses.</li>
+            <li data-lang="ko">여기에 <strong>물질 7가지를 하나씩 컴퓨터로 끼워 넣어</strong> 얼마나 잘 맞물리는지 점수를 냈습니다. 도파민, 아드레날린, 노르아드레날린처럼 실제로 이 수용체에 작용하는 물질들이었습니다.</li><li data-lang="en">Then I <strong>fitted seven compounds into each of them by simulation</strong> and scored how well they locked in — dopamine, adrenaline, noradrenaline and others that genuinely act on these receptors.</li>
+            <li data-lang="ko">시뮬레이션이 뱉어낸 결과 파일을 <strong>파이썬으로 모아 정리하고 그래프로 그렸습니다.</strong> 수용체별·물질별 점수 분포를 한 화면에 겹쳐 비교했습니다.</li><li data-lang="en">The simulation spat out raw result files, which I <strong>collected, cleaned and plotted in Python</strong> so every receptor and compound could be compared side by side on one chart.</li>
           </ul>
 
-          <h4 data-lang="ko">무엇을 했는가</h4><h4 data-lang="en">What I did</h4>
+          <h4 data-lang="ko">무엇이 보였는가</h4><h4 data-lang="en">What showed up</h4>
           <ul>
-            <li data-lang="ko">아드레날린 수용체 네 종류(<strong>α1A · α2A · β1 · β2</strong>)에 리간드 <strong>7종</strong>을 도킹시켜, 어떤 물질이 어느 수용체에 잘 붙는지 비교했습니다.</li><li data-lang="en">Docked <strong>seven ligands</strong> against four adrenergic receptor subtypes (<strong>α1A · α2A · β1 · β2</strong>) to compare which compounds bind where.</li>
-            <li data-lang="ko">리간드는 도파민, 이소프레날린, 아세틸콜린, 페닐에프린, (−)-아드레날린, 세로토닌(5-HT), (−)-노르아드레날린이었습니다.</li><li data-lang="en">The ligands were dopamine, isoprenaline, acetylcholine, phenylephrine, (−)-adrenaline, serotonin (5-HT) and (−)-noradrenaline.</li>
-            <li data-lang="ko">도킹 프로그램이 뱉은 결과 파일을 <strong>Python으로 정리·시각화</strong>했습니다. pandas로 표를 long format으로 녹이고 seaborn 박스플롯으로 수용체별 분포를 겹쳐 봤습니다.</li><li data-lang="en">I took the docking output and <strong>processed and plotted it in Python</strong> — melting the tables to long format with pandas, then overlaying per-receptor distributions as seaborn box plots.</li>
+            <li data-lang="ko"><strong>이소프레날린</strong>은 β1 수용체에서 점수가 가장 높았습니다. 실제로 심장의 β 수용체에 작용하는 약이라, <strong>알려진 성질과 계산 결과가 맞아떨어졌습니다.</strong></li><li data-lang="en"><strong>Isoprenaline</strong> scored highest on the β1 receptor — and it is in fact a drug that acts on β receptors in the heart, so <strong>the computed answer matched what is already known.</strong></li>
+            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 어디에서도 가장 낮았습니다. 애초에 이 계열에 작용하지 않는 물질이라 <strong>「틀리면 낮게 나와야 하는」 기준점</strong> 역할을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> came last everywhere. It does not act on this family at all, so it served as <strong>the reference for what a wrong answer should look like.</strong></li>
+            <li data-lang="ko">같은 물질이라도 <strong>어느 수용체에 넣느냐에 따라 점수가 확연히 갈렸습니다.</strong> 처음 물었던 「선택성을 미리 가늠할 수 있는가」에 대한 답이 숫자로 나온 셈입니다.</li><li data-lang="en">The same compound <strong>scored very differently depending on which receptor it went into</strong> — the original question, answered in numbers.</li>
           </ul>
 
-          <h4 data-lang="ko">본 것</h4><h4 data-lang="en">What came out</h4>
+          <h4 data-lang="ko">그 결과를 믿어도 되는가</h4><h4 data-lang="en">Could I trust it?</h4>
           <ul>
-            <li data-lang="ko"><strong>이소프레날린</strong>이 β1에서 가장 높은 결합 적합도를 보였습니다(GOLDscore 중앙값 <em>54</em>대). 비선택적 β 작용제라는 약리학적 성질과 맞아떨어집니다.</li><li data-lang="en"><strong>Isoprenaline</strong> scored highest at β1 (median GOLDscore around <em>54</em>), which lines up with it being a non-selective β agonist.</li>
-            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 모두에서 가장 낮았습니다(<em>33~39</em>). 아드레날린 수용체에 붙을 이유가 없는 물질이라, 사실상 <strong>음성 대조군 역할</strong>을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> sat lowest across all four (<em>33–39</em>). It has no business binding an adrenergic receptor, so it effectively served as a <strong>negative control</strong>.</li>
-            <li data-lang="ko">같은 리간드도 수용체 아형에 따라 점수 차이가 뚜렷했습니다. 아형 선택성이 숫자로 드러난 셈입니다.</li><li data-lang="en">The same ligand scored noticeably differently across subtypes — subtype selectivity showing up as numbers.</li>
-          </ul>
-
-          <h4 data-lang="ko">재현성 확인</h4><h4 data-lang="en">Checking reproducibility</h4>
-          <ul>
-            <li data-lang="ko">점수가 높다고 끝이 아닙니다. <strong>도킹 프로그램이 실제 결합 자세를 재현할 수 있는지</strong>부터 확인해야 그 점수를 믿을 수 있습니다.</li><li data-lang="en">A high score means nothing until you know <strong>the software can reproduce a real binding pose</strong> in the first place.</li>
-            <li data-lang="ko">그래서 <strong>되돌림 도킹</strong>을 했습니다. 결정 구조에 원래 들어 있던 리간드를 빼내 같은 자리에 다시 도킹시키고, 원래 자세와 얼마나 어긋나는지 RMSD로 쟀습니다.</li><li data-lang="en">So I ran a <strong>redocking control</strong>: take the ligand out of its own crystal structure, dock it back into the same site, and measure how far the predicted pose drifts from the known one.</li>
-            <li data-lang="ko">α1A 리간드를 α1A 구조에 되돌렸을 때 RMSD가 <strong><em>0.31 Å</em></strong>이었습니다. 통상 <em>2 Å</em> 아래면 재현에 성공한 것으로 보는데, 그보다 훨씬 낮게 나왔습니다. <strong>도킹 설정이 제대로 잡혔다는 근거</strong>가 됩니다.</li><li data-lang="en">Docking the α1A ligand back into α1A gave an RMSD of <strong><em>0.31 Å</em></strong>. The usual bar for a successful reproduction is under <em>2 Å</em>, so this cleared it comfortably — <strong>evidence the docking setup was sound</strong>.</li>
-            <li data-lang="ko">이어서 <strong>교차 도킹</strong>으로 넘어갔습니다. D4 · D3 · 5-HT2A · M2 · H3처럼 아드레날린이 아닌 다른 아민 수용체의 리간드를 네 아드레날린 수용체에 넣어 <em>80건</em>의 RMSD를 모았습니다.</li><li data-lang="en">From there I moved to <strong>cross-docking</strong> — feeding ligands from other aminergic receptors (D4, D3, 5-HT2A, M2, H3) into the four adrenergic sites, collecting <em>80</em> RMSD measurements.</li>
-            <li data-lang="ko">자기 짝을 만났을 때만 값이 바닥으로 떨어지고, 남의 수용체에 들어가면 편차가 크게 벌어졌습니다. <strong>구조가 비슷해 보여도 결합 자세는 아형마다 다르다</strong>는 이야기입니다.</li><li data-lang="en">Values collapsed only when a ligand met its own receptor; anywhere else the spread widened. <strong>The subtypes may look alike, but the binding pose does not carry over.</strong></li>
+            <li data-lang="ko">점수가 나왔다고 바로 쓸 수는 없습니다. <strong>이 시뮬레이션이 애초에 정답을 맞힐 수 있는 도구인지</strong>부터 확인해야 했습니다.</li><li data-lang="en">A number is not worth much until you know <strong>the tool producing it can get a known answer right.</strong></li>
+            <li data-lang="ko">그래서 <strong>정답을 이미 아는 경우로 먼저 시험했습니다.</strong> 수용체 구조에 원래 끼워져 있던 물질을 떼어낸 뒤, 같은 자리에 다시 넣어보고 원래 위치와 얼마나 어긋나는지 쟀습니다.</li><li data-lang="en">So I <strong>tested it on a case where the answer was already known</strong>: pull the compound out of the receptor it came with, put it back by simulation, and measure how far it lands from where it actually sat.</li>
+            <li data-lang="ko">어긋난 거리가 <strong><em>0.31 옹스트롬</em></strong>이었습니다. 이 분야에서는 <em>2 옹스트롬</em> 안쪽이면 제대로 복원한 것으로 보는데, 그보다 훨씬 정확했습니다. <strong>도구가 믿을 만하다는 근거</strong>를 먼저 확보한 셈입니다.</li><li data-lang="en">It missed by <strong><em>0.31 ångström</em></strong>. The field treats anything under <em>2 ångström</em> as a successful reproduction, so this cleared the bar comfortably — <strong>the tool had earned its credibility</strong> before I read anything into the scores.</li>
+            <li data-lang="ko">여기에 더해, 다른 계열 수용체에 붙는 물질들을 일부러 끼워 넣는 <strong>교차 시험 80건</strong>을 돌렸습니다. <strong>제 짝을 만났을 때만 값이 바닥으로 떨어지고</strong> 남의 자리에서는 크게 흔들렸습니다. 겉모습이 닮아도 실제로 맞물리는 방식은 다르다는 뜻입니다.</li><li data-lang="en">On top of that I ran <strong>80 cross-tests</strong>, deliberately fitting compounds from unrelated receptor families into these four. <strong>The numbers only bottomed out when a compound met its own receptor</strong>; everywhere else they scattered. Similar on the outside, different in how they actually lock together.</li>
           </ul>
 
           <h4 data-lang="ko">지금 하는 일과의 연결</h4><h4 data-lang="en">How it connects to now</h4>
           <ul>
-            <li data-lang="ko">데이터를 다루기 시작한 건 부트캠프가 아니라 <strong>학부 졸업 프로젝트였습니다.</strong> 그때도 결과 파일을 파이썬으로 정리하고, 분포를 그려 비교하고, 대조군으로 결과를 검증했습니다.</li><li data-lang="en">I did not start handling data at a bootcamp — it was <strong>this final-year project.</strong> Same routine then as now: parse the output in Python, plot the distributions, sanity-check against a control.</li>
-            <li data-lang="ko">지금 의료 데이터를 다루는 방식이 그때와 크게 다르지 않습니다. 도메인을 알고 숫자를 보는 순서가 같습니다.</li><li data-lang="en">The way I approach clinical data has not really changed. Understand the domain first, then read the numbers.</li>
-            <li data-lang="ko">특히 <strong>모델을 믿기 전에 대조군부터 세우는 습관</strong>이 여기서 왔습니다. 되돌림 도킹으로 프로그램을 검증한 것과, X-ray 프로젝트에서 Grad-CAM으로 모델이 폐를 보고 판단했는지 확인한 것은 같은 종류의 질문입니다.</li><li data-lang="en">The habit of <strong>establishing a control before trusting a model</strong> started here. Validating the docking with a redocking run and checking with Grad-CAM whether the X-ray model was actually looking at lungs are the same question asked twice.</li>
+            <li data-lang="ko">데이터를 다루기 시작한 건 부트캠프가 아니라 <strong>이 졸업 프로젝트였습니다.</strong> 결과 파일을 파이썬으로 정리하고, 분포를 그려 비교하고, 기준점을 세워 검증하는 흐름이 그때 이미 있었습니다.</li><li data-lang="en">I did not start working with data at a bootcamp — it was <strong>this project.</strong> Parse the output in Python, plot the distributions, set up a control and check against it: the routine was already there.</li>
+            <li data-lang="ko">특히 <strong>결과를 믿기 전에 기준점부터 세우는 습관</strong>이 여기서 왔습니다. 시뮬레이션을 정답 아는 경우로 먼저 검증한 것과, X-ray 프로젝트에서 모델이 정말 폐를 보고 판단했는지 확인한 것은 같은 질문입니다.</li><li data-lang="en">Above all, <strong>the habit of establishing a baseline before believing a result</strong> comes from here. Validating the simulation against a known answer and checking whether the X-ray model was really looking at lungs are the same question, asked twice.</li>
           </ul>
 
           <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
@@ -1311,8 +1302,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
               </a>
               <figcaption>
                 <b data-lang="ko">수용체별 결합 적합도</b><b data-lang="en">Binding fitness by receptor</b>
-<span data-lang="ko">가로축이 수용체 아형, 색이 리간드입니다. 이소프레날린(연노랑)이 α1A와 β1에서 높고,
-                아세틸콜린(연보라)은 어디서든 바닥에 깔립니다.</span><span data-lang="en">Receptor subtype on the x-axis, ligand by colour. Isoprenaline (pale yellow) sits high at
+<span data-lang="ko">가로축이 수용체 네 종류, 색이 물질입니다. 위로 갈수록 잘 맞물린다는 뜻입니다.
+                이소프레날린(연노랑)이 위쪽에 있고, 아세틸콜린(연보라)은 어디서든 바닥에 깔립니다.</span><span data-lang="en">Receptor subtype on the x-axis, ligand by colour. Isoprenaline (pale yellow) sits high at
                 α1A and β1; acetylcholine (pale purple) stays at the floor everywhere.</span>
               </figcaption>
             </figure>
@@ -1322,10 +1313,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="아드레날린 수용체 4종에 대한 리간드 7종의 Chemscore 박스플롯">
               </a>
               <figcaption>
-                <b data-lang="ko">채점 함수를 바꾸면 순위도 바뀐다</b><b data-lang="en">Change the scoring function, change the ranking</b>
-                <span data-lang="ko">같은 도킹 결과를 Chemscore로 다시 매기면 <em>세로토닌</em>이 α1A에서 가장 높게 올라옵니다.
-                GOLDscore에서 1위였던 이소프레날린과 순위가 뒤바뀝니다. 점수 하나만 믿으면 안 된다는 뜻이라
-                두 지표를 나란히 봤습니다. 아세틸콜린이 바닥인 것만은 양쪽에서 같습니다.</span>
+                <b data-lang="ko">점수 매기는 방식을 바꾸면 순위도 바뀐다</b><b data-lang="en">Change the scoring function, change the ranking</b>
+                <span data-lang="ko">같은 결과를 다른 채점 방식으로 다시 매기면 <em>세로토닌</em>이 1위로 올라옵니다.
+                앞 그래프에서 1위였던 이소프레날린과 순서가 뒤바뀝니다. 그래서 점수 하나만 보지 않고
+                두 방식을 나란히 놓고 봤습니다. 아세틸콜린이 바닥인 것만은 양쪽에서 같습니다.</span>
                 <span data-lang="en">Re-scoring the same docking runs with Chemscore pushes <em>serotonin</em> to the top at α1A,
                 swapping places with isoprenaline, which led on GOLDscore. That is the argument for reading both
                 rather than trusting one number. Acetylcholine stays at the bottom either way.</span>
@@ -1337,9 +1328,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="2차 도킹 시뮬레이션의 RMSD 박스플롯. 값이 낮을수록 결합 자세가 일관됨">
               </a>
               <figcaption>
-                <b data-lang="ko">2차 도킹 RMSD</b><b data-lang="en">Second-run RMSD</b>
-<span data-lang="ko">낮을수록 매번 같은 자세로 붙었다는 뜻입니다. α1A는 대체로 낮게 모이는 반면,
-                α2A와 β2는 조합에 따라 편차가 크게 벌어집니다.</span><span data-lang="en">Lower means the same pose was found repeatedly. α1A clusters low, while α2A and β2 spread
+                <b data-lang="ko">원래 자세를 얼마나 되찾는가</b><b data-lang="en">Second-run RMSD</b>
+<span data-lang="ko">낮을수록 원래 있던 자리를 정확히 되찾았다는 뜻입니다. 제 짝을 만난 경우는 바닥에 붙고,
+                남의 자리에 넣으면 위로 흩어집니다.</span><span data-lang="en">Lower means the same pose was found repeatedly. α1A clusters low, while α2A and β2 spread
                 widely depending on the pairing.</span>
               </figcaption>
             </figure>
