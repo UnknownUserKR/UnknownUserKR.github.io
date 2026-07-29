@@ -490,6 +490,35 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   font-variant-numeric: tabular-nums; color: var(--trace); font-size: .95em;
 }
 
+/* ═══ 결과 그림 ═══ */
+.figs { display: flex; flex-direction: column; gap: 1.25rem; margin-top: .25rem; }
+.fig { display: flex; flex-direction: column; gap: .55rem; margin: 0; }
+.fig a {
+  display: block;
+  background: #fff;
+  border: 1px solid var(--rule);
+  border-radius: var(--r);
+  overflow: hidden;
+  line-height: 0;
+  transition: border-color .18s, box-shadow .18s;
+}
+.fig a:hover { border-color: var(--trace-dim); box-shadow: 0 0 22px -10px var(--trace); }
+.fig img { display: block; width: 100%; height: auto; }
+.fig figcaption {
+  display: flex; flex-direction: column; gap: .2rem;
+  font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55;
+}
+.fig figcaption b { color: var(--ink); font-weight: 600; font-size: var(--t-base); }
+.fig figcaption em {
+  font-style: normal; font-family: var(--f-mono);
+  font-variant-numeric: tabular-nums; color: var(--trace); font-size: .95em;
+}
+.fig-hint {
+  font-family: var(--f-mono); font-size: var(--t-xs);
+  letter-spacing: .04em; color: var(--ink-3);
+  margin: .1rem 0 0;
+}
+
 .links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
 .linkbtn {
   display: inline-flex; align-items: center; gap: .5rem;
@@ -618,6 +647,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       <div class="contact">
         <a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a>
         <a href="https://github.com/UnknownUserKR" target="_blank" rel="noopener">github.com/UnknownUserKR</a>
+        <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">linkedin.com/in/minjae-kwon</a>
       </div>
     </div>
   </header>
@@ -706,19 +736,20 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <div class="stat"><b class="num">0.95192</b><span>리더보드</span></div>
             <div class="stat"><b class="num">0.9997</b><span>검증 AUC</span></div>
             <div class="stat"><b class="num crit">29 → 12</b><span>놓친 폐렴 환자</span></div>
+            <div class="stat"><b class="num crit">7 → 2</b><span>잘못 의심한 정상</span></div>
             <div class="stat"><b class="num alt">5,216</b><span>학습 이미지</span></div>
           </div>
 
           <h4>문제 정의</h4>
           <ul>
-            <li>학습 <em>5,216</em>장 · 테스트 <em>624</em>장 규모의 흉부 X-ray를 정상(NORMAL)과 폐렴(PNEUMONIA)으로 분류하는 과제.</li>
+            <li>학습 <em>5,216</em>장 · 테스트 <em>624</em>장 규모의 흉부 X-ray를 정상(NORMAL)과 폐렴(PNEUMONIA)으로 분류하는 과제. 학습 데이터가 정상 <em>1,341</em>장 대 폐렴 <em>3,875</em>장으로 <strong>폐렴 쪽이 2.89배 많아</strong>, 손실함수와 샘플링을 여기에 맞춰 설계했습니다.</li>
             <li>진단에서는 멀쩡한 사람을 폐렴으로 의심하는 것보다 <strong>진짜 환자를 정상이라고 놓치는 쪽</strong>이 훨씬 위험합니다. 그래서 놓친 환자 수(FN)를 줄이는 것을 기준으로, 실제 환자를 얼마나 잡아내는지(민감도)를 중심에 둔 평가 지표를 설계.</li>
           </ul>
 
           <h4>실험</h4>
           <ul>
             <li>SimpleCNN 베이스라인에서 출발해 백본 3개(ResNet18 · DenseNet121 · EfficientNet-B0)와 스케줄러 3개를 조합한 <strong>9가지 실험</strong>을 2-stage fine-tuning과 Focal Loss 기반으로 진행.</li>
-            <li>최고 단일 모델(ResNet18 + ReduceLROnPlateau)이 검증 AUC <em>0.9997</em>을 기록하며, 놓친 환자를 <em>29명에서 12명</em>으로 줄임.</li>
+            <li>9가지 조합 중 <strong>ResNet18 + ReduceLROnPlateau</strong>가 검증 AUC <em>0.9997</em>로 1위. 이 조합을 다시 학습해 분석한 결과(AUC <em>0.9994</em>), 놓친 환자가 <em>29명에서 12명</em>으로 줄고 민감도가 <em>0.9626 → 0.9845</em>로 올랐습니다.</li>
           </ul>
 
           <h4>성능 개선</h4>
@@ -731,7 +762,77 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <ul>
             <li><strong>Grad-CAM</strong>으로 모델이 실제 폐 병변 영역을 근거로 판단하는지 확인.</li>
             <li>놓친 사례와 반대로 잘못 의심한 사례를 따로 모아, 어떤 영상에서 틀리는지 분석하고 한계를 정리.</li>
+            <li>학습·검증 사이에 같은 이미지가 섞이지 않았는지 <strong>파일명 교집합과 이미지 해시 중복</strong>으로 확인했고, 겹치는 것은 없었습니다. 다만 환자 ID가 제공되지 않은 데이터라, 실무라면 <strong>환자 단위 GroupKFold</strong>로 한 번 더 나눠야 한다고 봤습니다.</li>
           </ul>
+
+          <h4>임계값 조정</h4>
+          <ul>
+            <li>기본 임계값 0.5 대신 <em>0.32</em>로 낮추면 놓치는 환자가 더 줄어(민감도 <em>0.9936</em>) 대신 정상을 폐렴으로 의심하는 경우가 늘었습니다(특이도 <em>0.9851</em>).</li>
+            <li>확률을 0.5로 자르는 게 정답이 아니라, <strong>무엇을 더 겁내느냐에 따라 기준선을 고르는 문제</strong>라고 판단했습니다. 최종 제출에는 OOF로 고른 <em>0.300</em>을 썼습니다.</li>
+          </ul>
+
+          <h4>설명하는 모델과 제출하는 모델을 나눔</h4>
+          <ul>
+            <li>둘의 목적이 달라서 일부러 분리했습니다. <strong>설명용은 ResNet18 + Plateau 단일 모델</strong> — 구조가 단순해 Grad-CAM과 오류 분석으로 근거를 따지기 좋습니다.</li>
+            <li><strong>제출용은 Enhanced 앙상블</strong> — CLAHE, 5-Fold, 3개 백본 soft-voting, MixUp · CutMix에 OOF 임계값까지 얹어 일반화를 노렸습니다. 단순 평균 · 볼록 가중 · logistic stacking을 비교해 볼록 가중(정확도 <em>0.9904</em>)을 골랐습니다.</li>
+            <li>앙상블 OOF 기준 민감도 <em>0.9907</em>. 특이도는 단일 모델보다 조금 낮지만, 놓치는 환자를 더 줄이는 쪽이 이 과제에 맞다고 보고 이걸 제출했습니다.</li>
+          </ul>
+
+          <h4>결과</h4>
+          <p class="fig-hint">그림을 누르면 원본 크기로 열립니다</p>
+          <div class="figs">
+
+            <figure class="fig">
+              <a href="assets/xray/eda-samples.webp" target="_blank" rel="noopener">
+                <img src="assets/xray/eda-samples.webp" width="1400" height="612" loading="lazy" decoding="async"
+                     alt="정상과 폐렴 흉부 X-ray 각 5장을 위아래로 배열한 샘플 이미지">
+              </a>
+              <figcaption>
+                <b>데이터가 어떻게 생겼는가</b>
+                위가 정상, 아래가 폐렴입니다. 폐렴 쪽은 폐야가 뿌옇게 흐려져 있지만 경계가 뚜렷하지 않아,
+                눈으로도 갈리는 경우가 적지 않습니다.
+              </figcaption>
+            </figure>
+
+            <figure class="fig">
+              <a href="assets/xray/learning-curve.webp" target="_blank" rel="noopener">
+                <img src="assets/xray/learning-curve.webp" width="1600" height="427" loading="lazy" decoding="async"
+                     alt="ResNet18 + Plateau 학습 곡선. Loss, 검증 AUC, 민감도와 특이도를 30 에폭에 걸쳐 표시">
+              </a>
+              <figcaption>
+                <b>ResNet18 + Plateau 학습 곡선</b>
+                10 에폭 근처에서 학습률이 한 번 떨어지며 검증 AUC가 <em>0.985</em>대에서 <em>0.999</em>대로 뜁니다.
+                2단계 fine-tuning이 실제로 먹힌 지점입니다.
+              </figcaption>
+            </figure>
+
+            <figure class="fig">
+              <a href="assets/xray/confusion.webp" target="_blank" rel="noopener">
+                <img src="assets/xray/confusion.webp" width="1700" height="503" loading="lazy" decoding="async"
+                     alt="베이스라인과 최종 모델의 혼동행렬 비교. 놓친 폐렴이 29건에서 12건으로 감소">
+              </a>
+              <figcaption>
+                <b>놓친 환자 29명 → 12명</b>
+                왼쪽이 베이스라인, 가운데가 최종 모델입니다. 폐렴인데 정상으로 판정한 칸이
+                <em>29</em>에서 <em>12</em>로 줄었습니다. 민감도 <em>0.9626 → 0.9845</em>,
+                특이도 <em>0.9739 → 0.9925</em>.
+              </figcaption>
+            </figure>
+
+            <figure class="fig">
+              <a href="assets/xray/gradcam.webp" target="_blank" rel="noopener">
+                <img src="assets/xray/gradcam.webp" width="1000" height="1473" loading="lazy" decoding="async"
+                     alt="Grad-CAM 4종 케이스. 맞힌 폐렴, 맞힌 정상, 놓친 폐렴, 잘못 의심한 정상 각각의 히트맵">
+              </a>
+              <figcaption>
+                <b>모델은 어디를 보고 판단했는가</b>
+                맞힌 폐렴(1행)에서는 히트맵이 폐야 한복판에 얹힙니다. 반면 놓친 사례(3행)와
+                잘못 의심한 사례(4행)에서는 초점이 폐 바깥이나 가장자리로 새 있습니다.
+                틀릴 때는 근거부터 틀렸다는 뜻입니다.
+              </figcaption>
+            </figure>
+
+          </div>
 
           <p class="linknote">※ 대회 데이터는 재배포가 불가해 학습 코드와 결과만 별도 공개 예정</p>
         </div>
@@ -851,6 +952,40 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <li>팀 결과물과 별도로 <strong>개인 분석 노트북</strong>을 작성해 전처리 · EDA · 가설 검정 · 시각화 전 과정을 직접 수행.</li>
             <li>분석 코드 작성과 발표 자료 구성을 담당하고 팀 발표에 참여.</li>
           </ul>
+
+          <h4>발견</h4>
+          <ul>
+            <li>흡연 여부와 가장 강하게 붙어 있던 지표는 <strong>헤모글로빈(상관계수 <em>0.40</em>)</strong>이었습니다. 키 <em>0.39</em>, 몸무게 <em>0.31</em>, 중성지방 <em>0.25</em>가 뒤를 이었습니다.</li>
+            <li>반대로 <strong>고밀도지단백(HDL)은 <em>-0.18</em></strong>로 음의 방향이었습니다. 흡연 집단에서 이른바 좋은 콜레스테롤이 낮게 나타났습니다.</li>
+            <li>나이대와 BMI 구간을 따로 만들어 40대와 50대를 갈라 보면, 같은 지표라도 연령대에 따라 차이 폭이 달라졌습니다.</li>
+          </ul>
+
+          <h4>결과</h4>
+          <p class="fig-hint">그림을 누르면 원본 크기로 열립니다</p>
+          <div class="figs">
+            <figure class="fig">
+              <a href="assets/smoking/distributions.webp" target="_blank" rel="noopener">
+                <img src="assets/smoking/distributions.webp" width="1450" height="768" loading="lazy" decoding="async"
+                     alt="흡연 유무에 따른 헤모글로빈, 중성지방, 고밀도지단백, 간 효소율, 공복 혈당, 혈압 분포 히스토그램 6종">
+              </a>
+              <figcaption>
+                <b>흡연 유무에 따른 지표 분포</b>
+                헤모글로빈(왼쪽 위)은 흡연 집단이 눈에 띄게 오른쪽으로 밀려 있고,
+                고밀도지단백(오른쪽 위)은 반대로 왼쪽에 몰려 있습니다. 공복 혈당과 혈압은 두 집단이 거의 겹칩니다.
+              </figcaption>
+            </figure>
+            <figure class="fig">
+              <a href="assets/smoking/correlation.webp" target="_blank" rel="noopener">
+                <img src="assets/smoking/correlation.webp" width="879" height="753" loading="lazy" decoding="async"
+                     alt="건강검진 15개 변수 간 상관계수 히트맵. 맨 아래 행이 흡연 유무와의 상관관계">
+              </a>
+              <figcaption>
+                <b>변수 간 상관관계</b>
+                맨 아랫줄이 흡연 유무와의 상관계수입니다. 헤모글로빈 <em>0.40</em>이 가장 높고,
+                고밀도지단백 <em>-0.18</em>과 간 효소율 <em>-0.18</em>이 음의 방향으로 갈립니다.
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -874,6 +1009,12 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <li>고객 속성 데이터를 기반으로 <strong>예약 완료 여부를 예측하는 분류 모델</strong>을 학습 · 구축.</li>
             <li>변수 중요도를 분석해 구매 의사결정에 실질적으로 영향을 미치는 요인을 도출.</li>
           </ul>
+          <div class="links">
+            <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              <span>Forage 수료증 (PDF)</span>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -897,6 +1038,12 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <li>Python 웹 스크래핑으로 <strong>비정형 리뷰 데이터</strong>를 수집하고 분석 가능한 형태로 정제.</li>
             <li>반복되는 주요 주제를 추출해 기업 관점의 인사이트로 정리.</li>
           </ul>
+          <div class="links">
+            <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
+              <span>Forage 수료증 (PDF)</span>
+            </a>
+          </div>
         </div>
       </article>
 
@@ -920,6 +1067,20 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <li>신약 후보물질 <strong>Miraculon-B</strong>의 임상시험 데이터를 분석하고 시각화.</li>
             <li>분석 결과와 제언을 발표자료로 정리해 GSK · Digdata 심사진에 제출.</li>
           </ul>
+
+          <h4>수료증</h4>
+          <div class="figs">
+            <figure class="fig">
+              <a href="assets/certs/gsk-digdata.webp" target="_blank" rel="noopener">
+                <img src="assets/certs/gsk-digdata.webp" width="1200" height="849" loading="lazy" decoding="async"
+                     alt="Digdata와 GSK가 발급한 STEP UP GSK Virtual Work Experience 수료증">
+              </a>
+              <figcaption>
+                <b>STEP UP GSK Virtual Work Experience</b>
+                Digdata programme · 2023년 6월 · GSK VP SPC Statistics 및 The Data Inspiration Group 서명
+              </figcaption>
+            </figure>
+          </div>
         </div>
       </article>
 
@@ -1044,7 +1205,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
   <footer class="colophon">
     <span>권민재 · Minjae Kwon</span>
-    <span><a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a></span>
+    <span><a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a> · <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">LinkedIn</a></span>
     <span>Last updated 2026.07</span>
   </footer>
 
