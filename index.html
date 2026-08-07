@@ -703,7 +703,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 <div data-lang="en" class="gauge-cap">Largest clinical dataset<br>worked with</div>
     </div>
     <div class="gauge">
-      <div class="gauge-val alt num">2</div>
+      <div class="gauge-val alt num">3</div>
       <div data-lang="ko" class="gauge-cap">헬스케어 해커톤<br>참가 · 완주</div>
 <div data-lang="en" class="gauge-cap">Healthcare hackathons<br>entered and finished</div>
     </div>
@@ -764,12 +764,12 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     </div>
 
     <div class="filters" role="group" aria-label="프로젝트 분야 필터">
-      <button data-lang="ko" class="chip" type="button" data-filter="all" aria-pressed="true">전체<span class="n">8</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="all" aria-pressed="true">All<span class="n">8</span></button>
+      <button data-lang="ko" class="chip" type="button" data-filter="all" aria-pressed="true">전체<span class="n">9</span></button>
+<button data-lang="en" class="chip" type="button" data-filter="all" aria-pressed="true">All<span class="n">9</span></button>
       <button data-lang="ko" class="chip" type="button" data-filter="dl" aria-pressed="false">딥러닝<span class="n">1</span></button>
 <button data-lang="en" class="chip" type="button" data-filter="dl" aria-pressed="false">Deep learning<span class="n">1</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="ml" aria-pressed="false">머신러닝<span class="n">3</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="ml" aria-pressed="false">Machine learning<span class="n">3</span></button>
+      <button data-lang="ko" class="chip" type="button" data-filter="ml" aria-pressed="false">머신러닝<span class="n">4</span></button>
+<button data-lang="en" class="chip" type="button" data-filter="ml" aria-pressed="false">Machine learning<span class="n">4</span></button>
       <button data-lang="ko" class="chip" type="button" data-filter="be" aria-pressed="false">백엔드<span class="n">1</span></button>
 <button data-lang="en" class="chip" type="button" data-filter="be" aria-pressed="false">Backend<span class="n">1</span></button>
       <button data-lang="ko" class="chip" type="button" data-filter="ea" aria-pressed="false">데이터 분석<span class="n">2</span></button>
@@ -779,6 +779,87 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     </div>
 
     <div class="grid" id="grid">
+
+      <!-- ─────────── 암 아형 ─────────── -->
+      <article class="card" data-cat="ml">
+        <div class="card-top">
+          <span data-lang="ko" class="card-when">2026.07 — 08</span><span data-lang="en" class="card-when">Jul — Aug 2026</span>
+          <span data-lang="ko" class="tag ml">머신러닝</span><span data-lang="en" class="tag ml">Machine learning</span>
+        </div>
+        <h3><button data-lang="ko" class="card-open" type="button">유전자 변이로 암 아형 분류</button><button data-lang="en" class="card-open" type="button">Classifying cancer subtype from gene mutations</button></h3>
+        <div data-lang="ko" class="card-org">DACON · [초격차] AI 헬스케어 5기 · 4인 팀</div><div data-lang="en" class="card-org">DACON · AI Healthcare cohort 5 · team of four</div>
+        <div class="stack"><span>XGBoost</span><span>CatBoost</span><span>LightGBM</span><span>PyTorch</span><span>Optuna</span></div>
+        <div class="meter">
+          <div class="meter-row">
+            <span class="meter-val num">0.4942</span>
+            <span data-lang="ko" class="meter-key">26개 클래스 Macro F1</span><span data-lang="en" class="meter-key">Macro F1 over 26 classes</span>
+          </div>
+          <div class="bar"><i data-fill="49"></i></div>
+        </div>
+        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
+
+        <div class="detail"
+             data-title="유전자 변이 기반 암 아형(SUBCLASS) 예측 AI 해커톤"
+             data-title-en="Cancer Subtype Prediction from Gene Mutations Hackathon"
+             data-sub="DACON · [초격차] AI 헬스케어 5기 해커톤 · 4인 팀 (4팀 중 2위) · 2026.07 — 2026.08"
+             data-sub-en="DACON · AI Healthcare cohort 5 · team of four (2nd of 4) · Jul — Aug 2026">
+          <div class="stats">
+            <div class="stat"><b class="num">0.4942</b><span data-lang="ko">Public 리더보드</span><span data-lang="en">Public leaderboard</span></div>
+            <div class="stat"><b class="num">0.5509</b><span data-lang="ko">교차적합 CV</span><span data-lang="en">Cross-fit CV</span></div>
+            <div class="stat"><b class="num crit">+0.0829</b><span data-lang="ko">짝 규칙 한 번의 이득</span><span data-lang="en">Gain from one rule</span></div>
+            <div class="stat"><b class="num alt">4,384</b><span data-lang="ko">유전자 열</span><span data-lang="en">Gene columns</span></div>
+            <div class="stat"><b class="num alt">26</b><span data-lang="ko">암 아형</span><span data-lang="en">Cancer subtypes</span></div>
+          </div>
+
+          <h4 data-lang="ko">무엇이 어려웠는가</h4><h4 data-lang="en">What made this hard</h4>
+          <ul>
+            <li data-lang="ko">환자 한 명이 유전자 <em>4,384</em>칸짜리 기록으로 들어옵니다. 각 칸에는 그 유전자에 오타가 있는지, 있다면 어떤 오타인지가 문자열로 적혀 있습니다. 그걸로 <em>26</em>개 암 아형 중 하나를 맞히는 과제였습니다.</li><li data-lang="en">Each patient arrives as a <em>4,384</em>-column record. Every column says whether that gene carries a mutation and, if so, which one — as a raw string. From that, pick one of <em>26</em> cancer subtypes.</li>
+            <li data-lang="ko">전체 <em>2,718만</em> 칸 중 <strong>99.19%가 정상(WT)</strong>입니다. 실제 신호는 0.81%뿐인 초희소 행렬이라 원본 그대로는 학습이 되지 않았습니다.</li><li data-lang="en">Of <em>27.2 million</em> cells, <strong>99.19% are wild-type</strong>. Only 0.81% carries signal, and nothing trains usefully on the raw matrix.</li>
+            <li data-lang="ko">최다 클래스 BRCA <em>786</em>건에 최소 클래스 DLBC <em>38</em>건. 평가지표가 Macro F1이라 소수 클래스 하나를 통째로 놓치면 그만큼 점수가 깎입니다.</li><li data-lang="en">The largest class, BRCA, holds <em>786</em> rows; the smallest, DLBC, holds <em>38</em>. With Macro F1 as the metric, losing one rare class costs its full share of the score.</li>
+            <li data-lang="ko">test 변이의 <strong>94.4%가 train에 없던 것</strong>이고, 샘플당 변이 유전자 수도 test가 <em>2.2배</em> 많았습니다. train에서 잘 맞는 것이 test에서 맞는다는 보장이 없는 상태였습니다.</li><li data-lang="en"><strong>94.4% of test mutations never appear in train</strong>, and test samples carry <em>2.2×</em> as many mutated genes. Fitting train well guaranteed nothing about test.</li>
+          </ul>
+
+          <h4 data-lang="ko">같은 환자가 두 번 들어와 있었다 — 제가 맡은 부분</h4><h4 data-lang="en">The same patient, entered twice — my part</h4>
+          <ul>
+            <li data-lang="ko">4,384칸이 <strong>글자 하나까지 똑같은 환자 쌍</strong>을 세어 봤더니 train 안에 <em>422</em>건 있었습니다. 그런데 그 422건 중 <strong>같은 라벨끼리 묶인 것이 0건</strong>이었습니다. 무작위라면 5.7%는 겹쳐야 하는데 정확히 0%였습니다.</li><li data-lang="en">I counted pairs whose <strong>4,384 columns match character for character</strong>: <em>422</em> of them inside train. Not one pair shared a label — <strong>zero out of 422</strong>, where chance alone predicts 5.7%.</li>
+            <li data-lang="ko">이유는 라벨 목록 자체에 있었습니다. 26개 중 넷은 개별 병명이 아니라 여러 병을 묶은 상위 이름입니다. KIPAN은 신장암 세 아형의 합이고 GBMLGG는 신경교종 둘의 합입니다. <strong>한 환자가 두 이름으로 불릴 수 있어</strong> 같은 사람이 서로 다른 라벨로 두 줄 들어온 것이었습니다.</li><li data-lang="en">The label list explains it. Four of the 26 are umbrella names, not individual diseases: KIPAN is the union of three kidney subtypes, GBMLGG of two gliomas. <strong>One patient can carry two valid names</strong>, so the same person entered twice under different labels.</li>
+            <li data-lang="ko">확증은 고아 수에서 나왔습니다. train에 짝이 없는 KIRC 환자가 <em>57</em>명인데, test에서 KIRC 프로파일과 완전히 일치한 행이 정확히 <em>57</em>개였습니다. LGG는 <em>50</em>과 <em>50</em>. 흩어진 나머지 짝이 test에 있었던 겁니다.</li><li data-lang="en">The orphan counts confirmed it. <em>57</em> KIRC patients had no partner in train — and exactly <em>57</em> test rows matched a KIRC profile outright. For LGG it was <em>50</em> and <em>50</em>. The missing halves were sitting in the test set.</li>
+            <li data-lang="ko">그래서 매칭된 test <em>214</em>행(8.4%)에 <strong>매칭된 라벨이 아니라 그 반대쪽</strong>을 부여하는 규칙을 만들었습니다. 그 환자의 다른 한 줄은 train이 이미 쓰고 있으니까요. 리더보드가 <strong>+0.0829</strong> 올랐습니다.</li><li data-lang="en">So for the <em>214</em> matched test rows (8.4%) I assigned <strong>the opposite label, not the matched one</strong> — train already holds that patient's other row. The leaderboard moved <strong>+0.0829</strong>.</li>
+            <li data-lang="ko">특정 모델 덕이 아닌지 확인했습니다. 전혀 다른 두 베이스에 얹었을 때 이득이 <em>+0.0922</em>와 <em>+0.0913</em>으로, 두 베이스 자체의 차이(0.0009)만큼만 달랐습니다. <strong>베이스와 무관한 상수 가산</strong>이었습니다.</li><li data-lang="en">I checked it was not a fluke of one model. Applied to two unrelated bases the gain was <em>+0.0922</em> and <em>+0.0913</em> — differing only by the 0.0009 gap between the bases themselves. <strong>A constant, base-independent addition.</strong></li>
+            <li data-lang="ko">규정도 따로 확인했습니다. 규칙은 train.csv에서만 유도되고, test <em>2,546</em>행을 한 행씩 넣어 전수 확인해 불일치 0건이며, <strong>test끼리의 매칭은 쓰지 않았습니다</strong> — 그건 행 단위 독립이 깨집니다.</li><li data-lang="en">I checked it against the rules too. The rule derives only from train.csv, I verified all <em>2,546</em> test rows one at a time with zero mismatches, and I <strong>never matched test rows against each other</strong> — that would break row independence.</li>
+          </ul>
+
+          <h4 data-lang="ko">문자열을 숫자로</h4><h4 data-lang="en">Turning strings into numbers</h4>
+          <ul>
+            <li data-lang="ko">변이 문자열을 사건 단위로 파싱해 유형(뜻이 바뀌는 오타 · 문장을 끊는 오타 · 칸이 밀리는 오타 등), 위치, 바뀐 아미노산을 뽑았습니다. 여기에 드라이버 유전자 변이 여부, 변이 부담, 치환 조성 등을 더해 <strong>도메인 피처 539칸</strong>을 만들었습니다.</li><li data-lang="en">We parsed each mutation string into events — missense, nonsense, frameshift and so on — along with position and substituted amino acid. Adding driver-gene flags, mutation burden and substitution composition gave <strong>539 domain features</strong>.</li>
+            <li data-lang="ko">승부처는 <strong>오타를 한 단계 되돌린 블록</strong>이었습니다. 아미노산이 무엇에서 무엇으로 바뀌었는지를 241칸으로 넣으면 Macro F1 <em>0.3971</em>인데, 이를 DNA 글자 단위 <em>9</em>칸으로 환원하면 <em>0.4140</em>이 나왔습니다. <strong>칸 수는 26분의 1인데 점수는 더 높습니다.</strong></li><li data-lang="en">The decisive block <strong>rolled the mutation back one step</strong>. Encoding amino-acid substitutions directly took 241 columns and scored <em>0.3971</em>; reducing them to <em>9</em> DNA-level columns scored <em>0.4140</em>. <strong>A twenty-sixth of the width, and a better score.</strong></li>
+            <li data-lang="ko">이유는 안정성에 있었습니다. train과 test 사이 변이율 배율의 중앙값이 아미노산 블록은 0.576인데 DNA 블록은 0.070으로, <strong>분포 시프트에 8배 덜 흔들렸습니다.</strong> 정보가 는 게 아니라 코돈표가 모델 대신 요약해 준 것입니다.</li><li data-lang="en">Stability was the reason. Across train and test the median mutation-rate ratio was 0.576 for the amino-acid block against 0.070 for the DNA one — <strong>eight times steadier under the distribution shift</strong>. No new information; the codon table simply did a summarisation the model could not.</li>
+          </ul>
+
+          <h4 data-lang="ko">CV를 올렸더니 리더보드가 내려갔다</h4><h4 data-lang="en">CV went up, the leaderboard went down</h4>
+          <ul>
+            <li data-lang="ko">유전자 4,384열을 클래스별 증거 26개로 압축하는 블록이 CV를 <em>+0.0600</em> 올렸습니다. 그런데 group 분할로 다시 재니 <em>−0.0058</em>이었습니다. 같은 피처, 정반대 판정이었습니다.</li><li data-lang="en">A block compressing 4,384 gene columns into 26 per-class evidence scores lifted CV by <em>+0.0600</em>. Re-measured under a group split it came out at <em>−0.0058</em>. Same feature, opposite verdict.</li>
+            <li data-lang="ko">원인은 위에서 찾은 쌍둥이였습니다. 프로파일이 같은 두 줄이 학습과 검증으로 갈리면 모델은 <strong>파트너의 라벨을 그대로 재생</strong>합니다. 피처가 좋았던 게 아니라 fold 설계의 구멍을 학습한 것이었습니다.</li><li data-lang="en">The twins from earlier were the cause. When two identical profiles land on opposite sides of a split, the model simply <strong>replays its partner's label</strong>. The feature was not good; it was learning a hole in the fold design.</li>
+            <li data-lang="ko">그래서 <strong>변이 벡터의 해시를 group key로 쓰는 분할</strong>로 fold를 다시 설계하고 지문(997d89a2)으로 고정했습니다. 리더보드의 측정 오차도 함께 재서(1σ <em>0.0111</em>), 그보다 작은 차이는 개선으로 치지 않았습니다.</li><li data-lang="en">We rebuilt the folds around <strong>a hash of the mutation vector as the group key</strong> and pinned them with a fingerprint (997d89a2). We also measured the leaderboard's own noise (1σ <em>0.0111</em>) and stopped counting anything smaller as an improvement.</li>
+          </ul>
+
+          <h4 data-lang="ko">앙상블과 재현성 — 제가 맡은 부분</h4><h4 data-lang="en">Ensembling and reproducibility — my part</h4>
+          <ul>
+            <li data-lang="ko">XGBoost · LightGBM · CatBoost · RandomForest를 같은 인터페이스로 묶고 Optuna 탐색을 붙였습니다. 그 위에 <strong>Caruana 그리디 앙상블 · 교차적합 블렌딩 · 시드 스윕 · 클래스별 확률 보정</strong>을 얹어 베이스라인 <em>0.37</em>에서 교차적합 CV <em>0.5509</em>까지 올렸습니다.</li><li data-lang="en">I put XGBoost, LightGBM, CatBoost and RandomForest behind one interface and wired Optuna to it. On top went <strong>Caruana greedy ensembling, cross-fit blending, seed sweeps and per-class calibration</strong>, carrying the baseline from <em>0.37</em> to a cross-fit CV of <em>0.5509</em>.</li>
+            <li data-lang="ko">단독 성능이 가장 좋았던 멤버는 다른 모델과 상관이 높아 오히려 앙상블을 깎았고, <strong>단독으로는 꼴찌였던 딥러닝 모델이 기여도 2위</strong>였습니다. 앙상블에서는 잘하는 것보다 다르게 틀리는 것이 값어치가 있었습니다.</li><li data-lang="en">The strongest solo member correlated too closely with the rest and actually dragged the blend down, while <strong>the deep-learning model that finished last alone contributed second-most</strong>. In an ensemble, being wrong differently is worth more than being right.</li>
+            <li data-lang="ko"><strong>기각한 구성도 파라미터 프리셋으로 등록해</strong> 재현할 수 있게 뒀습니다. 그 구성으로 낸 제출본을 다시 만들지 못하면 기각 판정 자체를 믿을 수 없기 때문입니다.</li><li data-lang="en">I <strong>registered the rejected configurations as presets too</strong>. If a submission made under one cannot be rebuilt, the decision to reject it is not trustworthy either.</li>
+            <li data-lang="ko">제출 재현 노트북이 실제 제출 파일과 <strong>2,546행을 전 행 대조</strong>하도록 자동 테스트를 걸었습니다. 통계량을 쓰는 전처리는 fold-train에만 fit하도록 코드가 강제하고, 누수 · 정렬 · 제출 스키마 무결성 테스트가 함께 돌아갑니다.</li><li data-lang="en">An automated test makes the reproduction notebook match the actual submission <strong>across all 2,546 rows</strong>. Any preprocessing that uses statistics is forced by the code to fit on fold-train only, alongside leakage, alignment and submission-schema integrity tests.</li>
+          </ul>
+
+          <h4 data-lang="ko">남은 천장</h4><h4 data-lang="en">The ceiling we did not reach</h4>
+          <ul>
+            <li data-lang="ko">교차적합 산출물에서 직접 계산한 클래스별 F1은 ACC <em>0.913</em> · SKCM <em>0.894</em>에서 SARC <em>0.238</em> · THYM <em>0.295</em>까지 벌어집니다. 38행뿐인 DLBC가 <em>0.700</em>이고 198행인 SARC가 <em>0.238</em>이라, 표본 수가 아니라 신호의 문제였습니다.</li><li data-lang="en">Per-class F1, computed straight from the cross-fit output, runs from ACC <em>0.913</em> and SKCM <em>0.894</em> down to SARC <em>0.238</em> and THYM <em>0.295</em>. DLBC scores <em>0.700</em> on 38 rows while SARC scores <em>0.238</em> on 198 — a signal problem, not a sample-size one.</li>
+            <li data-lang="ko">오분류 <em>2,914</em>건 중 <em>470</em>건(16.1%)이 앞서 나온 <strong>상위–하위 이름 네 개 안에서</strong> 일어납니다. 남은 여지도 대부분 거기 있다는 뜻입니다.</li><li data-lang="en">Of <em>2,914</em> misclassifications, <em>470</em> (16.1%) happen <strong>inside the four umbrella-and-subtype names</strong> from earlier. Most of the remaining headroom sits in the same place.</li>
+          </ul>
+
+          <p data-lang="ko" class="linknote">※ 코드 공개: <a href="https://github.com/cancer-classification-ai/onco-ai" target="_blank" rel="noopener">github.com/cancer-classification-ai/onco-ai</a> · 대회 데이터는 재배포 불가</p><p data-lang="en" class="linknote">※ Code: <a href="https://github.com/cancer-classification-ai/onco-ai" target="_blank" rel="noopener">github.com/cancer-classification-ai/onco-ai</a> · competition data cannot be redistributed</p>
+        </div>
+      </article>
 
       <!-- ─────────── X-ray ─────────── -->
       <article class="card" data-cat="dl">
@@ -1440,7 +1521,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <ul><li data-lang="ko">LightGBM · XGBoost · CatBoost 앙상블</li>
 <li data-lang="en">LightGBM · XGBoost · CatBoost ensembles</li><li data-lang="ko">Optuna 튜닝 · SHAP 해석</li>
 <li data-lang="en">Optuna tuning · SHAP interpretation</li><li data-lang="ko">scikit-learn · 피처 엔지니어링</li>
-<li data-lang="en">scikit-learn · feature engineering</li></ul>
+<li data-lang="en">scikit-learn · feature engineering</li><li data-lang="ko">OOF 스태킹 · 확률 보정 · 누수 차단 교차검증 설계</li>
+<li data-lang="en">OOF stacking · calibration · leakage-safe CV design</li></ul>
         </div>
       </div>
     </div>
@@ -1554,6 +1636,12 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     </div>
     <div class="rows">
       <div class="row">
+        <div class="row-when">2026.08</div>
+        <div class="row-what"><b data-lang="ko">DACON 유전자 변이 기반 암 아형 예측 AI 해커톤</b>
+<b data-lang="en">DACON Cancer Subtype Prediction from Gene Mutations Hackathon</b><code data-lang="ko" class="hl">4팀 중 2위 · 4인 팀 · Public LB Macro F1 0.4942</code>
+<code data-lang="en" class="hl">2nd of 4 teams · team of four · Public LB Macro F1 0.4942</code></div>
+      </div>
+      <div class="row">
         <div class="row-when">2026.07</div>
         <div class="row-what"><b data-lang="ko">DACON 흉부 X-ray 폐렴 분류 AI 해커톤</b>
 <b data-lang="en">DACON Chest X-ray Pneumonia Classification Hackathon</b><code data-lang="ko" class="hl">리더보드 0.95192 · 개인전 (참가자 85명)</code>
@@ -1588,7 +1676,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   <footer class="colophon">
     <span data-lang="ko">권민재 · Minjae Kwon</span><span data-lang="en">Minjae Kwon · 권민재</span>
     <span><a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a> · <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">LinkedIn</a></span>
-    <span>Last updated 2026.07</span>
+    <span>Last updated 2026.08</span>
   </footer>
 
 </div>
