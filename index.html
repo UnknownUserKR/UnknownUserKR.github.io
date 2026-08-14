@@ -588,52 +588,52 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 <span data-lang="en" class="ko">Introduction</span>
     </div>
     <p data-lang="ko" class="lede">
-      영국에서 약리학을 전공했습니다. 학부 수업에서 <strong>바이오인포매틱스</strong>를 처음 접했고,
-      졸업 프로젝트로는 아드레날린 수용체에 약물이 어떻게 결합하는지 도킹 시뮬레이션으로 확인하고
-      그 결과를 파이썬으로 정리했습니다. 데이터 쪽 일을 해봐야겠다고 생각한 게 이때입니다.
+      영국 리즈대학교에서 약리학을 전공했습니다. 학부 때 <strong>바이오인포매틱스</strong> 수업에서
+      생물학 문제를 데이터로 푸는 방법을 처음 접했고, 졸업 프로젝트에서는 약물이 몸속 수용체에
+      어떻게 결합하는지를 시뮬레이션으로 예측하고 그 결과를 파이썬으로 분석했습니다.
+      이 작업이 재미있어서 데이터 분석을 진로로 정했습니다.
     </p>
 <p data-lang="en" class="lede">
-      I studied pharmacology at the University of Leeds. <strong>Bioinformatics</strong> first came up in an
-      undergraduate module, and for my final-year project I used docking simulations to look at how drugs
-      bind to adrenergic receptors, then analysed the results in Python. That is when I decided to work
-      with data.
+      I studied pharmacology at the University of Leeds. A <strong>bioinformatics</strong> module
+      introduced me to solving biology problems with data, and for my final-year project I used
+      simulations to predict how drugs bind to receptors in the body, then analysed the results in
+      Python. I enjoyed that work enough to choose data analysis as a career.
     </p>
     <p data-lang="ko" class="lede">
-      전역 후 2026년 4월부터 오즈코딩스쿨 AI 헬스케어 과정을 듣고 있습니다. 과정과 병행해
-      DACON 헬스케어 해커톤에 세 번 참가했습니다. 난임 시술 데이터 <em>25만 건</em>으로 임신 성공을
-      예측하는 대회에서는 4인 팀 팀장을 맡아 ROC-AUC <em>0.74218</em>로 마쳤고, 1위와 <em>0.0003</em>
-      차이였습니다. 흉부 X-ray 폐렴 분류는 개인전으로 나가 <em>0.95192</em>를 받았습니다. 이쪽은
-      폐렴 환자를 정상으로 판정하는 오류를 줄이는 데 집중해서, 놓친 환자가 <em>29명에서 12명</em>으로
-      줄었습니다. 세 번째는 유전자 변이로 암 아형을 분류하는 대회였고 4인 팀으로 4팀 중 2위를 했습니다.
+      전역 후 2026년 4월부터 오즈코딩스쿨 AI 헬스케어 과정에서 머신러닝과 딥러닝을 공부하고 있습니다.
+      배운 내용을 실전에서 써보고 싶어 DACON 헬스케어 해커톤에 세 번 참가했습니다.
+      난임 환자의 임신 성공을 예측하는 대회에서는 <strong>4인 팀의 팀장</strong>을 맡아 1위와
+      <em>0.0003</em> 차이로 마쳤습니다. 흉부 X-ray로 폐렴을 분류하는 대회는 개인전으로 참가해,
+      폐렴 환자를 정상으로 판정하는 오류를 줄이는 데 집중한 결과 놓친 환자가 <em>29명에서 12명</em>으로
+      줄었습니다. 유전자 변이로 암 아형을 분류하는 대회에서는 모델 앙상블과 결과 재현 검증을 맡았습니다.
     </p>
 <p data-lang="en" class="lede">
-      After completing my military service I started the AI Healthcare course at Oz Coding School in
-      April 2026, and I have entered three DACON healthcare hackathons alongside it. In the fertility
-      competition I led a team of four, predicting pregnancy success from <em>256,351</em> treatment
-      records; we finished on a ROC-AUC of <em>0.74218</em>, <em>0.0003</em> behind first place. I entered
-      the chest X-ray pneumonia classification on my own and scored <em>0.95192</em>. There I focused on
-      reducing cases where a pneumonia patient is classified as normal, and missed patients fell from
-      <em>29 to 12</em>. The third was cancer subtype classification from gene mutations, where our team
-      of four placed second out of four.
+      After my military service I started the AI Healthcare course at Oz Coding School in April 2026,
+      studying machine learning and deep learning. Wanting to try what I was learning on real problems,
+      I entered three DACON healthcare hackathons. In the fertility treatment competition I
+      <strong>led a team of four</strong> and we finished <em>0.0003</em> behind first place. I entered
+      the chest X-ray pneumonia competition on my own, concentrating on not missing pneumonia patients,
+      and missed cases fell from <em>29 to 12</em>. In the cancer subtype competition I handled the
+      model ensemble and made sure our results could be reproduced.
     </p>
     <p data-lang="ko" class="lede">
-      같은 과정의 팀 프로젝트로 학습한 모델을 <strong>FastAPI와 Docker로 서빙하는 서비스</strong>도
-      만들었습니다. 저는 실행·배포 환경을 맡아 Docker Compose로 다섯 개 서비스를 묶었고, 추론이 오래
-      걸리는 작업은 Redis Streams로 빼서 API 응답이 밀리지 않게 했습니다.
+      같은 과정의 팀 프로젝트로, 학습된 모델을 <strong>FastAPI와 Docker로 서빙하는 웹 서비스</strong>도
+      만들었습니다. 저는 실행·배포 환경을 맡아 다섯 개 서비스를 Docker Compose 하나로 실행되게
+      구성했고, 시간이 오래 걸리는 AI 분석은 Redis 큐로 분리해 API 응답이 밀리지 않게 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      On the same course I worked on a team project that serves trained models through <strong>FastAPI and
-      Docker</strong>. I was responsible for the runtime and deployment environment, bringing five services
-      together under Docker Compose and moving slow inference onto Redis Streams so that it would not
-      delay API responses.
+      In a team project on the same course, we built a web service that serves trained models through
+      <strong>FastAPI and Docker</strong>. I set up the runtime and deployment environment: five services
+      running from a single Docker Compose file, with slow AI analysis moved onto a Redis queue so it
+      would not hold up API responses.
     </p>
     <p data-lang="ko" class="lede">
-      헬스케어 데이터를 다루는 데이터 분석과 머신러닝 직무를 찾고 있습니다. 약리학을 공부한 배경이
-      임상 변수를 읽을 때 도움이 된다고 생각합니다.
+      지금은 헬스케어 데이터를 다루는 데이터 분석·머신러닝 직무를 찾고 있습니다. 검사 수치나 시술
+      기록 같은 임상 데이터를 읽을 때 약리학을 공부한 배경이 도움이 됩니다.
     </p>
 <p data-lang="en" class="lede">
-      I am looking for data analysis and machine learning roles working with healthcare data. I think my
-      background in pharmacology helps when interpreting clinical variables.
+      I am now looking for data analysis and machine learning roles in healthcare. My pharmacology
+      background helps me make sense of clinical data such as test results and treatment records.
     </p>
   </section>
 
