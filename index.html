@@ -593,9 +593,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       그 결과를 파이썬으로 정리했습니다. 데이터 쪽 일을 해봐야겠다고 생각한 게 이때입니다.
     </p>
 <p data-lang="en" class="lede">
-      I read pharmacology at the University of Leeds. <strong>Bioinformatics</strong> came up in one of the
-      modules, and for my final-year project I ran docking simulations on adrenergic receptors and worked
-      through the results in Python. That was my first real work with data.
+      I studied pharmacology at the University of Leeds. <strong>Bioinformatics</strong> first came up in an
+      undergraduate module, and for my final-year project I used docking simulations to look at how drugs
+      bind to adrenergic receptors, then analysed the results in Python. That is when I decided to work
+      with data.
     </p>
     <p data-lang="ko" class="lede">
       전역 후 2026년 4월부터 오즈코딩스쿨 AI 헬스케어 과정을 듣고 있습니다. 과정과 병행해
@@ -606,13 +607,14 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       줄었습니다. 세 번째는 유전자 변이로 암 아형을 분류하는 대회였고 4인 팀으로 4팀 중 2위를 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      Since April 2026 I have been on the AI Healthcare course at Oz Coding School, and I entered three
-      DACON healthcare hackathons alongside it. On the fertility one I led a team of four across
-      <em>256,351</em> treatment records and finished at ROC-AUC <em>0.74218</em>, <em>0.0003</em> behind
-      first place. I entered the chest X-ray pneumonia classification individually and scored
-      <em>0.95192</em>; there I worked on reducing the cases where a pneumonia patient gets called normal,
-      which went from <em>29 to 12</em>. The third was classifying cancer subtype from gene mutations,
-      again in a team of four, and we came second of four teams.
+      After completing my military service I started the AI Healthcare course at Oz Coding School in
+      April 2026, and I have entered three DACON healthcare hackathons alongside it. In the fertility
+      competition I led a team of four, predicting pregnancy success from <em>256,351</em> treatment
+      records; we finished on a ROC-AUC of <em>0.74218</em>, <em>0.0003</em> behind first place. I entered
+      the chest X-ray pneumonia classification on my own and scored <em>0.95192</em>. There I focused on
+      reducing cases where a pneumonia patient is classified as normal, and missed patients fell from
+      <em>29 to 12</em>. The third was cancer subtype classification from gene mutations, where our team
+      of four placed second out of four.
     </p>
     <p data-lang="ko" class="lede">
       같은 과정의 팀 프로젝트로 학습한 모델을 <strong>FastAPI와 Docker로 서빙하는 서비스</strong>도
@@ -620,17 +622,18 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       걸리는 작업은 Redis Streams로 빼서 API 응답이 밀리지 않게 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      The course also included a team project serving trained models over <strong>FastAPI and
-      Docker</strong>. I took the deployment side: five services under Docker Compose, with slow inference
-      moved onto Redis Streams so API responses would not be held up behind it.
+      On the same course I worked on a team project that serves trained models through <strong>FastAPI and
+      Docker</strong>. I was responsible for the runtime and deployment environment, bringing five services
+      together under Docker Compose and moving slow inference onto Redis Streams so that it would not
+      delay API responses.
     </p>
     <p data-lang="ko" class="lede">
       헬스케어 데이터를 다루는 데이터 분석과 머신러닝 직무를 찾고 있습니다. 약리학을 공부한 배경이
       임상 변수를 읽을 때 도움이 된다고 생각합니다.
     </p>
 <p data-lang="en" class="lede">
-      I am looking for data analysis and machine learning roles that involve healthcare data. The
-      pharmacology background helps when I have to read clinical variables.
+      I am looking for data analysis and machine learning roles working with healthcare data. I think my
+      background in pharmacology helps when interpreting clinical variables.
     </p>
   </section>
 
@@ -702,7 +705,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <ul>
             <li data-lang="ko">4,384칸이 <strong>글자 하나까지 동일한 환자 쌍</strong>을 세어 보니 train 안에 <em>422</em>건 있었습니다. 그중 같은 라벨끼리 묶인 것은 <strong>0건</strong>이었습니다. 무작위라면 5.7% 정도는 겹쳐야 하는 수치입니다.</li><li data-lang="en">I counted the pairs whose <strong>4,384 columns match character for character</strong>: <em>422</em> inside train. <strong>None of them shared a label</strong>, where chance alone would put about 5.7% together.</li>
             <li data-lang="ko">원인은 라벨 목록에 있었습니다. 26개 중 넷은 개별 병명이 아니라 상위 분류입니다. KIPAN은 신장암 세 아형의 합이고 GBMLGG는 신경교종 둘의 합입니다. <strong>한 환자가 두 이름으로 기록될 수 있어</strong> 같은 사람이 서로 다른 라벨로 두 줄 들어가 있었습니다.</li><li data-lang="en">The label list explains it. Four of the 26 are umbrella categories rather than individual diseases: KIPAN is the union of three kidney subtypes, GBMLGG of two gliomas. <strong>One patient can be recorded under two names</strong>, so the same person appears twice with different labels.</li>
-            <li data-lang="ko">고아 수로 확인했습니다. train에 짝이 없는 KIRC 환자가 <em>57</em>명인데 test에서 KIRC 프로파일과 완전히 일치한 행이 <em>57</em>개였습니다. LGG는 <em>50</em>과 <em>50</em>이었습니다.</li><li data-lang="en">The orphan counts confirmed it: <em>57</em> KIRC patients had no partner in train, and <em>57</em> test rows matched a KIRC profile exactly. For LGG the numbers were <em>50</em> and <em>50</em>.</li>
+            <li data-lang="ko">짝이 없는 환자 수로 확인했습니다. train에 짝이 없는 KIRC 환자가 <em>57</em>명인데 test에서 KIRC 프로파일과 완전히 일치한 행이 <em>57</em>개였습니다. LGG는 <em>50</em>과 <em>50</em>이었습니다.</li><li data-lang="en">The orphan counts confirmed it: <em>57</em> KIRC patients had no partner in train, and <em>57</em> test rows matched a KIRC profile exactly. For LGG the numbers were <em>50</em> and <em>50</em>.</li>
             <li data-lang="ko">매칭된 test <em>214</em>행(8.4%)에 <strong>매칭된 라벨의 반대쪽</strong>을 부여하는 규칙을 만들었습니다. 그 환자의 다른 한 줄은 train이 이미 쓰고 있기 때문입니다. 리더보드가 <strong>+0.0829</strong> 올랐습니다.</li><li data-lang="en">For the <em>214</em> matched test rows (8.4%) I assigned <strong>the opposite label to the matched one</strong>, since train already holds that patient's other row. The leaderboard moved <strong>+0.0829</strong>.</li>
             <li data-lang="ko">특정 모델에 기댄 결과인지 확인했습니다. 서로 다른 두 베이스에 적용했을 때 이득이 <em>+0.0922</em>와 <em>+0.0913</em>으로, 두 베이스 자체의 차이(0.0009)만큼만 벌어졌습니다.</li><li data-lang="en">I checked whether it depended on one model. Applied to two unrelated bases the gain was <em>+0.0922</em> and <em>+0.0913</em>, differing only by the 0.0009 gap between the bases themselves.</li>
             <li data-lang="ko">규정도 확인했습니다. 규칙은 train.csv에서만 유도했고, test <em>2,546</em>행을 한 행씩 전수 확인해 불일치가 없었으며, <strong>test끼리의 매칭은 쓰지 않았습니다</strong>. 행 단위 독립이 깨지기 때문입니다.</li><li data-lang="en">I checked it against the competition rules as well. The rule derives only from train.csv, I verified all <em>2,546</em> test rows individually with no mismatches, and I <strong>did not match test rows against each other</strong>, which would break row independence.</li>
@@ -997,7 +1000,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <li data-lang="ko">4인 팀에서 <strong>실행·배포 환경</strong>을 맡았습니다. Docker Compose로 FastAPI · MySQL · Redis · AI Worker · Adminer 다섯 서비스를 묶었습니다.</li><li data-lang="en">In a team of four I owned the <strong>runtime and deployment environment</strong>, wiring five services — FastAPI, MySQL, Redis, the AI worker and Adminer — into one Docker Compose stack.</li>
             <li data-lang="ko">클론 직후 <strong>명령 두 줄로 실행되도록</strong> 맞추는 데 시간을 썼습니다. <code>.env</code>가 없으면 컨테이너 기동 시 자동 생성하고, 로컬 MySQL과 충돌하지 않게 호스트 포트를 3307로 옮기고 시드 데이터를 넣어뒀습니다.</li><li data-lang="en">Much of that went into <strong>getting a fresh clone running in two commands</strong>: auto-generating <code>.env</code> on boot, moving the host port to 3307 to avoid clashing with a local MySQL, and seeding test data.</li>
             <li data-lang="ko">이미지가 무거워서 <strong>CPU 전용 torch로 바꾸고 예측 시점에 지연 로딩</strong>하도록 고쳤습니다.</li><li data-lang="en">The image was heavy, so I switched to <strong>CPU-only torch and deferred the import to prediction time</strong>.</li>
-            <li data-lang="ko">환자 소프트 삭제와 진료기록 목록 조회 API를 구현하고 5일차 환자 관리 API 설계 명세를 작성했습니다.</li><li data-lang="en">I built the patient soft-delete and medical-record listing endpoints, and wrote the patient-management API spec.</li>
+            <li data-lang="ko">환자 소프트 삭제와 진료기록 목록 조회 API를 구현하고 환자 관리 API 설계 명세를 작성했습니다.</li><li data-lang="en">I built the patient soft-delete and medical-record listing endpoints, and wrote the patient-management API spec.</li>
             <li data-lang="ko">Windows · macOS 별 Docker 환경 설정 가이드와 배포 문서(DEPLOY.md)를 정리했습니다.</li><li data-lang="en">I also wrote the Docker setup guides for Windows and macOS, plus the deployment doc.</li>
           </ul>
 
@@ -1051,7 +1054,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
         <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
 
         <div class="detail"
-             data-title="흡연 여부 데이터 분석을 통한 건강 인사이트 도출"
+             data-title="흡연 여부와 건강 지표 데이터 분석"
              data-title-en="Health Insights from Smoking-Status Data"
              data-sub="오즈코딩스쿨 AI 헬스케어 과정 · 4조 (4인 팀) · 2026.04"
              data-sub-en="Oz Coding School AI Healthcare · group 4 (team of four) · Apr 2026">
@@ -1204,14 +1207,14 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <span data-lang="ko" class="card-when">2024</span><span data-lang="en" class="card-when">2024</span>
           <span data-lang="ko" class="tag cc">시뮬레이션</span><span data-lang="en" class="tag cc">Simulation</span>
         </div>
-        <h3><button data-lang="ko" class="card-open" type="button">약물이 어느 수용체에 붙는지 예측</button><button data-lang="en" class="card-open" type="button">Predicting which receptor a drug binds to</button></h3>
+        <h3><button data-lang="ko" class="card-open" type="button">분자 도킹 기반 수용체 결합 예측</button><button data-lang="en" class="card-open" type="button">Predicting which receptor a drug binds to</button></h3>
         <div data-lang="ko" class="card-org">University of Leeds · BSc Pharmacology 졸업 프로젝트</div><div data-lang="en" class="card-org">University of Leeds · BSc Pharmacology final-year project</div>
         <div class="stack"><span>Python</span><span>pandas</span><span>seaborn</span><span>GOLD</span><span data-lang="ko">분자 도킹</span><span data-lang="en">Molecular docking</span><span>PyMOL</span><span data-lang="ko">시각화</span><span data-lang="en">Visualisation</span></div>
         <div class="no-metric"><span data-lang="ko" class="pill">학부 졸업 프로젝트</span><span data-lang="en" class="pill">Final-year project</span></div>
         <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
 
         <div class="detail"
-             data-title="약물이 어느 수용체에 붙는지 — 결합 시뮬레이션 분석"
+             data-title="분자 도킹 기반 아드레날린 수용체 결합 예측"
              data-title-en="Predicting Which Receptor a Drug Binds To"
              data-sub="University of Leeds · BSc Pharmacology 졸업 프로젝트 · 2024"
              data-sub-en="University of Leeds · BSc Pharmacology final-year project · 2024">
@@ -1224,7 +1227,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <h4 data-lang="ko">방법</h4><h4 data-lang="en">Method</h4>
           <ul>
             <li data-lang="ko">먼저 <strong>수용체 12개의 실제 입체 구조</strong>를 공개 데이터베이스(GPCRdb · IUPHAR)에서 모았습니다. 아드레날린 계열 네 종류에 더해, 아세틸콜린 · 도파민 · 세로토닌 · 히스타민 계열까지 <strong>다섯 계열</strong>을 담았습니다. 실험으로 밝혀진 구조만 골랐고 해상도는 <em>2.0 ~ 3.3 Å</em>였습니다.</li><li data-lang="en">I gathered <strong>twelve real receptor structures</strong> from public databases (GPCRdb and IUPHAR) — the four adrenaline receptors plus acetylcholine, dopamine, serotonin and histamine families, <strong>five families in all</strong>. Only experimentally solved structures, at resolutions of <em>2.0–3.3 Å</em>.</li>
-            <li data-lang="ko">붙여볼 물질은 DrugBank와 ChEMBL에서 받았습니다. 도파민 · 아드레날린 · 노르아드레날린처럼 원래 그 수용체에 작용하는 것들과, <strong>α에만 듣는 페닐에프린</strong>, <strong>β에만 듣는 이소프레날린</strong>을 함께 넣었습니다.</li><li data-lang="en">The compounds came from DrugBank and ChEMBL: the natural ones such as dopamine, adrenaline and noradrenaline, alongside <strong>phenylephrine, which acts only on α</strong>, and <strong>isoprenaline, which acts only on β</strong>.</li>
+            <li data-lang="ko">도킹할 물질은 DrugBank와 ChEMBL에서 받았습니다. 도파민 · 아드레날린 · 노르아드레날린 등 해당 수용체에 작용하는 물질과 함께, <strong>α 선택성인 페닐에프린</strong>과 <strong>β 선택성인 이소프레날린</strong>을 넣었습니다.</li><li data-lang="en">The compounds came from DrugBank and ChEMBL: endogenous ligands such as dopamine, adrenaline and noradrenaline, alongside <strong>the α-selective phenylephrine</strong> and <strong>the β-selective isoprenaline</strong>.</li>
             <li data-lang="ko">각 물질을 아드레날린 수용체 네 종류에 <strong>GOLD로 도킹해</strong> 결합 적합도 점수를 냈습니다. 결과 파일은 <strong>파이썬으로 정리하고 그래프로 그려</strong> 수용체별 · 물질별 분포를 비교했습니다.</li><li data-lang="en">Each compound was <strong>docked into the four adrenergic receptors with GOLD</strong> and scored for fit. I <strong>processed the output files in Python and plotted them</strong> to compare distributions across receptors and compounds.</li>
             <li data-lang="ko">점수만으로는 원인을 알 수 없어 <strong>PyMOL로 결합 부위를 확인했습니다.</strong> 약물이 어느 아미노산과 접촉하는지와 그 거리를 하나씩 기록하고 그림으로 남겼습니다.</li><li data-lang="en">Scores alone do not explain the cause, so I <strong>inspected the binding sites in PyMOL</strong>, recording which amino acids each drug contacts and at what distance, and saving the views as figures.</li>
           </ul>
