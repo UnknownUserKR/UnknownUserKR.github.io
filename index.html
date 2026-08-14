@@ -3,10 +3,10 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="color-scheme" content="dark light">
+<meta name="color-scheme" content="light">
 <meta name="description" content="권민재 — AI 헬스케어 데이터 포트폴리오. 유전자 변이 기반 암 아형 예측(Macro F1 0.4942), 흉부 X-ray 폐렴 분류(리더보드 0.95192), 난임 임신 성공 예측(ROC-AUC 0.74218), FastAPI·Docker 기반 AI 모델 서빙.">
 <meta property="og:title" content="권민재 — AI · Healthcare Data">
-<meta property="og:description" content="의료 도메인을 이해하는 데이터 분석 · 머신러닝 엔지니어. DACON 헬스케어 해커톤 3건, 임상 데이터 25만 건 규모 예측 모델.">
+<meta property="og:description" content="약리학 전공 후 헬스케어 데이터 분석 · 머신러닝. DACON 헬스케어 해커톤 3건, 임상 데이터 25만 건 규모 예측 모델, FastAPI · Docker 서빙.">
 <meta property="og:type" content="profile">
 <title>권민재 — AI · Healthcare Data</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫁</text></svg>">
@@ -19,34 +19,29 @@
 <style>
 /* ═══════════════════════════════════════════════════════════
    권민재 — AI · Healthcare Data
-   컨셉: 영상의학 판독 워크스테이션
-     dark  = PACS 판독 모니터 (기본)
-     light = 샤우카스텐 / 라이트박스 (필름 뷰어)
    ═══════════════════════════════════════════════════════════ */
 
-/* ─── Tokens : DARK (판독 모니터) ─── */
+/* ─── Tokens ─── */
 :root {
-  --ground:      #071019;
-  --surface:     #0d1a26;
-  --surface-2:   #132433;
-  --surface-3:   #1a3040;
-  --ink:         #e8f1f5;
-  --ink-2:       #9db3c0;
-  --ink-3:       #64808f;
-  --rule:        #1a2c3a;
-  --rule-2:      #26404f;
+  --ground:      #e9edee;
+  --surface:     #ffffff;
+  --surface-2:   #f3f6f7;
+  --surface-3:   #e7ecee;
+  --ink:         #0b1a24;
+  --ink-2:       #415765;
+  --ink-3:       #6f8794;
+  --rule:        #d2dbde;
+  --rule-2:      #b5c3c8;
 
-  --trace:       #2ad4ec;   /* 주 지표 — 모니터 트레이스 시안 */
-  --trace-dim:   #1a8fa5;
-  --trace-soft:  #0b2f3c;
-  --signal:      #a8e04a;   /* 보조 지표 — 라임 */
-  --signal-soft: #1e2c10;
+  --trace:       #0d7f92;
+  --trace-dim:   #0d7f92;
+  --trace-soft:  #dceff3;
 
-  --critical:    #ff6b6b;
-  --warn:        #f0b429;
+  --critical:    #c2372f;
+  --warn:        #9a6a05;
 
-  --shadow: 0 1px 0 rgba(255,255,255,.03), 0 18px 40px -24px rgba(0,0,0,.9);
-  --glow:   0 0 0 1px var(--trace), 0 0 28px -6px rgba(42,212,236,.45);
+  --shadow: 0 1px 2px rgba(11,26,36,.06), 0 14px 34px -22px rgba(11,26,36,.5);
+  --glow:   0 0 0 1px var(--trace-dim), 0 0 22px -8px rgba(13,127,146,.5);
 
   --f-body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
             "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
@@ -60,73 +55,8 @@
   --t-xl:   1.875rem;
 
   --page:    78rem;
-  --measure: 62ch;
+  --measure: 72ch;
   --r:       3px;
-}
-
-/* ─── Tokens : LIGHT (샤우카스텐 / 필름 라이트박스) ─── */
-@media (prefers-color-scheme: light) {
-  :root {
-    --ground:      #e9edee;
-    --surface:     #ffffff;
-    --surface-2:   #f3f6f7;
-    --surface-3:   #e7ecee;
-    --ink:         #0b1a24;
-    --ink-2:       #415765;
-    --ink-3:       #6f8794;
-    --rule:        #d2dbde;
-    --rule-2:      #b5c3c8;
-    --trace:       #0d7f92;
-    --trace-dim:   #0d7f92;
-    --trace-soft:  #dceff3;
-    --signal:      #5d7d10;
-    --signal-soft: #eef4dc;
-    --critical:    #c2372f;
-    --warn:        #9a6a05;
-    --shadow: 0 1px 2px rgba(11,26,36,.06), 0 14px 34px -22px rgba(11,26,36,.5);
-    --glow:   0 0 0 1px var(--trace-dim), 0 0 22px -8px rgba(13,127,146,.5);
-  }
-}
-
-:root[data-theme="light"] {
-  --ground:      #e9edee;
-  --surface:     #ffffff;
-  --surface-2:   #f3f6f7;
-  --surface-3:   #e7ecee;
-  --ink:         #0b1a24;
-  --ink-2:       #415765;
-  --ink-3:       #6f8794;
-  --rule:        #d2dbde;
-  --rule-2:      #b5c3c8;
-  --trace:       #0d7f92;
-  --trace-dim:   #0d7f92;
-  --trace-soft:  #dceff3;
-  --signal:      #5d7d10;
-  --signal-soft: #eef4dc;
-  --critical:    #c2372f;
-  --warn:        #9a6a05;
-  --shadow: 0 1px 2px rgba(11,26,36,.06), 0 14px 34px -22px rgba(11,26,36,.5);
-  --glow:   0 0 0 1px var(--trace-dim), 0 0 22px -8px rgba(13,127,146,.5);
-}
-:root[data-theme="dark"] {
-  --ground:      #071019;
-  --surface:     #0d1a26;
-  --surface-2:   #132433;
-  --surface-3:   #1a3040;
-  --ink:         #e8f1f5;
-  --ink-2:       #9db3c0;
-  --ink-3:       #64808f;
-  --rule:        #1a2c3a;
-  --rule-2:      #26404f;
-  --trace:       #2ad4ec;
-  --trace-dim:   #1a8fa5;
-  --trace-soft:  #0b2f3c;
-  --signal:      #a8e04a;
-  --signal-soft: #1e2c10;
-  --critical:    #ff6b6b;
-  --warn:        #f0b429;
-  --shadow: 0 1px 0 rgba(255,255,255,.03), 0 18px 40px -24px rgba(0,0,0,.9);
-  --glow:   0 0 0 1px var(--trace), 0 0 28px -6px rgba(42,212,236,.45);
 }
 
 /* ─── Base ─── */
@@ -143,26 +73,6 @@ body {
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden;
 }
-/* 판독 모니터의 미세한 주사선 — 다크에서만, 아주 옅게 */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  z-index: 0;
-  opacity: 1;
-  background: repeating-linear-gradient(
-    to bottom,
-    rgba(255,255,255,.014) 0 1px,
-    transparent 1px 3px
-  );
-}
-@media (prefers-color-scheme: light) {
-  :root:not([data-theme="dark"]) body::before { opacity: 0; }
-}
-:root[data-theme="light"] body::before { opacity: 0; }
-:root[data-theme="dark"] body::before { opacity: 1; }
-
 .wrap { position: relative; z-index: 1; max-width: var(--page); margin-inline: auto; padding: 0 1.5rem 6rem; }
 a { color: inherit; }
 h1, h2, h3, h4 { text-wrap: balance; }
@@ -208,12 +118,12 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
   display: inline-flex; align-items: center; gap: .5rem;
   font-family: var(--f-mono); font-size: var(--t-xs);
   letter-spacing: .14em; text-transform: uppercase;
-  color: var(--signal);
+  color: var(--trace);
 }
 .dot {
   width: 6px; height: 6px; border-radius: 50%;
-  background: var(--signal);
-  box-shadow: 0 0 0 3px var(--signal-soft);
+  background: var(--trace);
+  box-shadow: 0 0 0 3px var(--trace-soft);
   animation: pulse 2.6s ease-in-out infinite;
 }
 @keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
@@ -253,31 +163,6 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 }
 .contact a:hover { color: var(--trace); border-bottom-color: var(--trace); }
 
-.toggle {
-  display: inline-flex; align-items: center; gap: .45rem;
-  background: var(--surface); color: var(--ink-2);
-  border: 1px solid var(--rule);
-  border-radius: 999px;
-  padding: .38rem .8rem;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  cursor: pointer;
-  transition: color .18s, border-color .18s, background .18s;
-}
-.toggle:hover { color: var(--trace); border-color: var(--trace-dim); }
-.toggle svg { width: 13px; height: 13px; }
-
-/* ═══ ECG 트레이스 구분선 ═══ */
-.trace-rule { display: block; width: 100%; height: 34px; overflow: hidden; }
-.trace-rule path { fill: none; stroke: var(--trace); stroke-width: 1.25; opacity: .55; }
-.trace-rule .base { stroke: var(--rule-2); stroke-width: 1; opacity: 1; }
-.trace-rule .live {
-  stroke-dasharray: 1400;
-  stroke-dashoffset: 1400;
-  animation: sweep 3.2s cubic-bezier(.4, 0, .2, 1) .3s forwards;
-}
-@keyframes sweep { to { stroke-dashoffset: 0 } }
-
 /* ═══ 계측 스트립 ═══ */
 .readout {
   display: grid;
@@ -295,10 +180,10 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
   font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 600;
   line-height: 1; letter-spacing: -.03em; color: var(--trace);
 }
-.gauge-val.alt { color: var(--signal); }
+.gauge-val.alt { color: var(--trace); }
 .gauge-unit { font-size: .55em; color: var(--ink-3); margin-left: .2rem; letter-spacing: 0; }
 .gauge-cap { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.4; }
-.gauge-cap em { font-style: normal; font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--signal); }
+.gauge-cap em { font-style: normal; font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--trace); }
 
 /* ═══ Section ═══ */
 .section { padding-top: 4rem; }
@@ -380,7 +265,7 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
   white-space: nowrap;
 }
 .tag.dl { color: var(--trace); }
-.tag.ml { color: var(--signal); }
+.tag.ml { color: var(--trace); }
 .tag.be { color: var(--warn); }
 .tag.ea { color: var(--ink-3); }
 .tag.cc { color: var(--critical); }
@@ -396,11 +281,11 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
   font-size: 1.3rem; font-weight: 600; letter-spacing: -.03em;
   color: var(--trace); line-height: 1;
 }
-.meter-val.alt { color: var(--signal); }
+.meter-val.alt { color: var(--trace); }
 .meter-key { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 .bar { position: relative; height: 3px; background: var(--surface-3); border-radius: 2px; overflow: hidden; }
 .bar i { position: absolute; inset: 0 100% 0 0; background: var(--trace); border-radius: 2px; transition: right 1.1s cubic-bezier(.2, .7, .2, 1); }
-.bar i.alt { background: var(--signal); }
+.bar i.alt { background: var(--trace); }
 
 .no-metric { margin-top: auto; padding-top: .5rem; }
 .pill {
@@ -448,8 +333,7 @@ dialog.modal {
   box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .85);
   overflow: hidden;
 }
-dialog.modal::backdrop { background: rgba(3, 8, 12, .78); backdrop-filter: blur(3px); }
-:root[data-theme="light"] dialog.modal::backdrop { background: rgba(20, 35, 44, .5); }
+dialog.modal::backdrop { background: rgba(20, 35, 44, .5); backdrop-filter: blur(3px); }
 dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 @keyframes rise { from { opacity: 0; transform: translateY(10px) scale(.985) } }
 
@@ -489,7 +373,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   font-size: 1.3rem; font-weight: 600; letter-spacing: -.03em;
   color: var(--trace); line-height: 1.1;
 }
-.stat b.alt { color: var(--signal); }
+.stat b.alt { color: var(--trace); }
 .stat b.crit { color: var(--critical); }
 .stat span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
 
@@ -568,7 +452,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 .tier-head b { font-family: var(--f-mono); font-size: var(--t-xs); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
 .tier-head hr { flex: 1; height: 0; border: 0; border-top: 1px solid var(--rule); margin: 0; }
 .tier.core .tier-head b { color: var(--trace); }
-.tier.use .tier-head b { color: var(--signal); }
+.tier.use .tier-head b { color: var(--trace); }
 .tier.learn .tier-head b { color: var(--ink-3); }
 
 .skills {
@@ -579,7 +463,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 .skill { background: var(--surface); padding: 1.05rem 1.15rem 1.2rem; display: flex; flex-direction: column; gap: .55rem; }
 .skill b { font-size: var(--t-md); font-weight: 600; letter-spacing: -.01em; }
 .tier.core .skill b { color: var(--trace); }
-.tier.use .skill b { color: var(--signal); }
+.tier.use .skill b { color: var(--trace); }
 .skill ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .25rem; }
 .skill li { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55; }
 
@@ -625,7 +509,6 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation: none !important; transition: none !important; }
-  .trace-rule .live { stroke-dashoffset: 0; }
 }
 
 /* ═══ Print ═══ */
@@ -635,10 +518,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     --ink: #000; --ink-2: #333; --ink-3: #666;
     --rule: #ccc; --rule-2: #999;
     --trace: #0d5566; --trace-dim: #0d5566; --trace-soft: #fff;
-    --signal: #4a6410; --signal-soft: #fff;
     --critical: #99231c; --shadow: none; --glow: none;
   }
-  body::before, .toggle, .filters, .card-cue, .trace-rule { display: none !important; }
+  .filters, .card-cue { display: none !important; }
   .wrap { max-width: none; padding: 0; }
   .detail { display: block !important; }
   .card { break-inside: avoid; box-shadow: none; cursor: default; }
@@ -668,10 +550,6 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <button type="button" data-lang-set="ko" aria-pressed="true">KO</button>
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         </div>
-      <button class="toggle" id="themeToggle" type="button">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
-        <span id="themeLabel">Lightbox</span>
-      </button>
       </div>
       <div class="contact">
         <a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a>
@@ -680,11 +558,6 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
       </div>
     </div>
   </header>
-
-  <svg class="trace-rule" viewBox="0 0 1400 34" preserveAspectRatio="none" aria-hidden="true">
-    <path class="base" d="M0 17 H1400"/>
-    <path class="live" d="M0 17 H180 l8 0 l6 -3 l7 6 l6 -3 H320 l10 0 l5 -11 l6 25 l7 -20 l5 6 H560 l9 0 l6 -4 l7 8 l6 -4 H760 l10 0 l5 -13 l6 28 l7 -22 l5 7 H1010 l9 0 l6 -3 l7 6 l6 -3 H1400"/>
-  </svg>
 
   <section class="readout" aria-label="주요 성과 요약">
     <div class="gauge">
@@ -715,44 +588,49 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 <span data-lang="en" class="ko">Introduction</span>
     </div>
     <p data-lang="ko" class="lede">
-      약리학을 공부하면서 데이터를 먼저 만났습니다. 수업에서 <strong>바이오인포매틱스</strong>를 접하며
-      생물학 문제를 계산으로 푸는 방식에 눈을 떴습니다. 학부 졸업 프로젝트에서는 어떤 약물이 어느 수용체에
-      붙는지 컴퓨터로 시험하고 그 결과를 파이썬으로 분석했습니다. 그때 몸에 붙은 순서는 지금도 그대로입니다.
-      <strong>도메인을 먼저 알고, 숫자는 그다음에 본다.</strong>
+      영국에서 약리학을 전공했습니다. 학부 수업에서 <strong>바이오인포매틱스</strong>를 처음 접했고,
+      졸업 프로젝트로는 아드레날린 수용체에 약물이 어떻게 결합하는지 도킹 시뮬레이션으로 확인하고
+      그 결과를 파이썬으로 정리했습니다. 데이터 쪽 일을 해봐야겠다고 생각한 게 이때입니다.
     </p>
 <p data-lang="en" class="lede">
-      I met data through pharmacology, not the other way round. <strong>Bioinformatics</strong> came up in the
-      coursework and showed me that biological questions could be answered computationally. My final-year project
-      then had me simulating which receptor a compound binds to, and working through the results in Python.
-      The habit it left me with is still how I work: <strong>understand the domain first, read the numbers second</strong>.
+      I read pharmacology at the University of Leeds. <strong>Bioinformatics</strong> came up in one of the
+      modules, and for my final-year project I ran docking simulations on adrenergic receptors and worked
+      through the results in Python. That was my first real work with data.
     </p>
     <p data-lang="ko" class="lede">
-      이후 DACON 헬스케어 해커톤 세 건에서 <strong>25만 건 규모 임상 데이터로 임신 성공을 예측하는 모델</strong>,
-      <strong>흉부 X-ray 폐렴 분류 모델</strong>, <strong>유전자 변이로 암 아형을 가리는 모델</strong>을 만들었습니다.
-      X-ray 쪽에서는 정확도보다 폐렴을 놓치지 않는 것을 기준으로 삼아, 놓친 환자를 <em>29명에서 12명까지</em> 줄였습니다.
+      전역 후 2026년 4월부터 오즈코딩스쿨 AI 헬스케어 과정을 듣고 있습니다. 과정과 병행해
+      DACON 헬스케어 해커톤에 세 번 참가했습니다. 난임 시술 데이터 <em>25만 건</em>으로 임신 성공을
+      예측하는 대회에서는 4인 팀 팀장을 맡아 ROC-AUC <em>0.74218</em>로 마쳤고, 1위와 <em>0.0003</em>
+      차이였습니다. 흉부 X-ray 폐렴 분류는 개인전으로 나가 <em>0.95192</em>를 받았습니다. 이쪽은
+      폐렴 환자를 정상으로 판정하는 오류를 줄이는 데 집중해서, 놓친 환자가 <em>29명에서 12명</em>으로
+      줄었습니다. 세 번째는 유전자 변이로 암 아형을 분류하는 대회였고 4인 팀으로 4팀 중 2위를 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      Since then, three DACON healthcare hackathons: <strong>a pregnancy-success model over 256,351 clinical
-      records</strong>, <strong>a chest X-ray pneumonia classifier</strong> and <strong>a model that reads cancer
-      subtype from gene mutations</strong>. On the X-ray work I optimised for not
-      missing sick patients rather than for accuracy, and brought false negatives down
-      <em>from 29 to 12</em>.
+      Since April 2026 I have been on the AI Healthcare course at Oz Coding School, and I entered three
+      DACON healthcare hackathons alongside it. On the fertility one I led a team of four across
+      <em>256,351</em> treatment records and finished at ROC-AUC <em>0.74218</em>, <em>0.0003</em> behind
+      first place. I entered the chest X-ray pneumonia classification individually and scored
+      <em>0.95192</em>; there I worked on reducing the cases where a pneumonia patient gets called normal,
+      which went from <em>29 to 12</em>. The third was classifying cancer subtype from gene mutations,
+      again in a team of four, and we came second of four teams.
     </p>
     <p data-lang="ko" class="lede">
-      모델을 만드는 데서 끝내지 않으려고 FastAPI와 Docker로 서빙하는 팀 프로젝트까지 마쳤습니다.
-      무거운 분석은 Redis 큐로 떼어내 API가 그 앞에서 기다리지 않게 했습니다.
+      같은 과정의 팀 프로젝트로 학습한 모델을 <strong>FastAPI와 Docker로 서빙하는 서비스</strong>도
+      만들었습니다. 저는 실행·배포 환경을 맡아 Docker Compose로 다섯 개 서비스를 묶었고, 추론이 오래
+      걸리는 작업은 Redis Streams로 빼서 API 응답이 밀리지 않게 했습니다.
     </p>
 <p data-lang="en" class="lede">
-      A model that never ships is half a model, so I saw a team project through to serving one over
-      FastAPI and Docker — with the heavy inference moved onto a Redis queue so the API never blocks on it.
+      The course also included a team project serving trained models over <strong>FastAPI and
+      Docker</strong>. I took the deployment side: five services under Docker Compose, with slow inference
+      moved onto Redis Streams so API responses would not be held up behind it.
     </p>
     <p data-lang="ko" class="lede">
-      숫자를 맞히는 것보다 <strong>그 숫자가 환자에게 무슨 뜻인지 설명할 수 있는 쪽</strong>에 관심이 있습니다.
-      의료 도메인을 읽을 줄 아는 데이터 분석 · 머신러닝 엔지니어를 목표로 하고 있습니다.
+      헬스케어 데이터를 다루는 데이터 분석과 머신러닝 직무를 찾고 있습니다. 약리학을 공부한 배경이
+      임상 변수를 읽을 때 도움이 된다고 생각합니다.
     </p>
 <p data-lang="en" class="lede">
-      I care less about hitting a number than about <strong>being able to say what that number means for a
-      patient</strong>. I am aiming for data analysis and ML engineering roles where the clinical domain matters.
+      I am looking for data analysis and machine learning roles that involve healthcare data. The
+      pharmacology background helps when I have to read clinical variables.
     </p>
   </section>
 
@@ -812,50 +690,50 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <div class="stat"><b class="num alt">26</b><span data-lang="ko">암 아형</span><span data-lang="en">Cancer subtypes</span></div>
           </div>
 
-          <h4 data-lang="ko">무엇이 어려웠는가</h4><h4 data-lang="en">What made this hard</h4>
+          <h4 data-lang="ko">데이터</h4><h4 data-lang="en">The data</h4>
           <ul>
-            <li data-lang="ko">환자 한 명이 유전자 <em>4,384</em>칸짜리 기록으로 들어옵니다. 각 칸에는 그 유전자에 오타가 있는지, 있다면 어떤 오타인지가 문자열로 적혀 있습니다. 그걸로 <em>26</em>개 암 아형 중 하나를 맞히는 과제였습니다.</li><li data-lang="en">Each patient arrives as a <em>4,384</em>-column record. Every column says whether that gene carries a mutation and, if so, which one — as a raw string. From that, pick one of <em>26</em> cancer subtypes.</li>
-            <li data-lang="ko">전체 <em>2,718만</em> 칸 중 <strong>99.19%가 정상(WT)</strong>입니다. 실제 신호는 0.81%뿐인 초희소 행렬이라 원본 그대로는 학습이 되지 않았습니다.</li><li data-lang="en">Of <em>27.2 million</em> cells, <strong>99.19% are wild-type</strong>. Only 0.81% carries signal, and nothing trains usefully on the raw matrix.</li>
-            <li data-lang="ko">최다 클래스 BRCA <em>786</em>건에 최소 클래스 DLBC <em>38</em>건. 평가지표가 Macro F1이라 소수 클래스 하나를 통째로 놓치면 그만큼 점수가 깎입니다.</li><li data-lang="en">The largest class, BRCA, holds <em>786</em> rows; the smallest, DLBC, holds <em>38</em>. With Macro F1 as the metric, losing one rare class costs its full share of the score.</li>
-            <li data-lang="ko">test 변이의 <strong>94.4%가 train에 없던 것</strong>이고, 샘플당 변이 유전자 수도 test가 <em>2.2배</em> 많았습니다. train에서 잘 맞는 것이 test에서 맞는다는 보장이 없는 상태였습니다.</li><li data-lang="en"><strong>94.4% of test mutations never appear in train</strong>, and test samples carry <em>2.2×</em> as many mutated genes. Fitting train well guaranteed nothing about test.</li>
+            <li data-lang="ko">환자 한 명이 유전자 <em>4,384</em>칸짜리 기록으로 들어옵니다. 각 칸에는 해당 유전자의 변이 여부와 변이 내용이 문자열로 적혀 있고, 이걸로 <em>26</em>개 암 아형 중 하나를 맞혀야 했습니다.</li><li data-lang="en">Each patient comes in as a <em>4,384</em>-column record. Every column holds, as a raw string, whether that gene is mutated and how. From that we had to pick one of <em>26</em> cancer subtypes.</li>
+            <li data-lang="ko">전체 <em>2,718만</em> 칸 중 <strong>99.19%가 정상(WT)</strong>이었습니다. 신호가 0.81%뿐인 희소 행렬이라 원본 그대로는 학습이 되지 않았습니다.</li><li data-lang="en">Of <em>27.2 million</em> cells, <strong>99.19% are wild-type</strong>. With signal in only 0.81%, the raw matrix does not train.</li>
+            <li data-lang="ko">클래스 불균형도 컸습니다. 최다 클래스 BRCA가 <em>786</em>건, 최소 클래스 DLBC가 <em>38</em>건입니다. 평가지표가 Macro F1이라 소수 클래스를 통째로 놓치면 점수가 그만큼 깎입니다.</li><li data-lang="en">The classes are also skewed: <em>786</em> rows for the largest, BRCA, and <em>38</em> for the smallest, DLBC. Macro F1 means losing one rare class costs its full share of the score.</li>
+            <li data-lang="ko">test 변이의 <strong>94.4%는 train에 없던 것</strong>이었고, 샘플당 변이 유전자 수도 test가 <em>2.2배</em> 많았습니다. train 성능이 test로 이어진다는 보장이 없었습니다.</li><li data-lang="en"><strong>94.4% of test mutations do not appear in train</strong>, and test samples carry <em>2.2×</em> as many mutated genes. Train performance was no guarantee of test performance.</li>
           </ul>
 
-          <h4 data-lang="ko">같은 환자가 두 번 들어와 있었다 — 제가 맡은 부분</h4><h4 data-lang="en">The same patient, entered twice — my part</h4>
+          <h4 data-lang="ko">중복 환자 처리 (담당)</h4><h4 data-lang="en">Duplicate patients (my part)</h4>
           <ul>
-            <li data-lang="ko">4,384칸이 <strong>글자 하나까지 똑같은 환자 쌍</strong>을 세어 봤더니 train 안에 <em>422</em>건 있었습니다. 그런데 그 422건 중 <strong>같은 라벨끼리 묶인 것이 0건</strong>이었습니다. 무작위라면 5.7%는 겹쳐야 하는데 정확히 0%였습니다.</li><li data-lang="en">I counted pairs whose <strong>4,384 columns match character for character</strong>: <em>422</em> of them inside train. Not one pair shared a label — <strong>zero out of 422</strong>, where chance alone predicts 5.7%.</li>
-            <li data-lang="ko">이유는 라벨 목록 자체에 있었습니다. 26개 중 넷은 개별 병명이 아니라 여러 병을 묶은 상위 이름입니다. KIPAN은 신장암 세 아형의 합이고 GBMLGG는 신경교종 둘의 합입니다. <strong>한 환자가 두 이름으로 불릴 수 있어</strong> 같은 사람이 서로 다른 라벨로 두 줄 들어온 것이었습니다.</li><li data-lang="en">The label list explains it. Four of the 26 are umbrella names, not individual diseases: KIPAN is the union of three kidney subtypes, GBMLGG of two gliomas. <strong>One patient can carry two valid names</strong>, so the same person entered twice under different labels.</li>
-            <li data-lang="ko">확증은 고아 수에서 나왔습니다. train에 짝이 없는 KIRC 환자가 <em>57</em>명인데, test에서 KIRC 프로파일과 완전히 일치한 행이 정확히 <em>57</em>개였습니다. LGG는 <em>50</em>과 <em>50</em>. 흩어진 나머지 짝이 test에 있었던 겁니다.</li><li data-lang="en">The orphan counts confirmed it. <em>57</em> KIRC patients had no partner in train — and exactly <em>57</em> test rows matched a KIRC profile outright. For LGG it was <em>50</em> and <em>50</em>. The missing halves were sitting in the test set.</li>
-            <li data-lang="ko">그래서 매칭된 test <em>214</em>행(8.4%)에 <strong>매칭된 라벨이 아니라 그 반대쪽</strong>을 부여하는 규칙을 만들었습니다. 그 환자의 다른 한 줄은 train이 이미 쓰고 있으니까요. 리더보드가 <strong>+0.0829</strong> 올랐습니다.</li><li data-lang="en">So for the <em>214</em> matched test rows (8.4%) I assigned <strong>the opposite label, not the matched one</strong> — train already holds that patient's other row. The leaderboard moved <strong>+0.0829</strong>.</li>
-            <li data-lang="ko">특정 모델 덕이 아닌지 확인했습니다. 전혀 다른 두 베이스에 얹었을 때 이득이 <em>+0.0922</em>와 <em>+0.0913</em>으로, 두 베이스 자체의 차이(0.0009)만큼만 달랐습니다. <strong>베이스와 무관한 상수 가산</strong>이었습니다.</li><li data-lang="en">I checked it was not a fluke of one model. Applied to two unrelated bases the gain was <em>+0.0922</em> and <em>+0.0913</em> — differing only by the 0.0009 gap between the bases themselves. <strong>A constant, base-independent addition.</strong></li>
-            <li data-lang="ko">규정도 따로 확인했습니다. 규칙은 train.csv에서만 유도되고, test <em>2,546</em>행을 한 행씩 넣어 전수 확인해 불일치 0건이며, <strong>test끼리의 매칭은 쓰지 않았습니다</strong> — 그건 행 단위 독립이 깨집니다.</li><li data-lang="en">I checked it against the rules too. The rule derives only from train.csv, I verified all <em>2,546</em> test rows one at a time with zero mismatches, and I <strong>never matched test rows against each other</strong> — that would break row independence.</li>
+            <li data-lang="ko">4,384칸이 <strong>글자 하나까지 동일한 환자 쌍</strong>을 세어 보니 train 안에 <em>422</em>건 있었습니다. 그중 같은 라벨끼리 묶인 것은 <strong>0건</strong>이었습니다. 무작위라면 5.7% 정도는 겹쳐야 하는 수치입니다.</li><li data-lang="en">I counted the pairs whose <strong>4,384 columns match character for character</strong>: <em>422</em> inside train. <strong>None of them shared a label</strong>, where chance alone would put about 5.7% together.</li>
+            <li data-lang="ko">원인은 라벨 목록에 있었습니다. 26개 중 넷은 개별 병명이 아니라 상위 분류입니다. KIPAN은 신장암 세 아형의 합이고 GBMLGG는 신경교종 둘의 합입니다. <strong>한 환자가 두 이름으로 기록될 수 있어</strong> 같은 사람이 서로 다른 라벨로 두 줄 들어가 있었습니다.</li><li data-lang="en">The label list explains it. Four of the 26 are umbrella categories rather than individual diseases: KIPAN is the union of three kidney subtypes, GBMLGG of two gliomas. <strong>One patient can be recorded under two names</strong>, so the same person appears twice with different labels.</li>
+            <li data-lang="ko">고아 수로 확인했습니다. train에 짝이 없는 KIRC 환자가 <em>57</em>명인데 test에서 KIRC 프로파일과 완전히 일치한 행이 <em>57</em>개였습니다. LGG는 <em>50</em>과 <em>50</em>이었습니다.</li><li data-lang="en">The orphan counts confirmed it: <em>57</em> KIRC patients had no partner in train, and <em>57</em> test rows matched a KIRC profile exactly. For LGG the numbers were <em>50</em> and <em>50</em>.</li>
+            <li data-lang="ko">매칭된 test <em>214</em>행(8.4%)에 <strong>매칭된 라벨의 반대쪽</strong>을 부여하는 규칙을 만들었습니다. 그 환자의 다른 한 줄은 train이 이미 쓰고 있기 때문입니다. 리더보드가 <strong>+0.0829</strong> 올랐습니다.</li><li data-lang="en">For the <em>214</em> matched test rows (8.4%) I assigned <strong>the opposite label to the matched one</strong>, since train already holds that patient's other row. The leaderboard moved <strong>+0.0829</strong>.</li>
+            <li data-lang="ko">특정 모델에 기댄 결과인지 확인했습니다. 서로 다른 두 베이스에 적용했을 때 이득이 <em>+0.0922</em>와 <em>+0.0913</em>으로, 두 베이스 자체의 차이(0.0009)만큼만 벌어졌습니다.</li><li data-lang="en">I checked whether it depended on one model. Applied to two unrelated bases the gain was <em>+0.0922</em> and <em>+0.0913</em>, differing only by the 0.0009 gap between the bases themselves.</li>
+            <li data-lang="ko">규정도 확인했습니다. 규칙은 train.csv에서만 유도했고, test <em>2,546</em>행을 한 행씩 전수 확인해 불일치가 없었으며, <strong>test끼리의 매칭은 쓰지 않았습니다</strong>. 행 단위 독립이 깨지기 때문입니다.</li><li data-lang="en">I checked it against the competition rules as well. The rule derives only from train.csv, I verified all <em>2,546</em> test rows individually with no mismatches, and I <strong>did not match test rows against each other</strong>, which would break row independence.</li>
           </ul>
 
-          <h4 data-lang="ko">문자열을 숫자로</h4><h4 data-lang="en">Turning strings into numbers</h4>
+          <h4 data-lang="ko">피처 설계</h4><h4 data-lang="en">Feature design</h4>
           <ul>
-            <li data-lang="ko">변이 문자열을 사건 단위로 파싱해 유형(뜻이 바뀌는 오타 · 문장을 끊는 오타 · 칸이 밀리는 오타 등), 위치, 바뀐 아미노산을 뽑았습니다. 여기에 드라이버 유전자 변이 여부, 변이 부담, 치환 조성 등을 더해 <strong>도메인 피처 539칸</strong>을 만들었습니다.</li><li data-lang="en">We parsed each mutation string into events — missense, nonsense, frameshift and so on — along with position and substituted amino acid. Adding driver-gene flags, mutation burden and substitution composition gave <strong>539 domain features</strong>.</li>
-            <li data-lang="ko">승부처는 <strong>오타를 한 단계 되돌린 블록</strong>이었습니다. 아미노산이 무엇에서 무엇으로 바뀌었는지를 241칸으로 넣으면 Macro F1 <em>0.3971</em>인데, 이를 DNA 글자 단위 <em>9</em>칸으로 환원하면 <em>0.4140</em>이 나왔습니다. <strong>칸 수는 26분의 1인데 점수는 더 높습니다.</strong></li><li data-lang="en">The decisive block <strong>rolled the mutation back one step</strong>. Encoding amino-acid substitutions directly took 241 columns and scored <em>0.3971</em>; reducing them to <em>9</em> DNA-level columns scored <em>0.4140</em>. <strong>A twenty-sixth of the width, and a better score.</strong></li>
-            <li data-lang="ko">이유는 안정성에 있었습니다. train과 test 사이 변이율 배율의 중앙값이 아미노산 블록은 0.576인데 DNA 블록은 0.070으로, <strong>분포 시프트에 8배 덜 흔들렸습니다.</strong> 정보가 는 게 아니라 코돈표가 모델 대신 요약해 준 것입니다.</li><li data-lang="en">Stability was the reason. Across train and test the median mutation-rate ratio was 0.576 for the amino-acid block against 0.070 for the DNA one — <strong>eight times steadier under the distribution shift</strong>. No new information; the codon table simply did a summarisation the model could not.</li>
+            <li data-lang="ko">변이 문자열을 사건 단위로 파싱해 유형(미스센스 · 넌센스 · 프레임시프트 등), 위치, 바뀐 아미노산을 뽑았습니다. 여기에 드라이버 유전자 변이 여부, 변이 부담, 치환 조성을 더해 <strong>도메인 피처 539칸</strong>을 만들었습니다.</li><li data-lang="en">We parsed each mutation string into events — missense, nonsense, frameshift and so on — with position and substituted amino acid. Driver-gene flags, mutation burden and substitution composition brought it to <strong>539 domain features</strong>.</li>
+            <li data-lang="ko">아미노산 치환을 241칸으로 인코딩하면 Macro F1이 <em>0.3971</em>이었는데, 같은 정보를 DNA 염기 단위 <em>9</em>칸으로 줄이면 <em>0.4140</em>이 나왔습니다.</li><li data-lang="en">Encoding amino-acid substitutions across 241 columns gave a Macro F1 of <em>0.3971</em>; reducing the same information to <em>9</em> DNA-level columns gave <em>0.4140</em>.</li>
+            <li data-lang="ko">train과 test 사이 변이율 배율의 중앙값이 아미노산 블록은 0.576, DNA 블록은 0.070이었습니다. DNA 쪽이 <strong>분포 시프트에 8배 덜 흔들렸고</strong>, 이것이 점수 차이의 원인으로 보입니다.</li><li data-lang="en">The median mutation-rate ratio between train and test was 0.576 for the amino-acid block and 0.070 for the DNA one — <strong>eight times steadier under the distribution shift</strong>, which is where the score difference appears to come from.</li>
           </ul>
 
-          <h4 data-lang="ko">CV를 올렸더니 리더보드가 내려갔다</h4><h4 data-lang="en">CV went up, the leaderboard went down</h4>
+          <h4 data-lang="ko">교차검증 재설계</h4><h4 data-lang="en">Rebuilding the folds</h4>
           <ul>
-            <li data-lang="ko">유전자 4,384열을 클래스별 증거 26개로 압축하는 블록이 CV를 <em>+0.0600</em> 올렸습니다. 그런데 group 분할로 다시 재니 <em>−0.0058</em>이었습니다. 같은 피처, 정반대 판정이었습니다.</li><li data-lang="en">A block compressing 4,384 gene columns into 26 per-class evidence scores lifted CV by <em>+0.0600</em>. Re-measured under a group split it came out at <em>−0.0058</em>. Same feature, opposite verdict.</li>
-            <li data-lang="ko">원인은 위에서 찾은 쌍둥이였습니다. 프로파일이 같은 두 줄이 학습과 검증으로 갈리면 모델은 <strong>파트너의 라벨을 그대로 재생</strong>합니다. 피처가 좋았던 게 아니라 fold 설계의 구멍을 학습한 것이었습니다.</li><li data-lang="en">The twins from earlier were the cause. When two identical profiles land on opposite sides of a split, the model simply <strong>replays its partner's label</strong>. The feature was not good; it was learning a hole in the fold design.</li>
-            <li data-lang="ko">그래서 <strong>변이 벡터의 해시를 group key로 쓰는 분할</strong>로 fold를 다시 설계하고 지문(997d89a2)으로 고정했습니다. 리더보드의 측정 오차도 함께 재서(1σ <em>0.0111</em>), 그보다 작은 차이는 개선으로 치지 않았습니다.</li><li data-lang="en">We rebuilt the folds around <strong>a hash of the mutation vector as the group key</strong> and pinned them with a fingerprint (997d89a2). We also measured the leaderboard's own noise (1σ <em>0.0111</em>) and stopped counting anything smaller as an improvement.</li>
+            <li data-lang="ko">유전자 4,384열을 클래스별 증거 26개로 압축하는 블록이 CV를 <em>+0.0600</em> 올렸는데, group 분할로 다시 재니 <em>−0.0058</em>이었습니다.</li><li data-lang="en">A block compressing the 4,384 gene columns into 26 per-class evidence scores lifted CV by <em>+0.0600</em>; re-measured under a group split it came out at <em>−0.0058</em>.</li>
+            <li data-lang="ko">원인은 앞서 찾은 중복 환자였습니다. 프로파일이 같은 두 줄이 학습과 검증으로 갈리면 모델이 <strong>파트너의 라벨을 그대로 재생</strong>합니다. fold 설계의 허점을 학습하고 있었습니다.</li><li data-lang="en">The duplicates from earlier were the cause. When two identical profiles land on opposite sides of a split, the model <strong>replays its partner's label</strong>. It was learning a gap in the fold design.</li>
+            <li data-lang="ko"><strong>변이 벡터의 해시를 group key로 쓰는 분할</strong>로 fold를 다시 만들고 지문(997d89a2)으로 고정했습니다. 리더보드 자체의 측정 오차도 재서(1σ <em>0.0111</em>) 그보다 작은 차이는 개선으로 보지 않았습니다.</li><li data-lang="en">We rebuilt the folds around <strong>a hash of the mutation vector as the group key</strong> and pinned them with a fingerprint (997d89a2). We also measured the leaderboard's own noise (1σ <em>0.0111</em>) and stopped treating anything smaller as an improvement.</li>
           </ul>
 
-          <h4 data-lang="ko">앙상블과 재현성 — 제가 맡은 부분</h4><h4 data-lang="en">Ensembling and reproducibility — my part</h4>
+          <h4 data-lang="ko">앙상블과 재현성 (담당)</h4><h4 data-lang="en">Ensembling and reproducibility (my part)</h4>
           <ul>
-            <li data-lang="ko">XGBoost · LightGBM · CatBoost · RandomForest를 같은 인터페이스로 묶고 Optuna 탐색을 붙였습니다. 그 위에 <strong>Caruana 그리디 앙상블 · 교차적합 블렌딩 · 시드 스윕 · 클래스별 확률 보정</strong>을 얹어 베이스라인 <em>0.37</em>에서 교차적합 CV <em>0.5509</em>까지 올렸습니다.</li><li data-lang="en">I put XGBoost, LightGBM, CatBoost and RandomForest behind one interface and wired Optuna to it. On top went <strong>Caruana greedy ensembling, cross-fit blending, seed sweeps and per-class calibration</strong>, carrying the baseline from <em>0.37</em> to a cross-fit CV of <em>0.5509</em>.</li>
-            <li data-lang="ko">단독 성능이 가장 좋았던 멤버는 다른 모델과 상관이 높아 오히려 앙상블을 깎았고, <strong>단독으로는 꼴찌였던 딥러닝 모델이 기여도 2위</strong>였습니다. 앙상블에서는 잘하는 것보다 다르게 틀리는 것이 값어치가 있었습니다.</li><li data-lang="en">The strongest solo member correlated too closely with the rest and actually dragged the blend down, while <strong>the deep-learning model that finished last alone contributed second-most</strong>. In an ensemble, being wrong differently is worth more than being right.</li>
-            <li data-lang="ko"><strong>기각한 구성도 파라미터 프리셋으로 등록해</strong> 재현할 수 있게 뒀습니다. 그 구성으로 낸 제출본을 다시 만들지 못하면 기각 판정 자체를 믿을 수 없기 때문입니다.</li><li data-lang="en">I <strong>registered the rejected configurations as presets too</strong>. If a submission made under one cannot be rebuilt, the decision to reject it is not trustworthy either.</li>
-            <li data-lang="ko">제출 재현 노트북이 실제 제출 파일과 <strong>2,546행을 전 행 대조</strong>하도록 자동 테스트를 걸었습니다. 통계량을 쓰는 전처리는 fold-train에만 fit하도록 코드가 강제하고, 누수 · 정렬 · 제출 스키마 무결성 테스트가 함께 돌아갑니다.</li><li data-lang="en">An automated test makes the reproduction notebook match the actual submission <strong>across all 2,546 rows</strong>. Any preprocessing that uses statistics is forced by the code to fit on fold-train only, alongside leakage, alignment and submission-schema integrity tests.</li>
+            <li data-lang="ko">XGBoost · LightGBM · CatBoost · RandomForest를 같은 인터페이스로 묶고 Optuna 탐색을 붙였습니다. 그 위에 <strong>Caruana 그리디 앙상블, 교차적합 블렌딩, 시드 스윕, 클래스별 확률 보정</strong>을 얹어 베이스라인 <em>0.37</em>에서 교차적합 CV <em>0.5509</em>까지 올렸습니다.</li><li data-lang="en">I put XGBoost, LightGBM, CatBoost and RandomForest behind one interface and wired Optuna to it. <strong>Caruana greedy ensembling, cross-fit blending, seed sweeps and per-class calibration</strong> on top carried the baseline from <em>0.37</em> to a cross-fit CV of <em>0.5509</em>.</li>
+            <li data-lang="ko">단독 성능이 가장 좋았던 멤버는 다른 모델과 상관이 높아 앙상블 점수를 깎았고, <strong>단독으로는 가장 낮았던 딥러닝 모델이 기여도 2위</strong>였습니다.</li><li data-lang="en">The strongest solo member correlated closely with the rest and pulled the blend down, while <strong>the deep-learning model that scored lowest on its own contributed second-most</strong>.</li>
+            <li data-lang="ko"><strong>기각한 구성도 파라미터 프리셋으로 등록해</strong> 재현할 수 있게 뒀습니다.</li><li data-lang="en">I <strong>registered the rejected configurations as presets</strong> so they could be reproduced.</li>
+            <li data-lang="ko">제출 재현 노트북이 실제 제출 파일과 <strong>2,546행 전부를 대조</strong>하도록 자동 테스트를 걸었습니다. 통계량을 쓰는 전처리는 fold-train에만 fit하도록 코드가 강제하고, 누수 · 정렬 · 제출 스키마 무결성 테스트가 함께 돌아갑니다.</li><li data-lang="en">An automated test makes the reproduction notebook match the submitted file <strong>across all 2,546 rows</strong>. Preprocessing that uses statistics is forced by the code to fit on fold-train only, and leakage, alignment and submission-schema tests run alongside it.</li>
           </ul>
 
-          <h4 data-lang="ko">남은 천장</h4><h4 data-lang="en">The ceiling we did not reach</h4>
+          <h4 data-lang="ko">한계</h4><h4 data-lang="en">Limitations</h4>
           <ul>
-            <li data-lang="ko">교차적합 산출물에서 직접 계산한 클래스별 F1은 ACC <em>0.913</em> · SKCM <em>0.894</em>에서 SARC <em>0.238</em> · THYM <em>0.295</em>까지 벌어집니다. 38행뿐인 DLBC가 <em>0.700</em>이고 198행인 SARC가 <em>0.238</em>이라, 표본 수가 아니라 신호의 문제였습니다.</li><li data-lang="en">Per-class F1, computed straight from the cross-fit output, runs from ACC <em>0.913</em> and SKCM <em>0.894</em> down to SARC <em>0.238</em> and THYM <em>0.295</em>. DLBC scores <em>0.700</em> on 38 rows while SARC scores <em>0.238</em> on 198 — a signal problem, not a sample-size one.</li>
-            <li data-lang="ko">오분류 <em>2,914</em>건 중 <em>470</em>건(16.1%)이 앞서 나온 <strong>상위–하위 이름 네 개 안에서</strong> 일어납니다. 남은 여지도 대부분 거기 있다는 뜻입니다.</li><li data-lang="en">Of <em>2,914</em> misclassifications, <em>470</em> (16.1%) happen <strong>inside the four umbrella-and-subtype names</strong> from earlier. Most of the remaining headroom sits in the same place.</li>
+            <li data-lang="ko">교차적합 산출물에서 계산한 클래스별 F1은 ACC <em>0.913</em> · SKCM <em>0.894</em>에서 SARC <em>0.238</em> · THYM <em>0.295</em>까지 벌어집니다. 38행뿐인 DLBC가 <em>0.700</em>인데 198행인 SARC가 <em>0.238</em>이라, 표본 수만으로는 설명되지 않습니다.</li><li data-lang="en">Per-class F1 computed from the cross-fit output runs from ACC <em>0.913</em> and SKCM <em>0.894</em> down to SARC <em>0.238</em> and THYM <em>0.295</em>. DLBC scores <em>0.700</em> on 38 rows while SARC scores <em>0.238</em> on 198, so sample size alone does not explain it.</li>
+            <li data-lang="ko">오분류 <em>2,914</em>건 중 <em>470</em>건(16.1%)이 앞의 <strong>상위 · 하위 이름 네 개 안에서</strong> 일어납니다. 남은 개선 여지도 대부분 여기에 있습니다.</li><li data-lang="en">Of <em>2,914</em> misclassifications, <em>470</em> (16.1%) fall <strong>within the four umbrella-and-subtype names</strong>. Most of the remaining headroom is in the same place.</li>
           </ul>
 
           <p data-lang="ko" class="linknote">※ 코드 공개: <a href="https://github.com/cancer-classification-ai/onco-ai" target="_blank" rel="noopener">github.com/cancer-classification-ai/onco-ai</a> · 대회 데이터는 재배포 불가</p><p data-lang="en" class="linknote">※ Code: <a href="https://github.com/cancer-classification-ai/onco-ai" target="_blank" rel="noopener">github.com/cancer-classification-ai/onco-ai</a> · competition data cannot be redistributed</p>
@@ -893,42 +771,42 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <div class="stat"><b class="num alt">5,216</b><span data-lang="ko">학습 이미지</span><span data-lang="en">Training images</span></div>
           </div>
 
-          <h4 data-lang="ko">문제 정의</h4><h4 data-lang="en">Framing the problem</h4>
+          <h4 data-lang="ko">과제와 평가 기준</h4><h4 data-lang="en">Task and evaluation</h4>
           <ul>
-            <li data-lang="ko">학습 <em>5,216</em>장 · 테스트 <em>624</em>장 규모의 흉부 X-ray를 정상(NORMAL)과 폐렴(PNEUMONIA)으로 분류하는 과제. 학습 데이터가 정상 <em>1,341</em>장 대 폐렴 <em>3,875</em>장으로 <strong>폐렴 쪽이 2.89배 많아</strong>, 손실함수와 샘플링을 여기에 맞춰 설계했습니다.</li><li data-lang="en">Classify <em>5,216</em> training and <em>624</em> test chest X-rays as NORMAL or PNEUMONIA. The training set held <em>1,341</em> normal against <em>3,875</em> pneumonia scans — <strong>2.89× more of the positive class</strong> — so the loss function and sampling were designed around that skew.</li>
-            <li data-lang="ko">진단에서는 멀쩡한 사람을 폐렴으로 의심하는 것보다 <strong>진짜 환자를 정상이라고 놓치는 쪽</strong>이 훨씬 위험합니다. 그래서 놓친 환자 수(FN)를 줄이는 것을 기준으로, 실제 환자를 얼마나 잡아내는지(민감도)를 중심에 둔 평가 지표를 설계했습니다.</li><li data-lang="en">In diagnosis, missing a genuinely sick patient costs far more than flagging a healthy one. I therefore optimised against <strong>false negatives</strong> and built the evaluation around sensitivity rather than raw accuracy.</li>
+            <li data-lang="ko">학습 <em>5,216</em>장, 테스트 <em>624</em>장의 흉부 X-ray를 정상(NORMAL)과 폐렴(PNEUMONIA)으로 분류하는 과제입니다. 학습 데이터가 정상 <em>1,341</em>장에 폐렴 <em>3,875</em>장으로 <strong>폐렴 쪽이 2.89배 많아</strong> 손실함수와 샘플링을 여기에 맞췄습니다.</li><li data-lang="en">Classify <em>5,216</em> training and <em>624</em> test chest X-rays as NORMAL or PNEUMONIA. The training set holds <em>1,341</em> normal against <em>3,875</em> pneumonia scans, <strong>2.89× more of the positive class</strong>, so the loss function and sampling were set up around that skew.</li>
+            <li data-lang="ko">진단에서는 폐렴 환자를 정상으로 판정하는 오류가 그 반대보다 훨씬 위험합니다. 그래서 놓친 환자 수(FN)를 줄이는 것을 목표로 잡고, 민감도를 중심에 둔 평가 지표를 설계했습니다.</li><li data-lang="en">In diagnosis, calling a pneumonia patient normal is far more costly than the reverse. I set the target as reducing false negatives and built the evaluation around sensitivity.</li>
           </ul>
 
           <h4 data-lang="ko">실험</h4><h4 data-lang="en">Experiments</h4>
           <ul>
             <li data-lang="ko">SimpleCNN 베이스라인에서 출발해 백본 3개(ResNet18 · DenseNet121 · EfficientNet-B0)와 스케줄러 3개를 조합한 <strong>9가지 실험</strong>을 2-stage fine-tuning과 Focal Loss 기반으로 진행했습니다.</li><li data-lang="en">Starting from a SimpleCNN baseline, I ran <strong>nine experiments</strong> pairing three backbones (ResNet18 · DenseNet121 · EfficientNet-B0) with three schedulers, all on two-stage fine-tuning and Focal Loss.</li>
-            <li data-lang="ko">9가지 조합 중 <strong>ResNet18 + ReduceLROnPlateau</strong>가 검증 AUC <em>0.9997</em>로 1위. 이 조합을 다시 학습해 분석한 결과(AUC <em>0.9994</em>), 놓친 환자가 <em>29명에서 12명</em>으로 줄고 민감도가 <em>0.9626 → 0.9845</em>로 올랐습니다.</li><li data-lang="en"><strong>ResNet18 + ReduceLROnPlateau</strong> came first with a validation AUC of <em>0.9997</em>. Retraining that pairing for analysis (AUC <em>0.9994</em>) brought missed patients down from <em>29 to 12</em> and lifted sensitivity from <em>0.9626 to 0.9845</em>.</li>
+            <li data-lang="ko">9가지 중 <strong>ResNet18 + ReduceLROnPlateau</strong>가 검증 AUC <em>0.9997</em>로 가장 좋았습니다. 이 조합을 다시 학습해 분석한 결과(AUC <em>0.9994</em>) 놓친 환자가 <em>29명에서 12명</em>으로 줄고 민감도가 <em>0.9626에서 0.9845</em>로 올랐습니다.</li><li data-lang="en"><strong>ResNet18 + ReduceLROnPlateau</strong> scored best at a validation AUC of <em>0.9997</em>. Retraining that pairing for analysis (AUC <em>0.9994</em>) brought missed patients down from <em>29 to 12</em> and lifted sensitivity from <em>0.9626 to 0.9845</em>.</li>
           </ul>
 
-          <h4 data-lang="ko">성능 개선</h4><h4 data-lang="en">Pushing the score</h4>
+          <h4 data-lang="ko">성능 개선</h4><h4 data-lang="en">Improving the score</h4>
           <ul>
             <li data-lang="ko"><strong>CLAHE</strong> 의료 영상 전처리, MixUp · CutMix 증강, 5-Fold 교차검증을 적용했습니다.</li><li data-lang="en">I applied <strong>CLAHE</strong> preprocessing for medical imaging, MixUp and CutMix augmentation, and five-fold cross-validation.</li>
-            <li data-lang="ko">DenseNet121 · EfficientNet-B0 · ConvNeXt-Tiny 3개 모델 soft-voting 앙상블과 OOF 기반 임계값 선택으로 최종 점수를 <em>0.8974 → 0.95192</em>로 개선했습니다.</li><li data-lang="en">A soft-voting ensemble of DenseNet121, EfficientNet-B0 and ConvNeXt-Tiny, plus an OOF-selected threshold, moved the final score from <em>0.8974 to 0.95192</em>.</li>
+            <li data-lang="ko">DenseNet121 · EfficientNet-B0 · ConvNeXt-Tiny 3개 모델 soft-voting 앙상블과 OOF 기반 임계값 선택으로 최종 점수가 <em>0.8974에서 0.95192</em>로 올랐습니다.</li><li data-lang="en">A soft-voting ensemble of DenseNet121, EfficientNet-B0 and ConvNeXt-Tiny with an OOF-selected threshold moved the final score from <em>0.8974 to 0.95192</em>.</li>
           </ul>
 
-          <h4 data-lang="ko">검증</h4><h4 data-lang="en">Checking the model</h4>
+          <h4 data-lang="ko">검증</h4><h4 data-lang="en">Validation</h4>
           <ul>
-            <li data-lang="ko"><strong>Grad-CAM</strong>으로 모델이 실제 폐 병변 영역을 근거로 판단하는지 확인했습니다.</li><li data-lang="en">I used <strong>Grad-CAM</strong> to confirm the model was reading actual lung pathology rather than something incidental.</li>
-            <li data-lang="ko">놓친 사례와 반대로 잘못 의심한 사례를 따로 모아 어떤 영상에서 틀리는지 분석하고 한계를 정리했습니다.</li><li data-lang="en">I collected the missed cases and the false alarms separately to see which images broke the model and where its limits sat.</li>
-            <li data-lang="ko">학습·검증 사이에 같은 이미지가 섞이지 않았는지 <strong>파일명 교집합과 이미지 해시 중복</strong>으로 확인했는데 겹치는 것은 없었습니다. 다만 환자 ID가 제공되지 않은 데이터라, 실무라면 <strong>환자 단위 GroupKFold</strong>로 한 번 더 나눠야 한다고 봤습니다.</li><li data-lang="en">I checked for leakage between train and validation via <strong>filename intersection and image hashing</strong>; nothing overlapped. Patient IDs were not supplied, though, so in production this would need <strong>patient-level GroupKFold</strong>.</li>
+            <li data-lang="ko"><strong>Grad-CAM</strong>으로 모델이 실제 폐 병변 영역을 근거로 판단하는지 확인했습니다.</li><li data-lang="en">I used <strong>Grad-CAM</strong> to check whether the model was reading actual lung pathology.</li>
+            <li data-lang="ko">놓친 사례와 잘못 의심한 사례를 따로 모아 어떤 영상에서 틀리는지 분석했습니다.</li><li data-lang="en">I collected the missed cases and the false alarms separately to see which images the model got wrong.</li>
+            <li data-lang="ko">학습과 검증 사이에 같은 이미지가 섞이지 않았는지 <strong>파일명 교집합과 이미지 해시 중복</strong>으로 확인했고 겹치는 것은 없었습니다. 다만 환자 ID가 제공되지 않은 데이터라, 실무에서는 <strong>환자 단위 GroupKFold</strong>로 한 번 더 나눠야 합니다.</li><li data-lang="en">I checked for leakage between train and validation using <strong>filename intersection and image hashing</strong>, and nothing overlapped. Patient IDs were not supplied, so in production this would need <strong>patient-level GroupKFold</strong>.</li>
           </ul>
 
-          <h4 data-lang="ko">임계값 조정</h4><h4 data-lang="en">Choosing a threshold</h4>
+          <h4 data-lang="ko">임계값 조정</h4><h4 data-lang="en">Threshold</h4>
           <ul>
-            <li data-lang="ko">기본 임계값 0.5 대신 <em>0.32</em>로 낮추면 놓치는 환자가 더 줄어(민감도 <em>0.9936</em>) 대신 정상을 폐렴으로 의심하는 경우가 늘었습니다(특이도 <em>0.9851</em>).</li><li data-lang="en">Dropping the threshold from 0.5 to <em>0.32</em> caught more patients (sensitivity <em>0.9936</em>) at the cost of more false alarms (specificity <em>0.9851</em>).</li>
-            <li data-lang="ko">확률을 0.5로 자르는 게 정답이 아니라, <strong>무엇을 더 겁내느냐에 따라 기준선을 고르는 문제</strong>라고 판단했습니다. 최종 제출에는 OOF로 고른 <em>0.300</em>을 썼습니다.</li><li data-lang="en">Cutting probabilities at 0.5 is a default, not an answer — <strong>the threshold should follow whichever error you fear more</strong>. The final submission used <em>0.300</em>, chosen out of fold.</li>
+            <li data-lang="ko">기본값 0.5 대신 <em>0.32</em>로 낮추면 놓치는 환자가 줄어드는 대신(민감도 <em>0.9936</em>) 정상을 폐렴으로 의심하는 경우가 늘었습니다(특이도 <em>0.9851</em>).</li><li data-lang="en">Lowering the threshold from 0.5 to <em>0.32</em> reduced missed patients (sensitivity <em>0.9936</em>) while increasing false alarms (specificity <em>0.9851</em>).</li>
+            <li data-lang="ko">0.5는 기본값일 뿐이고 어느 쪽 오류를 더 줄일지에 따라 달라지는 값이라고 봤습니다. 최종 제출에는 OOF로 고른 <em>0.300</em>을 썼습니다.</li><li data-lang="en">0.5 is only a default; the right value depends on which error you want to reduce. The final submission used <em>0.300</em>, chosen out of fold.</li>
           </ul>
 
-          <h4 data-lang="ko">설명하는 모델과 제출하는 모델을 나눔</h4><h4 data-lang="en">Separating the model I explain from the one I submit</h4>
+          <h4 data-lang="ko">설명용 모델과 제출용 모델 분리</h4><h4 data-lang="en">Separate models for explanation and submission</h4>
           <ul>
-            <li data-lang="ko">둘의 목적이 달라서 일부러 분리했습니다. <strong>설명용은 ResNet18 + Plateau 단일 모델</strong> — 구조가 단순해 Grad-CAM과 오류 분석으로 근거를 따지기 좋습니다.</li><li data-lang="en">The two jobs differ, so I split them. <strong>For explanation, a single ResNet18 + Plateau</strong> — simple enough that Grad-CAM and error analysis actually say something.</li>
-            <li data-lang="ko"><strong>제출용은 Enhanced 앙상블</strong> — CLAHE, 5-Fold, 3개 백본 soft-voting, MixUp · CutMix에 OOF 임계값까지 얹어 일반화를 노렸습니다. 단순 평균 · 볼록 가중 · logistic stacking을 비교해 볼록 가중(정확도 <em>0.9904</em>)을 골랐습니다.</li><li data-lang="en"><strong>For submission, the Enhanced ensemble</strong> — CLAHE, five folds, three backbones soft-voted, MixUp and CutMix, OOF threshold. I compared simple averaging, convex weighting and logistic stacking, and took convex weighting (accuracy <em>0.9904</em>).</li>
-            <li data-lang="ko">앙상블 OOF 기준 민감도 <em>0.9907</em>. 특이도는 단일 모델보다 조금 낮지만 놓치는 환자를 더 줄이는 쪽이 이 과제에 맞다고 보고 이걸 제출했습니다.</li><li data-lang="en">The ensemble reached <em>0.9907</em> sensitivity out of fold. Specificity slipped slightly against the single model, but missing fewer patients was the right trade here.</li>
+            <li data-lang="ko">목적이 달라서 두 개로 나눴습니다. <strong>설명용은 ResNet18 + Plateau 단일 모델</strong>로, 구조가 단순해 Grad-CAM과 오류 분석에 적합합니다.</li><li data-lang="en">The two have different purposes, so I split them. <strong>For explanation, a single ResNet18 + Plateau</strong>, simple enough for Grad-CAM and error analysis to be meaningful.</li>
+            <li data-lang="ko"><strong>제출용은 Enhanced 앙상블</strong>로 CLAHE, 5-Fold, 3개 백본 soft-voting, MixUp · CutMix에 OOF 임계값을 적용했습니다. 단순 평균 · 볼록 가중 · logistic stacking을 비교해 볼록 가중(정확도 <em>0.9904</em>)을 골랐습니다.</li><li data-lang="en"><strong>For submission, the Enhanced ensemble</strong>: CLAHE, five folds, three backbones soft-voted, MixUp and CutMix, OOF threshold. I compared simple averaging, convex weighting and logistic stacking, and took convex weighting (accuracy <em>0.9904</em>).</li>
+            <li data-lang="ko">앙상블의 OOF 민감도는 <em>0.9907</em>입니다. 특이도는 단일 모델보다 조금 낮지만 이 과제의 기준에 맞아 이쪽을 제출했습니다.</li><li data-lang="en">The ensemble reached <em>0.9907</em> sensitivity out of fold. Specificity is slightly lower than the single model, but it matched the criterion for this task, so that is what I submitted.</li>
           </ul>
 
           <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
@@ -941,10 +819,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="정상과 폐렴 흉부 X-ray 각 5장을 위아래로 배열한 샘플 이미지">
               </a>
               <figcaption>
-                <b data-lang="ko">데이터가 어떻게 생겼는가</b><b data-lang="en">What the data looks like</b>
-<span data-lang="ko">위가 정상, 아래가 폐렴입니다. 폐렴 쪽은 폐야가 뿌옇게 흐려져 있지만 경계가 뚜렷하지 않아,
-                눈으로도 갈리는 경우가 적지 않습니다.</span><span data-lang="en">Normal on top, pneumonia below. The pneumonia scans show hazier lung fields, but the
-                boundary is soft enough that even a human eye splits on some of them.</span>
+                <b data-lang="ko">데이터 샘플</b><b data-lang="en">Sample images</b>
+<span data-lang="ko">위가 정상, 아래가 폐렴입니다. 폐렴 쪽은 폐야가 뿌옇게 흐려져 있지만 경계가 뚜렷하지 않은
+                경우가 많습니다.</span><span data-lang="en">Normal on top, pneumonia below. The pneumonia scans show hazier lung fields, though the
+                boundary is often not sharp.</span>
               </figcaption>
             </figure>
 
@@ -955,9 +833,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
               </a>
               <figcaption>
                 <b data-lang="ko">ResNet18 + Plateau 학습 곡선</b><b data-lang="en">ResNet18 + Plateau training curves</b>
-<span data-lang="ko">10 에폭 근처에서 학습률이 한 번 떨어지며 검증 AUC가 <em>0.985</em>대에서 <em>0.999</em>대로 뜁니다.
-                2단계 fine-tuning이 실제로 먹힌 지점입니다.</span><span data-lang="en">Around epoch 10 the learning rate drops and validation AUC jumps from the <em>0.985</em> range
-                to <em>0.999</em>. That is where the second fine-tuning stage earns its keep.</span>
+<span data-lang="ko">10 에폭 근처에서 학습률이 한 번 떨어지며 검증 AUC가 <em>0.985</em>대에서 <em>0.999</em>대로 올라갑니다.
+                2단계 fine-tuning이 적용된 구간입니다.</span><span data-lang="en">Around epoch 10 the learning rate drops and validation AUC rises from the <em>0.985</em> range
+                to <em>0.999</em>. This is the second fine-tuning stage.</span>
               </figcaption>
             </figure>
 
@@ -982,12 +860,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="Grad-CAM 4종 케이스. 맞힌 폐렴, 맞힌 정상, 놓친 폐렴, 잘못 의심한 정상 각각의 히트맵">
               </a>
               <figcaption>
-                <b data-lang="ko">모델은 어디를 보고 판단했는가</b><b data-lang="en">Where the model was looking</b>
-<span data-lang="ko">맞힌 폐렴(1행)에서는 히트맵이 폐야 한복판에 얹힙니다. 반면 놓친 사례(3행)와
-                잘못 의심한 사례(4행)에서는 초점이 폐 바깥이나 가장자리로 새 나갑니다.
-                틀릴 때는 근거부터 틀렸습니다.</span><span data-lang="en">On correct pneumonia calls (row 1) the heatmap sits squarely on the lung fields. On the
-                missed case (row 3) and the false alarm (row 4) attention drifts to the chest wall and edges.
-                When it gets the answer wrong, it is reading the wrong place to begin with.</span>
+                <b data-lang="ko">Grad-CAM 히트맵</b><b data-lang="en">Grad-CAM heatmaps</b>
+<span data-lang="ko">맞힌 폐렴(1행)에서는 히트맵이 폐야 가운데에 형성됩니다. 놓친 사례(3행)와
+                잘못 의심한 사례(4행)에서는 초점이 폐 바깥이나 가장자리에 잡혔습니다.</span><span data-lang="en">On correct pneumonia calls (row 1) the heatmap sits on the lung fields. On the missed case
+                (row 3) and the false alarm (row 4) it falls on the chest wall and the edges instead.</span>
               </figcaption>
             </figure>
 
@@ -1027,65 +903,65 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
             <div class="stat"><b class="num alt">90,067</b><span data-lang="ko">예측 대상 환자</span><span data-lang="en">Patients to predict</span></div>
           </div>
 
-          <h4 data-lang="ko">왜 이 문제인가</h4><h4 data-lang="en">Why this problem</h4>
+          <h4 data-lang="ko">배경</h4><h4 data-lang="en">Background</h4>
           <ul>
-            <li data-lang="ko">배아 이식 성공률은 <em>30%</em> 언저리입니다. 시술이 평균 <em>5~8회</em> 반복되는 동안 <strong>70% 이상의 환자가 실패를 겪습니다.</strong> 비용도 심리적 부담도 거기서 나옵니다.</li><li data-lang="en">Embryo transfer succeeds around <em>30%</em> of the time. Over the <em>5–8 cycles</em> a typical course runs, <strong>more than 70% of patients live through a failure.</strong> The financial and emotional cost sits right there.</li>
-            <li data-lang="ko">그래서 목표를 "정확도 높이기"가 아니라 <strong>환자별 성공 확률을 의료진에게 참고값으로 건네는 것</strong>으로 잡았습니다.</li><li data-lang="en">So the goal was never a leaderboard number. It was <strong>handing a clinician a per-patient probability they could actually use</strong>.</li>
+            <li data-lang="ko">배아 이식 성공률은 <em>30%</em> 언저리이고 시술은 평균 <em>5~8회</em> 반복됩니다. 그 과정에서 <strong>70% 이상의 환자가 실패를 겪습니다.</strong></li><li data-lang="en">Embryo transfer succeeds around <em>30%</em> of the time, over a course that typically runs <em>5–8 cycles</em>. <strong>More than 70% of patients go through a failure.</strong></li>
+            <li data-lang="ko">그래서 목표를 리더보드 점수가 아니라 <strong>환자별 성공 확률을 의료진에게 참고값으로 제공하는 것</strong>으로 잡았습니다.</li><li data-lang="en">The goal was therefore <strong>giving clinicians a per-patient probability they could use as a reference</strong>, rather than a leaderboard score.</li>
           </ul>
 
-          <h4 data-lang="ko">역할</h4><h4 data-lang="en">My role</h4>
+          <h4 data-lang="ko">역할과 데이터</h4><h4 data-lang="en">Role and data</h4>
           <ul>
             <li data-lang="ko"><strong>4인 팀(치킨4조)의 팀장</strong>으로 과제 분배와 모델 통합을 맡았습니다.</li><li data-lang="en"><strong>Team lead of Chicken4jo, four people</strong>, responsible for splitting the work and merging the models.</li>
-            <li data-lang="ko">학습 <em>256,351 × 69</em>, 예측 대상 <em>90,067</em>명. 임신 실패 <em>190,123</em>건 대 성공 <em>66,228</em>건으로 <strong>약 74 대 26의 불균형</strong>이었습니다.</li><li data-lang="en">Training on <em>256,351 × 69</em>, predicting for <em>90,067</em> patients. <em>190,123</em> failures against <em>66,228</em> successes — <strong>roughly a 74:26 split</strong>.</li>
-            <li data-lang="ko">정확도만 보면 전부 "실패"로 찍어도 높게 나오는 구조라, 주 지표를 <strong>ROC-AUC</strong>로 두고 PR-AUC · Recall · Log Loss를 함께 봤습니다.</li><li data-lang="en">Accuracy would reward guessing "failure" every time, so <strong>ROC-AUC</strong> was the headline metric, read alongside PR-AUC, recall and log loss.</li>
+            <li data-lang="ko">학습 <em>256,351 × 69</em>, 예측 대상 <em>90,067</em>명입니다. 임신 실패 <em>190,123</em>건에 성공 <em>66,228</em>건으로 <strong>약 74 대 26</strong>이었습니다.</li><li data-lang="en">Training on <em>256,351 × 69</em>, predicting for <em>90,067</em> patients. <em>190,123</em> failures against <em>66,228</em> successes, <strong>roughly 74:26</strong>.</li>
+            <li data-lang="ko">정확도만 보면 전부 실패로 찍어도 높게 나오는 구조라 주 지표를 <strong>ROC-AUC</strong>로 두고 PR-AUC · Recall · Log Loss를 함께 봤습니다.</li><li data-lang="en">Accuracy would reward guessing failure every time, so <strong>ROC-AUC</strong> was the headline metric, read alongside PR-AUC, recall and log loss.</li>
           </ul>
 
-          <h4 data-lang="ko">결측을 어떻게 읽었는가</h4><h4 data-lang="en">Reading the missing values</h4>
+          <h4 data-lang="ko">결측값 처리</h4><h4 data-lang="en">Missing values</h4>
           <ul>
-            <li data-lang="ko">PGS 시술 여부 <em>99.25%</em>, PGD <em>99.15%</em>, 착상 전 유전검사 <em>98.94%</em>가 비어 있었습니다. 채워 넣을 값이 아니라 <strong>애초에 그 시술을 안 했다는 기록</strong>이었습니다.</li><li data-lang="en">PGS was blank in <em>99.25%</em> of rows, PGD in <em>99.15%</em>, preimplantation genetic testing in <em>98.94%</em>. These were not gaps to impute — they were <strong>records that the procedure never happened</strong>.</li>
-            <li data-lang="ko">단순 누락과 「해당 없음」을 갈라서 처리하고 결측 사실 자체를 <strong>이진화 지표 9종</strong>으로 바꿔 모델에 넣었습니다.</li><li data-lang="en">I separated true absence from "not applicable" and turned the missingness itself into <strong>nine binary indicators</strong> fed to the model.</li>
+            <li data-lang="ko">PGS 시술 여부 <em>99.25%</em>, PGD <em>99.15%</em>, 착상 전 유전검사 <em>98.94%</em>가 비어 있었습니다. 이건 채워 넣을 결측이 아니라 <strong>그 시술을 하지 않았다는 기록</strong>입니다.</li><li data-lang="en">PGS was blank in <em>99.25%</em> of rows, PGD in <em>99.15%</em>, preimplantation genetic testing in <em>98.94%</em>. These are not gaps to impute but <strong>records that the procedure did not take place</strong>.</li>
+            <li data-lang="ko">단순 누락과 「해당 없음」을 구분해 처리하고, 결측 여부 자체를 <strong>이진 지표 9종</strong>으로 만들어 모델에 넣었습니다.</li><li data-lang="en">I separated true absence from "not applicable" and turned the missingness itself into <strong>nine binary indicators</strong> fed to the model.</li>
           </ul>
 
-          <h4 data-lang="ko">네 단계로 끌어올린 과정</h4><h4 data-lang="en">Four steps up</h4>
+          <h4 data-lang="ko">성능 개선 단계</h4><h4 data-lang="en">Steps</h4>
           <ul>
-            <li data-lang="ko"><strong>1단계 · LightGBM 단일</strong> — 도메인 지식으로 고른 기본 변수로 베이스라인. ROC-AUC <em>0.7363</em>, Recall <em>0.778</em>. 성공 사례를 놓치지 않는 대신 정밀도가 낮은 모델이었습니다.</li><li data-lang="en"><strong>Step 1 · single LightGBM</strong> — a baseline on domain-picked variables. ROC-AUC <em>0.7363</em>, recall <em>0.778</em>: it caught successes but was imprecise.</li>
-            <li data-lang="ko"><strong>2단계 · 3-way 블렌딩</strong> — CatBoost 50 : XGBoost 25 : LightGBM 25. AUC <em>0.7403</em>, Log Loss가 <em>0.5886 → 0.5432</em>로 떨어지며 확률이 안정됐습니다.</li><li data-lang="en"><strong>Step 2 · three-way blend</strong> — CatBoost 50 : XGBoost 25 : LightGBM 25. AUC <em>0.7403</em>, and log loss fell from <em>0.5886 to 0.5432</em>, steadying the probabilities.</li>
-            <li data-lang="ko"><strong>3단계 · Optuna 튜닝</strong> — 결측 이진화와 전 변수 투입. Log Loss <em>0.4875</em>로 최상. 다만 Recall이 크게 떨어져 균형은 오히려 나빠졌습니다.</li><li data-lang="en"><strong>Step 3 · Optuna tuning</strong> — every variable in, plus the missingness indicators. Best log loss at <em>0.4875</em>, but recall collapsed and the balance got worse, not better.</li>
-            <li data-lang="ko"><strong>4단계 · Rank Average Blending</strong> — 의학적 interaction 변수를 얹어 <em>0.7405</em>. 여기에 스태킹까지 더한 최종본이 리더보드 <em>0.742</em>대에 올랐습니다.</li><li data-lang="en"><strong>Step 4 · rank-average blending</strong> — clinically motivated interaction terms took it to <em>0.7405</em>, and adding stacking on top put the final entry in the <em>0.742</em> range on the leaderboard.</li>
+            <li data-lang="ko"><strong>1단계 · LightGBM 단일</strong> — 도메인 지식으로 고른 기본 변수로 베이스라인을 잡았습니다. ROC-AUC <em>0.7363</em>, Recall <em>0.778</em>로 성공 사례는 잘 잡지만 정밀도가 낮았습니다.</li><li data-lang="en"><strong>Step 1 · single LightGBM</strong> — a baseline on domain-picked variables. ROC-AUC <em>0.7363</em>, recall <em>0.778</em>: good at catching successes, low precision.</li>
+            <li data-lang="ko"><strong>2단계 · 3-way 블렌딩</strong> — CatBoost 50 : XGBoost 25 : LightGBM 25. AUC <em>0.7403</em>, Log Loss가 <em>0.5886에서 0.5432</em>로 떨어지며 확률이 안정됐습니다.</li><li data-lang="en"><strong>Step 2 · three-way blend</strong> — CatBoost 50 : XGBoost 25 : LightGBM 25. AUC <em>0.7403</em>, and log loss fell from <em>0.5886 to 0.5432</em>, steadying the probabilities.</li>
+            <li data-lang="ko"><strong>3단계 · Optuna 튜닝</strong> — 결측 이진화와 전 변수를 투입했습니다. Log Loss는 <em>0.4875</em>로 가장 좋았지만 Recall이 크게 떨어져 균형은 나빠졌습니다.</li><li data-lang="en"><strong>Step 3 · Optuna tuning</strong> — every variable in, plus the missingness indicators. Log loss was best at <em>0.4875</em>, but recall dropped sharply and the balance got worse.</li>
+            <li data-lang="ko"><strong>4단계 · Rank Average Blending</strong> — 의학적 interaction 변수를 더해 <em>0.7405</em>. 여기에 스태킹을 얹은 최종본이 리더보드 <em>0.742</em>대를 기록했습니다.</li><li data-lang="en"><strong>Step 4 · rank-average blending</strong> — clinically motivated interaction terms took it to <em>0.7405</em>, and adding stacking put the final entry in the <em>0.742</em> range on the leaderboard.</li>
           </ul>
 
           <h4 data-lang="ko">피처 엔지니어링</h4><h4 data-lang="en">Feature engineering</h4>
           <ul>
-            <li data-lang="ko">「40세 이상 × 공여 난자 사용」, 「40세 이상 × 배반포 여부」, 「반복 시술 × 복합 불임 원인」, 「나이 × 배아 이식 성공 비율」처럼 <strong>의학적 맥락이 담긴 조합 변수</strong>를 직접 설계했습니다.</li><li data-lang="en">I hand-built <strong>interaction terms that carry clinical meaning</strong> — "over 40 × donor oocyte", "over 40 × blastocyst", "repeat cycle × multiple infertility causes", "age × transfer success rate".</li>
-            <li data-lang="ko">변수를 많이 넣는 것보다 <strong>의미 있는 변수를 만드는 쪽</strong>이 성능을 밀어올린다는 게 이 프로젝트의 결론이었습니다.</li><li data-lang="en">The lesson was that <strong>building meaningful variables</strong> beat throwing more of them at the model.</li>
+            <li data-lang="ko">「40세 이상 × 공여 난자 사용」, 「40세 이상 × 배반포 여부」, 「반복 시술 × 복합 불임 원인」, 「나이 × 배아 이식 성공 비율」처럼 <strong>의학적 맥락이 담긴 조합 변수</strong>를 직접 설계했습니다.</li><li data-lang="en">I hand-built <strong>interaction terms carrying clinical meaning</strong>: "over 40 × donor oocyte", "over 40 × blastocyst", "repeat cycle × multiple infertility causes", "age × transfer success rate".</li>
+            <li data-lang="ko">이 프로젝트에서는 변수를 늘리는 것보다 <strong>의미 있는 변수를 설계하는 것</strong>이 점수에 더 크게 작용했습니다.</li><li data-lang="en">On this project, <strong>designing meaningful variables</strong> moved the score more than adding more of them.</li>
           </ul>
 
           <h4 data-lang="ko">최종 앙상블</h4><h4 data-lang="en">Final ensemble</h4>
           <ul>
-            <li data-lang="ko">10-Fold Stratified CV 기준 OOF AUC — LightGBM <em>0.740123</em>, XGBoost <em>0.740241</em>, CatBoost <em>0.740108</em>. 셋이 거의 같아서 결합 방식이 승부처였습니다.</li><li data-lang="en">Out-of-fold AUC under 10-fold stratified CV — LightGBM <em>0.740123</em>, XGBoost <em>0.740241</em>, CatBoost <em>0.740108</em>. Near-identical, so how you combine them was the whole game.</li>
+            <li data-lang="ko">10-Fold Stratified CV 기준 OOF AUC는 LightGBM <em>0.740123</em>, XGBoost <em>0.740241</em>, CatBoost <em>0.740108</em>로 셋이 거의 같았습니다. 결합 방식에 따라 결과가 갈리는 상황이었습니다.</li><li data-lang="en">Out-of-fold AUC under 10-fold stratified CV came to LightGBM <em>0.740123</em>, XGBoost <em>0.740241</em>, CatBoost <em>0.740108</em> — near-identical, so the combination method decided the result.</li>
             <li data-lang="ko">Nelder-Mead로 가중치를 찾아 <strong>LightGBM 0.358 : XGBoost 0.256 : CatBoost 0.386</strong>을 얻었습니다(AUC <em>0.740378</em>).</li><li data-lang="en">Nelder-Mead landed on <strong>LightGBM 0.358 : XGBoost 0.256 : CatBoost 0.386</strong> (AUC <em>0.740378</em>).</li>
-            <li data-lang="ko">Rank 기반 블렌딩(<em>0.740375</em>)과 로지스틱 스태킹(<em>0.740376</em>)도 같이 돌려 비교한 뒤, 근소하게 앞선 블렌딩을 최종으로 골랐습니다.</li><li data-lang="en">Rank-based blending (<em>0.740375</em>) and logistic stacking (<em>0.740376</em>) ran alongside it; blending edged ahead and took the slot.</li>
+            <li data-lang="ko">Rank 기반 블렌딩(<em>0.740375</em>)과 로지스틱 스태킹(<em>0.740376</em>)도 함께 비교한 뒤 근소하게 앞선 블렌딩을 최종으로 골랐습니다.</li><li data-lang="en">Rank-based blending (<em>0.740375</em>) and logistic stacking (<em>0.740376</em>) were compared alongside it, and blending came out slightly ahead.</li>
             <li data-lang="ko">Optuna는 2단계로 돌렸습니다. 1차에 모델별 100회 탐색(Stratified 3-Fold, early stopping 40), 2차에 그 주변으로 범위를 좁혀 다시 탐색했습니다.</li><li data-lang="en">Optuna ran in two passes: 100 trials per model (stratified 3-fold, early stopping at 40), then a narrowed search around the winners.</li>
           </ul>
 
-          <h4 data-lang="ko">데이터에서 본 것</h4><h4 data-lang="en">What the data showed</h4>
+          <h4 data-lang="ko">데이터 분석 결과</h4><h4 data-lang="en">What the data showed</h4>
           <ul>
-            <li data-lang="ko">기록된 불임 원인 중 <strong>남성 요인이 가장 많았고</strong>(<em>95,466</em>건, <em>37.24%</em>), 이 그룹의 성공률은 <em>27.99%</em>였습니다.</li><li data-lang="en"><strong>Male factor was the most frequently recorded cause</strong> (<em>95,466</em> cases, <em>37.24%</em>), with a <em>27.99%</em> success rate in that group.</li>
-            <li data-lang="ko">과거 시술 이력이 있는 그룹은 성공률이 낮았고 임신·출산 경험이 있으면 조금 높았습니다.</li><li data-lang="en">Prior treatment cycles correlated with lower success; previous pregnancy or birth nudged it up.</li>
+            <li data-lang="ko">기록된 불임 원인 중 <strong>남성 요인이 가장 많았고</strong>(<em>95,466</em>건, <em>37.24%</em>) 이 그룹의 성공률은 <em>27.99%</em>였습니다.</li><li data-lang="en"><strong>Male factor was the most frequently recorded cause</strong> (<em>95,466</em> cases, <em>37.24%</em>), with a <em>27.99%</em> success rate in that group.</li>
+            <li data-lang="ko">과거 시술 이력이 있는 그룹은 성공률이 낮았고, 임신·출산 경험이 있으면 조금 높았습니다.</li><li data-lang="en">Groups with prior treatment cycles showed lower success; previous pregnancy or birth showed slightly higher.</li>
             <li data-lang="ko">기증 배아나 공여 난자를 쓴 그룹에서 성공률이 높게 나타났습니다.</li><li data-lang="en">Donated embryos and donor oocytes both showed higher success rates.</li>
           </ul>
 
           <h4 data-lang="ko">해석과 프로토타입</h4><h4 data-lang="en">Interpretation and prototype</h4>
           <ul>
-            <li data-lang="ko">SHAP으로 변수 기여도를 뜯어 어떤 요인이 확률을 끌어올리는지 확인했습니다.</li><li data-lang="en">SHAP broke down which variables were actually driving the probability.</li>
-            <li data-lang="ko">환자별 성공 확률을 제시하는 <strong>의사결정 보조 프로토타입</strong>을 만들었습니다. 여기엔 최고 점수 모델 대신 Recall과 F1 균형이 나은 CatBoost + XGBoost 50:50을 썼습니다.</li><li data-lang="en">I built a <strong>decision-support prototype</strong> that shows a per-patient probability. It runs on a 50:50 CatBoost + XGBoost blend rather than the top-scoring model, because recall and F1 balance matter more in front of a clinician.</li>
+            <li data-lang="ko">SHAP으로 변수 기여도를 확인해 어떤 요인이 확률을 끌어올리는지 봤습니다.</li><li data-lang="en">SHAP showed which variables were driving the probability.</li>
+            <li data-lang="ko">환자별 성공 확률을 제시하는 <strong>의사결정 보조 프로토타입</strong>을 만들었습니다. 여기에는 최고 점수 모델 대신 Recall과 F1 균형이 나은 CatBoost + XGBoost 50:50을 썼습니다.</li><li data-lang="en">I built a <strong>decision-support prototype</strong> showing a per-patient probability. It runs on a 50:50 CatBoost + XGBoost blend rather than the top-scoring model, for better recall and F1 balance.</li>
           </ul>
 
-          <h4 data-lang="ko">남은 한계</h4><h4 data-lang="en">What is still missing</h4>
+          <h4 data-lang="ko">한계</h4><h4 data-lang="en">Limitations</h4>
           <ul>
-            <li data-lang="ko">74 대 26 불균형을 임계값 조정이나 리샘플링으로 더 다뤄볼 여지가 있습니다.</li><li data-lang="en">The 74:26 imbalance still has room for threshold tuning and resampling.</li>
-            <li data-lang="ko">배아 등급, 호르몬 수치, AMH, BMI 같은 <strong>핵심 임상 변수가 데이터에 없었습니다.</strong> 예측을 더 밀려면 변수부터 보강돼야 합니다.</li><li data-lang="en"><strong>Key clinical variables were simply absent</strong> — embryo grade, hormone panels, AMH, BMI. Better prediction starts with better inputs.</li>
-            <li data-lang="ko">확률값 자체의 신뢰도를 높이려면 calibration이 필요하고 실제 병원 데이터로 외부 검증도 거쳐야 합니다.</li><li data-lang="en">The probabilities need calibration before anyone leans on them, and external validation on real hospital data.</li>
+            <li data-lang="ko">74 대 26 불균형은 임계값 조정이나 리샘플링으로 더 다뤄볼 여지가 있습니다.</li><li data-lang="en">The 74:26 imbalance still has room for threshold tuning and resampling.</li>
+            <li data-lang="ko">배아 등급, 호르몬 수치, AMH, BMI 같은 <strong>핵심 임상 변수가 데이터에 없었습니다.</strong> 예측을 더 개선하려면 변수부터 보강돼야 합니다.</li><li data-lang="en"><strong>Key clinical variables were absent</strong>: embryo grade, hormone panels, AMH, BMI. Improving prediction would start with adding those.</li>
+            <li data-lang="ko">확률값을 실제로 쓰려면 calibration이 필요하고, 병원 데이터로 외부 검증도 거쳐야 합니다.</li><li data-lang="en">Using the probabilities in practice would require calibration and external validation on hospital data.</li>
           </ul>
         </div>
       </article>
@@ -1109,7 +985,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
              data-sub-en="Oz Coding School AI Healthcare · group 6 (team of four) · Jul 2026"
              data-repo="https://github.com/J36-Ai-Editer/Oz_codingSchool"
              data-repo-label="J36-Ai-Editer / Oz_codingSchool">
-          <h4 data-lang="ko">하는 일</h4><h4 data-lang="en">What it does</h4>
+          <h4 data-lang="ko">개요</h4><h4 data-lang="en">Overview</h4>
           <ul>
             <li data-lang="ko">학습한 인공지능 모델을 <strong>FastAPI REST API</strong>로 서빙하고 Docker로 컨테이너화해 배포한 4인 팀 프로젝트입니다.</li><li data-lang="en">This was a four-person project serving trained models through a <strong>FastAPI REST API</strong>, containerised with Docker.</li>
             <li data-lang="ko">환자 · 진료기록 · X-ray 이미지 · AI 분석 결과를 다루는 백엔드를 <strong>API · 서비스 · 리포지토리 계층으로 분리</strong>해 구성했습니다.</li><li data-lang="en">The backend handles patients, medical records, X-ray images and model output, <strong>split into API, service and repository layers</strong>.</li>
@@ -1119,20 +995,20 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <h4 data-lang="ko">맡은 부분</h4><h4 data-lang="en">My part</h4>
           <ul>
             <li data-lang="ko">4인 팀에서 <strong>실행·배포 환경</strong>을 맡았습니다. Docker Compose로 FastAPI · MySQL · Redis · AI Worker · Adminer 다섯 서비스를 묶었습니다.</li><li data-lang="en">In a team of four I owned the <strong>runtime and deployment environment</strong>, wiring five services — FastAPI, MySQL, Redis, the AI worker and Adminer — into one Docker Compose stack.</li>
-            <li data-lang="ko"><strong>받자마자 두 줄로 뜨게</strong> 만드는 데 시간을 썼습니다. <code>.env</code>가 없으면 컨테이너 기동 시 자동으로 만들고, 로컬 MySQL과 부딪히지 않게 호스트 포트를 3307로 옮기고 시드 데이터까지 넣어뒀습니다.</li><li data-lang="en">Most of that effort went into <strong>making a fresh clone run in two commands</strong> — auto-generating <code>.env</code> on boot, moving the host port to 3307 so it never clashes with a local MySQL, and seeding test data automatically.</li>
+            <li data-lang="ko">클론 직후 <strong>명령 두 줄로 실행되도록</strong> 맞추는 데 시간을 썼습니다. <code>.env</code>가 없으면 컨테이너 기동 시 자동 생성하고, 로컬 MySQL과 충돌하지 않게 호스트 포트를 3307로 옮기고 시드 데이터를 넣어뒀습니다.</li><li data-lang="en">Much of that went into <strong>getting a fresh clone running in two commands</strong>: auto-generating <code>.env</code> on boot, moving the host port to 3307 to avoid clashing with a local MySQL, and seeding test data.</li>
             <li data-lang="ko">이미지가 무거워서 <strong>CPU 전용 torch로 바꾸고 예측 시점에 지연 로딩</strong>하도록 고쳤습니다.</li><li data-lang="en">The image was heavy, so I switched to <strong>CPU-only torch and deferred the import to prediction time</strong>.</li>
             <li data-lang="ko">환자 소프트 삭제와 진료기록 목록 조회 API를 구현하고 5일차 환자 관리 API 설계 명세를 작성했습니다.</li><li data-lang="en">I built the patient soft-delete and medical-record listing endpoints, and wrote the patient-management API spec.</li>
             <li data-lang="ko">Windows · macOS 별 Docker 환경 설정 가이드와 배포 문서(DEPLOY.md)를 정리했습니다.</li><li data-lang="en">I also wrote the Docker setup guides for Windows and macOS, plus the deployment doc.</li>
           </ul>
 
-          <h4 data-lang="ko">응답이 느려지는 문제를 어떻게 풀었는가</h4><h4 data-lang="en">Fixing the slow response</h4>
+          <h4 data-lang="ko">비동기 처리 구조</h4><h4 data-lang="en">Asynchronous processing</h4>
           <ul>
-            <li data-lang="ko">X-ray 분석을 HTTP 요청 안에서 그대로 돌리면 사용자가 그동안 계속 기다립니다. 동시에 여러 건이 들어오면 API 서버가 무거운 작업까지 떠안고 분석이 실패하면 요청 자체가 죽습니다.</li><li data-lang="en">Running X-ray inference inside the HTTP request means the user waits for it. Several at once and the API server is carrying the heavy work too — and if inference fails, the request dies with it.</li>
-            <li data-lang="ko"><strong>요청을 받는 쪽과 실제로 분석하는 쪽을 갈랐습니다.</strong> FastAPI는 업로드를 받아 이벤트만 발행하고 별도 AI Worker가 큐에서 꺼내 처리한 뒤 결과를 저장합니다.</li><li data-lang="en">So we <strong>split the receiver from the worker.</strong> FastAPI takes the upload and publishes an event; a separate AI worker pulls from the queue, runs the model and writes the result back.</li>
-            <li data-lang="ko">전달 수단으로 Redis Pub/Sub과 Streams를 비교했습니다. Pub/Sub은 at-most-once라 구독자가 죽어 있으면 <strong>메시지가 그대로 사라집니다.</strong> 반드시 처리돼야 하는 분석 작업에는 저장과 재처리가 되는 <strong>Streams</strong>가 맞다고 보고 그쪽을 골랐습니다.</li><li data-lang="en">We compared Redis Pub/Sub against Streams. Pub/Sub is at-most-once — if the subscriber is down, <strong>the message is simply gone.</strong> For analysis that must not be dropped, <strong>Streams</strong> won: it persists and can be re-read by a consumer group.</li>
+            <li data-lang="ko">X-ray 분석을 HTTP 요청 안에서 처리하면 사용자가 그동안 대기하게 됩니다. 요청이 몰리면 API 서버가 무거운 연산까지 떠안고, 분석이 실패하면 요청 자체가 함께 실패합니다.</li><li data-lang="en">Running X-ray inference inside the HTTP request leaves the user waiting for it. Under concurrent load the API server also carries the heavy computation, and a failed inference fails the request with it.</li>
+            <li data-lang="ko">그래서 <strong>요청 수신과 분석을 분리했습니다.</strong> FastAPI는 업로드를 받아 이벤트만 발행하고, 별도의 AI Worker가 큐에서 꺼내 처리한 뒤 결과를 저장합니다.</li><li data-lang="en">We <strong>separated request handling from inference.</strong> FastAPI takes the upload and publishes an event; a separate AI worker pulls from the queue, runs the model and writes the result back.</li>
+            <li data-lang="ko">전달 수단으로 Redis Pub/Sub과 Streams를 비교했습니다. Pub/Sub은 at-most-once라 구독자가 내려가 있으면 메시지가 유실됩니다. 유실되면 안 되는 분석 작업이라 저장과 재처리가 가능한 <strong>Streams</strong>를 선택했습니다.</li><li data-lang="en">We compared Redis Pub/Sub with Streams. Pub/Sub is at-most-once, so a message is lost if the subscriber is down. Since these jobs cannot be dropped, we chose <strong>Streams</strong>, which persists messages and allows a consumer group to re-read them.</li>
           </ul>
 
-          <h4 data-lang="ko">구성</h4><h4 data-lang="en">How it fits together</h4>
+          <h4 data-lang="ko">인증과 테스트</h4><h4 data-lang="en">Auth and testing</h4>
           <ul>
             <li data-lang="ko">User API 10종에 JWT 인증과 Argon2 해싱, 관리자 권한 분리를 붙였습니다.</li><li data-lang="en">Ten user endpoints sit behind JWT auth with Argon2 hashing and a separate admin role.</li>
             <li data-lang="ko">SQLAlchemy 비동기 세션과 Alembic 마이그레이션으로 스키마를 관리하고 테스트는 실제 MySQL을 건드리지 않도록 <strong>격리된 SQLite에서 pytest</strong>로 돌립니다.</li><li data-lang="en">Sessions are async SQLAlchemy with Alembic migrations, and <strong>pytest runs against an isolated SQLite database</strong> so tests never touch the real MySQL.</li>
@@ -1150,7 +1026,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                 <b data-lang="ko">이벤트 기반 처리 흐름</b><b data-lang="en">Event-driven flow</b>
                 <span data-lang="ko">FastAPI는 업로드를 받아 진료기록과 이미지를 저장하고 Redis Stream에 작업을 넣습니다.
                 AI Worker들이 큐에서 나눠 꺼내 분석하고 결과를 DB에 씁니다. 사용자는 조회 API로 결과를 받습니다.
-                제가 9일차 아키텍처 문서에 그려 넣은 그림입니다.</span>
+                팀 아키텍처 문서에 제가 작성한 그림입니다.</span>
                 <span data-lang="en">FastAPI stores the record and image, then pushes a job onto a Redis stream.
                 AI workers pull from the queue, run inference and write results back to the database, which the
                 client then reads through a separate endpoint. I drew this for the team’s architecture doc.</span>
@@ -1179,10 +1055,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
              data-title-en="Health Insights from Smoking-Status Data"
              data-sub="오즈코딩스쿨 AI 헬스케어 과정 · 4조 (4인 팀) · 2026.04"
              data-sub-en="Oz Coding School AI Healthcare · group 4 (team of four) · Apr 2026">
-          <h4 data-lang="ko">분석</h4><h4 data-lang="en">The analysis</h4>
+          <h4 data-lang="ko">개요</h4><h4 data-lang="en">Overview</h4>
           <ul>
-            <li data-lang="ko">건강검진 데이터에서 흡연 여부와 건강 지표의 관계를 분석하고 시각화해 인사이트를 도출했습니다.</li><li data-lang="en">We worked from health-screening records to see how smoking status tracks against clinical indicators.</li>
-            <li data-lang="ko">혈압 · 혈당 · 콜레스테롤 · BMI 등 지표의 분포와 상관관계를 살피고 흡연자와 비흡연자의 차이를 <strong>통계적 가설 검정</strong>으로 확인했습니다.</li><li data-lang="en">We looked at distributions and correlations across blood pressure, glucose, cholesterol and BMI, and checked the difference between smokers and non-smokers with <strong>hypothesis testing</strong>.</li>
+            <li data-lang="ko">건강검진 데이터로 흡연 여부와 건강 지표의 관계를 분석하고 시각화했습니다.</li><li data-lang="en">We analysed and visualised the relationship between smoking status and clinical indicators in health-screening data.</li>
+            <li data-lang="ko">혈압 · 혈당 · 콜레스테롤 · BMI 등의 분포와 상관관계를 확인하고, 흡연자와 비흡연자의 차이를 <strong>통계적 가설 검정</strong>으로 검증했습니다.</li><li data-lang="en">We checked distributions and correlations across blood pressure, glucose, cholesterol and BMI, and tested the difference between smokers and non-smokers with <strong>statistical hypothesis testing</strong>.</li>
           </ul>
 
           <h4 data-lang="ko">맡은 부분</h4><h4 data-lang="en">My part</h4>
@@ -1193,9 +1069,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
           <h4 data-lang="ko">발견</h4><h4 data-lang="en">Findings</h4>
           <ul>
-            <li data-lang="ko">흡연 여부와 가장 강하게 붙어 있던 지표는 <strong>헤모글로빈(상관계수 <em>0.40</em>)</strong>이었습니다. 키 <em>0.39</em>, 몸무게 <em>0.31</em>, 중성지방 <em>0.25</em>가 뒤를 이었습니다.</li><li data-lang="en">The strongest association with smoking was <strong>haemoglobin (r = <em>0.40</em>)</strong>, followed by height <em>0.39</em>, weight <em>0.31</em> and triglycerides <em>0.25</em>.</li>
-            <li data-lang="ko">반대로 <strong>고밀도지단백(HDL)은 <em>-0.18</em></strong>로 음의 방향이었습니다. 흡연 집단에서 이른바 좋은 콜레스테롤이 낮게 나타났습니다.</li><li data-lang="en"><strong>HDL ran the other way at <em>−0.18</em></strong> — the so-called good cholesterol sat lower in the smoking group.</li>
-            <li data-lang="ko">나이대와 BMI 구간을 따로 만들어 40대와 50대를 갈라 보면, 같은 지표라도 연령대에 따라 차이 폭이 달라졌습니다.</li><li data-lang="en">Splitting by age band and BMI bracket showed the same indicators separating by different margins in the 40s versus the 50s.</li>
+            <li data-lang="ko">흡연 여부와 상관이 가장 높은 지표는 <strong>헤모글로빈(상관계수 <em>0.40</em>)</strong>이었고 키 <em>0.39</em>, 몸무게 <em>0.31</em>, 중성지방 <em>0.25</em>가 뒤를 이었습니다.</li><li data-lang="en">The highest correlation with smoking status was <strong>haemoglobin (r = <em>0.40</em>)</strong>, followed by height <em>0.39</em>, weight <em>0.31</em> and triglycerides <em>0.25</em>.</li>
+            <li data-lang="ko"><strong>고밀도지단백(HDL)은 <em>-0.18</em></strong>로 음의 상관이었습니다. 흡연 집단에서 HDL 수치가 낮게 나타났습니다.</li><li data-lang="en"><strong>HDL was negative at <em>−0.18</em></strong>, with lower values in the smoking group.</li>
+            <li data-lang="ko">나이대와 BMI 구간을 나눠 보면 같은 지표라도 40대와 50대에서 차이 폭이 달랐습니다.</li><li data-lang="en">Split by age band and BMI bracket, the same indicators separated by different margins in the 40s and the 50s.</li>
           </ul>
 
           <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
@@ -1208,9 +1084,9 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
               </a>
               <figcaption>
                 <b data-lang="ko">흡연 유무에 따른 지표 분포</b><b data-lang="en">Indicator distributions by smoking status</b>
-<span data-lang="ko">헤모글로빈(왼쪽 위)은 흡연 집단이 눈에 띄게 오른쪽으로 밀려 있고
-                고밀도지단백(오른쪽 위)은 반대로 왼쪽에 몰려 있습니다. 공복 혈당과 혈압은 두 집단이 거의 겹칩니다.</span><span data-lang="en">Haemoglobin (top left) shifts clearly right for smokers while HDL (top right) bunches
-                left. Fasting glucose and blood pressure barely separate at all.</span>
+<span data-lang="ko">헤모글로빈(왼쪽 위)은 흡연 집단의 분포가 오른쪽으로 이동해 있고,
+                고밀도지단백(오른쪽 위)은 왼쪽으로 이동해 있습니다. 공복 혈당과 혈압은 두 집단이 거의 겹칩니다.</span><span data-lang="en">The smoking group's haemoglobin distribution (top left) sits further right, while HDL
+                (top right) sits further left. Fasting glucose and blood pressure overlap almost entirely.</span>
               </figcaption>
             </figure>
             <figure class="fig">
@@ -1250,8 +1126,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <ul>
             <li data-lang="ko">5만 건 규모의 고객 예약 데이터를 불러와 요일 같은 범주형 변수를 수치로 매핑하고 결측과 분포를 확인해 모델링용 데이터셋을 만들었습니다.</li><li data-lang="en">I loaded the customer booking dataset, mapped categorical fields such as day-of-week to numbers, and checked missingness and distributions to build a modelling table.</li>
             <li data-lang="ko">구매 시점까지의 리드타임 · 탑승 인원 · 출발 시각 · 비행 시간을 피처로 <strong>RandomForest 분류 모델</strong>을 학습하고 confusion matrix와 classification report로 평가했습니다.</li><li data-lang="en">I trained a <strong>RandomForest classifier</strong> on purchase lead time, passenger count, departure hour and flight duration, evaluating with a confusion matrix and classification report.</li>
-            <li data-lang="ko">변수 중요도를 뽑아 보니 <strong>구매 리드타임이 가장 큰 비중</strong>을 차지했습니다.</li><li data-lang="en">Feature importance put <strong>purchase lead time well ahead</strong> of the rest.</li>
-            <li data-lang="ko">다만 지금 남아 있는 노트북은 예약 완료 여부가 아니라 다른 컬럼을 타깃으로 학습돼 있습니다. <strong>예약 완료 예측으로 다시 정리할 예정입니다.</strong></li><li data-lang="en">One caveat: the surviving notebook trains against a different column rather than booking completion. <strong>I plan to redo it properly against the booking-completion target.</strong></li>
+            <li data-lang="ko">변수 중요도에서는 <strong>구매 리드타임이 가장 큰 비중</strong>을 차지했습니다.</li><li data-lang="en">In the feature importances, <strong>purchase lead time carried the largest weight</strong>.</li>
+            <li data-lang="ko">다만 현재 남아 있는 노트북은 예약 완료 여부가 아니라 다른 컬럼을 타깃으로 학습돼 있어, <strong>예약 완료 예측으로 다시 정리할 예정입니다.</strong></li><li data-lang="en">The notebook that remains trains against a different column rather than booking completion, so <strong>I plan to redo it against the booking-completion target.</strong></li>
           </ul>
           <div class="links">
             <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
@@ -1281,10 +1157,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
              data-sub-en="British Airways Data Science Simulation · Forage · Apr 2024">
           <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
           <ul>
-            <li data-lang="ko">Python 웹 스크래핑으로 <strong>비정형 리뷰 데이터</strong>를 수집하고 분석 가능한 형태로 정제했습니다.</li><li data-lang="en">I scraped <strong>unstructured review text</strong> with Python and cleaned it into something analysable.</li>
-            <li data-lang="ko">airlinequality.com에서 리뷰 10페이지를 BeautifulSoup으로 긁고 「Trip Verified」 같은 머리말을 걷어내 분석용으로 정리했습니다.</li><li data-lang="en">I pulled ten pages off airlinequality.com with BeautifulSoup and stripped the boilerplate prefixes such as “Trip Verified” to get usable text.</li>
-            <li data-lang="ko">NLTK VADER로 문장별 감성 점수를 매겼습니다. <strong>부정 56.4%, 긍정 29.3%, 중립 14.3%</strong>로 부정이 절반을 넘었습니다.</li><li data-lang="en">I scored each review with NLTK VADER: <strong>56.4% negative, 29.3% positive, 14.3% neutral</strong> — negatives took more than half.</li>
-            <li data-lang="ko">워드클라우드로 어떤 단어가 반복되는지 봤습니다. <strong>seat · time · service · food · staff</strong>가 가장 크게 잡혔습니다. 불만이 항공기 자체보다 <strong>좌석과 대기 시간, 응대</strong>에 몰려 있었습니다.</li><li data-lang="en">A word cloud showed what people actually repeat: <strong>seat, time, service, food, staff</strong>. The complaints cluster around <strong>seating, waiting and how staff respond</strong> rather than the aircraft itself.</li>
+            <li data-lang="ko">Python 웹 스크래핑으로 <strong>비정형 리뷰 데이터</strong>를 수집하고 분석 가능한 형태로 정제했습니다.</li><li data-lang="en">I collected <strong>unstructured review text</strong> by web scraping in Python and cleaned it into an analysable form.</li>
+            <li data-lang="ko">airlinequality.com에서 리뷰 10페이지를 BeautifulSoup으로 수집하고 「Trip Verified」 같은 머리말을 제거했습니다.</li><li data-lang="en">I collected ten pages of reviews from airlinequality.com with BeautifulSoup and removed boilerplate prefixes such as “Trip Verified”.</li>
+            <li data-lang="ko">NLTK VADER로 리뷰별 감성 점수를 매긴 결과 <strong>부정 56.4%, 긍정 29.3%, 중립 14.3%</strong>였습니다.</li><li data-lang="en">Scoring each review with NLTK VADER gave <strong>56.4% negative, 29.3% positive and 14.3% neutral</strong>.</li>
+            <li data-lang="ko">워드클라우드에서는 <strong>seat · time · service · food · staff</strong>가 가장 자주 등장했습니다. 불만이 <strong>좌석과 대기 시간, 응대</strong>에 집중돼 있었습니다.</li><li data-lang="en">The word cloud showed <strong>seat, time, service, food</strong> and <strong>staff</strong> appearing most often, with complaints concentrated on <strong>seating, waiting times and staff response</strong>.</li>
           </ul>
 
           <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
@@ -1297,8 +1173,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
               </a>
               <figcaption>
                 <b data-lang="ko">감성 분포</b><b data-lang="en">Sentiment split</b>
-                <span data-lang="ko">부정이 <em>56.4%</em>로 절반을 넘습니다. 평점만 봤을 때보다 체감이 나쁘다는 신호입니다.</span>
-                <span data-lang="en">Negative sits at <em>56.4%</em> — worse than the star ratings alone suggest.</span>
+                <span data-lang="ko">부정이 <em>56.4%</em>로 절반을 넘습니다.</span>
+                <span data-lang="en">Negative reviews account for <em>56.4%</em>, more than half the total.</span>
               </figcaption>
             </figure>
             <figure class="fig">
@@ -1308,8 +1184,8 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
               </a>
               <figcaption>
                 <b data-lang="ko">가장 많이 반복된 단어</b><b data-lang="en">Most repeated words</b>
-                <span data-lang="ko"><em>seat</em>가 압도적이고 <em>time · service · food · staff</em>가 뒤를 잇습니다. 개선 우선순위가 어디인지 그대로 드러납니다.</span>
-                <span data-lang="en"><em>seat</em> dominates, followed by <em>time, service, food</em> and <em>staff</em> — the improvement backlog, more or less written out.</span>
+                <span data-lang="ko"><em>seat</em>의 빈도가 가장 높고 <em>time · service · food · staff</em>가 뒤를 잇습니다.</span>
+                <span data-lang="en"><em>seat</em> appears most often, followed by <em>time, service, food</em> and <em>staff</em>.</span>
               </figcaption>
             </figure>
           </div>
@@ -1339,36 +1215,36 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
              data-title-en="Predicting Which Receptor a Drug Binds To"
              data-sub="University of Leeds · BSc Pharmacology 졸업 프로젝트 · 2024"
              data-sub-en="University of Leeds · BSc Pharmacology final-year project · 2024">
-          <h4 data-lang="ko">왜 이걸 했는가</h4><h4 data-lang="en">Why it mattered</h4>
+          <h4 data-lang="ko">배경</h4><h4 data-lang="en">Background</h4>
           <ul>
-            <li data-lang="ko">우리 몸에는 아드레날린을 받아들이는 <strong>수용체가 네 종류</strong> 있습니다. 생김새가 서로 닮아서 약이 목표한 하나에만 붙지 않고 <strong>옆의 것까지 건드리는 일</strong>이 흔합니다. 부작용이 대개 여기서 생깁니다.</li><li data-lang="en">The body has <strong>four kinds of receptor</strong> that respond to adrenaline, and they look enough alike that a drug aimed at one often <strong>latches onto its neighbours too</strong>. That is where a lot of side effects come from.</li>
-            <li data-lang="ko">그래서 물었습니다. <strong>실험실에 가기 전에, 컴퓨터만으로 「이 물질이 어느 수용체에 붙을지」 미리 가늠할 수 있을까?</strong> 된다면 후보를 미리 걸러내 시간과 비용을 아낄 수 있습니다.</li><li data-lang="en">So the question was simple: <strong>before anyone runs a bench experiment, can a computer tell you which receptor a compound will stick to?</strong> If it can, you screen candidates early and save both time and money.</li>
+            <li data-lang="ko">아드레날린 <strong>수용체는 네 종류</strong>이고 구조가 서로 유사합니다. 그래서 약이 목표한 수용체 외에 <strong>다른 수용체에도 결합하는 경우</strong>가 많고, 부작용의 상당 부분이 여기서 발생합니다.</li><li data-lang="en">There are <strong>four adrenergic receptors</strong> and their structures are similar, so a drug aimed at one often <strong>binds the others as well</strong>. A large share of side effects originates here.</li>
+            <li data-lang="ko">그래서 <strong>실험 전에 계산만으로 어떤 물질이 어느 수용체에 결합할지 예측할 수 있는지</strong>를 확인하는 것이 이 프로젝트의 주제였습니다. 가능하다면 후보 물질을 미리 걸러 시간과 비용을 줄일 수 있습니다.</li><li data-lang="en">The project therefore asked <strong>whether computation alone can predict which receptor a compound will bind before any bench work</strong>. If it can, candidates can be screened early, saving time and cost.</li>
           </ul>
 
-          <h4 data-lang="ko">어떻게 했는가</h4><h4 data-lang="en">How I went about it</h4>
+          <h4 data-lang="ko">방법</h4><h4 data-lang="en">Method</h4>
           <ul>
             <li data-lang="ko">먼저 <strong>수용체 12개의 실제 입체 구조</strong>를 공개 데이터베이스(GPCRdb · IUPHAR)에서 모았습니다. 아드레날린 계열 네 종류에 더해, 아세틸콜린 · 도파민 · 세로토닌 · 히스타민 계열까지 <strong>다섯 계열</strong>을 담았습니다. 실험으로 밝혀진 구조만 골랐고 해상도는 <em>2.0 ~ 3.3 Å</em>였습니다.</li><li data-lang="en">I gathered <strong>twelve real receptor structures</strong> from public databases (GPCRdb and IUPHAR) — the four adrenaline receptors plus acetylcholine, dopamine, serotonin and histamine families, <strong>five families in all</strong>. Only experimentally solved structures, at resolutions of <em>2.0–3.3 Å</em>.</li>
             <li data-lang="ko">붙여볼 물질은 DrugBank와 ChEMBL에서 받았습니다. 도파민 · 아드레날린 · 노르아드레날린처럼 원래 그 수용체에 작용하는 것들과, <strong>α에만 듣는 페닐에프린</strong>, <strong>β에만 듣는 이소프레날린</strong>을 함께 넣었습니다.</li><li data-lang="en">The compounds came from DrugBank and ChEMBL: the natural ones such as dopamine, adrenaline and noradrenaline, alongside <strong>phenylephrine, which acts only on α</strong>, and <strong>isoprenaline, which acts only on β</strong>.</li>
-            <li data-lang="ko">이걸 아드레날린 수용체 네 종류에 <strong>하나씩 GOLD로 끼워 넣어</strong> 얼마나 잘 맞물리는지 점수를 냈습니다. 나온 결과 파일을 <strong>파이썬으로 모아 정리하고 그래프로 그려</strong> 수용체별 · 물질별 분포를 한 화면에서 비교했습니다.</li><li data-lang="en">Each was then <strong>fitted into the four adrenaline receptors with GOLD</strong> and scored on how well it locked in. I <strong>collected, cleaned and plotted the output in Python</strong> so every receptor and compound sat on one chart.</li>
-            <li data-lang="ko">점수만으로는 왜 그런 결과가 나왔는지 알 수 없어서 <strong>PyMOL로 결합 부위를 직접 열어봤습니다.</strong> 약이 수용체의 어느 아미노산과 맞닿는지, 그 거리가 얼마인지를 하나씩 확인하고 그림으로 남겼습니다.</li><li data-lang="en">A score on its own does not explain itself, so I <strong>opened the binding sites in PyMOL.</strong> I worked through which amino acids each drug touches and at what distance, and saved the views as figures.</li>
+            <li data-lang="ko">각 물질을 아드레날린 수용체 네 종류에 <strong>GOLD로 도킹해</strong> 결합 적합도 점수를 냈습니다. 결과 파일은 <strong>파이썬으로 정리하고 그래프로 그려</strong> 수용체별 · 물질별 분포를 비교했습니다.</li><li data-lang="en">Each compound was <strong>docked into the four adrenergic receptors with GOLD</strong> and scored for fit. I <strong>processed the output files in Python and plotted them</strong> to compare distributions across receptors and compounds.</li>
+            <li data-lang="ko">점수만으로는 원인을 알 수 없어 <strong>PyMOL로 결합 부위를 확인했습니다.</strong> 약물이 어느 아미노산과 접촉하는지와 그 거리를 하나씩 기록하고 그림으로 남겼습니다.</li><li data-lang="en">Scores alone do not explain the cause, so I <strong>inspected the binding sites in PyMOL</strong>, recording which amino acids each drug contacts and at what distance, and saving the views as figures.</li>
           </ul>
 
-          <h4 data-lang="ko">무엇이 보였는가</h4><h4 data-lang="en">What showed up</h4>
+          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Findings</h4>
           <ul>
-            <li data-lang="ko"><strong>이소프레날린</strong>은 β1에서 점수가 가장 높았습니다. 실제로 심장의 β 수용체에 듣는 약이라 <strong>알려진 성질과 계산이 맞아떨어졌습니다.</strong></li><li data-lang="en"><strong>Isoprenaline</strong> scored highest on β1 — it is in fact a drug that acts on β receptors in the heart, so <strong>the computed answer matched what is already known.</strong></li>
-            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 어디에서도 가장 낮았습니다. 애초에 이 계열에 듣지 않는 물질이라 <strong>「틀리면 낮게 나와야 하는」 기준점</strong> 역할을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> came last everywhere. It does not act on this family at all, so it served as <strong>the reference for what a wrong answer should look like.</strong></li>
-            <li data-lang="ko">다만 <strong>α 전용 약과 β 전용 약이 점수만으로는 깔끔하게 갈리지 않았습니다.</strong> 원래 물었던 「계산만으로 선택성을 가려낼 수 있는가」에 대한 답은 <strong>「아직은 아니다」</strong>에 가까웠습니다.</li><li data-lang="en">But <strong>the α-only and β-only drugs did not separate cleanly on score alone.</strong> On the original question — can simulation pick out selectivity by itself — the honest answer came back closer to <strong>“not yet”.</strong></li>
+            <li data-lang="ko"><strong>이소프레날린</strong>은 β1에서 점수가 가장 높았습니다. 실제로 심장의 β 수용체에 작용하는 약물이라 <strong>계산 결과가 알려진 성질과 일치했습니다.</strong></li><li data-lang="en"><strong>Isoprenaline</strong> scored highest on β1. It does act on β receptors in the heart, so <strong>the computed result matched the known behaviour.</strong></li>
+            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 모두에서 가장 낮았습니다. 이 계열에 작용하지 않는 물질이라 <strong>음성 대조군</strong> 역할을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> scored lowest on all four. It does not act on this family, so it served as a <strong>negative control</strong>.</li>
+            <li data-lang="ko">다만 <strong>α 선택성 약물과 β 선택성 약물이 점수만으로는 구분되지 않았습니다.</strong> 계산만으로 선택성을 가려낼 수 있느냐는 처음 질문에 대해서는 <strong>이 방법으로는 어렵다</strong>는 결론이 나왔습니다.</li><li data-lang="en">However, <strong>the α-selective and β-selective drugs did not separate on score alone.</strong> On the original question of predicting selectivity computationally, the conclusion was that <strong>this method is not sufficient</strong>.</li>
           </ul>
 
-          <h4 data-lang="ko">그 결과를 믿어도 되는가</h4><h4 data-lang="en">Could I trust it?</h4>
+          <h4 data-lang="ko">방법 검증</h4><h4 data-lang="en">Validating the method</h4>
           <ul>
-            <li data-lang="ko">점수가 나왔다고 바로 쓸 수는 없습니다. <strong>이 시뮬레이션이 애초에 정답을 맞힐 수 있는 도구인지</strong>부터 확인해야 했습니다.</li><li data-lang="en">A number is not worth much until you know <strong>the tool producing it can get a known answer right.</strong></li>
-            <li data-lang="ko">그래서 <strong>정답을 이미 아는 경우로 시험했습니다.</strong> 구조에 원래 끼워져 있던 물질을 떼어낸 뒤 같은 자리에 다시 넣어보고 원래 위치에서 얼마나 어긋나는지 쟀습니다. α1A에서 <strong><em>약 0.45 Å</em></strong>. 이 분야에서 <em>2 Å</em> 안쪽이면 제대로 복원한 것으로 보는데 그보다 훨씬 정확했습니다.</li><li data-lang="en">So I <strong>tested it where the answer was already known</strong>: pull the compound out of the structure it came with, put it back by simulation, and measure the drift. On α1A it came to <strong><em>about 0.45 Å</em></strong>. The field treats anything under <em>2 Å</em> as a successful reproduction, so this cleared the bar comfortably.</li>
-            <li data-lang="ko">이어서 <strong>남의 물질을 일부러 끼워 넣는 교차 시험</strong>을 돌렸습니다. 제 짝이 아닌 조합은 평균이 <em>5.5 Å</em>대로 올라갔습니다. <strong>제 자리를 만났을 때만 값이 바닥으로 떨어진다</strong>는 게 뚜렷했습니다.</li><li data-lang="en">Then <strong>cross-tests, deliberately fitting the wrong compounds in</strong>. Mismatched pairs averaged around <em>5.5 Å</em>. <strong>Only a compound meeting its own receptor dropped to the floor</strong> — the contrast was clear.</li>
-            <li data-lang="ko">즉 <strong>「자세를 재현하는 일」은 잘했지만 「어느 쪽에 더 잘 듣는지 가려내는 일」은 그만큼 못했습니다.</strong> 두 능력이 별개라는 걸 숫자로 확인한 게 이 프로젝트의 결론이었습니다.</li><li data-lang="en">In other words, <strong>it was good at reproducing a pose and much weaker at telling which receptor a drug prefers.</strong> Showing those are two different abilities, in numbers, was what the project actually concluded.</li>
+            <li data-lang="ko">점수를 그대로 쓰기 전에 <strong>이 시뮬레이션이 정답을 재현할 수 있는 도구인지</strong>부터 확인해야 했습니다.</li><li data-lang="en">Before using the scores, I had to establish that <strong>the simulation can reproduce a known answer</strong>.</li>
+            <li data-lang="ko">구조에 원래 결합돼 있던 물질을 떼어낸 뒤 같은 자리에 다시 도킹해 원래 위치와의 오차를 측정했습니다(redocking). α1A에서 <strong><em>약 0.45 Å</em></strong>이 나왔고, 이 분야에서 성공 기준으로 보는 <em>2 Å</em>보다 충분히 작았습니다.</li><li data-lang="en">I removed the compound that came bound to the structure, redocked it into the same site and measured the deviation from its original position. On α1A this came to <strong><em>about 0.45 Å</em></strong>, well inside the <em>2 Å</em> the field treats as a successful reproduction.</li>
+            <li data-lang="ko">이어서 다른 수용체의 물질을 넣는 <strong>교차 도킹</strong>을 돌렸습니다. 짝이 맞지 않는 조합은 평균 <em>5.5 Å</em>대로 올라가, 올바른 조합에서만 오차가 낮게 나온다는 것을 확인했습니다.</li><li data-lang="en">I then ran <strong>cross-docking</strong> with compounds from other receptors. Mismatched pairs averaged around <em>5.5 Å</em>, confirming that the deviation only drops for the correct pairing.</li>
+            <li data-lang="ko">정리하면 <strong>결합 자세를 재현하는 성능은 좋았지만 선택성을 판별하는 성능은 그렇지 않았습니다.</strong> 이 두 가지가 별개라는 점을 수치로 확인한 것이 이 프로젝트의 결론입니다.</li><li data-lang="en">In short, <strong>the method reproduced binding poses well but did not discriminate selectivity.</strong> Establishing that these are separate capabilities, with numbers, was the conclusion.</li>
           </ul>
 
-          <h4 data-lang="ko">왜 안 갈렸는지, 결합 부위를 열어보니</h4><h4 data-lang="en">Opening the binding site to see why</h4>
+          <h4 data-lang="ko">결합 부위 분석</h4><h4 data-lang="en">Binding site analysis</h4>
           <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
           <div class="figs">
             <figure class="fig">
@@ -1393,22 +1269,22 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
               </a>
               <figcaption>
                 <b data-lang="ko">α 전용 약(페닐에프린)이 같은 자리에 앉은 모습</b><b data-lang="en">An α-only drug (phenylephrine) in the same site</b>
-                <span data-lang="ko">여기가 이 프로젝트에서 제일 중요한 대목입니다. <strong>α 전용 약인데 접촉점이 오히려 적고
-                (<em>4곳</em>), 가장 중요한 <em>ASP-279</em>와의 거리는 <em>3.1 Å</em>로 β 전용 약과 똑같습니다.</strong>
-                약을 붙잡는 핵심 고리가 양쪽 다 같은 아미노산이라, 점수만으로 α와 β를 가르기 어려웠던 이유가 여기서 보입니다.</span>
-                <span data-lang="en">This is the important one. <strong>Despite being the α-selective drug it makes fewer
-                contacts (<em>four</em>), and its distance to the key <em>ASP-279</em> is <em>3.1 Å</em> — identical to the
-                β-selective drug.</strong> Both are anchored by the same amino acid, which is exactly why score alone
-                struggled to tell α from β.</span>
+                <span data-lang="ko"><strong>α 선택성 약물인데 접촉점이 더 적고(<em>4곳</em>), 핵심 잔기인
+                <em>ASP-279</em>와의 거리는 <em>3.1 Å</em>로 β 선택성 약물과 같습니다.</strong>
+                양쪽 모두 같은 아미노산에 고정되기 때문에 점수만으로 α와 β를 구분하기 어려웠던 것으로 보입니다.</span>
+                <span data-lang="en"><strong>Although this is the α-selective drug, it makes fewer contacts
+                (<em>four</em>), and its distance to the key residue <em>ASP-279</em> is <em>3.1 Å</em>, the same as the
+                β-selective drug.</strong> Both are anchored by the same amino acid, which appears to be why score
+                alone could not separate α from β.</span>
               </figcaption>
             </figure>
           </div>
 
-          <h4 data-lang="ko">지금 하는 일과의 연결</h4><h4 data-lang="en">How it connects to now</h4>
+          <h4 data-lang="ko">지도 교수와 이후 연결</h4><h4 data-lang="en">Supervision and what followed</h4>
           <ul>
-            <li data-lang="ko">데이터를 다루기 시작한 건 부트캠프가 아니라 <strong>이 졸업 프로젝트였습니다.</strong> 결과 파일을 파이썬으로 정리하고, 분포를 그려 비교하고, 기준점을 세워 검증하는 흐름이 그때 이미 있었습니다.</li><li data-lang="en">I did not start working with data at a bootcamp — it was <strong>this project.</strong> Parse the output in Python, plot the distributions, set up a control and check against it: the routine was already there.</li>
+            <li data-lang="ko">데이터를 다루기 시작한 것은 <strong>이 졸업 프로젝트</strong>입니다. 결과 파일을 파이썬으로 정리하고 분포를 그려 비교하고 대조군을 세워 검증하는 과정을 여기서 처음 거쳤습니다.</li><li data-lang="en">This project is where I started working with data: processing output files in Python, plotting distributions for comparison, and validating against a control.</li>
             <li data-lang="ko">Dr. Dan Donnelly 교수님 지도 아래 진행했습니다.</li><li data-lang="en">Supervised by Dr. Dan Donnelly.</li>
-            <li data-lang="ko">특히 <strong>결과를 믿기 전에 기준점부터 세우는 습관</strong>이 여기서 왔습니다. 시뮬레이션을 정답 아는 경우로 먼저 검증한 것과, X-ray 프로젝트에서 모델이 정말 폐를 보고 판단했는지 확인한 것은 같은 질문입니다.</li><li data-lang="en">Above all, <strong>the habit of establishing a baseline before believing a result</strong> comes from here. Validating the simulation against a known answer and checking whether the X-ray model was really looking at lungs are the same question, asked twice.</li>
+            <li data-lang="ko">시뮬레이션을 정답 아는 경우로 먼저 검증한 것과 X-ray 프로젝트에서 Grad-CAM으로 판단 근거를 확인한 것은 같은 종류의 작업입니다.</li><li data-lang="en">Validating the simulation against a known answer and using Grad-CAM to check the X-ray model's reasoning are the same kind of step.</li>
           </ul>
 
           <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
@@ -1420,11 +1296,11 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="수용체 네 종류에 물질 일곱 가지를 넣었을 때의 결합 점수 분포 그래프">
               </a>
               <figcaption>
-                <b data-lang="ko">수용체별 결합 적합도</b><b data-lang="en">How well each compound fits</b>
-<span data-lang="ko">가로축이 수용체 네 종류, 색이 물질입니다. 위로 갈수록 잘 맞물립니다.
-                이소프레날린(연노랑)이 위쪽에 있고 아세틸콜린(연보라)은 어디서든 바닥에 깔립니다.</span><span data-lang="en">The four receptors run along the bottom, each compound has its own colour, and higher means
-                a better fit. Isoprenaline (pale yellow) sits near the top; acetylcholine (pale purple) stays
-                at the floor everywhere.</span>
+                <b data-lang="ko">수용체별 결합 적합도</b><b data-lang="en">Binding fit by receptor</b>
+<span data-lang="ko">가로축이 수용체 네 종류, 색이 물질이며 위로 갈수록 적합도가 높습니다.
+                이소프레날린(연노랑)이 상위에 있고 아세틸콜린(연보라)은 모든 수용체에서 최하위입니다.</span><span data-lang="en">The four receptors run along the x-axis, each compound has its own colour, and higher means
+                a better fit. Isoprenaline (pale yellow) sits at the top; acetylcholine (pale purple) is lowest
+                across all four.</span>
               </figcaption>
             </figure>
             <figure class="fig">
@@ -1433,13 +1309,13 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="같은 결과를 다른 채점 방식으로 다시 매긴 결합 점수 분포 그래프">
               </a>
               <figcaption>
-                <b data-lang="ko">점수 매기는 방식을 바꾸면 순위도 바뀐다</b><b data-lang="en">Change how you score it, and the order changes</b>
-                <span data-lang="ko">같은 결과를 다른 채점 방식으로 다시 매기면 <em>세로토닌</em>이 1위로 올라옵니다.
-                앞 그래프에서 1위였던 이소프레날린과 순서가 뒤바뀝니다. 그래서 점수 하나만 보지 않고
-                두 방식을 나란히 놓고 봤습니다. 아세틸콜린이 바닥인 것만은 양쪽에서 같습니다.</span>
-                <span data-lang="en">Scoring the same results a different way pushes <em>serotonin</em> to the top, swapping places
-                with isoprenaline, which led on the previous chart. That is why I read both rather than trusting
-                a single number. Acetylcholine stays at the bottom either way.</span>
+                <b data-lang="ko">채점 방식에 따른 순위 변화</b><b data-lang="en">Ranking under a different scoring function</b>
+                <span data-lang="ko">같은 결과를 ChemScore로 다시 매기면 <em>세로토닌</em>이 1위가 되어, 앞 그래프에서 1위였던
+                이소프레날린과 순서가 바뀝니다. 그래서 점수 하나만 보지 않고 두 방식을 함께 확인했습니다.
+                아세틸콜린이 최하위인 것은 양쪽 모두 동일합니다.</span>
+                <span data-lang="en">Rescoring the same results with ChemScore puts <em>serotonin</em> first, swapping it with
+                isoprenaline, which led on the previous chart. I therefore read both scoring functions rather than
+                one. Acetylcholine is lowest under either.</span>
               </figcaption>
             </figure>
             <figure class="fig">
@@ -1448,10 +1324,10 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
                      alt="물질을 다시 넣었을 때 원래 위치에서 얼마나 어긋나는지 보여주는 분포 그래프. 낮을수록 정확함">
               </a>
               <figcaption>
-                <b data-lang="ko">원래 자세를 얼마나 되찾는가</b><b data-lang="en">How closely it finds the original spot</b>
-<span data-lang="ko">낮을수록 원래 있던 자리를 정확히 되찾았습니다. 제 짝을 만난 경우는 바닥에 붙고
-                남의 자리에 넣으면 위로 흩어집니다.</span><span data-lang="en">Lower means it landed back where the compound actually sits. Matched pairs drop to the floor;
-                put a compound somewhere it does not belong and the values scatter upward.</span>
+                <b data-lang="ko">Redocking RMSD</b><b data-lang="en">Redocking RMSD</b>
+<span data-lang="ko">값이 낮을수록 원래 위치를 정확히 재현한 것입니다. 짝이 맞는 조합은 낮게 모이고,
+                교차 도킹한 조합은 위로 흩어집니다.</span><span data-lang="en">Lower values mean the original position was reproduced more accurately. Matched pairs cluster
+                low, while cross-docked pairs scatter upward.</span>
               </figcaption>
             </figure>
           </div>
@@ -1478,7 +1354,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
           <ul>
             <li data-lang="ko">신약 후보물질 <strong>Miraculon-B</strong>의 임상시험 데이터를 분석하고 시각화했습니다.</li><li data-lang="en">I analysed and visualised trial data for the candidate compound <strong>Miraculon-B</strong>.</li>
-            <li data-lang="ko">분석 결과와 제언을 발표자료로 정리해 GSK · Digdata 심사진에 제출했습니다.</li><li data-lang="en">I packaged the findings and recommendations into a deck and submitted it to the GSK and Digdata panel.</li>
+            <li data-lang="ko">분석 결과와 제언을 발표자료로 정리해 GSK · Digdata 심사진에 제출했습니다.</li><li data-lang="en">I compiled the findings and recommendations into a presentation and submitted it to the GSK and Digdata panel.</li>
           </ul>
 
           <h4 data-lang="ko">수료증</h4><h4 data-lang="en">Certificate</h4>
@@ -1702,32 +1578,6 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   root.classList.remove("no-js");
 
   var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ─── 테마 ─── */
-  var toggle = document.getElementById("themeToggle");
-  var label  = document.getElementById("themeLabel");
-
-  function isDark() {
-    var set = root.getAttribute("data-theme");
-    if (set) return set === "dark";
-    return !window.matchMedia("(prefers-color-scheme: light)").matches;
-  }
-  function paintToggle() {
-    label.textContent = isDark() ? "Lightbox" : "판독 모드";
-    toggle.setAttribute("aria-label", isDark() ? "라이트박스 테마로 전환" : "판독 모니터 테마로 전환");
-  }
-  try {
-    var saved = localStorage.getItem("mk-theme");
-    if (saved === "dark" || saved === "light") root.setAttribute("data-theme", saved);
-  } catch (e) {}
-  paintToggle();
-
-  toggle.addEventListener("click", function () {
-    var next = isDark() ? "light" : "dark";
-    root.setAttribute("data-theme", next);
-    try { localStorage.setItem("mk-theme", next); } catch (e) {}
-    paintToggle();
-  });
 
   /* ─── 언어 ─── */
   var langBtns = Array.prototype.slice.call(document.querySelectorAll("[data-lang-set]"));
