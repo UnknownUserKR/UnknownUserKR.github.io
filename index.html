@@ -159,6 +159,20 @@ h2.title {
   margin: 0 0 1.6rem; letter-spacing: -.01em; text-wrap: balance;
 }
 
+/* ─── 한눈에 ─── */
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(15rem, 100%), 1fr));
+  gap: 1.7rem 2.4rem; margin: 0;
+}
+.facts > div { border-top: 1px solid var(--rule); padding-top: .95rem; }
+.facts dt {
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .18em;
+  text-transform: uppercase; color: var(--faint); margin: 0 0 .5rem;
+}
+.facts dd { margin: 0; font-size: .95rem; line-height: 1.75; color: var(--sub); word-break: keep-all; }
+.facts dd b { color: var(--ink); font-weight: 600; }
+
 /* ─── 이야기 ─── */
 .story { display: flex; flex-direction: column; gap: 2rem; max-width: var(--measure); }
 .chapter { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; }
@@ -227,16 +241,23 @@ h2.title {
 }
 .contact-big a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rule); transition: border-color .18s, color .18s; }
 .contact-big a:hover { color: var(--accent); border-bottom-color: var(--accent); }
-.outlinks { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 1.6rem; font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; }
-.outlinks a { color: var(--sub); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: .1rem; transition: color .18s, border-color .18s; }
-.outlinks a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
+.footnav {
+  margin-top: 6.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; align-items: baseline; gap: .9rem 1.7rem;
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+}
+.footnav a { color: var(--sub); text-decoration: none; white-space: nowrap; transition: color .18s; }
+.footnav a:hover { color: var(--accent); }
+.footnav .totop { margin-left: auto; color: var(--faint); }
 .colophon {
-  margin-top: 6.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+  margin-top: 1.4rem;
   display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; justify-content: space-between;
   font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
   text-transform: uppercase; color: var(--faint);
 }
+::selection { background: var(--accent-soft); color: var(--ink); }
+@media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
 
 /* ─── 등장 모션 ─── */
 .rise { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
@@ -262,7 +283,7 @@ h2.title {
 
 <div class="wrap">
 
-  <header class="topbar">
+  <header class="topbar" id="top">
     <a class="wordmark" href="./">Minjae Kwon</a>
     <nav class="topnav" aria-label="포트폴리오">
       <a href="ai.html">AI</a>
@@ -308,6 +329,38 @@ h2.title {
       <span data-lang="ko">…이자 학습 곡선</span><span data-lang="en">…or a learning curve</span>
     </figcaption>
   </figure>
+
+  <section class="block rise" id="glance">
+    <p class="kicker">Facts</p>
+    <h2 data-lang="ko" class="title">한눈에</h2>
+    <h2 data-lang="en" class="title">At a glance</h2>
+    <dl class="facts">
+      <div>
+        <dt><span data-lang="ko">학력</span><span data-lang="en">Education</span></dt>
+        <dd><span data-lang="ko"><b>리즈대학교 약리학 학사</b> (BSc Pharmacology)</span><span data-lang="en"><b>BSc Pharmacology</b>, University of Leeds</span></dd>
+      </div>
+      <div>
+        <dt><span data-lang="ko">교육</span><span data-lang="en">Training</span></dt>
+        <dd><span data-lang="ko">오즈코딩스쿨 AI 헬스케어 딥러닝 트랙 · 2026</span><span data-lang="en">Oz Coding School AI-healthcare deep-learning track · 2026</span></dd>
+      </div>
+      <div>
+        <dt><span data-lang="ko">기록</span><span data-lang="en">Record</span></dt>
+        <dd><span data-lang="ko">DACON 헬스케어 해커톤 <b>3건 완주</b> · 4인 팀 리드</span><span data-lang="en"><b>Three</b> DACON healthcare hackathons · led a team of four</span></dd>
+      </div>
+      <div>
+        <dt><span data-lang="ko">도구</span><span data-lang="en">Tools</span></dt>
+        <dd>Python · PyTorch · scikit-learn · FastAPI · Docker · SPSS · GOLD</dd>
+      </div>
+      <div>
+        <dt><span data-lang="ko">데이터</span><span data-lang="en">Data</span></dt>
+        <dd><span data-lang="ko">의료영상 · 임상 · 유전체 · 분자 도킹</span><span data-lang="en">Medical imaging · clinical · genomic · molecular docking</span></dd>
+      </div>
+      <div>
+        <dt><span data-lang="ko">수료</span><span data-lang="en">Certificates</span></dt>
+        <dd><span data-lang="ko">British Airways Data Science Simulation (Forage) · STEP UP GSK (Digdata)</span><span data-lang="en">British Airways Data Science Simulation (Forage) · STEP UP GSK (Digdata)</span></dd>
+      </div>
+    </dl>
+  </section>
 
   <section class="block rise">
     <p class="kicker">Story</p>
@@ -411,14 +464,16 @@ h2.title {
     <p data-lang="en" class="now">Next up: applying LLMs and RAG to healthcare documents. Through H2 2026 I'm applying to healthcare
       data/ML and bio roles — happy to talk, about coffee or a position.</p>
     <p class="contact-big"><a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a></p>
-    <div class="outlinks">
-      <a href="https://github.com/UnknownUserKR" target="_blank" rel="noopener">GitHub</a>
-      <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">LinkedIn</a>
-      <a href="ai.html">Portfolio · AI</a>
-      <a href="bio.html">Portfolio · Bio</a>
-    </div>
   </section>
 
+  <nav class="footnav" aria-label="바로가기">
+    <a href="ai.html">Portfolio · AI</a>
+    <a href="bio.html">Portfolio · Bio</a>
+    <a href="https://github.com/UnknownUserKR" target="_blank" rel="noopener">GitHub</a>
+    <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">LinkedIn</a>
+    <a href="mailto:kkmj1150@gmail.com">Email</a>
+    <a class="totop" href="#top"><span data-lang="ko">맨 위로 ↑</span><span data-lang="en">Top ↑</span></a>
+  </nav>
   <footer class="colophon">
     <span data-lang="ko">권민재 · Minjae Kwon</span><span data-lang="en">Minjae Kwon · 권민재</span>
     <span>Last updated 2026.08</span>
