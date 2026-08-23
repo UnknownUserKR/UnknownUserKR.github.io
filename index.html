@@ -104,6 +104,16 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 .langswitch button:hover { color: var(--ink); }
 .langswitch button[aria-pressed="true"] { color: var(--trace); background: var(--trace-soft); }
 .switches { display: flex; gap: .5rem; flex-wrap: wrap; }
+.verlink {
+  display: inline-flex; align-items: center;
+  font-family: var(--f-mono); font-size: var(--t-xs);
+  letter-spacing: .1em; text-transform: uppercase;
+  color: var(--ink-3); text-decoration: none;
+  border: 1px dashed var(--rule-2); border-radius: 999px;
+  padding: .38rem .8rem;
+  transition: color .18s, border-color .18s, background .18s;
+}
+.verlink:hover { color: var(--trace); border-color: var(--trace); background: var(--trace-soft); }
 
 /* ═══ Masthead ═══ */
 .masthead {
@@ -550,6 +560,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
           <button type="button" data-lang-set="ko" aria-pressed="true">KO</button>
           <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
         </div>
+        <a class="verlink" href="bio.html"><span data-lang="ko">바이오 버전 →</span><span data-lang="en">Bio version →</span></a>
       </div>
       <div class="contact">
         <a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a>
