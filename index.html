@@ -4,539 +4,217 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="color-scheme" content="light">
-<meta name="description" content="권민재 — AI 헬스케어 데이터 포트폴리오. 유전자 변이 기반 암 아형 예측(Macro F1 0.4942), 흉부 X-ray 폐렴 분류(리더보드 0.95192), 난임 임신 성공 예측(ROC-AUC 0.74218), FastAPI·Docker 기반 AI 모델 서빙.">
-<meta property="og:title" content="권민재 — AI · Healthcare Data">
-<meta property="og:description" content="약리학 전공 후 헬스케어 데이터 분석 · 머신러닝. DACON 헬스케어 해커톤 3건, 임상 데이터 25만 건 규모 예측 모델, FastAPI · Docker 서빙.">
+<meta name="description" content="권민재 — 약리학을 공부하고 데이터로 일합니다. 실험이 데이터를 만드는 과정을 아는 채로 모델을 만드는 사람. AI Engineering · Bio 두 갈래 포트폴리오.">
+<meta property="og:title" content="권민재 · Minjae Kwon">
+<meta property="og:description" content="약을 공부했고, 지금은 데이터를 다룹니다. 용량–반응 곡선과 학습 곡선을 같은 눈으로 읽습니다.">
 <meta property="og:type" content="profile">
-<title>권민재 — AI · Healthcare Data</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫁</text></svg>">
+<title>권민재 · Minjae Kwon</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard@v1.3.9/dist/web/variable/pretendardvariable-dynamic-subset.min.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;900&family=IBM+Plex+Mono:wght@400;500&display=swap">
 
 <style>
 /* ═══════════════════════════════════════════════════════════
-   권민재 — AI · Healthcare Data
+   권민재 — 개인 홈 (차분한 에디토리얼)
+   포트폴리오(계측판)와 의도적으로 다른 결: 따뜻한 지면 · 세리프 · 여백
    ═══════════════════════════════════════════════════════════ */
-
-/* ─── Tokens ─── */
 :root {
-  --ground:      #e9edee;
-  --surface:     #ffffff;
-  --surface-2:   #f3f6f7;
-  --surface-3:   #e7ecee;
-  --ink:         #0b1a24;
-  --ink-2:       #415765;
-  --ink-3:       #6f8794;
-  --rule:        #d2dbde;
-  --rule-2:      #b5c3c8;
+  --paper:   #F8F5EF;
+  --ink:     #211D18;
+  --sub:     #6C6257;
+  --faint:   #A79B8C;
+  --rule:    #E4DCCE;
+  --accent:  #3E6B4F;
+  --accent-soft: #E9EFE8;
 
-  --trace:       #0d7f92;
-  --trace-dim:   #0d7f92;
-  --trace-soft:  #dceff3;
+  --serif: "Noto Serif KR", "Apple SD Gothic Neo", serif;
+  --sans:  "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
+           "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
+  --mono:  "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 
-  --critical:    #c2372f;
-  --warn:        #9a6a05;
-
-  --shadow: 0 1px 2px rgba(11,26,36,.06), 0 14px 34px -22px rgba(11,26,36,.5);
-  --glow:   0 0 0 1px var(--trace-dim), 0 0 22px -8px rgba(13,127,146,.5);
-
-  --f-body: "Pretendard Variable", Pretendard, -apple-system, BlinkMacSystemFont,
-            "Apple SD Gothic Neo", "Malgun Gothic", system-ui, sans-serif;
-  --f-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-
-  --t-xs:   .6875rem;
-  --t-sm:   .8125rem;
-  --t-base: .9375rem;
-  --t-md:   1.0625rem;
-  --t-lg:   1.3125rem;
-  --t-xl:   1.875rem;
-
-  --page:    78rem;
-  --measure: 72ch;
-  --r:       3px;
+  --measure: 42rem;
 }
-
-/* ─── Base ─── */
 *, *::before, *::after { box-sizing: border-box; }
 html { -webkit-text-size-adjust: 100%; }
 html[lang="en"] body { word-break: normal; }
 body {
   margin: 0;
-  background: var(--ground);
+  background: var(--paper);
   color: var(--ink);
-  font-family: var(--f-body);
-  font-size: var(--t-base);
-  line-height: 1.7;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.85;
   -webkit-font-smoothing: antialiased;
-  overflow-x: hidden;
 }
-.wrap { position: relative; z-index: 1; max-width: var(--page); margin-inline: auto; padding: 0 1.5rem 6rem; }
 a { color: inherit; }
-h1, h2, h3, h4 { text-wrap: balance; }
-:where(a, button, [tabindex]):focus-visible {
-  outline: 2px solid var(--trace);
-  outline-offset: 3px;
-  border-radius: var(--r);
-}
-.skip {
-  position: absolute; left: -9999px;
-  background: var(--trace); color: var(--ground);
-  padding: .6rem 1rem; font-weight: 600; z-index: 100;
-}
+:where(a, button):focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 2px; }
+.skip { position: absolute; left: -9999px; background: var(--accent); color: #fff; padding: .6rem 1rem; z-index: 99; }
 .skip:focus { left: 1rem; top: 1rem; }
 
-.num { font-family: var(--f-mono); font-variant-numeric: tabular-nums; letter-spacing: -.01em; }
-
-/* ═══ 언어 전환 ═══ */
 html[lang="ko"] [data-lang="en"] { display: none !important; }
 html[lang="en"] [data-lang="ko"] { display: none !important; }
+
+.wrap { max-width: 52rem; margin-inline: auto; padding: 0 1.5rem 7rem; }
+
+/* ─── 상단 바 ─── */
+.topbar {
+  display: flex; align-items: center; gap: 1rem;
+  padding: 1.9rem 0 0;
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .12em;
+}
+.wordmark { text-transform: uppercase; text-decoration: none; color: var(--ink); font-weight: 500; }
+.topnav { margin-left: auto; display: flex; gap: 1.4rem; flex-wrap: wrap; }
+.topnav a { color: var(--sub); text-decoration: none; text-transform: uppercase; transition: color .18s; }
+.topnav a:hover { color: var(--accent); }
 .langswitch { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .langswitch button {
-  appearance: none; background: transparent; color: var(--ink-3);
-  border: 0; padding: .38rem .7rem; cursor: pointer;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  transition: color .18s, background .18s;
+  appearance: none; border: 0; background: transparent; cursor: pointer;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
+  color: var(--faint); padding: .32rem .65rem; transition: color .18s, background .18s;
 }
 .langswitch button:hover { color: var(--ink); }
-.langswitch button[aria-pressed="true"] { color: var(--trace); background: var(--trace-soft); }
-.switches { display: flex; gap: .5rem; flex-wrap: wrap; }
-.verlink {
-  display: inline-flex; align-items: center;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3); text-decoration: none;
-  border: 1px dashed var(--rule-2); border-radius: 999px;
-  padding: .38rem .8rem;
-  transition: color .18s, border-color .18s, background .18s;
-}
-.verlink:hover { color: var(--trace); border-color: var(--trace); background: var(--trace-soft); }
+.langswitch button[aria-pressed="true"] { color: var(--accent); background: var(--accent-soft); }
 
-/* ═══ Masthead ═══ */
-.masthead {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 2.5rem;
-  align-items: end;
-  padding: 3.5rem 0 1.75rem;
-}
-.identity { display: flex; flex-direction: column; gap: .75rem; min-width: 0; }
+/* ─── 히어로 ─── */
+.hero { padding: 6.5rem 0 0; }
 .status {
-  display: inline-flex; align-items: center; gap: .5rem;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .14em; text-transform: uppercase;
-  color: var(--trace);
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .16em;
+  text-transform: uppercase; color: var(--accent);
+  display: inline-flex; align-items: center; gap: .55rem;
 }
-.dot {
-  width: 6px; height: 6px; border-radius: 50%;
-  background: var(--trace);
-  box-shadow: 0 0 0 3px var(--trace-soft);
-  animation: pulse 2.6s ease-in-out infinite;
+.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+h1.head {
+  margin: 1.4rem 0 0;
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(2.4rem, 7.2vw, 4.4rem);
+  line-height: 1.22; letter-spacing: -.015em;
+  text-wrap: balance;
 }
-@keyframes pulse { 0%, 100% { opacity: 1 } 50% { opacity: .35 } }
-
-.name {
-  margin: 0;
-  font-size: clamp(3rem, 10vw, 5.25rem);
-  font-weight: 800;
-  line-height: .95;
-  letter-spacing: -.045em;
+.hero .lede {
+  max-width: var(--measure);
+  margin: 2.1rem 0 0;
+  font-size: 1.17rem; line-height: 1.9; color: var(--sub);
 }
-.name .latin {
-  display: block;
-  margin-top: 1rem;
-  font-family: var(--f-mono);
-  font-size: clamp(.7rem, 1.6vw, .8rem);
-  font-weight: 400;
-  letter-spacing: .34em;
-  text-transform: uppercase;
-  color: var(--ink-3);
-}
-.discipline {
-  margin: 0;
-  font-family: var(--f-mono);
-  font-size: var(--t-sm);
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: var(--trace);
-}
-.meta-col { display: flex; flex-direction: column; align-items: flex-end; gap: 1rem; }
-.contact { display: flex; flex-direction: column; align-items: flex-end; gap: .3rem; font-family: var(--f-mono); font-size: var(--t-sm); }
-.contact a {
-  text-decoration: none;
-  color: var(--ink-2);
-  border-bottom: 1px solid var(--rule-2);
-  transition: color .18s, border-color .18s;
-}
-.contact a:hover { color: var(--trace); border-bottom-color: var(--trace); }
-
-/* ═══ 계측 스트립 ═══ */
-.readout {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
-  gap: 1px;
-  background: var(--rule);
-  border: 1px solid var(--rule);
-  border-radius: var(--r);
-  overflow: hidden;
-  margin-top: .5rem;
-}
-.gauge { background: var(--surface); padding: 1.15rem 1.15rem 1.25rem; display: flex; flex-direction: column; gap: .5rem; }
-.gauge-val {
-  font-family: var(--f-mono); font-variant-numeric: tabular-nums;
-  font-size: clamp(1.5rem, 3.4vw, 2rem); font-weight: 600;
-  line-height: 1; letter-spacing: -.03em; color: var(--trace);
-}
-.gauge-val.alt { color: var(--trace); }
-.gauge-unit { font-size: .55em; color: var(--ink-3); margin-left: .2rem; letter-spacing: 0; }
-.gauge-cap { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.4; }
-.gauge-cap em { font-style: normal; font-family: var(--f-mono); font-variant-numeric: tabular-nums; color: var(--trace); }
-
-/* ═══ Section ═══ */
-.section { padding-top: 4rem; }
-.section-head {
-  display: flex; align-items: baseline; gap: 1rem; flex-wrap: wrap;
-  padding-bottom: .9rem;
-  border-bottom: 1px solid var(--rule);
-  margin-bottom: 1.75rem;
-}
-.section-head h2 {
-  margin: 0; font-family: var(--f-mono); font-size: var(--t-xs);
-  font-weight: 600; letter-spacing: .22em; text-transform: uppercase; color: var(--ink);
-}
-.section-head .ko { font-size: var(--t-sm); color: var(--ink-3); }
-.section-head .tail { margin-left: auto; font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-3); letter-spacing: .1em; }
-
-.lede { max-width: var(--measure); margin: 0; color: var(--ink-2); font-size: var(--t-md); line-height: 1.75; }
-.lede + .lede { margin-top: .9rem; }
 .lede strong { color: var(--ink); font-weight: 600; }
-.lede em { font-style: normal; color: var(--trace); font-weight: 500; }
 
-/* ═══ 필터 ═══ */
-.filters { display: flex; flex-wrap: wrap; gap: .45rem; margin-bottom: 1.5rem; }
-.chip {
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  padding: .42rem .8rem;
-  background: transparent; color: var(--ink-3);
-  border: 1px solid var(--rule-2); border-radius: 999px;
-  cursor: pointer;
-  transition: color .18s, border-color .18s, background .18s;
-}
-.chip:hover { color: var(--ink); border-color: var(--ink-3); }
-.chip[aria-pressed="true"] { color: var(--trace); border-color: var(--trace); background: var(--trace-soft); }
-.chip .n { opacity: .55; margin-left: .35rem; }
-
-/* ═══ 프로젝트 카드 ═══ */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 1rem; }
-.card {
-  position: relative;
-  display: flex; flex-direction: column; gap: .85rem;
-  text-align: left;
-  background: var(--surface);
-  border: 1px solid var(--rule);
-  border-radius: var(--r);
-  padding: 1.25rem 1.25rem 1.35rem;
-  color: inherit; font: inherit;
-  box-shadow: var(--shadow);
-  transition: transform .2s cubic-bezier(.3, 0, .2, 1), border-color .2s, box-shadow .2s;
-}
-.card:hover, .card:has(.card-open:focus-visible) {
-  transform: translateY(-3px);
-  border-color: var(--trace-dim);
-  box-shadow: var(--shadow), 0 0 24px -10px var(--trace);
-}
-.card:has(.card-open:focus-visible) { outline: 2px solid var(--trace); outline-offset: 3px; }
-.card[hidden] { display: none; }
-
-/* 제목이 실제 버튼 — ::after 로 카드 전체가 클릭 영역이 된다 */
-.card-open {
-  all: unset;
-  cursor: pointer;
-  display: inline;
-  color: inherit;
-  font: inherit;
-}
-.card-open::after { content: ""; position: absolute; inset: 0; z-index: 1; }
-.card-open:focus-visible { outline: none; }
-.no-js .card-open { cursor: text; }
-.no-js .card-open::after { display: none; }
-
-.card-top { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; }
-.card-when { font-family: var(--f-mono); font-size: var(--t-xs); font-variant-numeric: tabular-nums; color: var(--ink-3); letter-spacing: .04em; }
-.tag {
-  font-family: var(--f-mono); font-size: .625rem;
-  letter-spacing: .12em; text-transform: uppercase;
-  padding: .16rem .45rem; border-radius: 2px;
-  border: 1px solid currentColor;
-  white-space: nowrap;
-}
-.tag.dl { color: var(--trace); }
-.tag.ml { color: var(--trace); }
-.tag.be { color: var(--warn); }
-.tag.ea { color: var(--ink-3); }
-.tag.cc { color: var(--critical); }
-
-.card h3 { margin: 0; font-size: var(--t-lg); font-weight: 700; line-height: 1.3; letter-spacing: -.02em; }
-.card-org { font-size: var(--t-sm); color: var(--ink-2); }
-
-/* 미터 — 측정된 성과가 있는 카드만 채워진다 */
-.meter { display: flex; flex-direction: column; gap: .4rem; margin-top: auto; padding-top: .5rem; }
-.meter-row { display: flex; align-items: baseline; justify-content: space-between; gap: .75rem; }
-.meter-val {
-  font-family: var(--f-mono); font-variant-numeric: tabular-nums;
-  font-size: 1.3rem; font-weight: 600; letter-spacing: -.03em;
-  color: var(--trace); line-height: 1;
-}
-.meter-val.alt { color: var(--trace); }
-.meter-key { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
-.bar { position: relative; height: 3px; background: var(--surface-3); border-radius: 2px; overflow: hidden; }
-.bar i { position: absolute; inset: 0 100% 0 0; background: var(--trace); border-radius: 2px; transition: right 1.1s cubic-bezier(.2, .7, .2, 1); }
-.bar i.alt { background: var(--trace); }
-
-.no-metric { margin-top: auto; padding-top: .5rem; }
-.pill {
-  display: inline-flex; align-items: center; gap: .4rem;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3);
-  padding: .3rem .6rem;
-  border: 1px dashed var(--rule-2); border-radius: 999px;
-}
-.pill.live { color: var(--warn); border-style: solid; border-color: var(--warn); }
-.pill.live .dot { background: var(--warn); box-shadow: none; }
-
-.stack { display: flex; flex-wrap: wrap; gap: .3rem; }
-.stack span {
-  font-family: var(--f-mono); font-size: .65rem;
-  letter-spacing: .03em;
-  padding: .18rem .45rem;
-  background: var(--surface-2); color: var(--ink-2);
-  border-radius: 2px;
-}
-.card-cue {
-  display: flex; align-items: center; gap: .35rem;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3);
-  transition: color .18s, gap .18s;
-}
-.card:hover .card-cue, .card:focus-visible .card-cue { color: var(--trace); gap: .6rem; }
-
-/* ═══ 모달 ═══ */
-.detail { display: none; }
-.no-js .detail { display: block; padding-top: 1rem; border-top: 1px solid var(--rule); margin-top: 1rem; }
-.no-js .card-cue { display: none; }
-.no-js .card { cursor: default; }
-
-dialog.modal {
-  width: min(56rem, calc(100vw - 2rem));
-  max-height: min(86vh, 58rem);
-  padding: 0;
-  border: 1px solid var(--rule-2);
-  border-radius: var(--r);
-  background: var(--surface);
-  color: var(--ink);
-  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, .85);
-  overflow: hidden;
-}
-dialog.modal::backdrop { background: rgba(20, 35, 44, .5); backdrop-filter: blur(3px); }
-dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
-@keyframes rise { from { opacity: 0; transform: translateY(10px) scale(.985) } }
-
-.modal-head {
-  position: sticky; top: 0; z-index: 2;
-  display: flex; align-items: flex-start; gap: 1rem;
-  padding: 1.35rem 1.5rem 1.15rem;
-  background: var(--surface-2);
-  border-bottom: 1px solid var(--rule);
-}
-.modal-head .who { display: flex; flex-direction: column; gap: .35rem; min-width: 0; }
-.modal-head h3 { margin: 0; font-size: var(--t-xl); font-weight: 700; line-height: 1.2; letter-spacing: -.03em; }
-.modal-head .sub { font-size: var(--t-sm); color: var(--ink-2); }
-.close {
-  margin-left: auto; flex: none;
-  width: 34px; height: 34px;
-  display: grid; place-items: center;
-  background: transparent; color: var(--ink-3);
-  border: 1px solid var(--rule-2); border-radius: var(--r);
-  cursor: pointer;
-  transition: color .18s, border-color .18s;
-}
-.close:hover { color: var(--critical); border-color: var(--critical); }
-.close svg { width: 14px; height: 14px; }
-
-.modal-body { padding: 1.5rem; overflow-y: auto; max-height: calc(86vh - 5.5rem); }
-
-.stats {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
-  gap: 1px; background: var(--rule);
-  border: 1px solid var(--rule); border-radius: var(--r);
-  overflow: hidden; margin-bottom: 1.5rem;
-}
-.stat { background: var(--surface); padding: .9rem 1rem 1rem; display: flex; flex-direction: column; gap: .3rem; }
-.stat b {
-  font-family: var(--f-mono); font-variant-numeric: tabular-nums;
-  font-size: 1.3rem; font-weight: 600; letter-spacing: -.03em;
-  color: var(--trace); line-height: 1.1;
-}
-.stat b.alt { color: var(--trace); }
-.stat b.crit { color: var(--critical); }
-.stat span { font-family: var(--f-mono); font-size: var(--t-xs); letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); }
-
-.detail h4, .modal-body > h4 {
-  margin: 1.5rem 0 .7rem;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  font-weight: 600; letter-spacing: .18em; text-transform: uppercase;
-  color: var(--ink-3);
-}
-.modal-body > .detail > h4:first-child { margin-top: 0; }
-.detail ul { margin: 0; padding-left: 1.1rem; display: flex; flex-direction: column; gap: .6rem; }
-.detail li { color: var(--ink-2); line-height: 1.7; }
-.detail li strong { color: var(--ink); font-weight: 600; }
-.detail li em {
-  font-style: normal; font-family: var(--f-mono);
-  font-variant-numeric: tabular-nums; color: var(--trace); font-size: .95em;
+/* ─── 곡선 모티프 ─── */
+.curve { margin: 4.5rem 0 0; }
+.curve svg { display: block; width: 100%; height: auto; }
+.curve .cap {
+  margin-top: .55rem;
+  font-family: var(--mono); font-size: .72rem; letter-spacing: .1em;
+  color: var(--faint); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
 
-/* ═══ 결과 그림 ═══ */
-.figs { display: flex; flex-direction: column; gap: 1.25rem; margin-top: .25rem; }
-.fig { display: flex; flex-direction: column; gap: .55rem; margin: 0; }
-.fig a {
-  display: block;
-  width: fit-content;          /* 원본보다 크게 늘리지 않는다 */
-  max-width: 100%;
-  margin-inline: auto;
-  background: #fff;
-  border: 1px solid var(--rule);
-  border-radius: var(--r);
-  overflow: hidden;
-  line-height: 0;
-  transition: border-color .18s, box-shadow .18s;
+/* ─── 섹션 공통 ─── */
+section.block { margin-top: 6.5rem; }
+.kicker {
+  font-family: var(--mono); font-size: .75rem; letter-spacing: .22em;
+  text-transform: uppercase; color: var(--accent); margin: 0 0 1.8rem;
 }
-.fig a:hover { border-color: var(--trace-dim); box-shadow: 0 0 22px -10px var(--trace); }
-.fig img { display: block; max-width: 100%; height: auto; }
-.fig figcaption {
-  display: flex; flex-direction: column; gap: .2rem;
-  font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55;
-}
-.fig figcaption b { color: var(--ink); font-weight: 600; font-size: var(--t-base); }
-.fig figcaption em {
-  font-style: normal; font-family: var(--f-mono);
-  font-variant-numeric: tabular-nums; color: var(--trace); font-size: .95em;
-}
-.fig-hint {
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .04em; color: var(--ink-3);
-  margin: .1rem 0 0;
+h2.title {
+  font-family: var(--serif); font-weight: 900;
+  font-size: clamp(1.6rem, 3.6vw, 2.2rem); line-height: 1.3;
+  margin: 0 0 1.6rem; letter-spacing: -.01em; text-wrap: balance;
 }
 
-.links { display: flex; flex-wrap: wrap; gap: .5rem; margin-top: 1.5rem; }
-.linkbtn {
-  display: inline-flex; align-items: center; gap: .5rem;
-  padding: .5rem .85rem;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .06em;
+/* ─── 이야기 ─── */
+.story { display: flex; flex-direction: column; gap: 2rem; max-width: var(--measure); }
+.chapter { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; }
+.chapter .when {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .06em;
+  color: var(--faint); padding-top: .45rem; white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+.chapter p { margin: 0; color: var(--sub); }
+.chapter p strong { color: var(--ink); font-weight: 600; }
+.chapter p em { font-style: normal; color: var(--accent); font-weight: 500; }
+
+/* ─── Selected Work ─── */
+.works { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
+.works li { border-bottom: 1px solid var(--rule); }
+.works a {
+  display: grid; grid-template-columns: 2.6rem 1fr auto;
+  gap: 1.2rem; align-items: baseline;
+  padding: 1.5rem .2rem; text-decoration: none;
+  transition: background .18s, padding .18s;
+}
+.works a:hover { background: #fffdf8; padding-left: .8rem; }
+.works .no { font-family: var(--mono); font-size: .78rem; color: var(--faint); }
+.works .w-body { min-width: 0; }
+.works .w-title {
+  font-family: var(--serif); font-weight: 600; font-size: 1.28rem;
+  line-height: 1.4; letter-spacing: -.01em; display: block;
+}
+.works .w-sub { display: block; margin-top: .25rem; font-size: .92rem; color: var(--sub); }
+.works .w-sub b { color: var(--accent); font-weight: 600; }
+.works .arrow {
+  font-family: var(--mono); font-size: .78rem; letter-spacing: .08em;
+  color: var(--faint); transition: color .18s, transform .18s; white-space: nowrap;
+}
+.works a:hover .arrow { color: var(--accent); transform: translateX(3px); }
+
+/* ─── 두 갈래 ─── */
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.1rem; }
+.door {
+  display: flex; flex-direction: column; gap: .8rem;
+  padding: 1.9rem 1.8rem 1.7rem;
+  border: 1px solid var(--rule); border-radius: 4px;
+  background: #FFFDF8;
   text-decoration: none;
-  color: var(--trace);
-  border: 1px solid var(--trace-dim); border-radius: var(--r);
-  background: var(--trace-soft);
-  transition: box-shadow .18s, transform .18s;
+  transition: transform .2s cubic-bezier(.3,0,.2,1), border-color .2s, box-shadow .2s;
 }
-.linkbtn:hover { box-shadow: var(--glow); transform: translateY(-1px); }
-.linkbtn svg { width: 13px; height: 13px; flex: none; }
-.linknote {
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  color: var(--ink-3); letter-spacing: .04em;
-  margin: 1.25rem 0 0;
-  line-height: 1.6;
+.door:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 16px 34px -24px rgba(62,107,79,.55); }
+.door .d-tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
+.door .d-name { font-family: var(--serif); font-weight: 900; font-size: 1.55rem; letter-spacing: -.01em; line-height: 1.3; }
+.door .d-desc { font-size: .95rem; color: var(--sub); line-height: 1.75; }
+.door .d-go { margin-top: auto; padding-top: .6rem; font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; color: var(--faint); transition: color .18s; }
+.door:hover .d-go { color: var(--accent); }
+
+/* ─── Now + 연락 ─── */
+.now {
+  max-width: var(--measure);
+  border-left: 2px solid var(--accent);
+  padding: .2rem 0 .2rem 1.4rem;
+  color: var(--sub); font-size: 1rem;
 }
-
-/* ═══ Skills ═══ */
-.tier { margin-bottom: 1.75rem; }
-.tier:last-child { margin-bottom: 0; }
-.tier-head { display: flex; align-items: center; gap: .75rem; margin-bottom: .85rem; }
-.tier-head b { font-family: var(--f-mono); font-size: var(--t-xs); font-weight: 600; letter-spacing: .18em; text-transform: uppercase; }
-.tier-head hr { flex: 1; height: 0; border: 0; border-top: 1px solid var(--rule); margin: 0; }
-.tier.core .tier-head b { color: var(--trace); }
-.tier.use .tier-head b { color: var(--trace); }
-.tier.learn .tier-head b { color: var(--ink-3); }
-
-.skills {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
-  gap: 1px; background: var(--rule);
-  border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden;
+.contact-big {
+  margin: 1.6rem 0 0;
+  font-family: var(--serif); font-weight: 600;
+  font-size: clamp(1.4rem, 4.2vw, 2.1rem);
+  letter-spacing: -.01em; line-height: 1.4;
 }
-.skill { background: var(--surface); padding: 1.05rem 1.15rem 1.2rem; display: flex; flex-direction: column; gap: .55rem; }
-.skill b { font-size: var(--t-md); font-weight: 600; letter-spacing: -.01em; }
-.tier.core .skill b { color: var(--trace); }
-.tier.use .skill b { color: var(--trace); }
-.skill ul { margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column; gap: .25rem; }
-.skill li { font-size: var(--t-sm); color: var(--ink-2); line-height: 1.55; }
+.contact-big a { color: var(--ink); text-decoration: none; border-bottom: 2px solid var(--rule); transition: border-color .18s, color .18s; }
+.contact-big a:hover { color: var(--accent); border-bottom-color: var(--accent); }
+.outlinks { margin-top: 2.2rem; display: flex; flex-wrap: wrap; gap: 1.6rem; font-family: var(--mono); font-size: .78rem; letter-spacing: .08em; }
+.outlinks a { color: var(--sub); text-decoration: none; border-bottom: 1px solid var(--rule); padding-bottom: .1rem; transition: color .18s, border-color .18s; }
+.outlinks a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
-/* ═══ Timeline / Certs ═══ */
-.rows { display: flex; flex-direction: column; }
-.row {
-  display: grid; grid-template-columns: 11rem 1fr;
-  gap: 0 2rem;
-  padding: 1.05rem 0;
-  border-bottom: 1px solid var(--rule);
-}
-.row:first-child { padding-top: 0; }
-.row:last-child { border-bottom: 0; }
-.row-when { font-family: var(--f-mono); font-size: var(--t-sm); font-variant-numeric: tabular-nums; color: var(--ink-3); }
-.row-what { display: flex; flex-direction: column; gap: .15rem; }
-.row-what b { font-weight: 600; font-size: var(--t-md); }
-.row-what span { font-size: var(--t-sm); color: var(--ink-2); }
-.row-what code { font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-3); letter-spacing: .03em; }
-.row-what .hl { color: var(--trace); }
-
-/* ═══ Footer ═══ */
 .colophon {
-  margin-top: 5rem; padding-top: 1.25rem;
-  border-top: 1px solid var(--rule);
-  display: flex; flex-wrap: wrap; gap: .5rem 1.5rem; justify-content: space-between;
-  font-family: var(--f-mono); font-size: var(--t-xs);
-  letter-spacing: .1em; text-transform: uppercase;
-  color: var(--ink-3);
-}
-.colophon a { color: var(--ink-3); text-decoration: none; border-bottom: 1px solid var(--rule-2); }
-.colophon a:hover { color: var(--trace); border-color: var(--trace); }
-
-/* ═══ Narrow ═══ */
-@media (max-width: 46rem) {
-  .masthead { grid-template-columns: 1fr; align-items: start; gap: 1.5rem; padding-top: 2.5rem; }
-  .meta-col { align-items: flex-start; }
-  .contact { align-items: flex-start; }
-  .row { grid-template-columns: 1fr; gap: .35rem; }
-  .modal-head { padding: 1.15rem 1.15rem 1rem; }
-  dialog.modal { width: 100vw; max-width: 100vw; max-height: 92vh; border-radius: 0; border-left: 0; border-right: 0; }
-  .modal-body { padding: 1.15rem; max-height: calc(92vh - 5.5rem); }
+  margin-top: 6.5rem; padding-top: 1.2rem; border-top: 1px solid var(--rule);
+  display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; justify-content: space-between;
+  font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
+  text-transform: uppercase; color: var(--faint);
 }
 
+/* ─── 등장 모션 ─── */
+.rise { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
+.rise.in { opacity: 1; transform: none; }
+.no-js .rise { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .rise { opacity: 1 !important; transform: none !important; transition: none !important; }
+  *, *::before, *::after { animation: none !important; }
 }
 
-/* ═══ Print ═══ */
-@media print {
-  :root {
-    --ground: #fff; --surface: #fff; --surface-2: #fafafa; --surface-3: #eee;
-    --ink: #000; --ink-2: #333; --ink-3: #666;
-    --rule: #ccc; --rule-2: #999;
-    --trace: #0d5566; --trace-dim: #0d5566; --trace-soft: #fff;
-    --critical: #99231c; --shadow: none; --glow: none;
-  }
-  .filters, .card-cue { display: none !important; }
-  .wrap { max-width: none; padding: 0; }
-  .detail { display: block !important; }
-  .card { break-inside: avoid; box-shadow: none; cursor: default; }
-  .grid { grid-template-columns: 1fr; }
-  .section { padding-top: 1.75rem; }
-  .row, .skill, .gauge { break-inside: avoid; }
+@media (max-width: 40rem) {
+  .chapter { grid-template-columns: 1fr; gap: .3rem; }
+  .chapter .when { padding-top: 0; }
+  .works a { grid-template-columns: 1fr auto; }
+  .works .no { display: none; }
+  .hero { padding-top: 4.5rem; }
 }
 </style>
 </head>
@@ -546,1056 +224,169 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 
 <div class="wrap">
 
-  <header class="masthead">
-    <div class="identity">
-      <span data-lang="ko" class="status"><span class="dot"></span>2026 하반기 채용 지원 중</span>
-<span data-lang="en" class="status"><span class="dot"></span>Open to roles · H2 2026</span>
-      <h1 data-lang="ko" class="name">권민재<span class="latin">Minjae Kwon</span></h1><h1 data-lang="en" class="name">Minjae Kwon<span class="latin">권민재</span></h1>
-      <p data-lang="ko" class="discipline">AI · Healthcare Data</p>
-<p data-lang="en" class="discipline">AI · Healthcare Data</p>
-    </div>
-    <div class="meta-col">
-      <div class="switches">
-        <div class="langswitch" role="group" aria-label="Language / 언어">
-          <button type="button" data-lang-set="ko" aria-pressed="true">KO</button>
-          <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
-        </div>
-        <a class="verlink" href="bio.html"><span data-lang="ko">바이오 버전 →</span><span data-lang="en">Bio version →</span></a>
-      </div>
-      <div class="contact">
-        <a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a>
-        <a href="https://github.com/UnknownUserKR" target="_blank" rel="noopener">github.com/UnknownUserKR</a>
-        <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">linkedin.com/in/minjae-kwon</a>
-      </div>
+  <header class="topbar">
+    <a class="wordmark" href="./">Minjae Kwon</a>
+    <nav class="topnav" aria-label="포트폴리오">
+      <a href="ai.html">AI</a>
+      <a href="bio.html">Bio</a>
+      <a href="https://github.com/UnknownUserKR" target="_blank" rel="noopener">GitHub</a>
+    </nav>
+    <div class="langswitch" role="group" aria-label="Language / 언어">
+      <button type="button" data-lang-set="ko" aria-pressed="true">KO</button>
+      <button type="button" data-lang-set="en" aria-pressed="false">EN</button>
     </div>
   </header>
 
-  <section class="readout" aria-label="주요 성과 요약">
-    <div class="gauge">
-      <div class="gauge-val num" data-count="0.95192" data-dec="5">0.95192</div>
-      <div data-lang="ko" class="gauge-cap">흉부 X-ray 폐렴 분류<br>DACON 리더보드</div>
-<div data-lang="en" class="gauge-cap">Chest X-ray pneumonia<br>DACON leaderboard</div>
-    </div>
-    <div class="gauge">
-      <div class="gauge-val alt num">0.74218</div>
-      <div data-lang="ko" class="gauge-cap">난임 임신 성공 예측 ROC-AUC<br>1위와 <em>0.0003</em> 차 · 4인 팀 팀장</div>
-<div data-lang="en" class="gauge-cap">Pregnancy prediction ROC-AUC<br><em>0.0003</em> behind first · led a team of four</div>
-    </div>
-    <div class="gauge">
-      <div class="gauge-val num">256,351<span class="gauge-unit">× 69</span></div>
-      <div data-lang="ko" class="gauge-cap">다뤄본 최대<br>임상 데이터 규모</div>
-<div data-lang="en" class="gauge-cap">Largest clinical dataset<br>worked with</div>
-    </div>
-    <div class="gauge">
-      <div class="gauge-val alt num">3</div>
-      <div data-lang="ko" class="gauge-cap">헬스케어 해커톤<br>참가 · 완주</div>
-<div data-lang="en" class="gauge-cap">Healthcare hackathons<br>entered and finished</div>
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-head">
-      <h2>About</h2><span data-lang="ko" class="ko">소개</span>
-<span data-lang="en" class="ko">Introduction</span>
-    </div>
+  <section class="hero">
+    <span data-lang="ko" class="status">서울 · 2026 하반기 지원 중</span>
+    <span data-lang="en" class="status">Seoul · Open to roles, H2 2026</span>
+    <h1 data-lang="ko" class="head">약을 공부했고,<br>지금은 데이터를 다룹니다.</h1>
+    <h1 data-lang="en" class="head">I studied medicines.<br>Now I work in data.</h1>
     <p data-lang="ko" class="lede">
-      영국 리즈대학교에서 약리학을 전공했습니다. <strong>바이오인포매틱스</strong> 수업에서 생물학
-      문제를 데이터로 푸는 방법을 처음 접하였고, 졸업 프로젝트에서는 약물이 몸속 수용체에 어떻게
-      결합하는지를 시뮬레이션으로 예측해 그 결과를 파이썬으로 분석했습니다. 이 작업이 재미있어서
-      진로를 데이터 분석으로 정했고, 재학 중 <strong>DataCamp</strong>에서 데이터 분석을 공부해
-      Associate Data Analyst 자격도 취득했습니다.
+      권민재입니다. 영국 리즈대학교에서 약리학을 전공하고, 지금은 헬스케어 데이터로 모델을 만듭니다.
+      실험대에서 <strong>데이터가 만들어지는 과정을 아는 채로</strong> 데이터를 본다는 것 —
+      용량–반응 곡선과 학습 곡선을 같은 눈으로 읽는 것이 제가 하는 일의 요약입니다.
     </p>
-<p data-lang="en" class="lede">
-      I studied pharmacology at the University of Leeds. A <strong>bioinformatics</strong> module showed
-      me for the first time how biology problems can be solved with data, and in my final-year project I
-      predicted how drugs bind to receptors in simulation and analysed the results in Python. I enjoyed
-      that work enough to decide on data analysis as a career, and while still at university I studied on
-      <strong>DataCamp</strong> and earned the Associate Data Analyst certification.
-    </p>
-    <p data-lang="ko" class="lede">
-      졸업 후 한국에 돌아와 군 복무를 마쳤고, 전역한 달에 바로 오즈코딩스쿨 AI 헬스케어 과정을
-      시작했습니다. 약리학 배경을 살리면서 데이터를 다루는 일을 하기에 헬스케어 AI가 가장 맞는
-      방향이라고 생각했습니다.
-    </p>
-<p data-lang="en" class="lede">
-      After graduating I returned to Korea for military service, and the month I was discharged I started
-      the AI Healthcare course at Oz Coding School. It seemed the most natural way to combine a
-      pharmacology background with working in data.
-    </p>
-    <p data-lang="ko" class="lede">
-      과정에서 <strong>DACON과 협업으로 진행한 헬스케어 해커톤 세 건</strong>이 첫 실전이었습니다.
-      난임 환자의 임신 성공을 예측한 첫 대회에서는 4인 팀의 팀장을 맡아 1위와 <em>0.0003</em> 차이로
-      마쳤습니다. 이어진 흉부 X-ray 폐렴 분류 대회는 개인전으로 참가해 폐렴 환자를 놓치지 않는 데
-      집중했고, 잘못 판정한 환자를 <em>29명에서 12명</em>으로 줄였습니다. 마지막 암 아형 분류
-      대회에서는 모델 앙상블과 결과 재현 검증을 맡았습니다.
-    </p>
-<p data-lang="en" class="lede">
-      Three healthcare hackathons, <strong>run by the course in partnership with DACON</strong>, were my
-      first hands-on experience. In the first, predicting pregnancy success for fertility patients, I led
-      a team of four and we finished <em>0.0003</em> behind first place. The second, chest X-ray pneumonia
-      classification, I entered on my own; I concentrated on not missing pneumonia patients and brought
-      misclassified cases down from <em>29 to 12</em>. In the last, cancer subtype classification, I was
-      responsible for the model ensemble and for making our results reproducible.
-    </p>
-    <p data-lang="ko" class="lede">
-      같은 과정의 팀 프로젝트로는 학습된 모델을 <strong>FastAPI와 Docker로 서빙하는 웹 서비스</strong>를
-      만들었습니다. 저는 실행·배포 환경을 맡아 다섯 개 서비스를 Docker Compose 하나로 실행되게
-      구성했고, 시간이 오래 걸리는 AI 분석은 Redis 큐로 분리해 API 응답이 밀리지 않게 했습니다.
-    </p>
-<p data-lang="en" class="lede">
-      In a team project on the same course we built a web service that serves trained models through
-      <strong>FastAPI and Docker</strong>. I set up the runtime and deployment environment: five services
-      running from a single Docker Compose file, with slow AI analysis moved onto a Redis queue so it
-      would not hold up API responses.
-    </p>
-    <p data-lang="ko" class="lede">
-      지금은 헬스케어 데이터를 다루는 데이터 분석·머신러닝 직무를 찾고 있습니다. 약을 공부하고
-      데이터로 넘어온 덕분에 검사 수치나 시술 기록 같은 임상 데이터가 낯설지 않고, 이 조합이 제가
-      헬스케어 데이터 일을 하려는 이유입니다.
-    </p>
-<p data-lang="en" class="lede">
-      I am now looking for data analysis and machine learning roles in healthcare. Coming to data from
-      pharmacology means clinical data, such as test results and treatment records, is familiar ground
-      for me, and that combination is why I want to work in this field.
+    <p data-lang="en" class="lede">
+      I'm Minjae Kwon. I read pharmacology at the University of Leeds and now build models on
+      healthcare data. I look at data <strong>knowing how it was produced at the bench</strong> —
+      reading dose–response curves and learning curves with the same eye is the short version of
+      what I do.
     </p>
   </section>
 
-  <section class="section" id="work">
-    <div class="section-head">
-      <h2>Work</h2><span data-lang="ko" class="ko">프로젝트</span>
-<span data-lang="en" class="ko">Projects</span>
-      <span data-lang="ko" class="tail">카드를 누르면 상세가 열립니다</span>
-<span data-lang="en" class="tail">Select a card for details</span>
-    </div>
-
-    <div class="filters" role="group" aria-label="프로젝트 분야 필터">
-      <button data-lang="ko" class="chip" type="button" data-filter="all" aria-pressed="true">전체<span class="n">9</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="all" aria-pressed="true">All<span class="n">9</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="dl" aria-pressed="false">딥러닝<span class="n">1</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="dl" aria-pressed="false">Deep learning<span class="n">1</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="ml" aria-pressed="false">머신러닝<span class="n">4</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="ml" aria-pressed="false">Machine learning<span class="n">4</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="be" aria-pressed="false">백엔드<span class="n">1</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="be" aria-pressed="false">Backend<span class="n">1</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="ea" aria-pressed="false">데이터 분석<span class="n">2</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="ea" aria-pressed="false">Data analysis<span class="n">2</span></button>
-      <button data-lang="ko" class="chip" type="button" data-filter="cc" aria-pressed="false">시뮬레이션<span class="n">1</span></button>
-<button data-lang="en" class="chip" type="button" data-filter="cc" aria-pressed="false">Simulation<span class="n">1</span></button>
-    </div>
-
-    <div class="grid" id="grid">
-
-      <!-- ─────────── 암 아형 ─────────── -->
-      <article class="card" data-cat="ml">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2026.07 — 08</span><span data-lang="en" class="card-when">Jul — Aug 2026</span>
-          <span data-lang="ko" class="tag ml">머신러닝</span><span data-lang="en" class="tag ml">Machine learning</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">유전자 변이로 암 아형 분류</button><button data-lang="en" class="card-open" type="button">Classifying cancer subtype from gene mutations</button></h3>
-        <div data-lang="ko" class="card-org">DACON · 오즈코딩스쿨 [초격차] AI 헬스케어 5기 · 4인 팀</div><div data-lang="en" class="card-org">DACON · Oz Coding School AI Healthcare cohort 5 · team of four</div>
-        <div class="stack"><span>XGBoost</span><span>CatBoost</span><span>LightGBM</span><span>PyTorch</span><span>Optuna</span></div>
-        <div class="meter">
-          <div class="meter-row">
-            <span class="meter-val num">0.4942</span>
-            <span data-lang="ko" class="meter-key">26개 클래스 Macro F1</span><span data-lang="en" class="meter-key">Macro F1 over 26 classes</span>
-          </div>
-          <div class="bar"><i data-fill="49"></i></div>
-        </div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="유전자 변이 기반 암 아형(SUBCLASS) 예측 AI 해커톤"
-             data-title-en="Cancer Subtype Prediction from Gene Mutations Hackathon"
-             data-sub="DACON · 오즈코딩스쿨 [초격차] AI 헬스케어 5기 해커톤 · 4인 팀 (4팀 중 2위) · 2026.07 — 2026.08"
-             data-sub-en="DACON · Oz Coding School AI Healthcare cohort 5 · team of four (2nd of 4) · Jul — Aug 2026">
-          <div class="stats">
-            <div class="stat"><b class="num">0.4942</b><span data-lang="ko">Public 리더보드</span><span data-lang="en">Public leaderboard</span></div>
-            <div class="stat"><b class="num">0.5509</b><span data-lang="ko">교차적합 CV</span><span data-lang="en">Cross-fit CV</span></div>
-            <div class="stat"><b class="num crit">+0.0829</b><span data-lang="ko">짝 규칙 한 번의 이득</span><span data-lang="en">Gain from one rule</span></div>
-            <div class="stat"><b class="num alt">4,384</b><span data-lang="ko">유전자 열</span><span data-lang="en">Gene columns</span></div>
-            <div class="stat"><b class="num alt">26</b><span data-lang="ko">암 아형</span><span data-lang="en">Cancer subtypes</span></div>
-          </div>
-
-          <h4 data-lang="ko">데이터</h4><h4 data-lang="en">The data</h4>
-          <ul>
-            <li data-lang="ko">환자 한 명이 유전자 <em>4,384</em>칸짜리 기록으로 들어옵니다. 각 칸에는 해당 유전자의 변이 여부와 변이 내용이 문자열로 적혀 있고, 이걸로 <em>26</em>개 암 아형 중 하나를 맞혀야 했습니다.</li><li data-lang="en">Each patient comes in as a <em>4,384</em>-column record. Every column holds, as a raw string, whether that gene is mutated and how. From that we had to pick one of <em>26</em> cancer subtypes.</li>
-            <li data-lang="ko">전체 <em>2,718만</em> 칸 중 <strong>99.19%가 정상(WT)</strong>이었습니다. 신호가 0.81%뿐인 희소 행렬이라 원본 그대로는 학습이 되지 않았습니다.</li><li data-lang="en">Of <em>27.2 million</em> cells, <strong>99.19% are wild-type</strong>. With signal in only 0.81%, the raw matrix does not train.</li>
-            <li data-lang="ko">클래스 불균형도 컸습니다. 최다 클래스 BRCA가 <em>786</em>건, 최소 클래스 DLBC가 <em>38</em>건입니다. 평가지표가 Macro F1이라 소수 클래스를 통째로 놓치면 점수가 그만큼 깎입니다.</li><li data-lang="en">The classes are also skewed: <em>786</em> rows for the largest, BRCA, and <em>38</em> for the smallest, DLBC. Macro F1 means losing one rare class costs its full share of the score.</li>
-            <li data-lang="ko">test 변이의 <strong>94.4%는 train에 없던 것</strong>이었고, 샘플당 변이 유전자 수도 test가 <em>2.2배</em> 많았습니다. train 성능이 test로 이어진다는 보장이 없었습니다.</li><li data-lang="en"><strong>94.4% of test mutations do not appear in train</strong>, and test samples carry <em>2.2×</em> as many mutated genes. Train performance was no guarantee of test performance.</li>
-          </ul>
-
-          <h4 data-lang="ko">중복 환자 처리 (담당)</h4><h4 data-lang="en">Duplicate patients (my part)</h4>
-          <ul>
-            <li data-lang="ko">4,384칸이 <strong>글자 하나까지 동일한 환자 쌍</strong>을 세어 보니 train 안에 <em>422</em>건 있었습니다. 그중 같은 라벨끼리 묶인 것은 <strong>0건</strong>이었습니다. 무작위라면 5.7% 정도는 겹쳐야 하는 수치입니다.</li><li data-lang="en">I counted the pairs whose <strong>4,384 columns match character for character</strong>: <em>422</em> inside train. <strong>None of them shared a label</strong>, where chance alone would put about 5.7% together.</li>
-            <li data-lang="ko">원인은 라벨 목록에 있었습니다. 26개 중 넷은 개별 병명이 아니라 상위 분류입니다. KIPAN은 신장암 세 아형의 합이고 GBMLGG는 신경교종 둘의 합입니다. <strong>한 환자가 두 이름으로 기록될 수 있어</strong> 같은 사람이 서로 다른 라벨로 두 줄 들어가 있었습니다.</li><li data-lang="en">The label list explains it. Four of the 26 are umbrella categories rather than individual diseases: KIPAN is the union of three kidney subtypes, GBMLGG of two gliomas. <strong>One patient can be recorded under two names</strong>, so the same person appears twice with different labels.</li>
-            <li data-lang="ko">짝이 없는 환자 수로 확인했습니다. train에 짝이 없는 KIRC 환자가 <em>57</em>명인데 test에서 KIRC 프로파일과 완전히 일치한 행이 <em>57</em>개였습니다. LGG는 <em>50</em>과 <em>50</em>이었습니다.</li><li data-lang="en">The orphan counts confirmed it: <em>57</em> KIRC patients had no partner in train, and <em>57</em> test rows matched a KIRC profile exactly. For LGG the numbers were <em>50</em> and <em>50</em>.</li>
-            <li data-lang="ko">매칭된 test <em>214</em>행(8.4%)에 <strong>매칭된 라벨의 반대쪽</strong>을 부여하는 규칙을 만들었습니다. 그 환자의 다른 한 줄은 train이 이미 쓰고 있기 때문입니다. 리더보드가 <strong>+0.0829</strong> 올랐습니다.</li><li data-lang="en">For the <em>214</em> matched test rows (8.4%) I assigned <strong>the opposite label to the matched one</strong>, since train already holds that patient's other row. The leaderboard moved <strong>+0.0829</strong>.</li>
-            <li data-lang="ko">특정 모델에 기댄 결과인지 확인했습니다. 서로 다른 두 베이스에 적용했을 때 이득이 <em>+0.0922</em>와 <em>+0.0913</em>으로, 두 베이스 자체의 차이(0.0009)만큼만 벌어졌습니다.</li><li data-lang="en">I checked whether it depended on one model. Applied to two unrelated bases the gain was <em>+0.0922</em> and <em>+0.0913</em>, differing only by the 0.0009 gap between the bases themselves.</li>
-            <li data-lang="ko">규정도 확인했습니다. 규칙은 train.csv에서만 유도했고, test <em>2,546</em>행을 한 행씩 전수 확인해 불일치가 없었으며, <strong>test끼리의 매칭은 쓰지 않았습니다</strong>. 행 단위 독립이 깨지기 때문입니다.</li><li data-lang="en">I checked it against the competition rules as well. The rule derives only from train.csv, I verified all <em>2,546</em> test rows individually with no mismatches, and I <strong>did not match test rows against each other</strong>, which would break row independence.</li>
-          </ul>
-
-          <h4 data-lang="ko">피처 설계</h4><h4 data-lang="en">Feature design</h4>
-          <ul>
-            <li data-lang="ko">변이 문자열을 사건 단위로 파싱해 유형(미스센스 · 넌센스 · 프레임시프트 등), 위치, 바뀐 아미노산을 뽑았습니다. 여기에 드라이버 유전자 변이 여부, 변이 부담, 치환 조성을 더해 <strong>도메인 피처 539칸</strong>을 만들었습니다.</li><li data-lang="en">We parsed each mutation string into events — missense, nonsense, frameshift and so on — with position and substituted amino acid. Driver-gene flags, mutation burden and substitution composition brought it to <strong>539 domain features</strong>.</li>
-            <li data-lang="ko">아미노산 치환을 241칸으로 인코딩하면 Macro F1이 <em>0.3971</em>이었는데, 같은 정보를 DNA 염기 단위 <em>9</em>칸으로 줄이면 <em>0.4140</em>이 나왔습니다.</li><li data-lang="en">Encoding amino-acid substitutions across 241 columns gave a Macro F1 of <em>0.3971</em>; reducing the same information to <em>9</em> DNA-level columns gave <em>0.4140</em>.</li>
-            <li data-lang="ko">train과 test 사이 변이율 배율의 중앙값이 아미노산 블록은 0.576, DNA 블록은 0.070이었습니다. DNA 쪽이 <strong>분포 시프트에 8배 덜 흔들렸고</strong>, 이것이 점수 차이의 원인으로 보입니다.</li><li data-lang="en">The median mutation-rate ratio between train and test was 0.576 for the amino-acid block and 0.070 for the DNA one — <strong>eight times steadier under the distribution shift</strong>, which is where the score difference appears to come from.</li>
-          </ul>
-
-          <h4 data-lang="ko">교차검증 재설계</h4><h4 data-lang="en">Rebuilding the folds</h4>
-          <ul>
-            <li data-lang="ko">유전자 4,384열을 클래스별 증거 26개로 압축하는 블록이 CV를 <em>+0.0600</em> 올렸는데, group 분할로 다시 재니 <em>−0.0058</em>이었습니다.</li><li data-lang="en">A block compressing the 4,384 gene columns into 26 per-class evidence scores lifted CV by <em>+0.0600</em>; re-measured under a group split it came out at <em>−0.0058</em>.</li>
-            <li data-lang="ko">원인은 앞서 찾은 중복 환자였습니다. 프로파일이 같은 두 줄이 학습과 검증으로 갈리면 모델이 <strong>파트너의 라벨을 그대로 재생</strong>합니다. fold 설계의 허점을 학습하고 있었습니다.</li><li data-lang="en">The duplicates from earlier were the cause. When two identical profiles land on opposite sides of a split, the model <strong>replays its partner's label</strong>. It was learning a gap in the fold design.</li>
-            <li data-lang="ko"><strong>변이 벡터의 해시를 group key로 쓰는 분할</strong>로 fold를 다시 만들고 지문(997d89a2)으로 고정했습니다. 리더보드 자체의 측정 오차도 재서(1σ <em>0.0111</em>) 그보다 작은 차이는 개선으로 보지 않았습니다.</li><li data-lang="en">We rebuilt the folds around <strong>a hash of the mutation vector as the group key</strong> and pinned them with a fingerprint (997d89a2). We also measured the leaderboard's own noise (1σ <em>0.0111</em>) and stopped treating anything smaller as an improvement.</li>
-          </ul>
-
-          <h4 data-lang="ko">앙상블과 재현성 (담당)</h4><h4 data-lang="en">Ensembling and reproducibility (my part)</h4>
-          <ul>
-            <li data-lang="ko">XGBoost · LightGBM · CatBoost · RandomForest를 같은 인터페이스로 묶고 Optuna 탐색을 붙였습니다. 그 위에 <strong>Caruana 그리디 앙상블, 교차적합 블렌딩, 시드 스윕, 클래스별 확률 보정</strong>을 얹어 베이스라인 <em>0.37</em>에서 교차적합 CV <em>0.5509</em>까지 올렸습니다.</li><li data-lang="en">I put XGBoost, LightGBM, CatBoost and RandomForest behind one interface and wired Optuna to it. <strong>Caruana greedy ensembling, cross-fit blending, seed sweeps and per-class calibration</strong> on top carried the baseline from <em>0.37</em> to a cross-fit CV of <em>0.5509</em>.</li>
-            <li data-lang="ko">단독 성능이 가장 좋았던 멤버는 다른 모델과 상관이 높아 앙상블 점수를 깎았고, <strong>단독으로는 가장 낮았던 딥러닝 모델이 기여도 2위</strong>였습니다.</li><li data-lang="en">The strongest solo member correlated closely with the rest and pulled the blend down, while <strong>the deep-learning model that scored lowest on its own contributed second-most</strong>.</li>
-            <li data-lang="ko"><strong>기각한 구성도 파라미터 프리셋으로 등록해</strong> 재현할 수 있게 뒀습니다.</li><li data-lang="en">I <strong>registered the rejected configurations as presets</strong> so they could be reproduced.</li>
-            <li data-lang="ko">제출 재현 노트북이 실제 제출 파일과 <strong>2,546행 전부를 대조</strong>하도록 자동 테스트를 걸었습니다. 통계량을 쓰는 전처리는 fold-train에만 fit하도록 코드가 강제하고, 누수 · 정렬 · 제출 스키마 무결성 테스트가 함께 돌아갑니다.</li><li data-lang="en">An automated test makes the reproduction notebook match the submitted file <strong>across all 2,546 rows</strong>. Preprocessing that uses statistics is forced by the code to fit on fold-train only, and leakage, alignment and submission-schema tests run alongside it.</li>
-          </ul>
-
-          <h4 data-lang="ko">한계</h4><h4 data-lang="en">Limitations</h4>
-          <ul>
-            <li data-lang="ko">교차적합 산출물에서 계산한 클래스별 F1은 ACC <em>0.913</em> · SKCM <em>0.894</em>에서 SARC <em>0.238</em> · THYM <em>0.295</em>까지 벌어집니다. 38행뿐인 DLBC가 <em>0.700</em>인데 198행인 SARC가 <em>0.238</em>이라, 표본 수만으로는 설명되지 않습니다.</li><li data-lang="en">Per-class F1 computed from the cross-fit output runs from ACC <em>0.913</em> and SKCM <em>0.894</em> down to SARC <em>0.238</em> and THYM <em>0.295</em>. DLBC scores <em>0.700</em> on 38 rows while SARC scores <em>0.238</em> on 198, so sample size alone does not explain it.</li>
-            <li data-lang="ko">오분류 <em>2,914</em>건 중 <em>470</em>건(16.1%)이 앞의 <strong>상위 · 하위 이름 네 개 안에서</strong> 일어납니다. 남은 개선 여지도 대부분 여기에 있습니다.</li><li data-lang="en">Of <em>2,914</em> misclassifications, <em>470</em> (16.1%) fall <strong>within the four umbrella-and-subtype names</strong>. Most of the remaining headroom is in the same place.</li>
-          </ul>
-
-          <p data-lang="ko" class="linknote">※ 코드 공개: <a href="https://github.com/cancer-classification-ai/onco-ai" target="_blank" rel="noopener">github.com/cancer-classification-ai/onco-ai</a> · 대회 데이터는 재배포 불가</p><p data-lang="en" class="linknote">※ Code: <a href="https://github.com/cancer-classification-ai/onco-ai" target="_blank" rel="noopener">github.com/cancer-classification-ai/onco-ai</a> · competition data cannot be redistributed</p>
-        </div>
-      </article>
-
-      <!-- ─────────── X-ray ─────────── -->
-      <article class="card" data-cat="dl">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2026.06 — 07</span><span data-lang="en" class="card-when">Jun — Jul 2026</span>
-          <span data-lang="ko" class="tag dl">딥러닝</span><span data-lang="en" class="tag dl">Deep learning</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">흉부 X-ray 폐렴 분류</button><button data-lang="en" class="card-open" type="button">Chest X-ray pneumonia classification</button></h3>
-        <div data-lang="ko" class="card-org">DACON · 오즈코딩스쿨 [초격차] AI 헬스케어 딥러닝 트랙 · 개인전</div><div data-lang="en" class="card-org">DACON · Oz Coding School AI Healthcare deep-learning track · individual entry</div>
-        <div class="stack"><span>PyTorch</span><span>ResNet18</span><span>DenseNet121</span><span>CLAHE</span><span>Grad-CAM</span></div>
-        <div class="meter">
-          <div class="meter-row">
-            <span class="meter-val num">0.95192</span>
-            <span data-lang="ko" class="meter-key">리더보드</span><span data-lang="en" class="meter-key">Leaderboard</span>
-          </div>
-          <div class="bar"><i data-fill="95"></i></div>
-        </div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="흉부 X-ray 폐렴 분류 AI 해커톤"
-             data-title-en="Chest X-ray Pneumonia Classification Hackathon"
-             data-sub="DACON · 오즈코딩스쿨 [초격차] AI 헬스케어 딥러닝 트랙 · 개인전 (참가자 85명) · 2026.06 — 2026.07"
-             data-sub-en="DACON · Oz Coding School AI Healthcare deep-learning track · individual entry (85 participants) · Jun — Jul 2026">
-          <div class="stats">
-            <div class="stat"><b class="num">0.95192</b><span data-lang="ko">리더보드</span><span data-lang="en">Leaderboard</span></div>
-            <div class="stat"><b class="num">0.9997</b><span data-lang="ko">검증 AUC</span><span data-lang="en">Validation AUC</span></div>
-            <div class="stat"><b class="num crit">29 → 12</b><span data-lang="ko">놓친 폐렴 환자</span><span data-lang="en">Missed pneumonia</span></div>
-            <div class="stat"><b class="num crit">7 → 2</b><span data-lang="ko">잘못 의심한 정상</span><span data-lang="en">False alarms</span></div>
-            <div class="stat"><b class="num alt">5,216</b><span data-lang="ko">학습 이미지</span><span data-lang="en">Training images</span></div>
-          </div>
-
-          <h4 data-lang="ko">과제와 평가 기준</h4><h4 data-lang="en">Task and evaluation</h4>
-          <ul>
-            <li data-lang="ko">학습 <em>5,216</em>장, 테스트 <em>624</em>장의 흉부 X-ray를 정상(NORMAL)과 폐렴(PNEUMONIA)으로 분류하는 과제입니다. 학습 데이터가 정상 <em>1,341</em>장에 폐렴 <em>3,875</em>장으로 <strong>폐렴 쪽이 2.89배 많아</strong> 손실함수와 샘플링을 여기에 맞췄습니다.</li><li data-lang="en">Classify <em>5,216</em> training and <em>624</em> test chest X-rays as NORMAL or PNEUMONIA. The training set holds <em>1,341</em> normal against <em>3,875</em> pneumonia scans, <strong>2.89× more of the positive class</strong>, so the loss function and sampling were set up around that skew.</li>
-            <li data-lang="ko">진단에서는 폐렴 환자를 정상으로 판정하는 오류가 그 반대보다 훨씬 위험합니다. 그래서 놓친 환자 수(FN)를 줄이는 것을 목표로 잡고, 민감도를 중심에 둔 평가 지표를 설계했습니다.</li><li data-lang="en">In diagnosis, calling a pneumonia patient normal is far more costly than the reverse. I set the target as reducing false negatives and built the evaluation around sensitivity.</li>
-          </ul>
-
-          <h4 data-lang="ko">실험</h4><h4 data-lang="en">Experiments</h4>
-          <ul>
-            <li data-lang="ko">SimpleCNN 베이스라인에서 출발해 백본 3개(ResNet18 · DenseNet121 · EfficientNet-B0)와 스케줄러 3개를 조합한 <strong>9가지 실험</strong>을 2-stage fine-tuning과 Focal Loss 기반으로 진행했습니다.</li><li data-lang="en">Starting from a SimpleCNN baseline, I ran <strong>nine experiments</strong> pairing three backbones (ResNet18 · DenseNet121 · EfficientNet-B0) with three schedulers, all on two-stage fine-tuning and Focal Loss.</li>
-            <li data-lang="ko">9가지 중 <strong>ResNet18 + ReduceLROnPlateau</strong>가 검증 AUC <em>0.9997</em>로 가장 좋았습니다. 이 조합을 다시 학습해 분석한 결과(AUC <em>0.9994</em>) 놓친 환자가 <em>29명에서 12명</em>으로 줄고 민감도가 <em>0.9626에서 0.9845</em>로 올랐습니다.</li><li data-lang="en"><strong>ResNet18 + ReduceLROnPlateau</strong> scored best at a validation AUC of <em>0.9997</em>. Retraining that pairing for analysis (AUC <em>0.9994</em>) brought missed patients down from <em>29 to 12</em> and lifted sensitivity from <em>0.9626 to 0.9845</em>.</li>
-          </ul>
-
-          <h4 data-lang="ko">성능 개선</h4><h4 data-lang="en">Improving the score</h4>
-          <ul>
-            <li data-lang="ko"><strong>CLAHE</strong> 의료 영상 전처리, MixUp · CutMix 증강, 5-Fold 교차검증을 적용했습니다.</li><li data-lang="en">I applied <strong>CLAHE</strong> preprocessing for medical imaging, MixUp and CutMix augmentation, and five-fold cross-validation.</li>
-            <li data-lang="ko">DenseNet121 · EfficientNet-B0 · ConvNeXt-Tiny 3개 모델 soft-voting 앙상블과 OOF 기반 임계값 선택으로 최종 점수가 <em>0.8974에서 0.95192</em>로 올랐습니다.</li><li data-lang="en">A soft-voting ensemble of DenseNet121, EfficientNet-B0 and ConvNeXt-Tiny with an OOF-selected threshold moved the final score from <em>0.8974 to 0.95192</em>.</li>
-          </ul>
-
-          <h4 data-lang="ko">검증</h4><h4 data-lang="en">Validation</h4>
-          <ul>
-            <li data-lang="ko"><strong>Grad-CAM</strong>으로 모델이 실제 폐 병변 영역을 근거로 판단하는지 확인했습니다.</li><li data-lang="en">I used <strong>Grad-CAM</strong> to check whether the model was reading actual lung pathology.</li>
-            <li data-lang="ko">놓친 사례와 잘못 의심한 사례를 따로 모아 어떤 영상에서 틀리는지 분석했습니다.</li><li data-lang="en">I collected the missed cases and the false alarms separately to see which images the model got wrong.</li>
-            <li data-lang="ko">학습과 검증 사이에 같은 이미지가 섞이지 않았는지 <strong>파일명 교집합과 이미지 해시 중복</strong>으로 확인했고 겹치는 것은 없었습니다. 다만 환자 ID가 제공되지 않은 데이터라, 실무에서는 <strong>환자 단위 GroupKFold</strong>로 한 번 더 나눠야 합니다.</li><li data-lang="en">I checked for leakage between train and validation using <strong>filename intersection and image hashing</strong>, and nothing overlapped. Patient IDs were not supplied, so in production this would need <strong>patient-level GroupKFold</strong>.</li>
-          </ul>
-
-          <h4 data-lang="ko">임계값 조정</h4><h4 data-lang="en">Threshold</h4>
-          <ul>
-            <li data-lang="ko">기본값 0.5 대신 <em>0.32</em>로 낮추면 놓치는 환자가 줄어드는 대신(민감도 <em>0.9936</em>) 정상을 폐렴으로 의심하는 경우가 늘었습니다(특이도 <em>0.9851</em>).</li><li data-lang="en">Lowering the threshold from 0.5 to <em>0.32</em> reduced missed patients (sensitivity <em>0.9936</em>) while increasing false alarms (specificity <em>0.9851</em>).</li>
-            <li data-lang="ko">0.5는 기본값일 뿐이고 어느 쪽 오류를 더 줄일지에 따라 달라지는 값이라고 봤습니다. 최종 제출에는 OOF로 고른 <em>0.300</em>을 썼습니다.</li><li data-lang="en">0.5 is only a default; the right value depends on which error you want to reduce. The final submission used <em>0.300</em>, chosen out of fold.</li>
-          </ul>
-
-          <h4 data-lang="ko">설명용 모델과 제출용 모델 분리</h4><h4 data-lang="en">Separate models for explanation and submission</h4>
-          <ul>
-            <li data-lang="ko">목적이 달라서 두 개로 나눴습니다. <strong>설명용은 ResNet18 + Plateau 단일 모델</strong>로, 구조가 단순해 Grad-CAM과 오류 분석에 적합합니다.</li><li data-lang="en">The two have different purposes, so I split them. <strong>For explanation, a single ResNet18 + Plateau</strong>, simple enough for Grad-CAM and error analysis to be meaningful.</li>
-            <li data-lang="ko"><strong>제출용은 Enhanced 앙상블</strong>로 CLAHE, 5-Fold, 3개 백본 soft-voting, MixUp · CutMix에 OOF 임계값을 적용했습니다. 단순 평균 · 볼록 가중 · logistic stacking을 비교해 볼록 가중(정확도 <em>0.9904</em>)을 골랐습니다.</li><li data-lang="en"><strong>For submission, the Enhanced ensemble</strong>: CLAHE, five folds, three backbones soft-voted, MixUp and CutMix, OOF threshold. I compared simple averaging, convex weighting and logistic stacking, and took convex weighting (accuracy <em>0.9904</em>).</li>
-            <li data-lang="ko">앙상블의 OOF 민감도는 <em>0.9907</em>입니다. 특이도는 단일 모델보다 조금 낮지만 이 과제의 기준에 맞아 이쪽을 제출했습니다.</li><li data-lang="en">The ensemble reached <em>0.9907</em> sensitivity out of fold. Specificity is slightly lower than the single model, but it matched the criterion for this task, so that is what I submitted.</li>
-          </ul>
-
-          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
-          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
-          <div class="figs">
-
-            <figure class="fig">
-              <a href="assets/xray/eda-samples.webp" target="_blank" rel="noopener">
-                <img src="assets/xray/eda-samples.webp" width="1400" height="612" loading="lazy" decoding="async"
-                     alt="정상과 폐렴 흉부 X-ray 각 5장을 위아래로 배열한 샘플 이미지">
-              </a>
-              <figcaption>
-                <b data-lang="ko">데이터 샘플</b><b data-lang="en">Sample images</b>
-<span data-lang="ko">위가 정상, 아래가 폐렴입니다. 폐렴 쪽은 폐야가 뿌옇게 흐려져 있지만 경계가 뚜렷하지 않은
-                경우가 많습니다.</span><span data-lang="en">Normal on top, pneumonia below. The pneumonia scans show hazier lung fields, though the
-                boundary is often not sharp.</span>
-              </figcaption>
-            </figure>
-
-            <figure class="fig">
-              <a href="assets/xray/learning-curve.webp" target="_blank" rel="noopener">
-                <img src="assets/xray/learning-curve.webp" width="1600" height="427" loading="lazy" decoding="async"
-                     alt="ResNet18 + Plateau 학습 곡선. Loss, 검증 AUC, 민감도와 특이도를 30 에폭에 걸쳐 표시">
-              </a>
-              <figcaption>
-                <b data-lang="ko">ResNet18 + Plateau 학습 곡선</b><b data-lang="en">ResNet18 + Plateau training curves</b>
-<span data-lang="ko">10 에폭 근처에서 학습률이 한 번 떨어지며 검증 AUC가 <em>0.985</em>대에서 <em>0.999</em>대로 올라갑니다.
-                2단계 fine-tuning이 적용된 구간입니다.</span><span data-lang="en">Around epoch 10 the learning rate drops and validation AUC rises from the <em>0.985</em> range
-                to <em>0.999</em>. This is the second fine-tuning stage.</span>
-              </figcaption>
-            </figure>
-
-            <figure class="fig">
-              <a href="assets/xray/confusion.webp" target="_blank" rel="noopener">
-                <img src="assets/xray/confusion.webp" width="1700" height="503" loading="lazy" decoding="async"
-                     alt="베이스라인과 최종 모델의 혼동행렬 비교. 놓친 폐렴이 29건에서 12건으로 감소">
-              </a>
-              <figcaption>
-                <b data-lang="ko">놓친 환자 29명 → 12명</b><b data-lang="en">Missed patients: 29 → 12</b>
-<span data-lang="ko">왼쪽이 베이스라인, 가운데가 최종 모델입니다. 폐렴인데 정상으로 판정한 칸이
-                <em>29</em>에서 <em>12</em>로 줄었습니다. 민감도 <em>0.9626 → 0.9845</em>,
-                특이도 <em>0.9739 → 0.9925</em>.</span><span data-lang="en">Baseline on the left, final model in the middle. The cell for pneumonia called normal
-                drops from <em>29</em> to <em>12</em>. Sensitivity <em>0.9626 → 0.9845</em>,
-                specificity <em>0.9739 → 0.9925</em>.</span>
-              </figcaption>
-            </figure>
-
-            <figure class="fig">
-              <a href="assets/xray/gradcam.webp" target="_blank" rel="noopener">
-                <img src="assets/xray/gradcam.webp" width="1000" height="1473" loading="lazy" decoding="async"
-                     alt="Grad-CAM 4종 케이스. 맞힌 폐렴, 맞힌 정상, 놓친 폐렴, 잘못 의심한 정상 각각의 히트맵">
-              </a>
-              <figcaption>
-                <b data-lang="ko">Grad-CAM 히트맵</b><b data-lang="en">Grad-CAM heatmaps</b>
-<span data-lang="ko">맞힌 폐렴(1행)에서는 히트맵이 폐야 가운데에 형성됩니다. 놓친 사례(3행)와
-                잘못 의심한 사례(4행)에서는 초점이 폐 바깥이나 가장자리에 잡혔습니다.</span><span data-lang="en">On correct pneumonia calls (row 1) the heatmap sits on the lung fields. On the missed case
-                (row 3) and the false alarm (row 4) it falls on the chest wall and the edges instead.</span>
-              </figcaption>
-            </figure>
-
-          </div>
-
-          <p data-lang="ko" class="linknote">※ 대회 데이터는 재배포가 불가해 학습 코드와 결과만 별도 공개 예정</p><p data-lang="en" class="linknote">※ Competition data cannot be redistributed; code and outputs will be published separately</p>
-        </div>
-      </article>
-
-      <!-- ─────────── 난임 ─────────── -->
-      <article class="card" data-cat="ml">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2026.05 — 06</span><span data-lang="en" class="card-when">May — Jun 2026</span>
-          <span data-lang="ko" class="tag ml">머신러닝</span><span data-lang="en" class="tag ml">Machine learning</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">난임 환자 임신 성공 예측</button><button data-lang="en" class="card-open" type="button">Predicting pregnancy success in fertility treatment</button></h3>
-        <div data-lang="ko" class="card-org">DACON · 오즈코딩스쿨 [초격차] AI 헬스케어 5기 · 치킨4조 팀장</div><div data-lang="en" class="card-org">DACON · Oz Coding School AI Healthcare cohort 5 · team lead, Chicken4jo</div>
-        <div class="stack"><span>LightGBM</span><span>XGBoost</span><span>CatBoost</span><span>Optuna</span><span>SHAP</span></div>
-        <div class="meter">
-          <div class="meter-row">
-            <span class="meter-val alt num">0.74218</span>
-            <span data-lang="ko" class="meter-key">1위와 0.0003 차</span><span data-lang="en" class="meter-key">0.0003 behind 1st</span>
-          </div>
-          <div class="bar"><i class="alt" data-fill="74"></i></div>
-        </div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="난임 환자 임신 성공 예측 AI 해커톤"
-             data-title-en="Fertility Treatment Pregnancy Prediction Hackathon"
-             data-sub="DACON · 오즈코딩스쿨 [초격차] AI 헬스케어 5기 해커톤 · 치킨4조 팀장 (4인 팀) · 2026.05 — 2026.06"
-             data-sub-en="DACON · Oz Coding School AI Healthcare cohort 5 · team lead, Chicken4jo (team of four) · May — Jun 2026">
-          <div class="stats">
-            <div class="stat"><b class="num">0.74218</b><span data-lang="ko">ROC-AUC</span><span data-lang="en">ROC-AUC</span></div>
-            <div class="stat"><b class="num">0.0003</b><span data-lang="ko">1위와의 차</span><span data-lang="en">Gap to 1st</span></div>
-            <div class="stat"><b class="num alt">256,351</b><span data-lang="ko">학습 행 수</span><span data-lang="en">Training rows</span></div>
-            <div class="stat"><b class="num alt">90,067</b><span data-lang="ko">예측 대상 환자</span><span data-lang="en">Patients to predict</span></div>
-          </div>
-
-          <h4 data-lang="ko">배경</h4><h4 data-lang="en">Background</h4>
-          <ul>
-            <li data-lang="ko">배아 이식 성공률은 <em>30%</em> 언저리이고 시술은 평균 <em>5~8회</em> 반복됩니다. 그 과정에서 <strong>70% 이상의 환자가 실패를 겪습니다.</strong></li><li data-lang="en">Embryo transfer succeeds around <em>30%</em> of the time, over a course that typically runs <em>5–8 cycles</em>. <strong>More than 70% of patients go through a failure.</strong></li>
-            <li data-lang="ko">그래서 목표를 리더보드 점수가 아니라 <strong>환자별 성공 확률을 의료진에게 참고값으로 제공하는 것</strong>으로 잡았습니다.</li><li data-lang="en">The goal was therefore <strong>giving clinicians a per-patient probability they could use as a reference</strong>, rather than a leaderboard score.</li>
-          </ul>
-
-          <h4 data-lang="ko">역할과 데이터</h4><h4 data-lang="en">Role and data</h4>
-          <ul>
-            <li data-lang="ko"><strong>4인 팀(치킨4조)의 팀장</strong>으로 과제 분배와 모델 통합을 맡았습니다.</li><li data-lang="en"><strong>Team lead of Chicken4jo, four people</strong>, responsible for splitting the work and merging the models.</li>
-            <li data-lang="ko">학습 <em>256,351 × 69</em>, 예측 대상 <em>90,067</em>명입니다. 임신 실패 <em>190,123</em>건에 성공 <em>66,228</em>건으로 <strong>약 74 대 26</strong>이었습니다.</li><li data-lang="en">Training on <em>256,351 × 69</em>, predicting for <em>90,067</em> patients. <em>190,123</em> failures against <em>66,228</em> successes, <strong>roughly 74:26</strong>.</li>
-            <li data-lang="ko">정확도만 보면 전부 실패로 찍어도 높게 나오는 구조라 주 지표를 <strong>ROC-AUC</strong>로 두고 PR-AUC · Recall · Log Loss를 함께 봤습니다.</li><li data-lang="en">Accuracy would reward guessing failure every time, so <strong>ROC-AUC</strong> was the headline metric, read alongside PR-AUC, recall and log loss.</li>
-          </ul>
-
-          <h4 data-lang="ko">결측값 처리</h4><h4 data-lang="en">Missing values</h4>
-          <ul>
-            <li data-lang="ko">PGS 시술 여부 <em>99.25%</em>, PGD <em>99.15%</em>, 착상 전 유전검사 <em>98.94%</em>가 비어 있었습니다. 이건 채워 넣을 결측이 아니라 <strong>그 시술을 하지 않았다는 기록</strong>입니다.</li><li data-lang="en">PGS was blank in <em>99.25%</em> of rows, PGD in <em>99.15%</em>, preimplantation genetic testing in <em>98.94%</em>. These are not gaps to impute but <strong>records that the procedure did not take place</strong>.</li>
-            <li data-lang="ko">단순 누락과 「해당 없음」을 구분해 처리하고, 결측 여부 자체를 <strong>이진 지표 9종</strong>으로 만들어 모델에 넣었습니다.</li><li data-lang="en">I separated true absence from "not applicable" and turned the missingness itself into <strong>nine binary indicators</strong> fed to the model.</li>
-          </ul>
-
-          <h4 data-lang="ko">성능 개선 단계</h4><h4 data-lang="en">Steps</h4>
-          <ul>
-            <li data-lang="ko"><strong>1단계 · LightGBM 단일</strong> — 도메인 지식으로 고른 기본 변수로 베이스라인을 잡았습니다. ROC-AUC <em>0.7363</em>, Recall <em>0.778</em>로 성공 사례는 잘 잡지만 정밀도가 낮았습니다.</li><li data-lang="en"><strong>Step 1 · single LightGBM</strong> — a baseline on domain-picked variables. ROC-AUC <em>0.7363</em>, recall <em>0.778</em>: good at catching successes, low precision.</li>
-            <li data-lang="ko"><strong>2단계 · 3-way 블렌딩</strong> — CatBoost 50 : XGBoost 25 : LightGBM 25. AUC <em>0.7403</em>, Log Loss가 <em>0.5886에서 0.5432</em>로 떨어지며 확률이 안정됐습니다.</li><li data-lang="en"><strong>Step 2 · three-way blend</strong> — CatBoost 50 : XGBoost 25 : LightGBM 25. AUC <em>0.7403</em>, and log loss fell from <em>0.5886 to 0.5432</em>, steadying the probabilities.</li>
-            <li data-lang="ko"><strong>3단계 · Optuna 튜닝</strong> — 결측 이진화와 전 변수를 투입했습니다. Log Loss는 <em>0.4875</em>로 가장 좋았지만 Recall이 크게 떨어져 균형은 나빠졌습니다.</li><li data-lang="en"><strong>Step 3 · Optuna tuning</strong> — every variable in, plus the missingness indicators. Log loss was best at <em>0.4875</em>, but recall dropped sharply and the balance got worse.</li>
-            <li data-lang="ko"><strong>4단계 · Rank Average Blending</strong> — 의학적 interaction 변수를 더해 <em>0.7405</em>. 여기에 스태킹을 얹은 최종본이 리더보드 <em>0.742</em>대를 기록했습니다.</li><li data-lang="en"><strong>Step 4 · rank-average blending</strong> — clinically motivated interaction terms took it to <em>0.7405</em>, and adding stacking put the final entry in the <em>0.742</em> range on the leaderboard.</li>
-          </ul>
-
-          <h4 data-lang="ko">피처 엔지니어링</h4><h4 data-lang="en">Feature engineering</h4>
-          <ul>
-            <li data-lang="ko">「40세 이상 × 공여 난자 사용」, 「40세 이상 × 배반포 여부」, 「반복 시술 × 복합 불임 원인」, 「나이 × 배아 이식 성공 비율」처럼 <strong>의학적 맥락이 담긴 조합 변수</strong>를 직접 설계했습니다.</li><li data-lang="en">I hand-built <strong>interaction terms carrying clinical meaning</strong>: "over 40 × donor oocyte", "over 40 × blastocyst", "repeat cycle × multiple infertility causes", "age × transfer success rate".</li>
-            <li data-lang="ko">이 프로젝트에서는 변수를 늘리는 것보다 <strong>의미 있는 변수를 설계하는 것</strong>이 점수에 더 크게 작용했습니다.</li><li data-lang="en">On this project, <strong>designing meaningful variables</strong> moved the score more than adding more of them.</li>
-          </ul>
-
-          <h4 data-lang="ko">최종 앙상블</h4><h4 data-lang="en">Final ensemble</h4>
-          <ul>
-            <li data-lang="ko">10-Fold Stratified CV 기준 OOF AUC는 LightGBM <em>0.740123</em>, XGBoost <em>0.740241</em>, CatBoost <em>0.740108</em>로 셋이 거의 같았습니다. 결합 방식에 따라 결과가 갈리는 상황이었습니다.</li><li data-lang="en">Out-of-fold AUC under 10-fold stratified CV came to LightGBM <em>0.740123</em>, XGBoost <em>0.740241</em>, CatBoost <em>0.740108</em> — near-identical, so the combination method decided the result.</li>
-            <li data-lang="ko">Nelder-Mead로 가중치를 찾아 <strong>LightGBM 0.358 : XGBoost 0.256 : CatBoost 0.386</strong>을 얻었습니다(AUC <em>0.740378</em>).</li><li data-lang="en">Nelder-Mead landed on <strong>LightGBM 0.358 : XGBoost 0.256 : CatBoost 0.386</strong> (AUC <em>0.740378</em>).</li>
-            <li data-lang="ko">Rank 기반 블렌딩(<em>0.740375</em>)과 로지스틱 스태킹(<em>0.740376</em>)도 함께 비교한 뒤 근소하게 앞선 블렌딩을 최종으로 골랐습니다.</li><li data-lang="en">Rank-based blending (<em>0.740375</em>) and logistic stacking (<em>0.740376</em>) were compared alongside it, and blending came out slightly ahead.</li>
-            <li data-lang="ko">Optuna는 2단계로 돌렸습니다. 1차에 모델별 100회 탐색(Stratified 3-Fold, early stopping 40), 2차에 그 주변으로 범위를 좁혀 다시 탐색했습니다.</li><li data-lang="en">Optuna ran in two passes: 100 trials per model (stratified 3-fold, early stopping at 40), then a narrowed search around the winners.</li>
-          </ul>
-
-          <h4 data-lang="ko">데이터 분석 결과</h4><h4 data-lang="en">What the data showed</h4>
-          <ul>
-            <li data-lang="ko">기록된 불임 원인 중 <strong>남성 요인이 가장 많았고</strong>(<em>95,466</em>건, <em>37.24%</em>) 이 그룹의 성공률은 <em>27.99%</em>였습니다.</li><li data-lang="en"><strong>Male factor was the most frequently recorded cause</strong> (<em>95,466</em> cases, <em>37.24%</em>), with a <em>27.99%</em> success rate in that group.</li>
-            <li data-lang="ko">과거 시술 이력이 있는 그룹은 성공률이 낮았고, 임신·출산 경험이 있으면 조금 높았습니다.</li><li data-lang="en">Groups with prior treatment cycles showed lower success; previous pregnancy or birth showed slightly higher.</li>
-            <li data-lang="ko">기증 배아나 공여 난자를 쓴 그룹에서 성공률이 높게 나타났습니다.</li><li data-lang="en">Donated embryos and donor oocytes both showed higher success rates.</li>
-          </ul>
-
-          <h4 data-lang="ko">해석과 프로토타입</h4><h4 data-lang="en">Interpretation and prototype</h4>
-          <ul>
-            <li data-lang="ko">SHAP으로 변수 기여도를 확인해 어떤 요인이 확률을 끌어올리는지 봤습니다.</li><li data-lang="en">SHAP showed which variables were driving the probability.</li>
-            <li data-lang="ko">환자별 성공 확률을 제시하는 <strong>의사결정 보조 프로토타입</strong>을 만들었습니다. 여기에는 최고 점수 모델 대신 Recall과 F1 균형이 나은 CatBoost + XGBoost 50:50을 썼습니다.</li><li data-lang="en">I built a <strong>decision-support prototype</strong> showing a per-patient probability. It runs on a 50:50 CatBoost + XGBoost blend rather than the top-scoring model, for better recall and F1 balance.</li>
-          </ul>
-
-          <h4 data-lang="ko">한계</h4><h4 data-lang="en">Limitations</h4>
-          <ul>
-            <li data-lang="ko">74 대 26 불균형은 임계값 조정이나 리샘플링으로 더 다뤄볼 여지가 있습니다.</li><li data-lang="en">The 74:26 imbalance still has room for threshold tuning and resampling.</li>
-            <li data-lang="ko">배아 등급, 호르몬 수치, AMH, BMI 같은 <strong>핵심 임상 변수가 데이터에 없었습니다.</strong> 예측을 더 개선하려면 변수부터 보강돼야 합니다.</li><li data-lang="en"><strong>Key clinical variables were absent</strong>: embryo grade, hormone panels, AMH, BMI. Improving prediction would start with adding those.</li>
-            <li data-lang="ko">확률값을 실제로 쓰려면 calibration이 필요하고, 병원 데이터로 외부 검증도 거쳐야 합니다.</li><li data-lang="en">Using the probabilities in practice would require calibration and external validation on hospital data.</li>
-          </ul>
-        </div>
-      </article>
-
-      <!-- ─────────── FastAPI 서빙 ─────────── -->
-      <article class="card" data-cat="be">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2026.07</span><span data-lang="en" class="card-when">Jul 2026</span>
-          <span data-lang="ko" class="tag be">백엔드</span><span data-lang="en" class="tag be">Backend</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">AI 모델 서빙 웹 서비스</button><button data-lang="en" class="card-open" type="button">Serving AI models as a web service</button></h3>
-        <div data-lang="ko" class="card-org">오즈코딩스쿨 AI 헬스케어 과정 · 6조 (4인 팀)</div><div data-lang="en" class="card-org">Oz Coding School AI Healthcare · group 6 (team of four)</div>
-        <div class="stack"><span>FastAPI</span><span>Docker</span><span>SQLAlchemy</span><span>Alembic</span><span>Redis</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill">팀 프로젝트</span><span data-lang="en" class="pill">Team project</span></div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="AI 모델 서빙 웹 서비스"
-             data-title-en="Serving AI Models as a Web Service"
-             data-sub="오즈코딩스쿨 AI 헬스케어 과정 · 6조 (4인 팀) · 2026.07"
-             data-sub-en="Oz Coding School AI Healthcare · group 6 (team of four) · Jul 2026"
-             data-repo="https://github.com/J36-Ai-Editer/Oz_codingSchool"
-             data-repo-label="J36-Ai-Editer / Oz_codingSchool">
-          <h4 data-lang="ko">개요</h4><h4 data-lang="en">Overview</h4>
-          <ul>
-            <li data-lang="ko">학습한 인공지능 모델을 <strong>FastAPI REST API</strong>로 서빙하고 Docker로 컨테이너화해 배포한 4인 팀 프로젝트입니다.</li><li data-lang="en">This was a four-person project serving trained models through a <strong>FastAPI REST API</strong>, containerised with Docker.</li>
-            <li data-lang="ko">환자 · 진료기록 · X-ray 이미지 · AI 분석 결과를 다루는 백엔드를 <strong>API · 서비스 · 리포지토리 계층으로 분리</strong>해 구성했습니다.</li><li data-lang="en">The backend handles patients, medical records, X-ray images and model output, <strong>split into API, service and repository layers</strong>.</li>
-            <li data-lang="ko">SQLAlchemy 모델과 Alembic 마이그레이션으로 스키마를 관리하고 Redis 캐시와 이미지 스토리지를 연동했습니다.</li><li data-lang="en">We managed the schema through SQLAlchemy models and Alembic migrations, wired to a Redis cache and image storage.</li>
-          </ul>
-
-          <h4 data-lang="ko">맡은 부분</h4><h4 data-lang="en">My part</h4>
-          <ul>
-            <li data-lang="ko">4인 팀에서 <strong>실행·배포 환경</strong>을 맡았습니다. Docker Compose로 FastAPI · MySQL · Redis · AI Worker · Adminer 다섯 서비스를 묶었습니다.</li><li data-lang="en">In a team of four I owned the <strong>runtime and deployment environment</strong>, wiring five services — FastAPI, MySQL, Redis, the AI worker and Adminer — into one Docker Compose stack.</li>
-            <li data-lang="ko">클론 직후 <strong>명령 두 줄로 실행되도록</strong> 맞추는 데 시간을 썼습니다. <code>.env</code>가 없으면 컨테이너 기동 시 자동 생성하고, 로컬 MySQL과 충돌하지 않게 호스트 포트를 3307로 옮기고 시드 데이터를 넣어뒀습니다.</li><li data-lang="en">Much of that went into <strong>getting a fresh clone running in two commands</strong>: auto-generating <code>.env</code> on boot, moving the host port to 3307 to avoid clashing with a local MySQL, and seeding test data.</li>
-            <li data-lang="ko">이미지가 무거워서 <strong>CPU 전용 torch로 바꾸고 예측 시점에 지연 로딩</strong>하도록 고쳤습니다.</li><li data-lang="en">The image was heavy, so I switched to <strong>CPU-only torch and deferred the import to prediction time</strong>.</li>
-            <li data-lang="ko">환자 소프트 삭제와 진료기록 목록 조회 API를 구현하고 환자 관리 API 설계 명세를 작성했습니다.</li><li data-lang="en">I built the patient soft-delete and medical-record listing endpoints, and wrote the patient-management API spec.</li>
-            <li data-lang="ko">Windows · macOS 별 Docker 환경 설정 가이드와 배포 문서(DEPLOY.md)를 정리했습니다.</li><li data-lang="en">I also wrote the Docker setup guides for Windows and macOS, plus the deployment doc.</li>
-          </ul>
-
-          <h4 data-lang="ko">비동기 처리 구조</h4><h4 data-lang="en">Asynchronous processing</h4>
-          <ul>
-            <li data-lang="ko">X-ray 분석을 HTTP 요청 안에서 처리하면 사용자가 그동안 대기하게 됩니다. 요청이 몰리면 API 서버가 무거운 연산까지 떠안고, 분석이 실패하면 요청 자체가 함께 실패합니다.</li><li data-lang="en">Running X-ray inference inside the HTTP request leaves the user waiting for it. Under concurrent load the API server also carries the heavy computation, and a failed inference fails the request with it.</li>
-            <li data-lang="ko">그래서 <strong>요청 수신과 분석을 분리했습니다.</strong> FastAPI는 업로드를 받아 이벤트만 발행하고, 별도의 AI Worker가 큐에서 꺼내 처리한 뒤 결과를 저장합니다.</li><li data-lang="en">We <strong>separated request handling from inference.</strong> FastAPI takes the upload and publishes an event; a separate AI worker pulls from the queue, runs the model and writes the result back.</li>
-            <li data-lang="ko">전달 수단으로 Redis Pub/Sub과 Streams를 비교했습니다. Pub/Sub은 at-most-once라 구독자가 내려가 있으면 메시지가 유실됩니다. 유실되면 안 되는 분석 작업이라 저장과 재처리가 가능한 <strong>Streams</strong>를 선택했습니다.</li><li data-lang="en">We compared Redis Pub/Sub with Streams. Pub/Sub is at-most-once, so a message is lost if the subscriber is down. Since these jobs cannot be dropped, we chose <strong>Streams</strong>, which persists messages and allows a consumer group to re-read them.</li>
-          </ul>
-
-          <h4 data-lang="ko">인증과 테스트</h4><h4 data-lang="en">Auth and testing</h4>
-          <ul>
-            <li data-lang="ko">User API 10종에 JWT 인증과 Argon2 해싱, 관리자 권한 분리를 붙였습니다.</li><li data-lang="en">Ten user endpoints sit behind JWT auth with Argon2 hashing and a separate admin role.</li>
-            <li data-lang="ko">SQLAlchemy 비동기 세션과 Alembic 마이그레이션으로 스키마를 관리하고 테스트는 실제 MySQL을 건드리지 않도록 <strong>격리된 SQLite에서 pytest</strong>로 돌립니다.</li><li data-lang="en">Sessions are async SQLAlchemy with Alembic migrations, and <strong>pytest runs against an isolated SQLite database</strong> so tests never touch the real MySQL.</li>
-          </ul>
-
-          <h4 data-lang="ko">구조</h4><h4 data-lang="en">Architecture</h4>
-          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
-          <div class="figs">
-            <figure class="fig">
-              <a href="assets/team/architecture.webp" target="_blank" rel="noopener">
-                <img src="assets/team/architecture.webp" width="889" height="586" loading="lazy" decoding="async"
-                     alt="클라이언트, FastAPI 서버, Redis Stream, AI Worker, 데이터베이스로 구성된 이벤트 기반 아키텍처 다이어그램">
-              </a>
-              <figcaption>
-                <b data-lang="ko">이벤트 기반 처리 흐름</b><b data-lang="en">Event-driven flow</b>
-                <span data-lang="ko">FastAPI는 업로드를 받아 진료기록과 이미지를 저장하고 Redis Stream에 작업을 넣습니다.
-                AI Worker들이 큐에서 나눠 꺼내 분석하고 결과를 DB에 씁니다. 사용자는 조회 API로 결과를 받습니다.
-                팀 아키텍처 문서에 제가 작성한 그림입니다.</span>
-                <span data-lang="en">FastAPI stores the record and image, then pushes a job onto a Redis stream.
-                AI workers pull from the queue, run inference and write results back to the database, which the
-                client then reads through a separate endpoint. I drew this for the team’s architecture doc.</span>
-              </figcaption>
-            </figure>
-          </div>
-
-          <p data-lang="ko" class="linknote">커밋 기준 팀 내 최다 기여였습니다. 기여 내역은 저장소에서 바로 확인하실 수 있습니다.</p><p data-lang="en" class="linknote">I was the highest-commit contributor on the team; the history is visible in the repository.</p>
-        </div>
-      </article>
-
-      <!-- ─────────── 흡연 분석 ─────────── -->
-      <article class="card" data-cat="ea">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2026.04</span><span data-lang="en" class="card-when">Apr 2026</span>
-          <span data-lang="ko" class="tag ea">데이터 분석</span><span data-lang="en" class="tag ea">Data analysis</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">흡연 여부와 건강 지표 분석</button><button data-lang="en" class="card-open" type="button">Smoking status and health indicators</button></h3>
-        <div data-lang="ko" class="card-org">오즈코딩스쿨 AI 헬스케어 과정 · 4조 (4인 팀)</div><div data-lang="en" class="card-org">Oz Coding School AI Healthcare · group 4 (team of four)</div>
-        <div class="stack"><span>pandas</span><span>NumPy</span><span>Matplotlib</span><span data-lang="ko">가설검정</span><span data-lang="en">Hypothesis testing</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill">팀 프로젝트</span><span data-lang="en" class="pill">Team project</span></div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="흡연 여부와 건강 지표 데이터 분석"
-             data-title-en="Health Insights from Smoking-Status Data"
-             data-sub="오즈코딩스쿨 AI 헬스케어 과정 · 4조 (4인 팀) · 2026.04"
-             data-sub-en="Oz Coding School AI Healthcare · group 4 (team of four) · Apr 2026">
-          <h4 data-lang="ko">개요</h4><h4 data-lang="en">Overview</h4>
-          <ul>
-            <li data-lang="ko">건강검진 데이터로 흡연 여부와 건강 지표의 관계를 분석하고 시각화했습니다.</li><li data-lang="en">We analysed and visualised the relationship between smoking status and clinical indicators in health-screening data.</li>
-            <li data-lang="ko">혈압 · 혈당 · 콜레스테롤 · BMI 등의 분포와 상관관계를 확인하고, 흡연자와 비흡연자의 차이를 <strong>통계적 가설 검정</strong>으로 검증했습니다.</li><li data-lang="en">We checked distributions and correlations across blood pressure, glucose, cholesterol and BMI, and tested the difference between smokers and non-smokers with <strong>statistical hypothesis testing</strong>.</li>
-          </ul>
-
-          <h4 data-lang="ko">맡은 부분</h4><h4 data-lang="en">My part</h4>
-          <ul>
-            <li data-lang="ko">팀 결과물과 별도로 <strong>개인 분석 노트북</strong>을 작성해 전처리 · EDA · 가설 검정 · 시각화 전 과정을 직접 수행했습니다.</li><li data-lang="en">Alongside the team deliverable I kept <strong>my own notebook</strong>, running preprocessing, EDA, hypothesis testing and visualisation end to end.</li>
-            <li data-lang="ko">분석 코드 작성과 발표 자료 구성을 담당했고 팀 발표에도 참여했습니다.</li><li data-lang="en">I wrote the analysis code, built the deck and presented with the team.</li>
-          </ul>
-
-          <h4 data-lang="ko">발견</h4><h4 data-lang="en">Findings</h4>
-          <ul>
-            <li data-lang="ko">흡연 여부와 상관이 가장 높은 지표는 <strong>헤모글로빈(상관계수 <em>0.40</em>)</strong>이었고 키 <em>0.39</em>, 몸무게 <em>0.31</em>, 중성지방 <em>0.25</em>가 뒤를 이었습니다.</li><li data-lang="en">The highest correlation with smoking status was <strong>haemoglobin (r = <em>0.40</em>)</strong>, followed by height <em>0.39</em>, weight <em>0.31</em> and triglycerides <em>0.25</em>.</li>
-            <li data-lang="ko"><strong>고밀도지단백(HDL)은 <em>-0.18</em></strong>로 음의 상관이었습니다. 흡연 집단에서 HDL 수치가 낮게 나타났습니다.</li><li data-lang="en"><strong>HDL was negative at <em>−0.18</em></strong>, with lower values in the smoking group.</li>
-            <li data-lang="ko">나이대와 BMI 구간을 나눠 보면 같은 지표라도 40대와 50대에서 차이 폭이 달랐습니다.</li><li data-lang="en">Split by age band and BMI bracket, the same indicators separated by different margins in the 40s and the 50s.</li>
-          </ul>
-
-          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
-          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
-          <div class="figs">
-            <figure class="fig">
-              <a href="assets/smoking/distributions.webp" target="_blank" rel="noopener">
-                <img src="assets/smoking/distributions.webp" width="1450" height="768" loading="lazy" decoding="async"
-                     alt="흡연 유무에 따른 헤모글로빈, 중성지방, 고밀도지단백, 간 효소율, 공복 혈당, 혈압 분포 히스토그램 6종">
-              </a>
-              <figcaption>
-                <b data-lang="ko">흡연 유무에 따른 지표 분포</b><b data-lang="en">Indicator distributions by smoking status</b>
-<span data-lang="ko">헤모글로빈(왼쪽 위)은 흡연 집단의 분포가 오른쪽으로 이동해 있고,
-                고밀도지단백(오른쪽 위)은 왼쪽으로 이동해 있습니다. 공복 혈당과 혈압은 두 집단이 거의 겹칩니다.</span><span data-lang="en">The smoking group's haemoglobin distribution (top left) sits further right, while HDL
-                (top right) sits further left. Fasting glucose and blood pressure overlap almost entirely.</span>
-              </figcaption>
-            </figure>
-            <figure class="fig">
-              <a href="assets/smoking/correlation.webp" target="_blank" rel="noopener">
-                <img src="assets/smoking/correlation.webp" width="879" height="753" loading="lazy" decoding="async"
-                     alt="건강검진 15개 변수 간 상관계수 히트맵. 맨 아래 행이 흡연 유무와의 상관관계">
-              </a>
-              <figcaption>
-                <b data-lang="ko">변수 간 상관관계</b><b data-lang="en">Correlations between variables</b>
-<span data-lang="ko">맨 아랫줄이 흡연 유무와의 상관계수입니다. 헤모글로빈 <em>0.40</em>이 가장 높고
-                고밀도지단백 <em>-0.18</em>과 간 효소율 <em>-0.18</em>이 음의 방향으로 갈립니다.</span><span data-lang="en">The bottom row is correlation against smoking status. Haemoglobin leads at <em>0.40</em>,
-                with HDL and liver enzymes both pulling negative at <em>−0.18</em>.</span>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────── BA 예약 예측 ─────────── -->
-      <article class="card" data-cat="ml">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2024.04</span><span data-lang="en" class="card-when">Apr 2024</span>
-          <span data-lang="ko" class="tag ml">머신러닝</span><span data-lang="en" class="tag ml">Machine learning</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">고객 구매행동 예측 모델</button><button data-lang="en" class="card-open" type="button">Customer booking behaviour model</button></h3>
-        <div data-lang="ko" class="card-org">British Airways Data Science Simulation · Forage</div><div data-lang="en" class="card-org">British Airways Data Science Simulation · Forage</div>
-        <div class="stack"><span>Python</span><span>scikit-learn</span><span>Feature Importance</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill">직무 시뮬레이션</span><span data-lang="en" class="pill">Job simulation</span></div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="고객 구매행동 예측 모델 개발"
-             data-title-en="Customer Booking Behaviour Model"
-             data-sub="British Airways Data Science Simulation · Forage · 2024.04"
-             data-sub-en="British Airways Data Science Simulation · Forage · Apr 2024">
-          <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
-          <ul>
-            <li data-lang="ko">5만 건 규모의 고객 예약 데이터를 불러와 요일 같은 범주형 변수를 수치로 매핑하고 결측과 분포를 확인해 모델링용 데이터셋을 만들었습니다.</li><li data-lang="en">I loaded the customer booking dataset, mapped categorical fields such as day-of-week to numbers, and checked missingness and distributions to build a modelling table.</li>
-            <li data-lang="ko">구매 시점까지의 리드타임 · 탑승 인원 · 출발 시각 · 비행 시간을 피처로 <strong>RandomForest 분류 모델</strong>을 학습하고 confusion matrix와 classification report로 평가했습니다.</li><li data-lang="en">I trained a <strong>RandomForest classifier</strong> on purchase lead time, passenger count, departure hour and flight duration, evaluating with a confusion matrix and classification report.</li>
-            <li data-lang="ko">변수 중요도에서는 <strong>구매 리드타임이 가장 큰 비중</strong>을 차지했습니다.</li><li data-lang="en">In the feature importances, <strong>purchase lead time carried the largest weight</strong>.</li>
-            <li data-lang="ko">다만 현재 남아 있는 노트북은 예약 완료 여부가 아니라 다른 컬럼을 타깃으로 학습돼 있어, <strong>예약 완료 예측으로 다시 정리할 예정입니다.</strong></li><li data-lang="en">The notebook that remains trains against a different column rather than booking completion, so <strong>I plan to redo it against the booking-completion target.</strong></li>
-          </ul>
-          <div class="links">
-            <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-              <span data-lang="ko">Forage 수료증 (PDF)</span><span data-lang="en">Forage certificate (PDF)</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────── BA 리뷰 분석 ─────────── -->
-      <article class="card" data-cat="ea">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2024.04</span><span data-lang="en" class="card-when">Apr 2024</span>
-          <span data-lang="ko" class="tag ea">데이터 분석</span><span data-lang="en" class="tag ea">Data analysis</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">고객 리뷰 텍스트 분석</button><button data-lang="en" class="card-open" type="button">Customer review text analysis</button></h3>
-        <div data-lang="ko" class="card-org">British Airways Data Science Simulation · Forage</div><div data-lang="en" class="card-org">British Airways Data Science Simulation · Forage</div>
-        <div class="stack"><span>Python</span><span>Web Scraping</span><span>Text Analysis</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill">직무 시뮬레이션</span><span data-lang="en" class="pill">Job simulation</span></div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="고객 리뷰 데이터 분석"
-             data-title-en="Customer Review Data Analysis"
-             data-sub="British Airways Data Science Simulation · Forage · 2024.04"
-             data-sub-en="British Airways Data Science Simulation · Forage · Apr 2024">
-          <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
-          <ul>
-            <li data-lang="ko">Python 웹 스크래핑으로 <strong>비정형 리뷰 데이터</strong>를 수집하고 분석 가능한 형태로 정제했습니다.</li><li data-lang="en">I collected <strong>unstructured review text</strong> by web scraping in Python and cleaned it into an analysable form.</li>
-            <li data-lang="ko">airlinequality.com에서 리뷰 10페이지를 BeautifulSoup으로 수집하고 「Trip Verified」 같은 머리말을 제거했습니다.</li><li data-lang="en">I collected ten pages of reviews from airlinequality.com with BeautifulSoup and removed boilerplate prefixes such as “Trip Verified”.</li>
-            <li data-lang="ko">NLTK VADER로 리뷰별 감성 점수를 매긴 결과 <strong>부정 56.4%, 긍정 29.3%, 중립 14.3%</strong>였습니다.</li><li data-lang="en">Scoring each review with NLTK VADER gave <strong>56.4% negative, 29.3% positive and 14.3% neutral</strong>.</li>
-            <li data-lang="ko">워드클라우드에서는 <strong>seat · time · service · food · staff</strong>가 가장 자주 등장했습니다. 불만이 <strong>좌석과 대기 시간, 응대</strong>에 집중돼 있었습니다.</li><li data-lang="en">The word cloud showed <strong>seat, time, service, food</strong> and <strong>staff</strong> appearing most often, with complaints concentrated on <strong>seating, waiting times and staff response</strong>.</li>
-          </ul>
-
-          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
-          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
-          <div class="figs">
-            <figure class="fig">
-              <a href="assets/ba/sentiment.webp" target="_blank" rel="noopener">
-                <img src="assets/ba/sentiment.webp" width="422" height="409" loading="lazy" decoding="async"
-                     alt="리뷰 감성 분석 원그래프. 부정 56.4퍼센트, 긍정 29.3퍼센트, 중립 14.3퍼센트">
-              </a>
-              <figcaption>
-                <b data-lang="ko">감성 분포</b><b data-lang="en">Sentiment split</b>
-                <span data-lang="ko">부정이 <em>56.4%</em>로 절반을 넘습니다.</span>
-                <span data-lang="en">Negative reviews account for <em>56.4%</em>, more than half the total.</span>
-              </figcaption>
-            </figure>
-            <figure class="fig">
-              <a href="assets/ba/wordcloud.webp" target="_blank" rel="noopener">
-                <img src="assets/ba/wordcloud.webp" width="515" height="268" loading="lazy" decoding="async"
-                     alt="리뷰 워드클라우드. seat, time, service, food, staff 가 가장 크게 표시됨">
-              </a>
-              <figcaption>
-                <b data-lang="ko">가장 많이 반복된 단어</b><b data-lang="en">Most repeated words</b>
-                <span data-lang="ko"><em>seat</em>의 빈도가 가장 높고 <em>time · service · food · staff</em>가 뒤를 잇습니다.</span>
-                <span data-lang="en"><em>seat</em> appears most often, followed by <em>time, service, food</em> and <em>staff</em>.</span>
-              </figcaption>
-            </figure>
-          </div>
-          <div class="links">
-            <a class="linkbtn" href="assets/certs/british-airways-forage.pdf" target="_blank" rel="noopener">
-              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>
-              <span data-lang="ko">Forage 수료증 (PDF)</span><span data-lang="en">Forage certificate (PDF)</span>
-            </a>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────── UoL 캡스톤 ─────────── -->
-      <article class="card" data-cat="cc">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2024</span><span data-lang="en" class="card-when">2024</span>
-          <span data-lang="ko" class="tag cc">시뮬레이션</span><span data-lang="en" class="tag cc">Simulation</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">분자 도킹 기반 수용체 결합 예측</button><button data-lang="en" class="card-open" type="button">Predicting which receptor a drug binds to</button></h3>
-        <div data-lang="ko" class="card-org">University of Leeds · BSc Pharmacology 졸업 프로젝트</div><div data-lang="en" class="card-org">University of Leeds · BSc Pharmacology final-year project</div>
-        <div class="stack"><span>Python</span><span>pandas</span><span>seaborn</span><span>GOLD</span><span data-lang="ko">분자 도킹</span><span data-lang="en">Molecular docking</span><span>PyMOL</span><span data-lang="ko">시각화</span><span data-lang="en">Visualisation</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill">학부 졸업 프로젝트</span><span data-lang="en" class="pill">Final-year project</span></div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="분자 도킹 기반 아드레날린 수용체 결합 예측"
-             data-title-en="Predicting Which Receptor a Drug Binds To"
-             data-sub="University of Leeds · BSc Pharmacology 졸업 프로젝트 · 2024"
-             data-sub-en="University of Leeds · BSc Pharmacology final-year project · 2024">
-          <h4 data-lang="ko">배경</h4><h4 data-lang="en">Background</h4>
-          <ul>
-            <li data-lang="ko">아드레날린 <strong>수용체는 네 종류</strong>이고 구조가 서로 유사합니다. 그래서 약이 목표한 수용체 외에 <strong>다른 수용체에도 결합하는 경우</strong>가 많고, 부작용의 상당 부분이 여기서 발생합니다.</li><li data-lang="en">There are <strong>four adrenergic receptors</strong> and their structures are similar, so a drug aimed at one often <strong>binds the others as well</strong>. A large share of side effects originates here.</li>
-            <li data-lang="ko">그래서 <strong>실험 전에 계산만으로 어떤 물질이 어느 수용체에 결합할지 예측할 수 있는지</strong>를 확인하는 것이 이 프로젝트의 주제였습니다. 가능하다면 후보 물질을 미리 걸러 시간과 비용을 줄일 수 있습니다.</li><li data-lang="en">The project therefore asked <strong>whether computation alone can predict which receptor a compound will bind before any bench work</strong>. If it can, candidates can be screened early, saving time and cost.</li>
-          </ul>
-
-          <h4 data-lang="ko">방법</h4><h4 data-lang="en">Method</h4>
-          <ul>
-            <li data-lang="ko">먼저 <strong>수용체 12개의 실제 입체 구조</strong>를 공개 데이터베이스(GPCRdb · IUPHAR)에서 모았습니다. 아드레날린 계열 네 종류에 더해, 아세틸콜린 · 도파민 · 세로토닌 · 히스타민 계열까지 <strong>다섯 계열</strong>을 담았습니다. 실험으로 밝혀진 구조만 골랐고 해상도는 <em>2.0 ~ 3.3 Å</em>였습니다.</li><li data-lang="en">I gathered <strong>twelve real receptor structures</strong> from public databases (GPCRdb and IUPHAR) — the four adrenaline receptors plus acetylcholine, dopamine, serotonin and histamine families, <strong>five families in all</strong>. Only experimentally solved structures, at resolutions of <em>2.0–3.3 Å</em>.</li>
-            <li data-lang="ko">도킹할 물질은 DrugBank와 ChEMBL에서 받았습니다. 도파민 · 아드레날린 · 노르아드레날린 등 해당 수용체에 작용하는 물질과 함께, <strong>α 선택성인 페닐에프린</strong>과 <strong>β 선택성인 이소프레날린</strong>을 넣었습니다.</li><li data-lang="en">The compounds came from DrugBank and ChEMBL: endogenous ligands such as dopamine, adrenaline and noradrenaline, alongside <strong>the α-selective phenylephrine</strong> and <strong>the β-selective isoprenaline</strong>.</li>
-            <li data-lang="ko">각 물질을 아드레날린 수용체 네 종류에 <strong>GOLD로 도킹해</strong> 결합 적합도 점수를 냈습니다. 결과 파일은 <strong>파이썬으로 정리하고 그래프로 그려</strong> 수용체별 · 물질별 분포를 비교했습니다.</li><li data-lang="en">Each compound was <strong>docked into the four adrenergic receptors with GOLD</strong> and scored for fit. I <strong>processed the output files in Python and plotted them</strong> to compare distributions across receptors and compounds.</li>
-            <li data-lang="ko">점수만으로는 원인을 알 수 없어 <strong>PyMOL로 결합 부위를 확인했습니다.</strong> 약물이 어느 아미노산과 접촉하는지와 그 거리를 하나씩 기록하고 그림으로 남겼습니다.</li><li data-lang="en">Scores alone do not explain the cause, so I <strong>inspected the binding sites in PyMOL</strong>, recording which amino acids each drug contacts and at what distance, and saving the views as figures.</li>
-          </ul>
-
-          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Findings</h4>
-          <ul>
-            <li data-lang="ko"><strong>이소프레날린</strong>은 β1에서 점수가 가장 높았습니다. 실제로 심장의 β 수용체에 작용하는 약물이라 <strong>계산 결과가 알려진 성질과 일치했습니다.</strong></li><li data-lang="en"><strong>Isoprenaline</strong> scored highest on β1. It does act on β receptors in the heart, so <strong>the computed result matched the known behaviour.</strong></li>
-            <li data-lang="ko"><strong>아세틸콜린</strong>은 네 수용체 모두에서 가장 낮았습니다. 이 계열에 작용하지 않는 물질이라 <strong>음성 대조군</strong> 역할을 했습니다.</li><li data-lang="en"><strong>Acetylcholine</strong> scored lowest on all four. It does not act on this family, so it served as a <strong>negative control</strong>.</li>
-            <li data-lang="ko">다만 <strong>α 선택성 약물과 β 선택성 약물이 점수만으로는 구분되지 않았습니다.</strong> 계산만으로 선택성을 가려낼 수 있느냐는 처음 질문에 대해서는 <strong>이 방법으로는 어렵다</strong>는 결론이 나왔습니다.</li><li data-lang="en">However, <strong>the α-selective and β-selective drugs did not separate on score alone.</strong> On the original question of predicting selectivity computationally, the conclusion was that <strong>this method is not sufficient</strong>.</li>
-          </ul>
-
-          <h4 data-lang="ko">방법 검증</h4><h4 data-lang="en">Validating the method</h4>
-          <ul>
-            <li data-lang="ko">점수를 그대로 쓰기 전에 <strong>이 시뮬레이션이 정답을 재현할 수 있는 도구인지</strong>부터 확인해야 했습니다.</li><li data-lang="en">Before using the scores, I had to establish that <strong>the simulation can reproduce a known answer</strong>.</li>
-            <li data-lang="ko">구조에 원래 결합돼 있던 물질을 떼어낸 뒤 같은 자리에 다시 도킹해 원래 위치와의 오차를 측정했습니다(redocking). α1A에서 <strong><em>약 0.45 Å</em></strong>이 나왔고, 이 분야에서 성공 기준으로 보는 <em>2 Å</em>보다 충분히 작았습니다.</li><li data-lang="en">I removed the compound that came bound to the structure, redocked it into the same site and measured the deviation from its original position. On α1A this came to <strong><em>about 0.45 Å</em></strong>, well inside the <em>2 Å</em> the field treats as a successful reproduction.</li>
-            <li data-lang="ko">이어서 다른 수용체의 물질을 넣는 <strong>교차 도킹</strong>을 돌렸습니다. 짝이 맞지 않는 조합은 평균 <em>5.5 Å</em>대로 올라가, 올바른 조합에서만 오차가 낮게 나온다는 것을 확인했습니다.</li><li data-lang="en">I then ran <strong>cross-docking</strong> with compounds from other receptors. Mismatched pairs averaged around <em>5.5 Å</em>, confirming that the deviation only drops for the correct pairing.</li>
-            <li data-lang="ko">정리하면 <strong>결합 자세를 재현하는 성능은 좋았지만 선택성을 판별하는 성능은 그렇지 않았습니다.</strong> 이 두 가지가 별개라는 점을 수치로 확인한 것이 이 프로젝트의 결론입니다.</li><li data-lang="en">In short, <strong>the method reproduced binding poses well but did not discriminate selectivity.</strong> Establishing that these are separate capabilities, with numbers, was the conclusion.</li>
-          </ul>
-
-          <h4 data-lang="ko">결합 부위 분석</h4><h4 data-lang="en">Binding site analysis</h4>
-          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
-          <div class="figs">
-            <figure class="fig">
-              <a href="assets/docking/site-isoprenaline.webp" target="_blank" rel="noopener">
-                <img src="assets/docking/site-isoprenaline.webp" width="1150" height="509" loading="lazy" decoding="async"
-                     alt="PyMOL 로 렌더링한 α1A 수용체 결합 부위. 베타 선택성 약물이 여러 아미노산과 맞닿아 있고 거리가 표시되어 있다">
-              </a>
-              <figcaption>
-                <b data-lang="ko">β 전용 약(이소프레날린)이 α1A에 앉은 모습</b><b data-lang="en">A β-only drug (isoprenaline) sitting in α1A</b>
-                <span data-lang="ko">노란 리본이 수용체, 초록이 주변 아미노산, 주황이 약입니다. 노란 점선은 약과 아미노산이
-                맞닿은 지점이고 숫자는 그 거리(Å)입니다. <em>ASP-279</em>를 비롯해 <em>SER-361 · SER-365 · THR-284</em>까지
-                여섯 군데가 잡혔습니다.</span>
-                <span data-lang="en">Yellow ribbon is the receptor, green the surrounding amino acids, orange the drug.
-                Dashed lines mark contacts and the numbers are distances in ångström. Six of them here, including
-                <em>ASP-279</em>, <em>SER-361</em>, <em>SER-365</em> and <em>THR-284</em>.</span>
-              </figcaption>
-            </figure>
-            <figure class="fig">
-              <a href="assets/docking/site-phenylephrine.webp" target="_blank" rel="noopener">
-                <img src="assets/docking/site-phenylephrine.webp" width="1150" height="509" loading="lazy" decoding="async"
-                     alt="같은 α1A 수용체 결합 부위에 알파 선택성 약물이 앉은 모습. 접촉점이 더 적다">
-              </a>
-              <figcaption>
-                <b data-lang="ko">α 전용 약(페닐에프린)이 같은 자리에 앉은 모습</b><b data-lang="en">An α-only drug (phenylephrine) in the same site</b>
-                <span data-lang="ko"><strong>α 선택성 약물인데 접촉점이 더 적고(<em>4곳</em>), 핵심 잔기인
-                <em>ASP-279</em>와의 거리는 <em>3.1 Å</em>로 β 선택성 약물과 같습니다.</strong>
-                양쪽 모두 같은 아미노산에 고정되기 때문에 점수만으로 α와 β를 구분하기 어려웠던 것으로 보입니다.</span>
-                <span data-lang="en"><strong>Although this is the α-selective drug, it makes fewer contacts
-                (<em>four</em>), and its distance to the key residue <em>ASP-279</em> is <em>3.1 Å</em>, the same as the
-                β-selective drug.</strong> Both are anchored by the same amino acid, which appears to be why score
-                alone could not separate α from β.</span>
-              </figcaption>
-            </figure>
-          </div>
-
-          <h4 data-lang="ko">지도 교수와 이후 연결</h4><h4 data-lang="en">Supervision and what followed</h4>
-          <ul>
-            <li data-lang="ko">데이터를 다루기 시작한 것은 <strong>이 졸업 프로젝트</strong>입니다. 결과 파일을 파이썬으로 정리하고 분포를 그려 비교하고 대조군을 세워 검증하는 과정을 여기서 처음 거쳤습니다.</li><li data-lang="en">This project is where I started working with data: processing output files in Python, plotting distributions for comparison, and validating against a control.</li>
-            <li data-lang="ko">Dr. Dan Donnelly 교수님 지도 아래 진행했습니다.</li><li data-lang="en">Supervised by Dr. Dan Donnelly.</li>
-            <li data-lang="ko">시뮬레이션을 정답 아는 경우로 먼저 검증한 것과 X-ray 프로젝트에서 Grad-CAM으로 판단 근거를 확인한 것은 같은 종류의 작업입니다.</li><li data-lang="en">Validating the simulation against a known answer and using Grad-CAM to check the X-ray model's reasoning are the same kind of step.</li>
-          </ul>
-
-          <h4 data-lang="ko">결과</h4><h4 data-lang="en">Results</h4>
-          <p data-lang="ko" class="fig-hint">그림을 누르면 원본 크기로 열립니다</p><p data-lang="en" class="fig-hint">Select an image to open it full size</p>
-          <div class="figs">
-            <figure class="fig">
-              <a href="assets/docking/goldscore.webp" target="_blank" rel="noopener">
-                <img src="assets/docking/goldscore.webp" width="993" height="690" loading="lazy" decoding="async"
-                     alt="수용체 네 종류에 물질 일곱 가지를 넣었을 때의 결합 점수 분포 그래프">
-              </a>
-              <figcaption>
-                <b data-lang="ko">수용체별 결합 적합도</b><b data-lang="en">Binding fit by receptor</b>
-<span data-lang="ko">가로축이 수용체 네 종류, 색이 물질이며 위로 갈수록 적합도가 높습니다.
-                이소프레날린(연노랑)이 상위에 있고 아세틸콜린(연보라)은 모든 수용체에서 최하위입니다.</span><span data-lang="en">The four receptors run along the x-axis, each compound has its own colour, and higher means
-                a better fit. Isoprenaline (pale yellow) sits at the top; acetylcholine (pale purple) is lowest
-                across all four.</span>
-              </figcaption>
-            </figure>
-            <figure class="fig">
-              <a href="assets/docking/chemscore.webp" target="_blank" rel="noopener">
-                <img src="assets/docking/chemscore.webp" width="993" height="690" loading="lazy" decoding="async"
-                     alt="같은 결과를 다른 채점 방식으로 다시 매긴 결합 점수 분포 그래프">
-              </a>
-              <figcaption>
-                <b data-lang="ko">채점 방식에 따른 순위 변화</b><b data-lang="en">Ranking under a different scoring function</b>
-                <span data-lang="ko">같은 결과를 ChemScore로 다시 매기면 <em>세로토닌</em>이 1위가 되어, 앞 그래프에서 1위였던
-                이소프레날린과 순서가 바뀝니다. 그래서 점수 하나만 보지 않고 두 방식을 함께 확인했습니다.
-                아세틸콜린이 최하위인 것은 양쪽 모두 동일합니다.</span>
-                <span data-lang="en">Rescoring the same results with ChemScore puts <em>serotonin</em> first, swapping it with
-                isoprenaline, which led on the previous chart. I therefore read both scoring functions rather than
-                one. Acetylcholine is lowest under either.</span>
-              </figcaption>
-            </figure>
-            <figure class="fig">
-              <a href="assets/docking/rmsd.webp" target="_blank" rel="noopener">
-                <img src="assets/docking/rmsd.webp" width="989" height="690" loading="lazy" decoding="async"
-                     alt="물질을 다시 넣었을 때 원래 위치에서 얼마나 어긋나는지 보여주는 분포 그래프. 낮을수록 정확함">
-              </a>
-              <figcaption>
-                <b data-lang="ko">Redocking RMSD</b><b data-lang="en">Redocking RMSD</b>
-<span data-lang="ko">값이 낮을수록 원래 위치를 정확히 재현한 것입니다. 짝이 맞는 조합은 낮게 모이고,
-                교차 도킹한 조합은 위로 흩어집니다.</span><span data-lang="en">Lower values mean the original position was reproduced more accurately. Matched pairs cluster
-                low, while cross-docked pairs scatter upward.</span>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
-
-      <!-- ─────────── GSK ─────────── -->
-      <article class="card" data-cat="ml">
-        <div class="card-top">
-          <span data-lang="ko" class="card-when">2023.06</span><span data-lang="en" class="card-when">Jun 2023</span>
-          <span data-lang="ko" class="tag ml">임상 데이터</span><span data-lang="en" class="tag ml">Clinical data</span>
-        </div>
-        <h3><button data-lang="ko" class="card-open" type="button">임상시험 데이터 분석 — Miraculon-B</button><button data-lang="en" class="card-open" type="button">Clinical trial data analysis — Miraculon-B</button></h3>
-        <div data-lang="ko" class="card-org">STEP UP GSK Virtual Work Experience · Digdata</div><div data-lang="en" class="card-org">STEP UP GSK Virtual Work Experience · Digdata</div>
-        <div class="stack"><span>Clinical Trial Data</span><span>Data Visualisation</span></div>
-        <div class="no-metric"><span data-lang="ko" class="pill">기업 연계 과제</span><span data-lang="en" class="pill">Industry challenge</span></div>
-        <span data-lang="ko" class="card-cue">상세 보기 →</span><span data-lang="en" class="card-cue">View details →</span>
-
-        <div class="detail"
-             data-title="임상시험 데이터 분석 챌린지 — Miraculon-B"
-             data-title-en="Clinical Trial Data Analysis — Miraculon-B"
-             data-sub="STEP UP GSK Virtual Work Experience · Digdata · 2023.06"
-             data-sub-en="STEP UP GSK Virtual Work Experience · Digdata · Jun 2023">
-          <h4 data-lang="ko">내용</h4><h4 data-lang="en">Summary</h4>
-          <ul>
-            <li data-lang="ko">신약 후보물질 <strong>Miraculon-B</strong>의 임상시험 데이터를 분석하고 시각화했습니다.</li><li data-lang="en">I analysed and visualised trial data for the candidate compound <strong>Miraculon-B</strong>.</li>
-            <li data-lang="ko">분석 결과와 제언을 발표자료로 정리해 GSK · Digdata 심사진에 제출했습니다.</li><li data-lang="en">I compiled the findings and recommendations into a presentation and submitted it to the GSK and Digdata panel.</li>
-          </ul>
-
-          <h4 data-lang="ko">수료증</h4><h4 data-lang="en">Certificate</h4>
-          <div class="figs">
-            <figure class="fig">
-              <a href="assets/certs/gsk-digdata.webp" target="_blank" rel="noopener">
-                <img src="assets/certs/gsk-digdata.webp" width="1200" height="848" loading="lazy" decoding="async"
-                     alt="Digdata와 GSK가 발급한 STEP UP GSK Virtual Work Experience 수료증">
-              </a>
-              <figcaption>
-                <b data-lang="ko">STEP UP GSK Virtual Work Experience</b><b data-lang="en">STEP UP GSK Virtual Work Experience</b>
-<span data-lang="ko">Digdata programme · 2023년 6월 · GSK VP SPC Statistics 및 The Data Inspiration Group 서명</span><span data-lang="en">Digdata programme · June 2023 · signed by GSK VP SPC Statistics and The Data Inspiration Group</span>
-              </figcaption>
-            </figure>
-          </div>
-        </div>
-      </article>
-
-    </div>
-  </section>
-
-  <section class="section">
-    <div class="section-head">
-      <h2>Skills</h2><span data-lang="ko" class="ko">보유 역량</span>
-<span data-lang="en" class="ko">Capabilities</span>
-    </div>
-
-    <div class="tier core">
-      <div class="tier-head"><b data-lang="ko">주력</b>
-<b data-lang="en">Core</b><hr></div>
-      <div class="skills">
-        <div class="skill">
-          <b>Python</b>
-          <ul><li data-lang="ko">데이터 처리 및 분석 (NumPy, pandas)</li>
-<li data-lang="en">Data wrangling and analysis (NumPy, pandas)</li><li data-lang="ko">ML / DL 파이프라인 구현</li>
-<li data-lang="en">Building ML and DL pipelines</li><li data-lang="ko">헬스케어 데이터 전처리</li>
-<li data-lang="en">Preprocessing healthcare data</li></ul>
-        </div>
-        <div class="skill">
-          <b>Machine Learning</b>
-          <ul><li data-lang="ko">LightGBM · XGBoost · CatBoost 앙상블</li>
-<li data-lang="en">LightGBM · XGBoost · CatBoost ensembles</li><li data-lang="ko">Optuna 튜닝 · SHAP 해석</li>
-<li data-lang="en">Optuna tuning · SHAP interpretation</li><li data-lang="ko">scikit-learn · 피처 엔지니어링</li>
-<li data-lang="en">scikit-learn · feature engineering</li><li data-lang="ko">OOF 스태킹 · 확률 보정 · 누수 차단 교차검증 설계</li>
-<li data-lang="en">OOF stacking · calibration · leakage-safe CV design</li></ul>
-        </div>
+  <figure class="curve rise" aria-hidden="true">
+    <svg viewBox="0 0 800 120" fill="none">
+      <line x1="0" y1="110" x2="800" y2="110" stroke="#E4DCCE" stroke-width="1"/>
+      <line x1="0" y1="60" x2="800" y2="60" stroke="#E4DCCE" stroke-width="1" stroke-dasharray="2 6"/>
+      <line x1="0" y1="10" x2="800" y2="10" stroke="#E4DCCE" stroke-width="1" stroke-dasharray="2 6"/>
+      <path d="M10 108 C 220 106, 300 100, 380 60 C 460 20, 560 12, 790 10"
+            stroke="#3E6B4F" stroke-width="2" stroke-linecap="round"
+            pathLength="1" class="curve-path"/>
+      <circle cx="380" cy="60" r="3.5" fill="#3E6B4F"/>
+    </svg>
+    <figcaption class="cap">
+      <span data-lang="ko">용량–반응 곡선 · EC50</span><span data-lang="en">Dose–response curve · EC50</span>
+      <span data-lang="ko">…이자 학습 곡선</span><span data-lang="en">…or a learning curve</span>
+    </figcaption>
+  </figure>
+
+  <section class="block rise">
+    <p class="kicker">Story</p>
+    <h2 data-lang="ko" class="title">실험대에서 데이터까지</h2>
+    <h2 data-lang="en" class="title">From the bench to the data</h2>
+    <div class="story">
+      <div class="chapter">
+        <span class="when">2019 – 21</span>
+        <p data-lang="ko">영국 Brockenhurst College에서 A-Level 수학·물리·화학. 숫자로 세계를 설명하는 훈련은 여기서 시작됐습니다.</p>
+        <p data-lang="en">A-Levels in Mathematics, Physics and Chemistry at Brockenhurst College in England — where explaining the world with numbers began.</p>
       </div>
-    </div>
-
-    <div class="tier use">
-      <div class="tier-head"><b data-lang="ko">활용</b>
-<b data-lang="en">Working</b><hr></div>
-      <div class="skills">
-        <div class="skill">
-          <b>Deep Learning</b>
-          <ul><li data-lang="ko">PyTorch · 전이학습 (ResNet · DenseNet · EfficientNet)</li>
-<li data-lang="en">PyTorch · transfer learning (ResNet · DenseNet · EfficientNet)</li><li data-lang="ko">Focal Loss · K-Fold 앙상블</li>
-<li data-lang="en">Focal Loss · K-Fold ensembling</li><li data-lang="ko">Grad-CAM 기반 모델 해석</li>
-<li data-lang="en">Model interpretation with Grad-CAM</li></ul>
-        </div>
-        <div class="skill">
-          <b>Computer Vision</b>
-          <ul><li data-lang="ko">CLAHE 의료 영상 전처리</li>
-<li data-lang="en">CLAHE preprocessing for medical imaging</li><li data-lang="ko">OpenCV · Image Augmentation</li>
-<li data-lang="en">OpenCV · image augmentation</li><li data-lang="ko">흉부 X-ray · 세포 이미지 분류</li>
-<li data-lang="en">Chest X-ray and cell image classification</li></ul>
-        </div>
-        <div class="skill">
-          <b>FastAPI</b>
-          <ul><li data-lang="ko">FastAPI 기반 REST API</li>
-<li data-lang="en">REST APIs with FastAPI</li><li data-lang="ko">비동기 처리 및 Swagger 문서화</li>
-<li data-lang="en">Async handling and Swagger docs</li><li data-lang="ko">AI 모델 서빙 API 구현</li>
-<li data-lang="en">Serving models behind an API</li></ul>
-        </div>
+      <div class="chapter">
+        <span class="when">2021 – 24</span>
+        <p data-lang="ko">리즈대학교 <strong>약리학(BSc Pharmacology)</strong>. 조직에 약을 올려 반응을 재고 SPSS로 검정하는 법을 배웠고,
+          졸업 프로젝트에서 <em>분자 도킹</em> 결과를 파이썬으로 분석하다가 진로를 데이터로 정했습니다.</p>
+        <p data-lang="en"><strong>BSc Pharmacology</strong> at the University of Leeds. I learned to dose tissue, measure the response and test it in SPSS —
+          and analysing my final-year <em>molecular docking</em> results in Python is what turned me toward data.</p>
       </div>
-    </div>
-
-    <div class="tier learn">
-      <div class="tier-head"><b data-lang="ko">학습 중</b>
-<b data-lang="en">Learning</b><hr></div>
-      <div class="skills">
-        <div class="skill">
-          <b>Database</b>
-          <ul><li data-lang="ko">MySQL · PostgreSQL</li>
-<li data-lang="en">MySQL · PostgreSQL</li><li data-lang="ko">ERD 설계 및 정규화</li>
-<li data-lang="en">ERD design and normalisation</li><li data-lang="ko">의료 데이터 구조 설계</li>
-<li data-lang="en">Schema design for clinical data</li></ul>
-        </div>
-        <div class="skill">
-          <b>Docker</b>
-          <ul><li data-lang="ko">AI 모델 서빙 컨테이너화</li>
-<li data-lang="en">Containerising model-serving apps</li><li data-lang="ko">이미지 빌드 및 배포</li>
-<li data-lang="en">Image builds and deployment</li><li data-lang="ko">FastAPI 서비스 배포 환경 구성</li>
-<li data-lang="en">Deployment setup for FastAPI services</li></ul>
-        </div>
-        <div class="skill">
-          <b>NLP</b>
-          <ul><li data-lang="ko">Tokenization · Vectorization</li>
-<li data-lang="en">Tokenisation · vectorisation</li><li data-lang="ko">의료 텍스트 분류</li>
-<li data-lang="en">Clinical text classification</li><li data-lang="ko">키워드 기반 정보 추출</li>
-<li data-lang="en">Keyword-based information extraction</li></ul>
-        </div>
-        <div class="skill">
-          <b>HTML · CSS</b>
-          <ul><li data-lang="ko">시맨틱 마크업</li>
-<li data-lang="en">Semantic markup</li><li data-lang="ko">반응형 레이아웃</li>
-<li data-lang="en">Responsive layout</li><li data-lang="ko">대시보드 UI 구성</li>
-<li data-lang="en">Dashboard UI composition</li></ul>
-        </div>
+      <div class="chapter">
+        <span class="when">2024 – 26</span>
+        <p data-lang="ko">귀국해 육군에서 복무했습니다. 전역한 그 달에 오즈코딩스쿨 AI 헬스케어 과정을 시작했습니다.</p>
+        <p data-lang="en">Back in Korea for military service — and the month I was discharged, I started the AI Healthcare course at Oz Coding School.</p>
+      </div>
+      <div class="chapter">
+        <span class="when">2026</span>
+        <p data-lang="ko">DACON 헬스케어 해커톤 <strong>세 번 완주</strong> — 한 번은 4인 팀의 팀장으로, 한 번은 개인전으로.
+          학습한 모델을 FastAPI·Docker로 서빙하는 팀 프로젝트까지 마쳤고, 지금은 실험과 데이터 사이에서 일할 자리를 찾고 있습니다.</p>
+        <p data-lang="en"><strong>Three DACON healthcare hackathons finished</strong> — once as a team lead of four, once solo — plus a team project
+          serving models behind FastAPI and Docker. Now I'm looking for a seat between the bench and the data.</p>
       </div>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-head">
-      <h2>Experience</h2><span data-lang="ko" class="ko">경력 및 학력</span>
-<span data-lang="en" class="ko">Background</span>
-    </div>
-    <div class="rows">
-      <div class="row">
-        <div data-lang="ko" class="row-when">2026.04 — 현재</div>
-<div data-lang="en" class="row-when">Apr 2026 — present</div>
-        <div class="row-what"><b data-lang="ko">오즈코딩스쿨 AI 헬스케어 과정</b>
-<b data-lang="en">Oz Coding School — AI Healthcare track</b><span data-lang="ko">머신러닝 · 딥러닝 · 웹 개발 전 과목 수강 완료, 파이널 팀 프로젝트 진행 중</span>
-<span data-lang="en">All modules complete — ML, DL and web development; final team project under way</span></div>
-      </div>
-      <div class="row">
-        <div data-lang="ko" class="row-when">2024.10 — 2026.04</div>
-<div data-lang="en" class="row-when">Oct 2024 — Apr 2026</div>
-        <div class="row-what"><b data-lang="ko">병역</b>
-<b data-lang="en">Military service</b><span data-lang="ko">육군 병장 만기전역</span>
-<span data-lang="en">Republic of Korea Army · discharged as sergeant on completion of service</span></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2022.09 — 2024.07</div>
-        <div class="row-what"><b>University of Leeds</b><span data-lang="ko">BSc Pharmacology · 약리학 학사 졸업</span>
-<span data-lang="en">BSc Pharmacology · graduated</span></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2021.09 — 2022.06</div>
-        <div class="row-what"><b>Leeds International Study Centre</b><span data-lang="ko">International Year One: Biological Sciences</span>
-<span data-lang="en">International Year One: Biological Sciences</span></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2019.09 — 2021.06</div>
-        <div class="row-what"><b>Brockenhurst College</b><span data-lang="ko">A-Level: Mathematics · Physics · Chemistry</span>
-<span data-lang="en">A-Level: Mathematics · Physics · Chemistry</span></div>
-      </div>
+  <section class="block rise" id="work">
+    <p class="kicker">Selected Work</p>
+    <h2 data-lang="ko" class="title">세 개만 고르라면</h2>
+    <h2 data-lang="en" class="title">If I could only show three</h2>
+    <ul class="works">
+      <li>
+        <a href="ai.html">
+          <span class="no">01</span>
+          <span class="w-body">
+            <span data-lang="ko" class="w-title">흉부 X-ray 폐렴 분류</span><span data-lang="en" class="w-title">Chest X-ray pneumonia classification</span>
+            <span data-lang="ko" class="w-sub">놓친 환자 <b>29 → 12명</b> · 리더보드 <b>0.95192</b> · Grad-CAM으로 근거 검증</span>
+            <span data-lang="en" class="w-sub">Missed patients <b>29 → 12</b> · leaderboard <b>0.95192</b> · reasoning checked with Grad-CAM</span>
+          </span>
+          <span class="arrow">AI →</span>
+        </a>
+      </li>
+      <li>
+        <a href="ai.html">
+          <span class="no">02</span>
+          <span class="w-body">
+            <span data-lang="ko" class="w-title">유전자 변이로 암 아형 분류</span><span data-lang="en" class="w-title">Cancer subtype from gene mutations</span>
+            <span data-lang="ko" class="w-sub">중복 환자 관찰 하나로 <b>+0.0829</b> · 규정 전수 검증 · 4팀 중 <b>2위</b></span>
+            <span data-lang="en" class="w-sub">One duplicate-patient insight worth <b>+0.0829</b> · fully rule-audited · <b>2nd</b> of 4 teams</span>
+          </span>
+          <span class="arrow">AI →</span>
+        </a>
+      </li>
+      <li>
+        <a href="bio.html">
+          <span class="no">03</span>
+          <span class="w-body">
+            <span data-lang="ko" class="w-title">분자 도킹으로 수용체 결합 예측</span><span data-lang="en" class="w-title">Predicting receptor binding by docking</span>
+            <span data-lang="ko" class="w-sub">재도킹 RMSD <b>0.45 Å</b>로 도구부터 검증 · 수용체 12구조 × 5계열</span>
+            <span data-lang="en" class="w-sub">Validated the tool first — redocking RMSD <b>0.45 Å</b> · 12 structures across 5 families</span>
+          </span>
+          <span class="arrow">BIO →</span>
+        </a>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block rise">
+    <p class="kicker">Portfolio</p>
+    <h2 data-lang="ko" class="title">두 갈래로 정리했습니다</h2>
+    <h2 data-lang="en" class="title">Sorted into two tracks</h2>
+    <div class="doors">
+      <a class="door" href="ai.html">
+        <span class="d-tag">Track A</span>
+        <span class="d-name">AI Engineering</span>
+        <span data-lang="ko" class="d-desc">해커톤 3건, 의료영상 딥러닝, 25만 건 임상 데이터 모델링, FastAPI·Docker 서빙 — 지표와 실험 기록 중심.</span>
+        <span data-lang="en" class="d-desc">Three hackathons, medical-imaging deep learning, clinical-data modelling at 250k rows, FastAPI·Docker serving — metrics and experiment logs.</span>
+        <span class="d-go">unknownuserkr.github.io/ai.html →</span>
+      </a>
+      <a class="door" href="bio.html">
+        <span class="d-tag">Track B</span>
+        <span class="d-name">Bio · Pharmacology</span>
+        <span data-lang="ko" class="d-desc">조직 용량–반응 실험과 통계 검정, 분자 도킹, 임상시험·유전체 데이터 — 실험을 아는 사람의 데이터 작업.</span>
+        <span data-lang="en" class="d-desc">Tissue dose–response work and statistics, molecular docking, clinical-trial and genomic data — data work by someone who knows the bench.</span>
+        <span class="d-go">unknownuserkr.github.io/bio.html →</span>
+      </a>
     </div>
   </section>
 
-  <section class="section">
-    <div class="section-head">
-      <h2>Awards &amp; Certificates</h2><span data-lang="ko" class="ko">수상 · 자격증 · 교육 이수</span>
-<span data-lang="en" class="ko">Awards · Certificates · Training</span>
-    </div>
-    <div class="rows">
-      <div class="row">
-        <div class="row-when">2026.08</div>
-        <div class="row-what"><b data-lang="ko">DACON 유전자 변이 기반 암 아형 예측 AI 해커톤</b>
-<b data-lang="en">DACON Cancer Subtype Prediction from Gene Mutations Hackathon</b><code data-lang="ko" class="hl">4팀 중 2위 · 4인 팀 · Public LB Macro F1 0.4942</code>
-<code data-lang="en" class="hl">2nd of 4 teams · team of four · Public LB Macro F1 0.4942</code></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2026.07</div>
-        <div class="row-what"><b data-lang="ko">DACON 흉부 X-ray 폐렴 분류 AI 해커톤</b>
-<b data-lang="en">DACON Chest X-ray Pneumonia Classification Hackathon</b><code data-lang="ko" class="hl">리더보드 0.95192 · 개인전 (참가자 85명)</code>
-<code data-lang="en" class="hl">Leaderboard 0.95192 · individual entry (85 participants)</code></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2026.06</div>
-        <div class="row-what"><b data-lang="ko">DACON 난임 환자 임신 성공 예측 AI 해커톤</b>
-<b data-lang="en">DACON Fertility Treatment Pregnancy Prediction Hackathon</b><code data-lang="ko" class="hl">치킨4조 팀장 (4인 팀) · ROC-AUC 0.74218</code>
-<code data-lang="en" class="hl">Team lead, Chicken4jo (team of four) · ROC-AUC 0.74218</code></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2024.04</div>
-        <div class="row-what"><b>Associate Data Analyst — DataCamp</b><code data-lang="ko">자격번호 DAA0011317226340</code>
-<code data-lang="en">Credential ID DAA0011317226340</code></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2024.04</div>
-        <div class="row-what"><b>Data Science Job Simulation</b><code>British Airways · Forage</code></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2023.07</div>
-        <div class="row-what"><b>Bright Network IEUK: Technology</b><code>Bright Network</code></div>
-      </div>
-      <div class="row">
-        <div class="row-when">2023.06</div>
-        <div class="row-what"><b>STEP UP GSK Virtual Work Experience</b><code>GSK · Digdata</code></div>
-      </div>
+  <section class="block rise">
+    <p class="kicker">Now</p>
+    <p data-lang="ko" class="now">다음 목표는 LLM·RAG를 헬스케어 문서에 적용해 보는 것. 2026 하반기, 헬스케어 데이터 분석·머신러닝과
+      바이오 직무에 지원하고 있습니다. 커피챗도, 채용 이야기도 환영합니다.</p>
+    <p data-lang="en" class="now">Next up: applying LLMs and RAG to healthcare documents. Through H2 2026 I'm applying to healthcare
+      data/ML and bio roles — happy to talk, about coffee or a position.</p>
+    <p class="contact-big"><a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a></p>
+    <div class="outlinks">
+      <a href="https://github.com/UnknownUserKR" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="ai.html">Portfolio · AI</a>
+      <a href="bio.html">Portfolio · Bio</a>
     </div>
   </section>
 
   <footer class="colophon">
     <span data-lang="ko">권민재 · Minjae Kwon</span><span data-lang="en">Minjae Kwon · 권민재</span>
-    <span><a href="mailto:kkmj1150@gmail.com">kkmj1150@gmail.com</a> · <a href="https://www.linkedin.com/in/minjae-kwon-3a76a4252/" target="_blank" rel="noopener">LinkedIn</a></span>
     <span>Last updated 2026.08</span>
   </footer>
 
 </div>
-
-<dialog class="modal" id="modal" aria-labelledby="modalTitle">
-  <div class="modal-head">
-    <div class="who">
-      <h3 id="modalTitle"></h3>
-      <span class="sub" id="modalSub"></span>
-    </div>
-    <button class="close" id="modalClose" type="button" aria-label="닫기">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
-    </button>
-  </div>
-  <div class="modal-body" id="modalBody"></div>
-</dialog>
 
 <script>
 (function () {
@@ -1603,9 +394,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
   var root = document.documentElement;
   root.classList.remove("no-js");
 
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-
-  /* ─── 언어 ─── */
+  /* 언어 — 포트폴리오와 같은 키를 공유해 페이지를 오가도 유지된다 */
   var langBtns = Array.prototype.slice.call(document.querySelectorAll("[data-lang-set]"));
   function applyLang(l) {
     root.setAttribute("lang", l);
@@ -1615,148 +404,44 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
     try { localStorage.setItem("mk-lang", l); } catch (e) {}
   }
   try {
-    var savedLang = localStorage.getItem("mk-lang");
-    if (savedLang === "ko" || savedLang === "en") applyLang(savedLang);
+    var saved = localStorage.getItem("mk-lang");
+    if (saved === "ko" || saved === "en") applyLang(saved);
   } catch (e) {}
   langBtns.forEach(function (b) {
     b.addEventListener("click", function () { applyLang(b.dataset.langSet); });
   });
-  function isEn() { return root.getAttribute("lang") === "en"; }
 
-  /* ─── 미터 바 ─── */
-  var bars = Array.prototype.slice.call(document.querySelectorAll(".bar i"));
-  function fill(el) { el.style.right = (100 - parseFloat(el.dataset.fill)) + "%"; }
-
+  /* 등장 모션 */
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  var risers = Array.prototype.slice.call(document.querySelectorAll(".rise"));
   if (reduced || !("IntersectionObserver" in window)) {
-    bars.forEach(fill);
+    risers.forEach(function (el) { el.classList.add("in"); });
   } else {
     var io = new IntersectionObserver(function (entries, obs) {
       entries.forEach(function (en) {
         if (!en.isIntersecting) return;
-        fill(en.target);
+        en.target.classList.add("in");
+        obs.unobserve(en.target);
+      });
+    }, { threshold: 0.18 });
+    risers.forEach(function (el) { io.observe(el); });
+  }
+
+  /* 곡선 그리기 — 스크롤로 처음 보일 때 한 번 */
+  var path = document.querySelector(".curve-path");
+  if (path && !reduced) {
+    path.style.strokeDasharray = "1";
+    path.style.strokeDashoffset = "1";
+    path.style.transition = "stroke-dashoffset 1.6s cubic-bezier(.4,0,.2,1) .2s";
+    var cio = new IntersectionObserver(function (entries, obs) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        path.style.strokeDashoffset = "0";
         obs.unobserve(en.target);
       });
     }, { threshold: 0.4 });
-    bars.forEach(function (b) { io.observe(b); });
+    cio.observe(path.closest(".curve"));
   }
-
-  /* ─── 리더보드 카운트업 ─── */
-  var counter = document.querySelector("[data-count]");
-  if (counter && !reduced) {
-    var target = parseFloat(counter.dataset.count);
-    var dec = parseInt(counter.dataset.dec, 10);
-    var start = null, dur = 1100;
-    counter.textContent = (0).toFixed(dec);
-    requestAnimationFrame(function step(ts) {
-      if (start === null) start = ts;
-      var p = Math.min((ts - start) / dur, 1);
-      counter.textContent = (target * (1 - Math.pow(1 - p, 3))).toFixed(dec);
-      if (p < 1) requestAnimationFrame(step);
-      else counter.textContent = target.toFixed(dec);
-    });
-  }
-
-  /* ─── 필터 ─── */
-  var chips = Array.prototype.slice.call(document.querySelectorAll(".chip"));
-  var cards = Array.prototype.slice.call(document.querySelectorAll(".card"));
-
-  chips.forEach(function (chip) {
-    chip.addEventListener("click", function () {
-      var want = chip.dataset.filter;
-      chips.forEach(function (c) {
-        c.setAttribute("aria-pressed", String(c.dataset.filter === want));
-      });
-      cards.forEach(function (card) {
-        card.hidden = !(want === "all" || card.dataset.cat === want);
-      });
-    });
-  });
-
-  /* ─── 모달 ─── */
-  var modal      = document.getElementById("modal");
-  var modalTitle = document.getElementById("modalTitle");
-  var modalSub   = document.getElementById("modalSub");
-  var modalBody  = document.getElementById("modalBody");
-  var modalClose = document.getElementById("modalClose");
-  var lastFocus  = null;
-
-  var ARROW = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17L17 7M9 7h8v8"/></svg>';
-
-  /* KO/EN 쌍으로 복제된 요소 중 현재 언어 것을 고른다 */
-  function pick(card, sel) {
-    return card.querySelector(sel + '[data-lang="' + (isEn() ? "en" : "ko") + '"]') ||
-           card.querySelector(sel);
-  }
-
-  function openCard(card) {
-    var detail = card.querySelector(".detail");
-    if (!detail) return;
-    lastFocus = card;
-
-    var en = isEn();
-    modalTitle.textContent = (en && detail.dataset.titleEn) || detail.dataset.title ||
-                             pick(card, ".card-open").textContent;
-    modalSub.textContent   = (en && detail.dataset.subEn) || detail.dataset.sub ||
-                             pick(card, ".card-org").textContent;
-
-    modalBody.innerHTML = "";
-
-    var clone = detail.cloneNode(true);
-    clone.style.display = "block";
-    modalBody.appendChild(clone);
-
-    var stack = card.querySelector(".stack");
-    if (stack) {
-      var h = document.createElement("h4");
-      h.textContent = isEn() ? "Stack" : "기술 스택";
-      modalBody.appendChild(h);
-      modalBody.appendChild(stack.cloneNode(true));
-    }
-
-    if (detail.dataset.repo) {
-      var links = document.createElement("div");
-      links.className = "links";
-      var a = document.createElement("a");
-      a.className = "linkbtn";
-      a.href = detail.dataset.repo;
-      a.target = "_blank";
-      a.rel = "noopener";
-      a.innerHTML = ARROW + "<span>" + (detail.dataset.repoLabel || "저장소 보기") + "</span>";
-      links.appendChild(a);
-      modalBody.appendChild(links);
-    }
-
-    modalBody.scrollTop = 0;
-    if (typeof modal.showModal === "function") modal.showModal();
-    else modal.setAttribute("open", "");
-    modalClose.focus();
-  }
-
-  cards.forEach(function (card) {
-    var openers = card.querySelectorAll(".card-open");   /* KO · EN 두 개 모두 */
-    Array.prototype.forEach.call(openers, function (opener) {
-      opener.addEventListener("click", function () { openCard(card); });
-    });
-  });
-
-  function closeModal() {
-    if (typeof modal.close === "function") modal.close();
-    else modal.removeAttribute("open");
-  }
-  modalClose.addEventListener("click", closeModal);
-
-  /* 배경 클릭으로 닫기 */
-  modal.addEventListener("click", function (e) {
-    var r = modal.getBoundingClientRect();
-    var inside = e.clientX >= r.left && e.clientX <= r.right &&
-                 e.clientY >= r.top  && e.clientY <= r.bottom;
-    if (!inside) closeModal();
-  });
-
-  /* 닫힌 뒤 원래 카드로 포커스 복귀 */
-  modal.addEventListener("close", function () {
-    if (lastFocus) { lastFocus.focus(); lastFocus = null; }
-  });
 })();
 </script>
 
