@@ -8,6 +8,20 @@
 <meta property="og:title" content="권민재 — AI · Healthcare Data">
 <meta property="og:description" content="약리학 전공 후 헬스케어 데이터 분석 · 머신러닝. DACON 헬스케어 해커톤 3건, 임상 데이터 25만 건 규모 예측 모델, FastAPI · Docker 서빙.">
 <meta property="og:type" content="profile">
+<meta property="og:url" content="https://unknownuserkr.github.io/ai.html">
+<meta property="og:image" content="https://unknownuserkr.github.io/assets/og/ai.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="권민재 — AI · Healthcare Data 포트폴리오">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="권민재 · Minjae Kwon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="권민재 — AI · Healthcare Data">
+<meta name="twitter:description" content="DACON 헬스케어 해커톤 3건, 임상 데이터 25만 건 규모 예측 모델, FastAPI · Docker 서빙.">
+<meta name="twitter:image" content="https://unknownuserkr.github.io/assets/og/ai.png">
+<meta name="theme-color" content="#e9edee">
+<link rel="canonical" href="https://unknownuserkr.github.io/ai.html">
 <title>권민재 — AI · Healthcare Data</title>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🫁</text></svg>">
 
@@ -29,16 +43,16 @@
   --surface-3:   #e7ecee;
   --ink:         #0b1a24;
   --ink-2:       #415765;
-  --ink-3:       #6f8794;
+  --ink-3:       #5a6e79;
   --rule:        #d2dbde;
   --rule-2:      #b5c3c8;
 
-  --trace:       #0d7f92;
-  --trace-dim:   #0d7f92;
+  --trace:       #0c7687;
+  --trace-dim:   #0c7687;
   --trace-soft:  #dceff3;
 
   --critical:    #c2372f;
-  --warn:        #9a6a05;
+  --warn:        #8f6305;
 
   --shadow: 0 1px 2px rgba(11,26,36,.06), 0 14px 34px -22px rgba(11,26,36,.5);
   --glow:   0 0 0 1px var(--trace-dim), 0 0 22px -8px rgba(13,127,146,.5);
@@ -93,10 +107,11 @@ h1, h2, h3, h4 { text-wrap: balance; }
 /* ═══ 언어 전환 ═══ */
 html[lang="ko"] [data-lang="en"] { display: none !important; }
 html[lang="en"] [data-lang="ko"] { display: none !important; }
-.langswitch { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
+.langswitch { display: inline-flex; flex: none; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .langswitch button {
   appearance: none; background: transparent; color: var(--ink-3);
   border: 0; padding: .38rem .7rem; cursor: pointer;
+  flex: none; white-space: nowrap;
   font-family: var(--f-mono); font-size: var(--t-xs);
   letter-spacing: .1em; text-transform: uppercase;
   transition: color .18s, background .18s;
@@ -176,7 +191,7 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 /* ═══ 계측 스트립 ═══ */
 .readout {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(11rem, 100%), 1fr));
   gap: 1px;
   background: var(--rule);
   border: 1px solid var(--rule);
@@ -231,7 +246,7 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 .chip .n { opacity: .55; margin-left: .35rem; }
 
 /* ═══ 프로젝트 카드 ═══ */
-.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(19rem, 1fr)); gap: 1rem; }
+.grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(19rem, 100%), 1fr)); gap: 1rem; }
 .card {
   position: relative;
   display: flex; flex-direction: column; gap: .85rem;
@@ -372,7 +387,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 .modal-body { padding: 1.5rem; overflow-y: auto; max-height: calc(86vh - 5.5rem); }
 
 .stats {
-  display: grid; grid-template-columns: repeat(auto-fit, minmax(9rem, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(min(9rem, 100%), 1fr));
   gap: 1px; background: var(--rule);
   border: 1px solid var(--rule); border-radius: var(--r);
   overflow: hidden; margin-bottom: 1.5rem;
@@ -466,7 +481,7 @@ dialog.modal[open] { animation: rise .24s cubic-bezier(.2, .7, .2, 1); }
 .tier.learn .tier-head b { color: var(--ink-3); }
 
 .skills {
-  display: grid; grid-template-columns: repeat(auto-fill, minmax(15rem, 1fr));
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(min(15rem, 100%), 1fr));
   gap: 1px; background: var(--rule);
   border: 1px solid var(--rule); border-radius: var(--r); overflow: hidden;
 }

@@ -8,7 +8,43 @@
 <meta property="og:title" content="권민재 · Minjae Kwon">
 <meta property="og:description" content="약을 공부했고, 지금은 데이터를 다룹니다. 용량–반응 곡선과 학습 곡선을 같은 눈으로 읽습니다.">
 <meta property="og:type" content="profile">
+<meta property="og:url" content="https://unknownuserkr.github.io/">
+<meta property="og:image" content="https://unknownuserkr.github.io/assets/og/home.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="권민재 · Minjae Kwon — 약을 공부했고, 지금은 데이터를 다룹니다.">
+<meta property="og:locale" content="ko_KR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:site_name" content="권민재 · Minjae Kwon">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="권민재 · Minjae Kwon">
+<meta name="twitter:description" content="약을 공부했고, 지금은 데이터를 다룹니다. 용량–반응 곡선과 학습 곡선을 같은 눈으로 읽습니다.">
+<meta name="twitter:image" content="https://unknownuserkr.github.io/assets/og/home.png">
+<meta name="theme-color" content="#F8F5EF">
+<link rel="canonical" href="https://unknownuserkr.github.io/">
 <title>권민재 · Minjae Kwon</title>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "권민재",
+  "alternateName": "Minjae Kwon",
+  "url": "https://unknownuserkr.github.io/",
+  "email": "mailto:kkmj1150@gmail.com",
+  "jobTitle": "Healthcare Data / ML",
+  "description": "약리학 학사 후 헬스케어 데이터 분석·머신러닝. 실험이 데이터를 만드는 과정을 아는 채로 모델을 만듭니다.",
+  "knowsLanguage": ["ko", "en"],
+  "alumniOf": [
+    { "@type": "CollegeOrUniversity", "name": "University of Leeds", "description": "BSc Pharmacology" },
+    { "@type": "EducationalOrganization", "name": "Brockenhurst College" }
+  ],
+  "knowsAbout": ["Pharmacology", "Machine Learning", "Medical Imaging", "Molecular Docking", "Python", "FastAPI"],
+  "sameAs": [
+    "https://github.com/UnknownUserKR",
+    "https://www.linkedin.com/in/minjae-kwon-3a76a4252/"
+  ]
+}
+</script>
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚗️</text></svg>">
 
 <link rel="preconnect" href="https://cdn.jsdelivr.net">
@@ -25,7 +61,7 @@
   --paper:   #F8F5EF;
   --ink:     #211D18;
   --sub:     #6C6257;
-  --faint:   #A79B8C;
+  --faint:   #7B6F5F;
   --rule:    #E4DCCE;
   --accent:  #3E6B4F;
   --accent-soft: #E9EFE8;
@@ -38,6 +74,7 @@
   --measure: 42rem;
 }
 *, *::before, *::after { box-sizing: border-box; }
+html, body { overflow-x: clip; }
 html { -webkit-text-size-adjust: 100%; }
 html[lang="en"] body { word-break: normal; }
 body {
@@ -61,17 +98,18 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 
 /* ─── 상단 바 ─── */
 .topbar {
-  display: flex; align-items: center; gap: 1rem;
+  display: flex; align-items: center; gap: .8rem 1rem; flex-wrap: wrap;
   padding: 1.9rem 0 0;
   font-family: var(--mono); font-size: .75rem; letter-spacing: .12em;
 }
-.wordmark { text-transform: uppercase; text-decoration: none; color: var(--ink); font-weight: 500; }
+.wordmark { text-transform: uppercase; text-decoration: none; color: var(--ink); font-weight: 500; white-space: nowrap; }
 .topnav { margin-left: auto; display: flex; gap: 1.4rem; flex-wrap: wrap; }
-.topnav a { color: var(--sub); text-decoration: none; text-transform: uppercase; transition: color .18s; }
+.topnav a { color: var(--sub); text-decoration: none; text-transform: uppercase; white-space: nowrap; transition: color .18s; }
 .topnav a:hover { color: var(--accent); }
-.langswitch { display: inline-flex; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
+.langswitch { display: inline-flex; flex: none; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .langswitch button {
   appearance: none; border: 0; background: transparent; cursor: pointer;
+  flex: none; white-space: nowrap;
   font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
   color: var(--faint); padding: .32rem .65rem; transition: color .18s, background .18s;
 }
@@ -158,7 +196,7 @@ h2.title {
 .works a:hover .arrow { color: var(--accent); transform: translateX(3px); }
 
 /* ─── 두 갈래 ─── */
-.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(17rem, 1fr)); gap: 1.1rem; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 1.1rem; }
 .door {
   display: flex; flex-direction: column; gap: .8rem;
   padding: 1.9rem 1.8rem 1.7rem;
