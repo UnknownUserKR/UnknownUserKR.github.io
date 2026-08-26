@@ -83,6 +83,7 @@ body {
   line-height: 1.7;
   word-break: keep-all;
   -webkit-font-smoothing: antialiased;
+  border-top: 3px solid var(--ink);   /* 기술 문서의 표제 괘선 */
 }
 .wrap { position: relative; z-index: 1; max-width: var(--page); margin-inline: auto; padding: 0 1.5rem 6rem; }
 a { color: inherit; }
@@ -214,8 +215,10 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 .section-head .ko { font-size: var(--t-sm); color: var(--ink-3); }
 .section-head .tail { margin-left: auto; font-family: var(--f-mono); font-size: var(--t-xs); color: var(--ink-3); letter-spacing: .02em; }
 
-.lede { max-width: var(--measure); margin: 0; color: var(--ink-2); font-size: var(--t-md); line-height: 1.75; }
+.lede { max-width: var(--measure); margin: 0; color: var(--ink-2); font-size: var(--t-base); line-height: 1.75; text-wrap: pretty; }
 .lede + .lede { margin-top: .9rem; }
+/* 리드 문단(KO·EN 쌍)만 한 단계 크게 — 보고서의 초록 역할 */
+.section-head + .lede, .section-head + .lede + .lede { font-size: var(--t-md); color: var(--ink); }
 .lede strong { color: var(--ink); font-weight: 600; }
 .lede em { font-style: normal; color: var(--trace); font-weight: 500; }
 
@@ -253,7 +256,7 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
   color: inherit; font: inherit;
   transition: background .18s;
 }
-.card:hover, .card:has(.card-open:focus-visible) { background: var(--surface); }
+.card:hover, .card:has(.card-open:focus-visible) { background: var(--surface); box-shadow: inset 2px 0 0 var(--trace); }
 .card:has(.card-open:focus-visible) { outline: 2px solid var(--trace); outline-offset: -2px; }
 .card[hidden] { display: none; }
 .card-top { display: contents; }

@@ -123,7 +123,7 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 h1.head {
   margin: 1.1rem 0 0;
   font-family: var(--serif); font-weight: 900;
-  font-size: clamp(2.4rem, 7.2vw, 4.4rem);
+  font-size: clamp(2.4rem, 7vw, 4.1rem);
   line-height: 1.22; letter-spacing: -.015em;
   text-wrap: balance;
 }
@@ -143,6 +143,18 @@ h1.head {
   font-size: .82rem;
   color: var(--faint); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
+.curve .cap b { font-weight: 600; color: var(--sub); }
+
+/* 지면 질감 — 아주 옅은 종이 그레인 */
+body::after {
+  content: "";
+  position: fixed; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E") repeat;
+  opacity: .05;
+  mix-blend-mode: multiply;
+  pointer-events: none;
+}
+@media print { body::after { display: none; } }
 
 /* ─── 섹션 공통 ─── */
 section.block { margin-top: 7rem; }
@@ -204,7 +216,7 @@ h2.title {
 .works a:hover .arrow { color: var(--accent); transform: translateX(3px); }
 
 /* ─── 두 갈래 ─── */
-.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 0 3rem; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 1.5rem 3rem; }
 .door {
   display: flex; flex-direction: column; gap: .7rem;
   padding: 1.4rem 0 1.6rem;
@@ -301,17 +313,19 @@ h2.title {
   </section>
 
   <figure class="curve" aria-hidden="true">
-    <svg viewBox="0 0 800 120" fill="none">
+    <svg viewBox="0 0 800 124" fill="none">
       <line x1="0" y1="110" x2="800" y2="110" stroke="#E4DCCE" stroke-width="1"/>
       <line x1="0" y1="60" x2="800" y2="60" stroke="#E4DCCE" stroke-width="1" stroke-dasharray="2 6"/>
       <line x1="0" y1="10" x2="800" y2="10" stroke="#E4DCCE" stroke-width="1" stroke-dasharray="2 6"/>
+      <line x1="380" y1="64" x2="380" y2="110" stroke="#7B6F5F" stroke-width="1" stroke-dasharray="3 4"/>
       <path d="M10 108 C 220 106, 300 100, 380 60 C 460 20, 560 12, 790 10"
             stroke="#3E6B4F" stroke-width="2.5" stroke-linecap="round"
             pathLength="1" class="curve-path"/>
       <circle cx="380" cy="60" r="4" fill="#3E6B4F"/>
+      <text x="389" y="102" font-family="IBM Plex Mono, monospace" font-size="11" letter-spacing=".08em" fill="#7B6F5F">EC50</text>
     </svg>
     <figcaption class="cap">
-      <span data-lang="ko">용량–반응 곡선 · EC50</span><span data-lang="en">Dose–response curve · EC50</span>
+      <span data-lang="ko"><b>그림 1</b> — 용량–반응 곡선 · EC50</span><span data-lang="en"><b>Fig. 1</b> — Dose–response curve · EC50</span>
       <span data-lang="ko">…이자 학습 곡선</span><span data-lang="en">…or a learning curve</span>
     </figcaption>
   </figure>
@@ -452,7 +466,7 @@ h2.title {
   </nav>
   <footer class="colophon">
     <span data-lang="ko">권민재 · Minjae Kwon</span><span data-lang="en">Minjae Kwon · 권민재</span>
-    <span>Last updated 2026.08</span>
+    <span data-lang="ko">서울에서 직접 만든 페이지 · 2026.08</span><span data-lang="en">Hand-built in Seoul · Updated 2026.08</span>
   </footer>
 
 </div>
