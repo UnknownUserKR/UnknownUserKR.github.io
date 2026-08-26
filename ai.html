@@ -1429,8 +1429,15 @@ html[lang="en"] .skill :is(li:not([data-lang]), li[data-lang="en"]) ~ :is(li:not
           <ul><li data-lang="ko">LightGBM · XGBoost · CatBoost 앙상블</li>
 <li data-lang="en">LightGBM · XGBoost · CatBoost ensembles</li><li data-lang="ko">Optuna 튜닝 · SHAP 해석</li>
 <li data-lang="en">Optuna tuning · SHAP interpretation</li><li data-lang="ko">scikit-learn · 피처 엔지니어링</li>
-<li data-lang="en">scikit-learn · feature engineering</li><li data-lang="ko">OOF 스태킹 · 확률 보정 · 누수 차단 교차검증 설계</li>
-<li data-lang="en">OOF stacking · calibration · leakage-safe CV design</li></ul>
+<li data-lang="en">scikit-learn · feature engineering</li><li data-lang="ko">OOF 스태킹 · 확률 보정</li>
+<li data-lang="en">OOF stacking · probability calibration</li></ul>
+        </div>
+        <div class="skill">
+          <b data-lang="ko">검증 · 재현성</b><b data-lang="en">Validation · Reproducibility</b>
+          <ul><li data-lang="ko">누수 차단 교차검증 · Group 분할 설계</li>
+<li data-lang="en">Leakage-safe CV · group-split design</li><li data-lang="ko">제출 재현 자동 테스트 — 2,546행 전수 대조</li>
+<li data-lang="en">Automated reproduction tests — all 2,546 rows checked</li><li data-lang="ko">데이터 누수 점검 · 리더보드 오차 추정</li>
+<li data-lang="en">Leakage audits · leaderboard-noise estimation</li></ul>
         </div>
       </div>
     </div>
@@ -1440,10 +1447,10 @@ html[lang="en"] .skill :is(li:not([data-lang]), li[data-lang="en"]) ~ :is(li:not
 <b data-lang="en">Working</b><hr></div>
       <div class="skills">
         <div class="skill">
-          <b>Deep Learning</b>
-          <ul><li data-lang="ko">PyTorch · 전이학습 (ResNet · DenseNet · EfficientNet)</li>
-<li data-lang="en">PyTorch · transfer learning (ResNet · DenseNet · EfficientNet)</li><li data-lang="ko">Focal Loss · K-Fold 앙상블</li>
-<li data-lang="en">Focal Loss · K-Fold ensembling</li><li data-lang="ko">Grad-CAM 기반 모델 해석</li>
+          <b>CNN</b>
+          <ul><li data-lang="ko">PyTorch · 전이학습 (ResNet · DenseNet · EfficientNet · ConvNeXt)</li>
+<li data-lang="en">PyTorch · transfer learning (ResNet · DenseNet · EfficientNet · ConvNeXt)</li><li data-lang="ko">Focal Loss · MixUp · CutMix · 5-Fold 앙상블</li>
+<li data-lang="en">Focal Loss · MixUp · CutMix · 5-fold ensembling</li><li data-lang="ko">Grad-CAM 기반 모델 해석</li>
 <li data-lang="en">Model interpretation with Grad-CAM</li></ul>
         </div>
         <div class="skill">
@@ -1455,10 +1462,29 @@ html[lang="en"] .skill :is(li:not([data-lang]), li[data-lang="en"]) ~ :is(li:not
         </div>
         <div class="skill">
           <b>FastAPI</b>
-          <ul><li data-lang="ko">FastAPI 기반 REST API</li>
-<li data-lang="en">REST APIs with FastAPI</li><li data-lang="ko">비동기 처리 및 Swagger 문서화</li>
-<li data-lang="en">Async handling and Swagger docs</li><li data-lang="ko">AI 모델 서빙 API 구현</li>
-<li data-lang="en">Serving models behind an API</li></ul>
+          <ul><li data-lang="ko">FastAPI 기반 REST API · Swagger 문서화</li>
+<li data-lang="en">REST APIs with FastAPI · Swagger docs</li><li data-lang="ko">SQLAlchemy 비동기 세션 · Alembic · pytest</li>
+<li data-lang="en">Async SQLAlchemy · Alembic · pytest</li><li data-lang="ko">Redis Streams 비동기 분석 큐</li>
+<li data-lang="en">Async analysis queue on Redis Streams</li></ul>
+        </div>
+        <div class="skill">
+          <b>Docker</b>
+          <ul><li data-lang="ko">Docker Compose — 서비스 5개 구성 · 운영</li>
+<li data-lang="en">Docker Compose — five services composed and run</li><li data-lang="ko">AI 모델 서빙 컨테이너화</li>
+<li data-lang="en">Containerising model-serving apps</li><li data-lang="ko">이미지 경량화 (CPU 전용 torch · 지연 로딩)</li>
+<li data-lang="en">Slimmer images (CPU-only torch · lazy loading)</li></ul>
+        </div>
+        <div class="skill">
+          <b>Git · GitHub</b>
+          <ul><li data-lang="ko">팀 저장소 협업 · 최다 기여</li>
+<li data-lang="en">Team repository collaboration · top contributor</li><li data-lang="ko">onco-ai 공개 저장소 운영</li>
+<li data-lang="en">Maintaining the public onco-ai repository</li></ul>
+        </div>
+        <div class="skill">
+          <b data-lang="ko">AI 코딩 도구</b><b data-lang="en">AI coding tools</b>
+          <ul><li data-lang="ko">Claude Code · Cursor</li>
+<li data-lang="en">Claude Code · Cursor</li><li data-lang="ko">개발 워크플로에 상시 활용</li>
+<li data-lang="en">Part of my daily development workflow</li></ul>
         </div>
       </div>
     </div>
@@ -1475,17 +1501,10 @@ html[lang="en"] .skill :is(li:not([data-lang]), li[data-lang="en"]) ~ :is(li:not
 <li data-lang="en">Schema design for clinical data</li></ul>
         </div>
         <div class="skill">
-          <b>Docker</b>
-          <ul><li data-lang="ko">AI 모델 서빙 컨테이너화</li>
-<li data-lang="en">Containerising model-serving apps</li><li data-lang="ko">이미지 빌드 및 배포</li>
-<li data-lang="en">Image builds and deployment</li><li data-lang="ko">FastAPI 서비스 배포 환경 구성</li>
-<li data-lang="en">Deployment setup for FastAPI services</li></ul>
-        </div>
-        <div class="skill">
           <b>NLP</b>
           <ul><li data-lang="ko">Tokenization · Vectorization</li>
-<li data-lang="en">Tokenisation · vectorisation</li><li data-lang="ko">의료 텍스트 분류</li>
-<li data-lang="en">Clinical text classification</li><li data-lang="ko">키워드 기반 정보 추출</li>
+<li data-lang="en">Tokenisation · vectorisation</li><li data-lang="ko">의료 텍스트 분류 · 감성 분석 (NLTK VADER)</li>
+<li data-lang="en">Clinical text classification · sentiment analysis (NLTK VADER)</li><li data-lang="ko">키워드 기반 정보 추출</li>
 <li data-lang="en">Keyword-based information extraction</li></ul>
         </div>
         <div class="skill">
@@ -1494,6 +1513,12 @@ html[lang="en"] .skill :is(li:not([data-lang]), li[data-lang="en"]) ~ :is(li:not
 <li data-lang="en">Retrieval-augmented generation pipelines</li><li data-lang="ko">임베딩 · 벡터 데이터베이스</li>
 <li data-lang="en">Embeddings · vector databases</li><li data-lang="ko">의료 문서 Q&amp;A 적용 목표</li>
 <li data-lang="en">Toward Q&amp;A over medical documents</li></ul>
+        </div>
+        <div class="skill">
+          <b>RNN</b>
+          <ul><li data-lang="ko">RNN · LSTM 구조와 시계열 처리</li>
+<li data-lang="en">RNN · LSTM architectures and sequence data</li><li data-lang="ko">생체신호(ECG) 데이터 적용 목표</li>
+<li data-lang="en">Toward biosignal (ECG) applications</li></ul>
         </div>
         <div class="skill">
           <b>HTML · CSS</b>
