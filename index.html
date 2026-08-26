@@ -84,6 +84,7 @@ body {
   font-family: var(--sans);
   font-size: 1.0625rem;
   line-height: 1.85;
+  word-break: keep-all;
   -webkit-font-smoothing: antialiased;
 }
 a { color: inherit; }
@@ -100,11 +101,11 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 .topbar {
   display: flex; align-items: center; gap: .8rem 1rem; flex-wrap: wrap;
   padding: 1.9rem 0 0;
-  font-family: var(--mono); font-size: .75rem; letter-spacing: .12em;
+  font-size: .85rem;
 }
-.wordmark { text-transform: uppercase; text-decoration: none; color: var(--ink); font-weight: 500; white-space: nowrap; }
+.wordmark { font-family: var(--serif); font-weight: 600; font-size: .95rem; text-decoration: none; color: var(--ink); white-space: nowrap; }
 .topnav { margin-left: auto; display: flex; gap: 1.4rem; flex-wrap: wrap; }
-.topnav a { color: var(--sub); text-decoration: none; text-transform: uppercase; white-space: nowrap; transition: color .18s; }
+.topnav a { color: var(--sub); text-decoration: none; white-space: nowrap; transition: color .18s; }
 .topnav a:hover { color: var(--accent); }
 .langswitch { display: inline-flex; flex: none; border: 1px solid var(--rule); border-radius: 999px; overflow: hidden; }
 .langswitch button {
@@ -118,14 +119,9 @@ html[lang="en"] [data-lang="ko"] { display: none !important; }
 
 /* ─── 히어로 ─── */
 .hero { padding: 6.5rem 0 0; }
-.status {
-  font-family: var(--mono); font-size: .75rem; letter-spacing: .16em;
-  text-transform: uppercase; color: var(--accent);
-  display: inline-flex; align-items: center; gap: .55rem;
-}
-.status::before { content: ""; width: 6px; height: 6px; border-radius: 50%; background: var(--accent); }
+.status { font-size: .85rem; color: var(--faint); }
 h1.head {
-  margin: 1.4rem 0 0;
+  margin: 1.1rem 0 0;
   font-family: var(--serif); font-weight: 900;
   font-size: clamp(2.4rem, 7.2vw, 4.4rem);
   line-height: 1.22; letter-spacing: -.015em;
@@ -135,6 +131,7 @@ h1.head {
   max-width: var(--measure);
   margin: 2.1rem 0 0;
   font-size: 1.17rem; line-height: 1.9; color: var(--sub);
+  text-wrap: pretty;
 }
 .lede strong { color: var(--ink); font-weight: 600; }
 
@@ -142,17 +139,13 @@ h1.head {
 .curve { margin: 4.5rem 0 0; }
 .curve svg { display: block; width: 100%; height: auto; }
 .curve .cap {
-  margin-top: .55rem;
-  font-family: var(--mono); font-size: .72rem; letter-spacing: .1em;
+  margin-top: .7rem;
+  font-size: .82rem;
   color: var(--faint); display: flex; justify-content: space-between; gap: 1rem; flex-wrap: wrap;
 }
 
 /* ─── 섹션 공통 ─── */
-section.block { margin-top: 6.5rem; }
-.kicker {
-  font-family: var(--mono); font-size: .75rem; letter-spacing: .22em;
-  text-transform: uppercase; color: var(--accent); margin: 0 0 1.8rem;
-}
+section.block { margin-top: 7rem; }
 h2.title {
   font-family: var(--serif); font-weight: 900;
   font-size: clamp(1.6rem, 3.6vw, 2.2rem); line-height: 1.3;
@@ -167,8 +160,8 @@ h2.title {
 }
 .facts > div { border-top: 1px solid var(--rule); padding-top: .95rem; }
 .facts dt {
-  font-family: var(--mono); font-size: .72rem; letter-spacing: .18em;
-  text-transform: uppercase; color: var(--faint); margin: 0 0 .5rem;
+  font-size: .8rem; font-weight: 600;
+  color: var(--faint); margin: 0 0 .5rem;
 }
 .facts dd { margin: 0; font-size: .95rem; line-height: 1.75; color: var(--sub); word-break: keep-all; }
 .facts dd b { color: var(--ink); font-weight: 600; }
@@ -177,11 +170,11 @@ h2.title {
 .story { display: flex; flex-direction: column; gap: 2rem; max-width: var(--measure); }
 .chapter { display: grid; grid-template-columns: 6.5rem 1fr; gap: 1.4rem; }
 .chapter .when {
-  font-family: var(--mono); font-size: .78rem; letter-spacing: .06em;
-  color: var(--faint); padding-top: .45rem; white-space: nowrap;
+  font-size: .85rem;
+  color: var(--faint); padding-top: .4rem; white-space: nowrap;
   font-variant-numeric: tabular-nums;
 }
-.chapter p { margin: 0; color: var(--sub); }
+.chapter p { margin: 0; color: var(--sub); text-wrap: pretty; }
 .chapter p strong { color: var(--ink); font-weight: 600; }
 .chapter p em { font-style: normal; color: var(--accent); font-weight: 500; }
 
@@ -189,42 +182,44 @@ h2.title {
 .works { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--rule); }
 .works li { border-bottom: 1px solid var(--rule); }
 .works a {
-  display: grid; grid-template-columns: 2.6rem 1fr auto;
+  display: grid; grid-template-columns: 1fr auto;
   gap: 1.2rem; align-items: baseline;
-  padding: 1.5rem .2rem; text-decoration: none;
-  transition: background .18s, padding .18s;
+  padding: 1.55rem .2rem; text-decoration: none;
+  transition: background .18s;
 }
-.works a:hover { background: #fffdf8; padding-left: .8rem; }
-.works .no { font-family: var(--mono); font-size: .78rem; color: var(--faint); }
+.works a:hover { background: #fffdf8; }
 .works .w-body { min-width: 0; }
 .works .w-title {
   font-family: var(--serif); font-weight: 600; font-size: 1.28rem;
   line-height: 1.4; letter-spacing: -.01em; display: block;
+  transition: color .18s;
 }
+.works a:hover .w-title { color: var(--accent); }
 .works .w-sub { display: block; margin-top: .25rem; font-size: .92rem; color: var(--sub); }
 .works .w-sub b { color: var(--accent); font-weight: 600; }
 .works .arrow {
-  font-family: var(--mono); font-size: .78rem; letter-spacing: .08em;
+  font-size: .82rem;
   color: var(--faint); transition: color .18s, transform .18s; white-space: nowrap;
 }
 .works a:hover .arrow { color: var(--accent); transform: translateX(3px); }
 
 /* ─── 두 갈래 ─── */
-.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 1.1rem; }
+.doors { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(17rem, 100%), 1fr)); gap: 0 3rem; }
 .door {
-  display: flex; flex-direction: column; gap: .8rem;
-  padding: 1.9rem 1.8rem 1.7rem;
-  border: 1px solid var(--rule); border-radius: 4px;
-  background: #FFFDF8;
+  display: flex; flex-direction: column; gap: .7rem;
+  padding: 1.4rem 0 1.6rem;
+  border-top: 2px solid var(--ink);
   text-decoration: none;
-  transition: transform .2s cubic-bezier(.3,0,.2,1), border-color .2s, box-shadow .2s;
 }
-.door:hover { transform: translateY(-3px); border-color: var(--accent); box-shadow: 0 16px 34px -24px rgba(62,107,79,.55); }
-.door .d-tag { font-family: var(--mono); font-size: .72rem; letter-spacing: .18em; text-transform: uppercase; color: var(--accent); }
-.door .d-name { font-family: var(--serif); font-weight: 900; font-size: 1.55rem; letter-spacing: -.01em; line-height: 1.3; }
-.door .d-desc { font-size: .95rem; color: var(--sub); line-height: 1.75; }
-.door .d-go { margin-top: auto; padding-top: .6rem; font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; color: var(--faint); transition: color .18s; }
-.door:hover .d-go { color: var(--accent); }
+.door .d-name {
+  font-family: var(--serif); font-weight: 900; font-size: 1.55rem;
+  letter-spacing: -.01em; line-height: 1.3;
+  transition: color .18s;
+}
+.door:hover .d-name { color: var(--accent); }
+.door .d-desc { font-size: .95rem; color: var(--sub); line-height: 1.75; text-wrap: pretty; }
+.door .d-go { margin-top: auto; padding-top: .5rem; font-size: .85rem; color: var(--faint); transition: color .18s, transform .18s; align-self: start; }
+.door:hover .d-go { color: var(--accent); transform: translateX(3px); }
 
 /* ─── Now + 연락 ─── */
 .now {
@@ -243,9 +238,9 @@ h2.title {
 .contact-big a:hover { color: var(--accent); border-bottom-color: var(--accent); }
 
 .footnav {
-  margin-top: 6.5rem; padding-top: 1.4rem; border-top: 1px solid var(--rule);
+  margin-top: 7rem; padding-top: 1.4rem; border-top: 1px solid var(--rule);
   display: flex; flex-wrap: wrap; align-items: baseline; gap: .9rem 1.7rem;
-  font-family: var(--mono); font-size: .75rem; letter-spacing: .1em; text-transform: uppercase;
+  font-size: .85rem;
 }
 .footnav a { color: var(--sub); text-decoration: none; white-space: nowrap; transition: color .18s; }
 .footnav a:hover { color: var(--accent); }
@@ -253,26 +248,17 @@ h2.title {
 .colophon {
   margin-top: 1.4rem;
   display: flex; flex-wrap: wrap; gap: .4rem 1.5rem; justify-content: space-between;
-  font-family: var(--mono); font-size: .7rem; letter-spacing: .1em;
-  text-transform: uppercase; color: var(--faint);
+  font-size: .8rem; color: var(--faint);
 }
 ::selection { background: var(--accent-soft); color: var(--ink); }
 @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
-
-/* ─── 등장 모션 ─── */
-.rise { opacity: 0; transform: translateY(14px); transition: opacity .7s ease, transform .7s ease; }
-.rise.in { opacity: 1; transform: none; }
-.no-js .rise { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) {
-  .rise { opacity: 1 !important; transform: none !important; transition: none !important; }
   *, *::before, *::after { animation: none !important; }
 }
 
 @media (max-width: 40rem) {
   .chapter { grid-template-columns: 1fr; gap: .3rem; }
   .chapter .when { padding-top: 0; }
-  .works a { grid-template-columns: 1fr auto; }
-  .works .no { display: none; }
   .hero { padding-top: 4.5rem; }
 }
 </style>
@@ -304,7 +290,7 @@ h2.title {
     <p data-lang="ko" class="lede">
       권민재입니다. 영국 리즈대학교에서 약리학을 전공하고, 지금은 헬스케어 데이터로 모델을 만듭니다.
       실험대에서 <strong>데이터가 만들어지는 과정을 아는 채로</strong> 데이터를 본다는 것 —
-      용량–반응 곡선과 학습 곡선을 같은 눈으로 읽는 것이 제가 하는 일의 요약입니다.
+      <span style="white-space: nowrap">용량–반응 곡선</span>과 학습 곡선을 같은 눈으로 읽는 것이 제가 하는 일의 요약입니다.
     </p>
     <p data-lang="en" class="lede">
       I'm Minjae Kwon. I read pharmacology at the University of Leeds and now build models on
@@ -314,15 +300,15 @@ h2.title {
     </p>
   </section>
 
-  <figure class="curve rise" aria-hidden="true">
+  <figure class="curve" aria-hidden="true">
     <svg viewBox="0 0 800 120" fill="none">
       <line x1="0" y1="110" x2="800" y2="110" stroke="#E4DCCE" stroke-width="1"/>
       <line x1="0" y1="60" x2="800" y2="60" stroke="#E4DCCE" stroke-width="1" stroke-dasharray="2 6"/>
       <line x1="0" y1="10" x2="800" y2="10" stroke="#E4DCCE" stroke-width="1" stroke-dasharray="2 6"/>
       <path d="M10 108 C 220 106, 300 100, 380 60 C 460 20, 560 12, 790 10"
-            stroke="#3E6B4F" stroke-width="2" stroke-linecap="round"
+            stroke="#3E6B4F" stroke-width="2.5" stroke-linecap="round"
             pathLength="1" class="curve-path"/>
-      <circle cx="380" cy="60" r="3.5" fill="#3E6B4F"/>
+      <circle cx="380" cy="60" r="4" fill="#3E6B4F"/>
     </svg>
     <figcaption class="cap">
       <span data-lang="ko">용량–반응 곡선 · EC50</span><span data-lang="en">Dose–response curve · EC50</span>
@@ -330,8 +316,7 @@ h2.title {
     </figcaption>
   </figure>
 
-  <section class="block rise" id="glance">
-    <p class="kicker">Facts</p>
+  <section class="block" id="glance">
     <h2 data-lang="ko" class="title">한눈에</h2>
     <h2 data-lang="en" class="title">At a glance</h2>
     <dl class="facts">
@@ -362,8 +347,7 @@ h2.title {
     </dl>
   </section>
 
-  <section class="block rise">
-    <p class="kicker">Story</p>
+  <section class="block">
     <h2 data-lang="ko" class="title">실험대에서 데이터까지</h2>
     <h2 data-lang="en" class="title">From the bench to the data</h2>
     <div class="story">
@@ -394,14 +378,12 @@ h2.title {
     </div>
   </section>
 
-  <section class="block rise" id="work">
-    <p class="kicker">Selected Work</p>
+  <section class="block" id="work">
     <h2 data-lang="ko" class="title">세 개만 고르라면</h2>
     <h2 data-lang="en" class="title">If I could only show three</h2>
     <ul class="works">
       <li>
         <a href="ai.html">
-          <span class="no">01</span>
           <span class="w-body">
             <span data-lang="ko" class="w-title">흉부 X-ray 폐렴 분류</span><span data-lang="en" class="w-title">Chest X-ray pneumonia classification</span>
             <span data-lang="ko" class="w-sub">놓친 환자 <b>29 → 12명</b> · 리더보드 <b>0.95192</b> · Grad-CAM으로 근거 검증</span>
@@ -412,7 +394,6 @@ h2.title {
       </li>
       <li>
         <a href="ai.html">
-          <span class="no">02</span>
           <span class="w-body">
             <span data-lang="ko" class="w-title">유전자 변이로 암 아형 분류</span><span data-lang="en" class="w-title">Cancer subtype from gene mutations</span>
             <span data-lang="ko" class="w-sub">중복 환자 관찰 하나로 <b>+0.0829</b> · 규정 전수 검증 · 4팀 중 <b>2위</b></span>
@@ -423,7 +404,6 @@ h2.title {
       </li>
       <li>
         <a href="bio.html">
-          <span class="no">03</span>
           <span class="w-body">
             <span data-lang="ko" class="w-title">분자 도킹으로 수용체 결합 예측</span><span data-lang="en" class="w-title">Predicting receptor binding by docking</span>
             <span data-lang="ko" class="w-sub">재도킹 RMSD <b>0.45 Å</b>로 도구부터 검증 · 수용체 12구조 × 5계열</span>
@@ -435,30 +415,26 @@ h2.title {
     </ul>
   </section>
 
-  <section class="block rise">
-    <p class="kicker">Portfolio</p>
+  <section class="block">
     <h2 data-lang="ko" class="title">두 갈래로 정리했습니다</h2>
     <h2 data-lang="en" class="title">Sorted into two tracks</h2>
     <div class="doors">
       <a class="door" href="ai.html">
-        <span class="d-tag">Track A</span>
         <span class="d-name">AI Engineering</span>
         <span data-lang="ko" class="d-desc">해커톤 3건, 의료영상 딥러닝, 25만 건 임상 데이터 모델링, FastAPI·Docker 서빙 — 지표와 실험 기록 중심.</span>
         <span data-lang="en" class="d-desc">Three hackathons, medical-imaging deep learning, clinical-data modelling at 250k rows, FastAPI·Docker serving — metrics and experiment logs.</span>
-        <span class="d-go">unknownuserkr.github.io/ai.html →</span>
+        <span data-lang="ko" class="d-go">AI 포트폴리오 보기 →</span><span data-lang="en" class="d-go">View the AI portfolio →</span>
       </a>
       <a class="door" href="bio.html">
-        <span class="d-tag">Track B</span>
         <span class="d-name">Bio · Pharmacology</span>
         <span data-lang="ko" class="d-desc">조직 용량–반응 실험과 통계 검정, 분자 도킹, 임상시험·유전체 데이터 — 실험을 아는 사람의 데이터 작업.</span>
         <span data-lang="en" class="d-desc">Tissue dose–response work and statistics, molecular docking, clinical-trial and genomic data — data work by someone who knows the bench.</span>
-        <span class="d-go">unknownuserkr.github.io/bio.html →</span>
+        <span data-lang="ko" class="d-go">바이오 포트폴리오 보기 →</span><span data-lang="en" class="d-go">View the Bio portfolio →</span>
       </a>
     </div>
   </section>
 
-  <section class="block rise">
-    <p class="kicker">Now</p>
+  <section class="block">
     <p data-lang="ko" class="now">다음 목표는 LLM·RAG를 헬스케어 문서에 적용해 보는 것. 2026 하반기, 헬스케어 데이터 분석·머신러닝과
       바이오 직무에 지원하고 있습니다. 커피챗도, 채용 이야기도 환영합니다.</p>
     <p data-lang="en" class="now">Next up: applying LLMs and RAG to healthcare documents. Through H2 2026 I'm applying to healthcare
@@ -504,23 +480,8 @@ h2.title {
     b.addEventListener("click", function () { applyLang(b.dataset.langSet); });
   });
 
-  /* 등장 모션 */
-  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  var risers = Array.prototype.slice.call(document.querySelectorAll(".rise"));
-  if (reduced || !("IntersectionObserver" in window)) {
-    risers.forEach(function (el) { el.classList.add("in"); });
-  } else {
-    var io = new IntersectionObserver(function (entries, obs) {
-      entries.forEach(function (en) {
-        if (!en.isIntersecting) return;
-        en.target.classList.add("in");
-        obs.unobserve(en.target);
-      });
-    }, { threshold: 0.18 });
-    risers.forEach(function (el) { io.observe(el); });
-  }
-
   /* 곡선 그리기 — 스크롤로 처음 보일 때 한 번 */
+  var reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var path = document.querySelector(".curve-path");
   if (path && !reduced) {
     path.style.strokeDasharray = "1";
